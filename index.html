@@ -1021,6 +1021,10 @@
         <div id="pq-content-panel" style="display:none" class="flex-1 flex-col bg-white overflow-hidden">
             <!-- 工具列 -->
             <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
+                <button onclick="toggleMobileSidebar()" title="開啟選單"
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+                    <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
+                </button>
                 <span id="pq-detail-title" class="flex-1 text-sm font-semibold text-gray-700 truncate">點擊左側寶可夢查看詳細資料</span>
                 <button onclick="clearPokemonDetail()" title="清除"
                     class="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 transition-colors px-2 py-1 rounded hover:bg-gray-200">
@@ -1055,6 +1059,10 @@
         <div id="cq-content-panel" style="display:none" class="flex-1 flex-col bg-white overflow-hidden">
             <!-- 工具列 -->
             <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
+                <button onclick="toggleMobileSidebar()" title="開啟選單"
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+                    <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
+                </button>
                 <button onclick="switchToMapView()" title="關閉面板"
                     class="p-1 rounded text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors shrink-0">
                     <i data-lucide="x" class="w-3.5 h-3.5"></i>
@@ -1082,6 +1090,10 @@
         <div id="ri-content-panel" style="display:none" class="flex-1 flex-col bg-white overflow-hidden">
             <!-- 工具列 -->
             <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
+                <button onclick="toggleMobileSidebar()" title="開啟選單"
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+                    <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
+                </button>
                 <button onclick="switchToMapView()" title="關閉面板"
                     class="p-1 rounded text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors shrink-0">
                     <i data-lucide="x" class="w-3.5 h-3.5"></i>
@@ -3144,6 +3156,20 @@
                 switchToMapView();
             }
 
+            // 手機模式下，切換至這三個查詢模組時自動展開側邊欄讓使用者選擇
+            const isMobile = window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024);
+            if (isMobile) {
+                const aside = document.querySelector('aside');
+                const backdrop = document.getElementById('sidebar-backdrop');
+                if (['pokemon-query', 'catch-query', 'related-info'].includes(mod)) {
+                    if (aside) aside.classList.add('sidebar-open');
+                    if (backdrop) backdrop.classList.add('visible');
+                } else {
+                    if (aside) aside.classList.remove('sidebar-open');
+                    if (backdrop) backdrop.classList.remove('visible');
+                }
+            }
+
             closeRouteDetails();
             refreshMapAndUI();
             fitMapToActiveModuleData();
@@ -4168,6 +4194,7 @@
         }
 
         function loadRelatedInfoTool(url, name, blocked) {
+            closeMobileSidebar();
             if (!document.body.classList.contains('related-info-mode')) switchToRelatedInfoView();
             const titleEl = document.getElementById('ri-detail-title');
             if (titleEl) titleEl.textContent = name;
@@ -4202,6 +4229,7 @@
         }
 
         function loadCatchQueryTool(url, name, blocked) {
+            closeMobileSidebar();
             if (!document.body.classList.contains('catch-query-mode')) switchToCatchQueryView();
             const titleEl = document.getElementById('cq-detail-title');
             if (titleEl) titleEl.textContent = name;
@@ -4248,6 +4276,7 @@
         }
 
         async function loadPokemonWikiPage(zhPath, displayName, fullUrl) {
+            closeMobileSidebar();
             if (!_pqInitialized) initPokemonQueryList();
             if (!document.body.classList.contains('pokemon-query-mode')) switchToPokemonQueryView();
             const titleEl = document.getElementById('pq-detail-title');
