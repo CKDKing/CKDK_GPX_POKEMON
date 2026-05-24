@@ -744,6 +744,7 @@
                         </div>
                         <div class="px-3 pb-2.5">
                             <select onchange="if(this.value){window.open('https://translate.google.com/translate?sl=auto&tl=zh-TW&u=' + encodeURIComponent(this.value),'_blank');this.value='';}"
+                                onclick="event.stopPropagation();" onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();"
                                 class="w-full text-xs bg-brand-inputBg border border-brand-border rounded px-2 py-1.5 text-white focus:outline-none cursor-pointer">
                                 <option value="">選擇國家...</option>
                                 <option value="https://pokemongo.com/ja">日本</option>
@@ -1387,7 +1388,8 @@
             currentMap = L.map('map', {
                 center: [24.17409, 120.64590], // 預設台中逢甲
                 zoom: 13,
-                zoomControl: false
+                zoomControl: false,
+                tap: false
             });
             
             L.control.zoom({ position: 'topright' }).addTo(currentMap);
