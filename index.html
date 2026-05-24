@@ -743,7 +743,7 @@
                             <i data-lucide="external-link" class="w-3.5 h-3.5 text-amber-500/60 shrink-0"></i>
                         </div>
                         <div class="px-3 pb-2.5">
-                            <select onchange="if(this.value){window.open('https://translate.google.com/translate?sl=auto&tl=zh-TW&u=' + encodeURIComponent(this.value),'_blank');this.value='';}"
+                            <select onchange="if(this.value){window.open(this.value,'_blank');this.value='';}"
                                 onclick="event.stopPropagation();" onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();"
                                 class="w-full text-xs bg-brand-inputBg border border-brand-border rounded px-2 py-1.5 text-white focus:outline-none cursor-pointer">
                                 <option value="">選擇國家...</option>
