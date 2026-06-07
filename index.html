@@ -1108,15 +1108,17 @@
                                     <button onclick="sgInsertCustomCP('over')"
                                         class="shrink-0 px-2 py-1.5 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-[10px] font-bold rounded-lg transition-all cursor-pointer">值-</button>
                                 </div>
-                                <div class="flex items-center gap-1.5">
-                                    <span class="font-mono text-xs text-gray-400 shrink-0 w-10 text-right">範圍</span>
-                                    <input type="number" id="sg-cp-cust-from" min="0" placeholder="從"
-                                        class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary placeholder-gray-600">
-                                    <span class="font-mono text-xs text-gray-400 shrink-0">-</span>
-                                    <input type="number" id="sg-cp-cust-to" min="0" placeholder="至"
-                                        class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary placeholder-gray-600">
-                                    <button onclick="sgInsertCustomCPRange()"
-                                        class="shrink-0 px-2 py-1.5 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-[10px] font-bold rounded-lg transition-all cursor-pointer">加入</button>
+                                <div class="space-y-1">
+                                    <span class="font-mono text-[10px] text-gray-500">範圍</span>
+                                    <div class="flex items-center gap-1.5">
+                                        <input type="number" id="sg-cp-cust-from" min="0" placeholder="從"
+                                            class="flex-1 min-w-0 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary placeholder-gray-600">
+                                        <span class="font-mono text-xs text-gray-400 shrink-0">-</span>
+                                        <input type="number" id="sg-cp-cust-to" min="0" placeholder="至"
+                                            class="flex-1 min-w-0 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary placeholder-gray-600">
+                                        <button onclick="sgInsertCustomCPRange()"
+                                            class="shrink-0 px-2 py-1.5 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-[10px] font-bold rounded-lg transition-all cursor-pointer">加入</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1314,8 +1316,12 @@
                                 <option value="鋼">鋼</option>
                                 <option value="妖精">妖精</option>
                             </select>
-                            <button onclick="sgInsertType()"
-                                class="w-full py-2 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-xs font-bold rounded-lg transition-all cursor-pointer">加入</button>
+                            <div class="grid grid-cols-2 gap-1.5">
+                                <button onclick="sgInsertType(',')"
+                                    class="py-2 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-xs font-bold rounded-lg transition-all cursor-pointer">單屬性&nbsp;<span class="font-mono">,</span></button>
+                                <button onclick="sgInsertType('&')"
+                                    class="py-2 bg-sky-500/15 hover:bg-sky-500/30 border border-sky-500/30 hover:border-sky-500 text-sky-400 text-xs font-bold rounded-lg transition-all cursor-pointer">多屬性&nbsp;<span class="font-mono">&amp;</span></button>
+                            </div>
                         </div>
                     </div>
 
@@ -4812,12 +4818,12 @@
         }
 
         // 字串產生器：寶可夢插入（含 要/不要 + 進化體系 模式）
-        // 規則：+ 可出現在結果字串第 0 位；! 在 + 之前
+        // 同類多選用 , 串接；規則：+ 可出現在結果字串第 0 位；! 在 + 之前
         function sgInsertPoke(str) {
             const isExclude = document.getElementById('sg-poke-mode')?.dataset.mode === 'exclude';
             const isEvo     = document.getElementById('sg-poke-evo')?.dataset.active  === '1';
             const prefix = (isExclude ? '!' : '') + (isEvo ? '+' : '');
-            sgInsert(prefix + str);
+            sgInsert(prefix + str, ',');
         }
 
         // 字串產生器：修正結果欄首字元（& 和 , 不可在第 0 位；! 和 + 允許）
@@ -4832,7 +4838,9 @@
         }
 
         // 字串產生器：插入字串至游標位置（含自動規則）
-        function sgInsert(str) {
+        // sep='&'（預設）或 ','（寶可夢/地區/屬性 同類多選）
+        function sgInsert(str, sep) {
+            if (sep === undefined) sep = '&';
             const ta = document.getElementById('sg-result');
             if (!ta) return;
             // Rule 1: no spaces
@@ -4841,22 +4849,24 @@
             const end    = ta.selectionEnd;
             const before = ta.value.substring(0, start);
             const after  = ta.value.substring(end);
-            // Rule 2: auto-insert & between consecutive value tokens
+            // Rule 2: auto-insert sep between consecutive value tokens
             // Skip if insertStr already starts with a connector/comparison operator
-            let autoAmp = '';
+            let autoSep = '';
             if (before.length > 0 && !/^[&,><=]/.test(insertStr)) {
                 const lc = before[before.length - 1];
-                if (/[\w一-鿿*]/.test(lc)) autoAmp = '&';
+                if (/[\w一-鿿*+!]/.test(lc)) autoSep = sep;
             }
-            // Assemble; Rule 3: collapse consecutive &&
-            let result = (before + autoAmp + insertStr + after).replace(/&&+/g, '&');
-            // Rule 4: & and , must NOT be at position 0 (! is allowed)
+            // Assemble; Rule 3: collapse consecutive &&  or ,,
+            let result = (before + autoSep + insertStr + after)
+                .replace(/&&+/g, '&')
+                .replace(/,,+/g, ',');
+            // Rule 4: & and , must NOT be at position 0 (! and + are allowed)
             const leading = result.match(/^[&,]+/)?.[0].length ?? 0;
             result = result.replace(/^[&,]+/, '');
             ta.value = result;
-            // Restore cursor (account for && collapse + leading strip)
-            const rawCursor = before + autoAmp + insertStr;
-            const collapsed = rawCursor.replace(/&&+/g, '&').length;
+            // Restore cursor (account for collapse + leading strip)
+            const rawCursor = before + autoSep + insertStr;
+            const collapsed = rawCursor.replace(/&&+/g, '&').replace(/,,+/g, ',').length;
             ta.selectionStart = ta.selectionEnd = Math.max(0, collapsed - leading);
             ta.focus();
         }
@@ -4954,13 +4964,13 @@
             sgInsert('CP' + from + '-' + to);
         }
 
-        // 字串產生器：地區插入
+        // 字串產生器：地區插入（同類多選用 , 串接）
         function sgInsertRegion() {
             const sel = document.getElementById('sg-region-sel');
             if (!sel || !sel.value) { showToast('請選擇地區', 'error'); return; }
             const btn  = document.getElementById('sg-region-mode');
             const mode = btn?.dataset.mode ?? 'include';
-            sgInsert(mode === 'exclude' ? '!' + sel.value : sel.value);
+            sgInsert(mode === 'exclude' ? '!' + sel.value : sel.value, ',');
         }
 
         // 字串產生器：屬性清單
@@ -4977,12 +4987,13 @@
         }
 
         // 字串產生器：屬性插入
-        function sgInsertType() {
+        // sep=',' 單屬性多選（OR）；sep='&' 多屬性連集（同一隻有兩種屬性）
+        function sgInsertType(sep) {
             const sel = document.getElementById('sg-type-select');
             if (!sel || !sel.value) { showToast('請選擇屬性', 'error'); return; }
             const btn  = document.getElementById('sg-type-mode');
             const mode = btn?.dataset.mode ?? 'include';
-            sgInsert(mode === 'exclude' ? '!' + sel.value : sel.value);
+            sgInsert(mode === 'exclude' ? '!' + sel.value : sel.value, sep || ',');
         }
 
         function sgInsertSize(str) {
