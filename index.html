@@ -185,46 +185,11 @@
             height: auto !important;
             min-height: 52px;
             padding: 8px 10px !important;
-            flex-direction: column !important;
-            align-items: stretch !important;
-            gap: 8px !important;
-        }
-        .mobile-mode header > div:first-child {
-            width: 100%;
             flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 4px;
+            gap: 5px;
         }
-        .mobile-mode header nav {
-            margin-left: 0 !important;
-            margin-top: 8px !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            flex: 0 0 100%;
-            overflow-x: auto !important;
-            display: flex !important;
-            -webkit-overflow-scrolling: touch;
-        }
-        .mobile-mode header nav::-webkit-scrollbar {
-            display: none;
-        }
-        .mobile-mode #android-pokemon-toolbar {
-            width: 100%;
-            justify-content: space-between;
-            margin-left: 0 !important;
-            margin-top: 4px;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        .mobile-mode #android-pokemon-toolbar button, 
-        .mobile-mode #android-pokemon-toolbar div {
-            flex-grow: 1;
-            text-align: center;
-            justify-content: center;
-            font-size: 11px !important;
-            padding: 8px 6px !important;
-        }
+        .mobile-mode header > div:first-child { flex-wrap: wrap; gap: 4px; }
+        .mobile-mode #android-pokemon-toolbar { flex-wrap: wrap; gap: 4px; }
 
         /* 手機：顯示開關按鈕 */
         .mobile-mode #mobile-sidebar-toggle { display: flex !important; }
@@ -250,6 +215,8 @@
         body.catch-query-mode #cq-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; }
         body.related-info-mode #map-section { display: none !important; }
         body.related-info-mode #ri-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; }
+        body.string-generator-mode #map-section { display: none !important; }
+        body.string-generator-mode #sg-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; }
     </style>
 </head>
 <body class="bg-brand-darkBg text-gray-200 font-sans min-h-screen overflow-hidden flex flex-col">
@@ -275,6 +242,10 @@
                 <button onclick="switchModule('itools-route-editor')" id="module-btn-itools-route-editor" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
                     <i data-lucide="map" class="w-3.5 h-3.5"></i>
                     <span>iToolsBT 路徑編輯</span>
+                </button>
+                <button onclick="switchModule('string-generator')" id="module-btn-string-generator" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
+                    <i data-lucide="code-2" class="w-3.5 h-3.5"></i>
+                    <span>字串產生器</span>
                 </button>
                 <button onclick="switchModule('android-pokemon')" id="module-btn-android-pokemon" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
                     <i data-lucide="android" class="w-3.5 h-3.5"></i>
@@ -559,7 +530,7 @@
                 </div>
 
                 <!-- 路線基本參數編輯區 -->
-                <div class="p-3 border-b border-brand-border bg-[#090d16]/10 shrink-0 grid grid-cols-2 gap-2 text-xs">
+                <div class="p-3 border-b border-brand-border bg-[#090d16]/10 shrink-0 grid grid-cols-3 gap-2 text-xs">
                     <div class="space-y-1">
                         <label class="text-[10px] text-gray-500 font-semibold uppercase">路線名稱</label>
                         <input type="text" id="itools-route-name" oninput="updateItoolsRouteName(this.value)" class="w-full px-2 py-1.5 rounded bg-brand-inputBg border border-brand-border text-white text-xs focus:outline-none focus:border-brand-primary transition-all">
@@ -567,6 +538,13 @@
                     <div class="space-y-1">
                         <label class="text-[10px] text-gray-500 font-semibold uppercase">飛人速度 (Speed)</label>
                         <input type="number" id="itools-route-speed" oninput="updateItoolsRouteSpeed(this.value)" class="w-full px-2 py-1.5 rounded bg-brand-inputBg border border-brand-border text-white text-xs focus:outline-none focus:border-brand-primary transition-all">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] text-gray-500 font-semibold uppercase">是否循環 (Cycle)</label>
+                        <select id="itools-route-cycle" onchange="updateItoolsRouteCycle(this.value)" class="w-full px-2 py-1.5 rounded bg-brand-inputBg border border-brand-border text-white text-xs focus:outline-none focus:border-brand-primary transition-all">
+                            <option value="1">1 — 循環</option>
+                            <option value="0">0 — 不循環</option>
+                        </select>
                     </div>
                 </div>
                 
@@ -744,7 +722,6 @@
                         </div>
                         <div class="px-3 pb-2.5">
                             <select onchange="if(this.value){window.open(this.value,'_blank');this.value='';}"
-                                onclick="event.stopPropagation();" onmousedown="event.stopPropagation();" ontouchstart="event.stopPropagation();"
                                 class="w-full text-xs bg-brand-inputBg border border-brand-border rounded px-2 py-1.5 text-white focus:outline-none cursor-pointer">
                                 <option value="">選擇國家...</option>
                                 <option value="https://pokemongo.com/ja">日本</option>
@@ -948,6 +925,458 @@
                 </div>
             </div>
 
+            <!-- 字串產生器側邊欄 -->
+            <div id="sidebar-string-generator" class="hidden flex flex-col h-full overflow-hidden">
+                <!-- 固定標題列 -->
+                <div class="px-4 py-3 border-b border-brand-border bg-[#090d16]/30 shrink-0 flex items-center justify-between">
+                    <span class="text-xs font-bold text-gray-400 tracking-wider">字串產生器</span>
+                    <span class="flex items-center space-x-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-primary pulse-light"></span>
+                        <span class="text-[10px] text-gray-500 font-mono">STRING BUILDER</span>
+                    </span>
+                </div>
+                <!-- 捲動內容區 -->
+                <div class="flex-1 overflow-y-auto p-4 space-y-4">
+
+                    <!-- 自行輸入 -->
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">自行輸入</label>
+                        <div class="flex gap-2">
+                            <input type="text" id="sg-custom-input" placeholder="輸入任意文字..."
+                                onkeydown="if(event.key==='Enter')sgInsertCustom()"
+                                class="flex-1 px-2.5 py-2 rounded-lg bg-brand-inputBg border border-brand-border text-white text-xs focus:outline-none focus:border-brand-primary transition-all placeholder-gray-600">
+                            <button onclick="sgInsertCustom()"
+                                class="px-3 py-2 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/40 hover:border-brand-primary text-brand-primary text-xs font-bold rounded-lg transition-all cursor-pointer whitespace-nowrap">
+                                插入
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 快捷連接符 -->
+                    <div class="grid grid-cols-3 gap-2">
+                        <button onclick="sgInsert(',')"
+                            class="flex flex-col items-center justify-center gap-0.5 py-3 bg-brand-primary/10 hover:bg-brand-primary/25 border border-brand-primary/30 hover:border-brand-primary text-brand-primary rounded-xl transition-all duration-200 cursor-pointer">
+                            <span class="font-mono text-xl font-black leading-none">,</span>
+                            <span class="text-[10px] font-semibold">或</span>
+                        </button>
+                        <button onclick="sgInsert('&')"
+                            class="flex flex-col items-center justify-center gap-0.5 py-3 bg-brand-secondary/10 hover:bg-brand-secondary/25 border border-brand-secondary/30 hover:border-brand-secondary text-brand-secondary rounded-xl transition-all duration-200 cursor-pointer">
+                            <span class="font-mono text-xl font-black leading-none">&amp;</span>
+                            <span class="text-[10px] font-semibold">且符合</span>
+                        </button>
+                        <button onclick="sgInsert('!')"
+                            class="flex flex-col items-center justify-center gap-0.5 py-3 bg-red-500/10 hover:bg-red-500/25 border border-red-500/30 hover:border-red-500 text-red-400 rounded-xl transition-all duration-200 cursor-pointer">
+                            <span class="font-mono text-xl font-black leading-none">!</span>
+                            <span class="text-[10px] font-semibold">排除</span>
+                        </button>
+                    </div>
+
+                    <!-- PK 對戰 -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">PK 對戰</label>
+                            <button id="sg-pk-toggle" onclick="sgTogglePK(this)" data-active="0"
+                                class="flex items-center gap-1 px-2.5 py-0.5 rounded-full border text-[11px] font-bold transition-all cursor-pointer"
+                                style="background:rgba(100,116,139,0.15);border-color:rgba(100,116,139,0.5);color:#94a3b8;">
+                                不要PK
+                            </button>
+                        </div>
+                        <div id="sg-pk-panel" class="hidden space-y-2 bg-gray-800/30 rounded-xl border border-gray-700/40 p-2.5">
+                            <div class="space-y-1">
+                                <label class="text-[10px] text-gray-400 font-semibold">對方屬性 1</label>
+                                <select id="sg-pk-type1" class="w-full bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary">
+                                    <option value="">-- 選擇屬性 --</option>
+                                    <option value="一般">一般</option><option value="火">火</option><option value="水">水</option>
+                                    <option value="電">電</option><option value="草">草</option><option value="冰">冰</option>
+                                    <option value="格鬥">格鬥</option><option value="毒">毒</option><option value="地面">地面</option>
+                                    <option value="飛行">飛行</option><option value="超能力">超能力</option><option value="蟲">蟲</option>
+                                    <option value="岩石">岩石</option><option value="幽靈">幽靈</option><option value="龍">龍</option>
+                                    <option value="惡">惡</option><option value="鋼">鋼</option><option value="妖精">妖精</option>
+                                </select>
+                            </div>
+                            <div class="space-y-1">
+                                <label class="text-[10px] text-gray-400 font-semibold">對方第二屬性（雙屬性可選）</label>
+                                <select id="sg-pk-type2" class="w-full bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary">
+                                    <option value="">-- 無 / 單屬性 --</option>
+                                    <option value="一般">一般</option><option value="火">火</option><option value="水">水</option>
+                                    <option value="電">電</option><option value="草">草</option><option value="冰">冰</option>
+                                    <option value="格鬥">格鬥</option><option value="毒">毒</option><option value="地面">地面</option>
+                                    <option value="飛行">飛行</option><option value="超能力">超能力</option><option value="蟲">蟲</option>
+                                    <option value="岩石">岩石</option><option value="幽靈">幽靈</option><option value="龍">龍</option>
+                                    <option value="惡">惡</option><option value="鋼">鋼</option><option value="妖精">妖精</option>
+                                </select>
+                            </div>
+                            <button onclick="sgPKCompute()"
+                                class="w-full py-2.5 bg-brand-primary/20 hover:bg-brand-primary/40 border border-brand-primary/40 hover:border-brand-primary text-brand-primary text-xs font-bold rounded-xl transition-all duration-200 cursor-pointer">
+                                分析最佳攻擊屬性 TOP10
+                            </button>
+                            <div id="sg-pk-result" class="hidden text-xs bg-gray-900/60 rounded-lg p-2 border border-gray-700/40 leading-relaxed"></div>
+                        </div>
+                    </div>
+
+                    <!-- 寶可夢選擇器 -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">選擇寶可夢</label>
+                            <div class="flex gap-1.5">
+                                <button id="sg-poke-mode" onclick="sgToggleCatMode(this)" data-mode="include"
+                                    class="flex items-center gap-1 px-2.5 py-0.5 rounded-full border text-[11px] font-bold transition-all cursor-pointer"
+                                    style="background:rgba(74,222,128,0.15);border-color:rgba(74,222,128,0.5);color:#4ade80;">
+                                    <span class="font-mono">✓</span>&nbsp;要
+                                </button>
+                                <button id="sg-poke-evo" onclick="sgTogglePokeEvo(this)" data-active="0"
+                                    class="flex items-center gap-1 px-2.5 py-0.5 rounded-full border text-[11px] font-bold transition-all cursor-pointer"
+                                    style="background:rgba(100,116,139,0.15);border-color:rgba(100,116,139,0.5);color:#94a3b8;">
+                                    +進化體系
+                                </button>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <i data-lucide="search" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-3 h-3 text-gray-500 pointer-events-none"></i>
+                            <input type="text" id="sg-poke-search" placeholder="輸入編號或中文名稱..."
+                                oninput="sgFilterPoke(this.value)"
+                                autocomplete="off"
+                                class="w-full pl-7 pr-3 py-2 rounded-lg bg-brand-inputBg border border-brand-border text-white text-xs focus:outline-none focus:border-brand-primary transition-all placeholder-gray-600">
+                        </div>
+                        <div id="sg-poke-list"
+                            class="rounded-lg border border-brand-border/50 bg-brand-inputBg overflow-y-auto divide-y divide-brand-border/20"
+                            style="max-height:180px">
+                            <div class="text-center py-4 text-[10px] text-gray-500">輸入關鍵字或切換到此頁籤以載入清單</div>
+                        </div>
+                        <p class="text-[9px] text-gray-600">預設顯示前 30 筆；輸入可收斂</p>
+                    </div>
+
+                    <!-- 比較運算符 -->
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">比較符號</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button onclick="sgInsert('>')"
+                                class="flex items-center justify-center gap-1 py-2.5 bg-teal-500/10 hover:bg-teal-500/25 border border-teal-500/30 hover:border-teal-500 text-teal-400 text-sm font-bold rounded-xl transition-all duration-200 cursor-pointer">
+                                <span class="font-mono">&gt;</span>&nbsp;大於
+                            </button>
+                            <button onclick="sgInsert('<')"
+                                class="flex items-center justify-center gap-1 py-2.5 bg-teal-500/10 hover:bg-teal-500/25 border border-teal-500/30 hover:border-teal-500 text-teal-400 text-sm font-bold rounded-xl transition-all duration-200 cursor-pointer">
+                                <span class="font-mono">&lt;</span>&nbsp;小於
+                            </button>
+                            <button onclick="sgInsert('=')"
+                                class="flex items-center justify-center gap-1 py-2.5 bg-teal-500/10 hover:bg-teal-500/25 border border-teal-500/30 hover:border-teal-500 text-teal-400 text-sm font-bold rounded-xl transition-all duration-200 cursor-pointer">
+                                <span class="font-mono">=</span>&nbsp;等於
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 常用 CP 數值 -->
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">常用 CP 數值</label>
+                        <div class="bg-gray-800/50 rounded-xl border border-gray-700/50 p-2.5 space-y-2">
+                            <div class="flex items-center gap-1.5">
+                                <span class="font-mono text-xs text-gray-400 shrink-0 w-10 text-right">CP -</span>
+                                <select id="sg-cp1" class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary">
+                                    <option>500</option><option>1000</option><option selected>1500</option><option>2500</option><option>3000</option>
+                                </select>
+                                <button onclick="sgInsert('CP-'+document.getElementById('sg-cp1').value)"
+                                    class="shrink-0 px-3 py-1.5 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-xs font-bold rounded-lg transition-all cursor-pointer">加入</button>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="font-mono text-xs text-gray-400 shrink-0 w-10 text-right">CP</span>
+                                <select id="sg-cp2" class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary">
+                                    <option>500</option><option>1000</option><option selected>1500</option><option>2500</option><option>3000</option>
+                                </select>
+                                <span class="font-mono text-xs text-gray-400 shrink-0">-</span>
+                                <button onclick="sgInsert('CP'+document.getElementById('sg-cp2').value+'-')"
+                                    class="shrink-0 px-3 py-1.5 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-xs font-bold rounded-lg transition-all cursor-pointer">加入</button>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="font-mono text-xs text-gray-400 shrink-0 w-10 text-right">CP</span>
+                                <select id="sg-cp3a" class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary">
+                                    <option selected>500</option><option>1000</option><option>1500</option><option>2500</option><option>3000</option>
+                                </select>
+                                <span class="font-mono text-xs text-gray-400 shrink-0">-</span>
+                                <select id="sg-cp3b" class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary">
+                                    <option>500</option><option>1000</option><option selected>1500</option><option>2500</option><option>3000</option>
+                                </select>
+                                <button onclick="sgInsert('CP'+document.getElementById('sg-cp3a').value+'-'+document.getElementById('sg-cp3b').value)"
+                                    class="shrink-0 px-3 py-1.5 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-xs font-bold rounded-lg transition-all cursor-pointer">加入</button>
+                            </div>
+                            <div class="border-t border-gray-700/50 pt-2 space-y-2">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="font-mono text-xs text-gray-400 shrink-0 w-10 text-right">自定義</span>
+                                    <input type="number" id="sg-cp-custom" min="0" placeholder="CP 數值"
+                                        class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary placeholder-gray-600">
+                                    <button onclick="sgInsertCustomCP('under')"
+                                        class="shrink-0 px-2 py-1.5 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-[10px] font-bold rounded-lg transition-all cursor-pointer">CP-值</button>
+                                    <button onclick="sgInsertCustomCP('over')"
+                                        class="shrink-0 px-2 py-1.5 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-[10px] font-bold rounded-lg transition-all cursor-pointer">值-</button>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="font-mono text-xs text-gray-400 shrink-0 w-10 text-right">範圍</span>
+                                    <input type="number" id="sg-cp-cust-from" min="0" placeholder="從"
+                                        class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary placeholder-gray-600">
+                                    <span class="font-mono text-xs text-gray-400 shrink-0">-</span>
+                                    <input type="number" id="sg-cp-cust-to" min="0" placeholder="至"
+                                        class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary placeholder-gray-600">
+                                    <button onclick="sgInsertCustomCPRange()"
+                                        class="shrink-0 px-2 py-1.5 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-[10px] font-bold rounded-lg transition-all cursor-pointer">加入</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 星級 -->
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">星級</label>
+                        <div class="grid grid-cols-4 gap-1.5">
+                            <button onclick="sgInsert('0*')"  class="py-2.5 bg-amber-500/10 hover:bg-amber-500/25 border border-amber-500/30 hover:border-amber-500 text-amber-400 text-xs font-bold rounded-xl transition-all cursor-pointer">0星</button>
+                            <button onclick="sgInsert('1*')"  class="py-2.5 bg-amber-500/10 hover:bg-amber-500/25 border border-amber-500/30 hover:border-amber-500 text-amber-400 text-xs font-bold rounded-xl transition-all cursor-pointer">1星</button>
+                            <button onclick="sgInsert('0*,1*')" class="py-2.5 bg-amber-500/10 hover:bg-amber-500/25 border border-amber-500/30 hover:border-amber-500 text-amber-400 text-xs font-bold rounded-xl transition-all cursor-pointer">0-1星</button>
+                            <button onclick="sgInsert('2*')"  class="py-2.5 bg-amber-500/10 hover:bg-amber-500/25 border border-amber-500/30 hover:border-amber-500 text-amber-400 text-xs font-bold rounded-xl transition-all cursor-pointer">2星</button>
+                            <button onclick="sgInsert('0*,1*,2*')" class="py-2.5 bg-amber-500/10 hover:bg-amber-500/25 border border-amber-500/30 hover:border-amber-500 text-amber-400 text-xs font-bold rounded-xl transition-all cursor-pointer">0-2星</button>
+                            <button onclick="sgInsert('3*')"  class="py-2.5 bg-amber-500/10 hover:bg-amber-500/25 border border-amber-500/30 hover:border-amber-500 text-amber-400 text-xs font-bold rounded-xl transition-all cursor-pointer">3星</button>
+                            <button onclick="sgInsert('0*,1*,2*,3*')" class="py-2.5 bg-amber-500/10 hover:bg-amber-500/25 border border-amber-500/30 hover:border-amber-500 text-amber-400 text-xs font-bold rounded-xl transition-all cursor-pointer">0-3星</button>
+                            <button onclick="sgInsert('4*')"  class="py-2.5 bg-amber-500/10 hover:bg-amber-500/25 border border-amber-500/30 hover:border-amber-500 text-amber-400 text-xs font-bold rounded-xl transition-all cursor-pointer">4星</button>
+                        </div>
+                    </div>
+
+                    <!-- 分類 -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">分類</label>
+                            <button id="sg-cat-mode" onclick="sgToggleCatMode(this)" data-mode="include"
+                                class="flex items-center gap-1 px-3 py-0.5 rounded-full border text-[11px] font-bold transition-all cursor-pointer"
+                                style="background:rgba(74,222,128,0.15);border-color:rgba(74,222,128,0.5);color:#4ade80;">
+                                <span class="font-mono">✓</span>&nbsp;要
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-4 gap-1.5">
+                            <button onclick="sgInsertCat('異色')"         class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">色違</button>
+                            <button onclick="sgInsertCat('亮晶晶')"       class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">亮晶晶</button>
+                            <button onclick="sgInsertCat('背卡')"         class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">有背卡</button>
+                            <button onclick="sgInsertCat('紀念背卡')"     class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">紀念背卡</button>
+                            <button onclick="sgInsertCat('特別背卡')"     class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">特別背卡</button>
+                            <button onclick="sgInsertCat('傳說的寶可夢')" class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">傳說</button>
+                            <button onclick="sgInsertCat('究極異獸')"     class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">究極</button>
+                            <button onclick="sgInsertCat('幻')"           class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">幻</button>
+                            <button onclick="sgInsertCat('極巨化')"       class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">極巨化</button>
+                            <button onclick="sgInsertCat('超極巨化')"     class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">超極巨化</button>
+                            <button onclick="sgInsertCat('暗影')"         class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">暗影</button>
+                            <button onclick="sgInsertCat('淨化')"         class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">淨化</button>
+                            <button onclick="sgInsertCat('交換')"         class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">交換</button>
+                            <button onclick="sgInsertCat('夥伴')"         class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">夥伴</button>
+                            <button onclick="sgInsertCat('冒險效果')"     class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">冒險效果</button>
+                            <button onclick="sgInsertCat('孵化')"         class="py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-xl transition-all cursor-pointer">孵化</button>
+                        </div>
+                        <div class="bg-gray-800/30 rounded-xl border border-gray-700/40 p-2 space-y-1.5">
+                            <button onclick="sgInsertCat('超級進化')"
+                                class="w-full py-2 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-lg transition-all cursor-pointer">超級進化</button>
+                            <div class="flex items-center gap-1.5">
+                                <span class="font-mono text-xs text-violet-400/80 shrink-0 whitespace-nowrap">超級進化&超級</span>
+                                <select id="sg-mega-lv" class="w-16 shrink-0 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary">
+                                    <option>0</option><option>1</option><option>2</option><option>3</option>
+                                </select>
+                                <button onclick="sgInsertCat('超級進化&超級'+document.getElementById('sg-mega-lv').value)"
+                                    class="flex-1 py-1.5 bg-violet-500/15 hover:bg-violet-500/30 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-[11px] font-bold rounded-lg transition-all cursor-pointer">加入</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 時間 -->
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">時間</label>
+                        <div class="bg-gray-800/50 rounded-xl border border-gray-700/50 p-2.5 space-y-2">
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-xs text-sky-400 font-semibold shrink-0 w-8">年</span>
+                                <select id="sg-yr" class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary">
+                                    <option>2026</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019</option><option>2018</option><option>2017</option><option>2016</option>
+                                </select>
+                                <button onclick="sgInsert('年'+document.getElementById('sg-yr').value)"
+                                    class="shrink-0 px-3 py-1.5 bg-sky-500/15 hover:bg-sky-500/30 border border-sky-500/30 hover:border-sky-500 text-sky-400 text-xs font-bold rounded-lg transition-all cursor-pointer">加入</button>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-xs text-sky-400 font-semibold shrink-0 w-8">日數</span>
+                                <input type="number" id="sg-day" min="0" placeholder="輸入天數…"
+                                    oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                                    class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary placeholder-gray-600">
+                                <button onclick="sgInsertDay()"
+                                    class="shrink-0 px-3 py-1.5 bg-sky-500/15 hover:bg-sky-500/30 border border-sky-500/30 hover:border-sky-500 text-sky-400 text-xs font-bold rounded-lg transition-all cursor-pointer">加入</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 尺寸 -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">尺寸</label>
+                            <button id="sg-size-mode" onclick="sgToggleCatMode(this)" data-mode="include"
+                                class="flex items-center gap-1 px-2.5 py-0.5 rounded-full border text-[11px] font-bold transition-all cursor-pointer"
+                                style="background:rgba(74,222,128,0.15);border-color:rgba(74,222,128,0.5);color:#4ade80;">
+                                <span class="font-mono">✓</span>&nbsp;要
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-4 gap-1.5">
+                            <button onclick="sgInsertSize('XXS')" class="py-2.5 bg-orange-500/10 hover:bg-orange-500/25 border border-orange-500/30 hover:border-orange-500 text-orange-400 text-xs font-bold rounded-xl font-mono transition-all cursor-pointer">XXS</button>
+                            <button onclick="sgInsertSize('XS')"  class="py-2.5 bg-orange-500/10 hover:bg-orange-500/25 border border-orange-500/30 hover:border-orange-500 text-orange-400 text-xs font-bold rounded-xl font-mono transition-all cursor-pointer">XS</button>
+                            <button onclick="sgInsertSize('XL')"  class="py-2.5 bg-orange-500/10 hover:bg-orange-500/25 border border-orange-500/30 hover:border-orange-500 text-orange-400 text-xs font-bold rounded-xl font-mono transition-all cursor-pointer">XL</button>
+                            <button onclick="sgInsertSize('XXL')" class="py-2.5 bg-orange-500/10 hover:bg-orange-500/25 border border-orange-500/30 hover:border-orange-500 text-orange-400 text-xs font-bold rounded-xl font-mono transition-all cursor-pointer">XXL</button>
+                        </div>
+                    </div>
+
+                    <!-- 體質 -->
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">體質</label>
+                        <div class="bg-gray-800/50 rounded-xl border border-gray-700/50 p-2.5 space-y-2">
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-xs text-green-400 font-semibold shrink-0 w-8">數值</span>
+                                <select id="sg-iv-val" class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1.5 text-white text-xs focus:outline-none focus:border-brand-primary">
+                                    <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>
+                                </select>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="text-xs text-green-400 font-semibold shrink-0 w-8">屬性</span>
+                                <div class="flex gap-1.5 flex-1">
+                                    <button id="sg-iv-atk" onclick="sgToggleIVStat(this)"
+                                        class="flex-1 py-1.5 bg-gray-700/50 border border-gray-600/50 text-gray-400 text-[11px] font-bold rounded-lg transition-all cursor-pointer">攻擊</button>
+                                    <button id="sg-iv-def" onclick="sgToggleIVStat(this)"
+                                        class="flex-1 py-1.5 bg-gray-700/50 border border-gray-600/50 text-gray-400 text-[11px] font-bold rounded-lg transition-all cursor-pointer">防禦</button>
+                                    <button id="sg-iv-hp"  onclick="sgToggleIVStat(this)"
+                                        class="flex-1 py-1.5 bg-gray-700/50 border border-gray-600/50 text-gray-400 text-[11px] font-bold rounded-lg transition-all cursor-pointer">HP</button>
+                                </div>
+                            </div>
+                            <button onclick="sgInsertIV()"
+                                class="w-full py-2 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-xs font-bold rounded-lg transition-all cursor-pointer">
+                                加入
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 地區 -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">地區</label>
+                            <button id="sg-region-mode" onclick="sgToggleCatMode(this)" data-mode="include"
+                                class="flex items-center gap-1 px-3 py-0.5 rounded-full border text-[11px] font-bold transition-all cursor-pointer"
+                                style="background:rgba(74,222,128,0.15);border-color:rgba(74,222,128,0.5);color:#4ade80;">
+                                <span class="font-mono">✓</span>&nbsp;要
+                            </button>
+                        </div>
+                        <div class="flex gap-1.5">
+                            <select id="sg-region-sel"
+                                class="flex-1 bg-brand-inputBg border border-brand-border rounded-lg px-2 py-2 text-white text-xs focus:outline-none focus:border-brand-primary">
+                                <option value="關都">關都 — 一代</option>
+                                <option value="城都">城都 — 二代</option>
+                                <option value="豐緣">豐緣 — 三代</option>
+                                <option value="神奧">神奧 — 四代</option>
+                                <option value="合眾">合眾 — 五代</option>
+                                <option value="卡洛斯">卡洛斯 — 六代</option>
+                                <option value="阿羅拉">阿羅拉 — 七代</option>
+                                <option value="伽勒爾">伽勒爾 — 八代</option>
+                                <option value="帕底亞">帕底亞 — 九代</option>
+                            </select>
+                            <button onclick="sgInsertRegion()"
+                                class="shrink-0 px-3 py-2 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-xs font-bold rounded-lg transition-all cursor-pointer">加入</button>
+                        </div>
+                    </div>
+
+                    <!-- 屬性 -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">屬性</label>
+                            <button id="sg-type-mode" onclick="sgToggleCatMode(this)" data-mode="include"
+                                class="flex items-center gap-1 px-3 py-0.5 rounded-full border text-[11px] font-bold transition-all cursor-pointer"
+                                style="background:rgba(74,222,128,0.15);border-color:rgba(74,222,128,0.5);color:#4ade80;">
+                                <span class="font-mono">✓</span>&nbsp;要
+                            </button>
+                        </div>
+                        <div class="bg-gray-800/50 rounded-xl border border-gray-700/50 p-2.5 space-y-2">
+                            <div class="relative">
+                                <i data-lucide="search" class="absolute left-2.5 top-1/2 -translate-y-1/2 w-3 h-3 text-gray-500 pointer-events-none"></i>
+                                <input type="text" id="sg-type-search" placeholder="輸入屬性收斂…"
+                                    oninput="sgFilterType(this.value)"
+                                    class="w-full pl-7 pr-3 py-2 rounded-lg bg-brand-inputBg border border-brand-border text-white text-xs focus:outline-none focus:border-brand-primary placeholder-gray-600">
+                            </div>
+                            <select id="sg-type-select" size="5"
+                                class="w-full bg-brand-inputBg border border-brand-border rounded-lg px-2 py-1 text-white text-xs focus:outline-none focus:border-brand-primary">
+                                <option value="一般">一般</option>
+                                <option value="火">火</option>
+                                <option value="水">水</option>
+                                <option value="草">草</option>
+                                <option value="電">電</option>
+                                <option value="格鬥">格鬥</option>
+                                <option value="毒">毒</option>
+                                <option value="地面">地面</option>
+                                <option value="飛行">飛行</option>
+                                <option value="超能力">超能力</option>
+                                <option value="蟲">蟲</option>
+                                <option value="岩石">岩石</option>
+                                <option value="幽靈">幽靈</option>
+                                <option value="冰">冰</option>
+                                <option value="龍">龍</option>
+                                <option value="惡">惡</option>
+                                <option value="鋼">鋼</option>
+                                <option value="妖精">妖精</option>
+                            </select>
+                            <button onclick="sgInsertType()"
+                                class="w-full py-2 bg-brand-primary/15 hover:bg-brand-primary/30 border border-brand-primary/30 hover:border-brand-primary text-brand-primary text-xs font-bold rounded-lg transition-all cursor-pointer">加入</button>
+                        </div>
+                    </div>
+
+                    <!-- 登錄進化和道具進化 -->
+                    <div class="space-y-1.5">
+                        <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">登錄進化 / 道具進化</label>
+                        <div class="grid grid-cols-2 gap-1.5">
+                            <button onclick="sgInsert('新進化')"
+                                class="py-2.5 bg-cyan-500/10 hover:bg-cyan-500/25 border border-cyan-500/30 hover:border-cyan-500 text-cyan-400 text-xs font-bold rounded-xl transition-all cursor-pointer">新進化</button>
+                            <button onclick="sgInsert('道具')"
+                                class="py-2.5 bg-cyan-500/10 hover:bg-cyan-500/25 border border-cyan-500/30 hover:border-cyan-500 text-cyan-400 text-xs font-bold rounded-xl transition-all cursor-pointer">道具</button>
+                            <button onclick="sgInsert('進化&未登錄')"
+                                class="col-span-2 py-2.5 bg-cyan-500/10 hover:bg-cyan-500/25 border border-cyan-500/30 hover:border-cyan-500 text-cyan-400 text-xs font-bold rounded-xl transition-all cursor-pointer">進化 &amp; 未登錄</button>
+                        </div>
+                    </div>
+
+                    <!-- 特別條件 -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">特別條件</label>
+                            <button id="sg-special-mode" onclick="sgToggleCatMode(this)" data-mode="include"
+                                class="flex items-center gap-1 px-2.5 py-0.5 rounded-full border text-[11px] font-bold transition-all cursor-pointer"
+                                style="background:rgba(74,222,128,0.15);border-color:rgba(74,222,128,0.5);color:#4ade80;">
+                                <span class="font-mono">✓</span>&nbsp;要
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="sgInsertSpecial('@')"
+                                class="flex items-center justify-center gap-1.5 py-3 bg-brand-accent/10 hover:bg-brand-accent/25 border border-brand-accent/30 hover:border-brand-accent text-brand-accent text-sm font-bold rounded-xl transition-all duration-200 cursor-pointer">
+                                <i data-lucide="swords" class="w-3.5 h-3.5"></i>招式為
+                            </button>
+                            <button onclick="sgInsertSpecial('@1')"
+                                class="flex items-center justify-center gap-1.5 py-3 bg-sky-500/10 hover:bg-sky-500/25 border border-sky-500/30 hover:border-sky-500 text-sky-400 text-sm font-bold rounded-xl transition-all duration-200 cursor-pointer">
+                                <i data-lucide="zap" class="w-3.5 h-3.5"></i>小招式為
+                            </button>
+                            <button onclick="sgInsertSpecial('@2')"
+                                class="flex items-center justify-center gap-1.5 py-3 bg-violet-500/10 hover:bg-violet-500/25 border border-violet-500/30 hover:border-violet-500 text-violet-400 text-sm font-bold rounded-xl transition-all duration-200 cursor-pointer">
+                                <i data-lucide="flame" class="w-3.5 h-3.5"></i>大招式為
+                            </button>
+                            <button onclick="sgInsertSpecial('特殊')"
+                                class="flex items-center justify-center gap-1.5 py-3 bg-amber-500/10 hover:bg-amber-500/25 border border-amber-500/30 hover:border-amber-500 text-amber-400 text-sm font-bold rounded-xl transition-all duration-200 cursor-pointer">
+                                <i data-lucide="star" class="w-3.5 h-3.5"></i>招式為特殊招
+                            </button>
+                            <button onclick="sgInsertSpecial('@遷怒')"
+                                class="flex items-center justify-center gap-1.5 py-3 bg-gray-600/20 hover:bg-gray-600/40 border border-gray-600/40 hover:border-gray-400 text-gray-300 text-sm font-bold rounded-xl transition-all duration-200 cursor-pointer">
+                                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>暗影要換招
+                            </button>
+                            <button onclick="sgInsertSpecial('特別')"
+                                class="flex items-center justify-center gap-1.5 py-3 bg-rose-500/10 hover:bg-rose-500/25 border border-rose-500/30 hover:border-rose-500 text-rose-400 text-sm font-bold rounded-xl transition-all duration-200 cursor-pointer">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>活動特殊樣貌
+                            </button>
+                            <button onclick="sgInsertSpecial('活動')"
+                                class="col-span-2 flex items-center justify-center gap-1.5 py-3 bg-pink-500/10 hover:bg-pink-500/25 border border-pink-500/30 hover:border-pink-500 text-pink-400 text-sm font-bold rounded-xl transition-all duration-200 cursor-pointer">
+                                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>官方活動造型
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
                 </aside>
 
         <!-- 右側 Leaflet 編輯地圖 -->
@@ -1022,10 +1451,6 @@
         <div id="pq-content-panel" style="display:none" class="flex-1 flex-col bg-white overflow-hidden">
             <!-- 工具列 -->
             <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
-                <button onclick="toggleMobileSidebar()" title="開啟選單"
-                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
-                    <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
-                </button>
                 <span id="pq-detail-title" class="flex-1 text-sm font-semibold text-gray-700 truncate">點擊左側寶可夢查看詳細資料</span>
                 <button onclick="clearPokemonDetail()" title="清除"
                     class="flex items-center gap-1 text-xs text-gray-400 hover:text-gray-700 transition-colors px-2 py-1 rounded hover:bg-gray-200">
@@ -1060,10 +1485,6 @@
         <div id="cq-content-panel" style="display:none" class="flex-1 flex-col bg-white overflow-hidden">
             <!-- 工具列 -->
             <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
-                <button onclick="toggleMobileSidebar()" title="開啟選單"
-                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
-                    <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
-                </button>
                 <button onclick="switchToMapView()" title="關閉面板"
                     class="p-1 rounded text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors shrink-0">
                     <i data-lucide="x" class="w-3.5 h-3.5"></i>
@@ -1091,10 +1512,6 @@
         <div id="ri-content-panel" style="display:none" class="flex-1 flex-col bg-white overflow-hidden">
             <!-- 工具列 -->
             <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
-                <button onclick="toggleMobileSidebar()" title="開啟選單"
-                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
-                    <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
-                </button>
                 <button onclick="switchToMapView()" title="關閉面板"
                     class="p-1 rounded text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors shrink-0">
                     <i data-lucide="x" class="w-3.5 h-3.5"></i>
@@ -1117,7 +1534,72 @@
             <iframe id="ri-detail-iframe" class="hidden flex-1 w-full border-0"
                 sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-top-navigation-by-user-activation"></iframe>
         </div>
+
+        <!-- 字串產生器結果面板 -->
+        <div id="sg-content-panel" style="display:none" class="flex-1 flex-col bg-brand-darkBg overflow-hidden">
+            <!-- 頂部工具列 -->
+            <div class="flex items-center px-5 h-12 border-b border-brand-border bg-[#090d16]/80 shrink-0 gap-3">
+                <i data-lucide="code-2" class="w-4 h-4 text-brand-primary shrink-0"></i>
+                <span class="text-sm font-semibold text-white">結果字串</span>
+                <div class="flex-1"></div>
+                <button onclick="sgClear()"
+                    class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-red-400 bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 hover:border-red-500/50 rounded-lg transition-all cursor-pointer">
+                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>清除
+                </button>
+                <button onclick="sgCopy()"
+                    class="flex items-center gap-1.5 px-4 py-1.5 text-xs font-semibold text-brand-darkBg bg-brand-primary hover:bg-brand-primary/80 rounded-lg transition-all cursor-pointer">
+                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>複製全部
+                </button>
+            </div>
+            <!-- 結果文字區 -->
+            <div class="flex-1 p-6 flex flex-col gap-3 min-h-0">
+                <!-- 字串輸入（上半 ~50%） -->
+                <div class="flex-1 min-h-0 flex flex-col gap-2">
+                    <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider shrink-0">字串內容（可直接編輯）</label>
+                    <textarea id="sg-result" placeholder="點擊左側按鈕，或直接在此輸入文字..."
+                        oninput="sgCleanLeading()"
+                        class="flex-1 min-h-0 w-full resize-none rounded-xl bg-brand-cardBg border border-brand-border focus:border-brand-primary focus:outline-none text-brand-primary font-mono text-base leading-relaxed p-4 transition-all placeholder-gray-600"></textarea>
+                    <p class="text-[10px] text-gray-600 shrink-0">字串會插入至游標位置；若無游標則附加在末尾</p>
+                </div>
+                <!-- 屬性克制圖（橫向輪播） -->
+                <div class="shrink-0 flex flex-col gap-1.5">
+                    <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">屬性克制圖（點擊放大）</label>
+                    <div class="flex items-center gap-1">
+                        <button onclick="sgFightScroll(-1)"
+                            class="shrink-0 w-6 h-14 flex items-center justify-center rounded-lg bg-gray-800/60 border border-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-700/60 transition-all cursor-pointer select-none text-xs">&#9664;</button>
+                        <div id="sg-fight-track" class="flex-1 overflow-hidden">
+                            <div id="sg-fight-strip" class="flex gap-2 transition-transform duration-300"
+                                style="will-change:transform;transform:translateX(0)">
+                                <img src="FIGHT/sshot-1.png" onclick="sgShowImg(this.src)" alt="圖1"
+                                    class="shrink-0 h-14 w-auto rounded-md cursor-pointer hover:opacity-80 hover:scale-105 transition-all border border-gray-700/50">
+                                <img src="FIGHT/sshot-2.png" onclick="sgShowImg(this.src)" alt="圖2"
+                                    class="shrink-0 h-14 w-auto rounded-md cursor-pointer hover:opacity-80 hover:scale-105 transition-all border border-gray-700/50">
+                                <img src="FIGHT/sshot-3.png" onclick="sgShowImg(this.src)" alt="圖3"
+                                    class="shrink-0 h-14 w-auto rounded-md cursor-pointer hover:opacity-80 hover:scale-105 transition-all border border-gray-700/50">
+                                <img src="FIGHT/sshot-4.png" onclick="sgShowImg(this.src)" alt="圖4"
+                                    class="shrink-0 h-14 w-auto rounded-md cursor-pointer hover:opacity-80 hover:scale-105 transition-all border border-gray-700/50">
+                                <img src="FIGHT/sshot-5.png" onclick="sgShowImg(this.src)" alt="圖5"
+                                    class="shrink-0 h-14 w-auto rounded-md cursor-pointer hover:opacity-80 hover:scale-105 transition-all border border-gray-700/50">
+                                <img src="FIGHT/sshot-6.png" onclick="sgShowImg(this.src)" alt="圖6"
+                                    class="shrink-0 h-14 w-auto rounded-md cursor-pointer hover:opacity-80 hover:scale-105 transition-all border border-gray-700/50">
+                                <img src="FIGHT/sshot-7.png" onclick="sgShowImg(this.src)" alt="圖7"
+                                    class="shrink-0 h-14 w-auto rounded-md cursor-pointer hover:opacity-80 hover:scale-105 transition-all border border-gray-700/50">
+                            </div>
+                        </div>
+                        <button onclick="sgFightScroll(1)"
+                            class="shrink-0 w-6 h-14 flex items-center justify-center rounded-lg bg-gray-800/60 border border-gray-700/50 text-gray-400 hover:text-white hover:bg-gray-700/60 transition-all cursor-pointer select-none text-xs">&#9654;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <!-- 屬性克制圖放大 Modal -->
+    <div id="sg-img-modal" onclick="this.classList.add('hidden')"
+        class="hidden fixed inset-0 z-[9999] bg-black/90 flex items-center justify-center cursor-zoom-out p-4">
+        <img id="sg-img-modal-img" src="" alt=""
+            class="max-w-[92vw] max-h-[92vh] object-contain rounded-xl shadow-2xl">
+    </div>
 
     <!-- 手機側邊欄背景遮罩 -->
     <div id="sidebar-backdrop" onclick="closeMobileSidebar()"></div>
@@ -1383,13 +1865,20 @@
             initPokemonQueryList();
         });
 
+        // 離開頁面前警告：有未匯出的最愛位置變更
+        window.addEventListener('beforeunload', function(e) {
+            if (_itoolsFavDirty) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+
         // 初始化 Leaflet 地圖
         function initMap() {
             currentMap = L.map('map', {
                 center: [24.17409, 120.64590], // 預設台中逢甲
                 zoom: 13,
-                zoomControl: false,
-                tap: false
+                zoomControl: false
             });
             
             L.control.zoom({ position: 'topright' }).addTo(currentMap);
@@ -3087,6 +3576,7 @@
         }
 
         function saveItoolsFavorites() {
+            _itoolsFavDirty = true;
             try {
                 localStorage.setItem('itoolsFavorites', JSON.stringify(itoolsFavorites));
             } catch (e) {
@@ -3098,11 +3588,13 @@
         let selectedCategory = "Default";
         let selectedFavoriteIndex = null;
         let expandedCategories = new Set(); // 載入後預設全部收合
+        let _itoolsFavDirty = false; // 有未匯出的變更時為 true
 
         // --- Module 3: iToolsBT 路徑編輯狀態 (空白，由使用者匯入) ---
         let itoolsRoute = {
             name: "",
             speed: 140,
+            cycle: 1,
             points: []
         };
         let selectedItoolsRoutePtIndex = null;
@@ -3114,7 +3606,8 @@
             'android-pokemon':    'Android飛人寶可夢',
             'pokemon-query':      '寶可夢查詢',
             'catch-query':        '抓寶查詢',
-            'related-info':       '相關資訊'
+            'related-info':       '相關資訊',
+            'string-generator':   '字串產生器'
         };
         const ALL_MODULES = Object.keys(MODULE_LABELS);
 
@@ -3154,22 +3647,10 @@
                 switchToCatchQueryView();
             } else if (mod === 'related-info') {
                 switchToRelatedInfoView();
+            } else if (mod === 'string-generator') {
+                switchToStringGeneratorView();
             } else {
                 switchToMapView();
-            }
-
-            // 手機模式下，切換至這三個查詢模組時自動展開側邊欄讓使用者選擇
-            const isMobile = window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024);
-            if (isMobile) {
-                const aside = document.querySelector('aside');
-                const backdrop = document.getElementById('sidebar-backdrop');
-                if (['pokemon-query', 'catch-query', 'related-info'].includes(mod)) {
-                    if (aside) aside.classList.add('sidebar-open');
-                    if (backdrop) backdrop.classList.add('visible');
-                } else {
-                    if (aside) aside.classList.remove('sidebar-open');
-                    if (backdrop) backdrop.classList.remove('visible');
-                }
             }
 
             closeRouteDetails();
@@ -3230,6 +3711,7 @@
                     }
                     itoolsFavorites = data;
                     saveItoolsFavorites();
+                    _itoolsFavDirty = false; // 剛匯入的檔案不算「未匯出的變更」
 
                     // 匯入後全部收合，讓使用者自行展開
                     expandedCategories = new Set();
@@ -3250,6 +3732,7 @@
         async function exportItoolsFavorites() {
             const jsonString = JSON.stringify(itoolsFavorites, null, 4);
             await saveFileDialog(jsonString, 'FavoriteLists_iTools_Export.json', 'json', 'application/json');
+            _itoolsFavDirty = false;
         }
 
         // 新增分類
@@ -3426,6 +3909,25 @@
 
         // 分類拖曳換位
         let _dragCatSrc = null;
+
+        // 分類內項目拖曳換位
+        let _dragItemSrc = null;
+        let _dragItemCat = null;
+        function moveItemToPosition(catName, srcIdx, targetIdx) {
+            const list = itoolsFavorites[catName];
+            if (!list || srcIdx < 0 || targetIdx < 0) return;
+            const item = list.splice(srcIdx, 1)[0];
+            list.splice(targetIdx, 0, item);
+            if (selectedCategory === catName) {
+                if (selectedFavoriteIndex === srcIdx) selectedFavoriteIndex = targetIdx;
+                else if (selectedFavoriteIndex > srcIdx && selectedFavoriteIndex <= targetIdx) selectedFavoriteIndex--;
+                else if (selectedFavoriteIndex < srcIdx && selectedFavoriteIndex >= targetIdx) selectedFavoriteIndex++;
+            }
+            saveItoolsFavorites();
+            renderItoolsFavoritesList();
+            showToast('地標順序已更新', 'success');
+        }
+
         function moveCategoryToPosition(srcCat, targetCat) {
             if (srcCat === targetCat) return;
             const cats = Object.keys(itoolsFavorites);
@@ -3632,8 +4134,40 @@
                             
                             const itemCard = document.createElement('div');
                             itemCard.id = `fav-card-${catName}-${idx}`;
-                            itemCard.className = `p-2.5 rounded-lg border ${isSelected ? 'active-row' : 'border-brand-border/20'} hover:border-brand-primary/30 bg-[#131929]/50 space-y-2 group transition-all duration-300`;
-                            
+                            itemCard.className = `p-2.5 rounded-lg border ${isSelected ? 'active-row' : 'border-brand-border/20'} hover:border-brand-primary/30 bg-[#131929]/50 space-y-2 group transition-all duration-300 cursor-grab`;
+                            itemCard.draggable = true;
+                            itemCard.addEventListener('dragstart', e => {
+                                _dragItemSrc = idx;
+                                _dragItemCat = catName;
+                                e.dataTransfer.effectAllowed = 'move';
+                                e.stopPropagation();
+                                setTimeout(() => { itemCard.style.opacity = '0.4'; }, 0);
+                            });
+                            itemCard.addEventListener('dragover', e => {
+                                if (_dragItemCat !== catName) return;
+                                e.preventDefault();
+                                e.stopPropagation();
+                                if (_dragItemSrc !== null && _dragItemSrc !== idx)
+                                    itemCard.style.outline = '2px dashed #00ffcc';
+                            });
+                            itemCard.addEventListener('dragleave', () => {
+                                itemCard.style.outline = '';
+                            });
+                            itemCard.addEventListener('dragend', () => {
+                                itemCard.style.opacity = '';
+                                itemCard.style.outline = '';
+                                _dragItemSrc = null;
+                                _dragItemCat = null;
+                            });
+                            itemCard.addEventListener('drop', e => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                itemCard.style.outline = '';
+                                if (_dragItemCat === catName && _dragItemSrc !== null && _dragItemSrc !== idx) {
+                                    moveItemToPosition(catName, _dragItemSrc, idx);
+                                }
+                            });
+
                             itemCard.innerHTML = `
                                 <div class="flex items-center justify-between">
                                     <input type="text" value="${fav.title}" onchange="editFavoriteTitle('${catName}', ${idx}, this.value)"
@@ -3764,6 +4298,7 @@
                             itoolsRoute = {
                                 name: filenameNoExt,
                                 speed: data.speed || 140,
+                                cycle: (data.cycleModel !== undefined ? data.cycleModel : 1),
                                 points: points
                             };
                             refreshMapAndUI();
@@ -3831,20 +4366,20 @@
                 showToast('該路線無任何軌跡點，無法轉換存出！', 'error');
                 return;
             }
-            
+
             const pointsArray = itoolsRoute.points.map(pt => `${pt.lat.toFixed(7)},${pt.lon.toFixed(7)}`);
             const jsonObj = {
                 speed: parseInt(itoolsRoute.speed) || 140,
-                cycleModel: 1,
+                cycleModel: itoolsRoute.cycle !== undefined ? itoolsRoute.cycle : 1,
                 cycleCount: 999,
                 cycleTime: 0,
                 points: pointsArray
             };
-            
+
             const jsonString = JSON.stringify(jsonObj, null, 4);
-            const downloadName = `${itoolsRoute.name}.gpx`;
-            
-            await saveFileDialog(jsonString, downloadName, 'json', 'application/json');
+            const downloadName = (itoolsRoute.name || 'route') + '.gpx';
+
+            await saveFileDialog(jsonString, downloadName, 'gpx', 'application/octet-stream');
         }
 
         // 新增/編輯/移位/跳位路徑節點
@@ -3853,6 +4388,9 @@
         }
         function updateItoolsRouteSpeed(val) {
             itoolsRoute.speed = parseInt(val) || 140;
+        }
+        function updateItoolsRouteCycle(val) {
+            itoolsRoute.cycle = parseInt(val);
         }
         function editItoolsRoutePtLat(idx, val) {
             const latVal = parseFloat(val);
@@ -3957,6 +4495,7 @@
         function renderItoolsRoutePointsList() {
             document.getElementById('itools-route-name').value = itoolsRoute.name;
             document.getElementById('itools-route-speed').value = itoolsRoute.speed;
+            document.getElementById('itools-route-cycle').value = itoolsRoute.cycle !== undefined ? itoolsRoute.cycle : 1;
             
             const container = document.getElementById('itools-route-points-container');
             container.innerHTML = '';
@@ -4170,6 +4709,7 @@
         function switchToPokemonQueryView() {
             document.body.classList.remove('catch-query-mode');
             document.body.classList.remove('related-info-mode');
+            document.body.classList.remove('string-generator-mode');
             document.body.classList.add('pokemon-query-mode');
             lucide.createIcons();
         }
@@ -4178,12 +4718,14 @@
             document.body.classList.remove('pokemon-query-mode');
             document.body.classList.remove('catch-query-mode');
             document.body.classList.remove('related-info-mode');
+            document.body.classList.remove('string-generator-mode');
             if (currentMap) setTimeout(() => currentMap.invalidateSize(), 50);
         }
 
         function switchToCatchQueryView() {
             document.body.classList.remove('pokemon-query-mode');
             document.body.classList.remove('related-info-mode');
+            document.body.classList.remove('string-generator-mode');
             document.body.classList.add('catch-query-mode');
             lucide.createIcons();
         }
@@ -4191,12 +4733,409 @@
         function switchToRelatedInfoView() {
             document.body.classList.remove('pokemon-query-mode');
             document.body.classList.remove('catch-query-mode');
+            document.body.classList.remove('string-generator-mode');
             document.body.classList.add('related-info-mode');
             lucide.createIcons();
         }
 
+        function switchToStringGeneratorView() {
+            document.body.classList.remove('pokemon-query-mode');
+            document.body.classList.remove('catch-query-mode');
+            document.body.classList.remove('related-info-mode');
+            document.body.classList.add('string-generator-mode');
+            lucide.createIcons();
+            // 初次進入時載入預設清單
+            sgFilterPoke(document.getElementById('sg-poke-search')?.value || '');
+            sgFilterType(document.getElementById('sg-type-search')?.value || '');
+        }
+
+        // 字串產生器：寶可夢清單篩選渲染
+        function sgFilterPoke(q) {
+            const container = document.getElementById('sg-poke-list');
+            if (!container) return;
+            if (typeof POKOLIST === 'undefined' || !POKOLIST.length) {
+                container.innerHTML = '<div class="text-center py-4 text-[10px] text-gray-500">寶可夢資料未載入</div>';
+                return;
+            }
+            const query = q.trim().toLowerCase();
+            let results;
+            if (!query) {
+                results = POKOLIST.slice(0, 30);
+            } else {
+                results = POKOLIST.filter(p =>
+                    String(p[0]).includes(query) || p[1].toLowerCase().includes(query)
+                ).slice(0, 50);
+            }
+            if (results.length === 0) {
+                container.innerHTML = '<div class="text-center py-4 text-[10px] text-gray-500">無匹配結果</div>';
+                return;
+            }
+            container.innerHTML = results.map(p => {
+                const no = p[0];
+                const zh = p[1];
+                const zhEsc = zh.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+                return `<div class="flex items-center px-2 py-1.5 hover:bg-brand-primary/5 transition-colors">
+                    <span class="w-8 text-[10px] font-mono text-brand-primary/70 shrink-0">#${no}</span>
+                    <span class="flex-1 text-[11px] text-gray-200 px-1 truncate">${zh}</span>
+                    <div class="flex gap-1 shrink-0">
+                        <button onclick="sgInsertPoke('${no}')" title="插入代碼 ${no}"
+                            class="px-1.5 py-0.5 text-[10px] font-bold bg-brand-primary/15 hover:bg-brand-primary/35 text-brand-primary rounded-md transition-all cursor-pointer">代碼</button>
+                        <button onclick="sgInsertPoke('${zhEsc}')" title="插入中文名 ${zh}"
+                            class="px-1.5 py-0.5 text-[10px] font-bold bg-brand-accent/15 hover:bg-brand-accent/35 text-brand-accent rounded-md transition-all cursor-pointer">中文名</button>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // 字串產生器：插入自行輸入的文字
+        function sgInsertCustom() {
+            const input = document.getElementById('sg-custom-input');
+            if (!input || !input.value) return;
+            sgInsert(input.value);
+            input.value = '';
+            input.focus();
+        }
+
+        // 字串產生器：+進化體系 toggle
+        function sgTogglePokeEvo(btn) {
+            const isActive = btn.dataset.active === '1';
+            btn.dataset.active = isActive ? '0' : '1';
+            if (!isActive) {
+                btn.style.background  = 'rgba(56,189,248,0.15)';
+                btn.style.borderColor = 'rgba(56,189,248,0.5)';
+                btn.style.color       = '#38bdf8';
+            } else {
+                btn.style.background  = 'rgba(100,116,139,0.15)';
+                btn.style.borderColor = 'rgba(100,116,139,0.5)';
+                btn.style.color       = '#94a3b8';
+            }
+        }
+
+        // 字串產生器：寶可夢插入（含 要/不要 + 進化體系 模式）
+        // 規則：+ 可出現在結果字串第 0 位；! 在 + 之前
+        function sgInsertPoke(str) {
+            const isExclude = document.getElementById('sg-poke-mode')?.dataset.mode === 'exclude';
+            const isEvo     = document.getElementById('sg-poke-evo')?.dataset.active  === '1';
+            const prefix = (isExclude ? '!' : '') + (isEvo ? '+' : '');
+            sgInsert(prefix + str);
+        }
+
+        // 字串產生器：修正結果欄首字元（& 和 , 不可在第 0 位；! 和 + 允許）
+        function sgCleanLeading() {
+            const ta = document.getElementById('sg-result');
+            if (!ta || !/^[&,]/.test(ta.value)) return;
+            const pos = ta.selectionStart;
+            const trimmed = ta.value.replace(/^[&,]+/, '');
+            const diff = ta.value.length - trimmed.length;
+            ta.value = trimmed;
+            ta.selectionStart = ta.selectionEnd = Math.max(0, pos - diff);
+        }
+
+        // 字串產生器：插入字串至游標位置（含自動規則）
+        function sgInsert(str) {
+            const ta = document.getElementById('sg-result');
+            if (!ta) return;
+            // Rule 1: no spaces
+            const insertStr = str.replace(/ /g, '');
+            const start  = ta.selectionStart;
+            const end    = ta.selectionEnd;
+            const before = ta.value.substring(0, start);
+            const after  = ta.value.substring(end);
+            // Rule 2: auto-insert & between consecutive value tokens
+            // Skip if insertStr already starts with a connector/comparison operator
+            let autoAmp = '';
+            if (before.length > 0 && !/^[&,><=]/.test(insertStr)) {
+                const lc = before[before.length - 1];
+                if (/[\w一-鿿*]/.test(lc)) autoAmp = '&';
+            }
+            // Assemble; Rule 3: collapse consecutive &&
+            let result = (before + autoAmp + insertStr + after).replace(/&&+/g, '&');
+            // Rule 4: & and , must NOT be at position 0 (! is allowed)
+            const leading = result.match(/^[&,]+/)?.[0].length ?? 0;
+            result = result.replace(/^[&,]+/, '');
+            ta.value = result;
+            // Restore cursor (account for && collapse + leading strip)
+            const rawCursor = before + autoAmp + insertStr;
+            const collapsed = rawCursor.replace(/&&+/g, '&').length;
+            ta.selectionStart = ta.selectionEnd = Math.max(0, collapsed - leading);
+            ta.focus();
+        }
+
+        // 字串產生器：複製全部內容
+        function sgCopy() {
+            const ta = document.getElementById('sg-result');
+            if (!ta || !ta.value.trim()) { showToast('結果字串為空，無法複製', 'error'); return; }
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(ta.value).then(() => showToast('已複製到剪貼簿！', 'success'))
+                    .catch(() => { ta.select(); document.execCommand('copy'); showToast('已複製到剪貼簿！', 'success'); });
+            } else {
+                ta.select();
+                document.execCommand('copy');
+                showToast('已複製到剪貼簿！', 'success');
+            }
+        }
+
+        // 字串產生器：清除結果
+        function sgClear() {
+            const ta = document.getElementById('sg-result');
+            if (ta) { ta.value = ''; ta.focus(); }
+        }
+
+        // 字串產生器：日數插入
+        function sgInsertDay() {
+            const input = document.getElementById('sg-day');
+            if (!input || input.value === '') { showToast('請輸入天數', 'error'); return; }
+            sgInsert('日數' + input.value);
+            input.value = '';
+        }
+
+        // 字串產生器：體質屬性 toggle
+        function sgToggleIVStat(btn) {
+            const sel = btn.dataset.selected === '1';
+            btn.dataset.selected = sel ? '0' : '1';
+            if (!sel) {
+                btn.style.background = 'rgba(74,222,128,0.2)';
+                btn.style.borderColor = 'rgba(74,222,128,0.7)';
+                btn.style.color = '#4ade80';
+            } else {
+                btn.style.background = '';
+                btn.style.borderColor = '';
+                btn.style.color = '';
+            }
+        }
+
+        // 字串產生器：體質插入
+        function sgInsertIV() {
+            const val = document.getElementById('sg-iv-val')?.value ?? '0';
+            const parts = [];
+            if (document.getElementById('sg-iv-atk')?.dataset.selected === '1') parts.push('攻擊' + val);
+            if (document.getElementById('sg-iv-def')?.dataset.selected === '1') parts.push('防禦' + val);
+            if (document.getElementById('sg-iv-hp')?.dataset.selected  === '1') parts.push('HP'   + val);
+            if (parts.length === 0) { showToast('請選擇至少一項體質屬性', 'error'); return; }
+            sgInsert(parts.join('&'));
+        }
+
+        // 字串產生器：分類模式切換（要 / 不要）
+        function sgToggleCatMode(btn) {
+            const isInclude = btn.dataset.mode === 'include';
+            btn.dataset.mode = isInclude ? 'exclude' : 'include';
+            if (isInclude) {
+                btn.innerHTML = '<span class="font-mono">✗</span>&nbsp;不要';
+                btn.style.background    = 'rgba(239,68,68,0.15)';
+                btn.style.borderColor   = 'rgba(239,68,68,0.5)';
+                btn.style.color         = '#ef4444';
+            } else {
+                btn.innerHTML = '<span class="font-mono">✓</span>&nbsp;要';
+                btn.style.background    = 'rgba(74,222,128,0.15)';
+                btn.style.borderColor   = 'rgba(74,222,128,0.5)';
+                btn.style.color         = '#4ade80';
+            }
+        }
+
+        // 字串產生器：分類插入（依模式決定是否前置 !）
+        function sgInsertCat(str) {
+            const btn  = document.getElementById('sg-cat-mode');
+            const mode = btn?.dataset.mode ?? 'include';
+            sgInsert(mode === 'exclude' ? '!' + str : str);
+        }
+
+        // 字串產生器：自定義 CP 單值插入
+        function sgInsertCustomCP(mode) {
+            const val = document.getElementById('sg-cp-custom')?.value?.trim();
+            if (!val) { showToast('請輸入自定義 CP 數值', 'error'); return; }
+            sgInsert(mode === 'under' ? 'CP-' + val : 'CP' + val + '-');
+        }
+
+        // 字串產生器：自定義 CP 範圍插入
+        function sgInsertCustomCPRange() {
+            const from = document.getElementById('sg-cp-cust-from')?.value?.trim();
+            const to   = document.getElementById('sg-cp-cust-to')?.value?.trim();
+            if (!from || !to) { showToast('請輸入 CP 範圍兩端數值', 'error'); return; }
+            sgInsert('CP' + from + '-' + to);
+        }
+
+        // 字串產生器：地區插入
+        function sgInsertRegion() {
+            const sel = document.getElementById('sg-region-sel');
+            if (!sel || !sel.value) { showToast('請選擇地區', 'error'); return; }
+            const btn  = document.getElementById('sg-region-mode');
+            const mode = btn?.dataset.mode ?? 'include';
+            sgInsert(mode === 'exclude' ? '!' + sel.value : sel.value);
+        }
+
+        // 字串產生器：屬性清單
+        const SG_TYPES = ['一般','火','水','草','電','格鬥','毒','地面','飛行','超能力','蟲','岩石','幽靈','冰','龍','惡','鋼','妖精'];
+
+        // 字串產生器：屬性篩選
+        function sgFilterType(q) {
+            const sel = document.getElementById('sg-type-select');
+            if (!sel) return;
+            const query = q.trim();
+            const filtered = query ? SG_TYPES.filter(t => t.includes(query)) : SG_TYPES;
+            sel.innerHTML = filtered.map(t => `<option value="${t}">${t}</option>`).join('');
+            if (sel.options.length > 0) sel.selectedIndex = 0;
+        }
+
+        // 字串產生器：屬性插入
+        function sgInsertType() {
+            const sel = document.getElementById('sg-type-select');
+            if (!sel || !sel.value) { showToast('請選擇屬性', 'error'); return; }
+            const btn  = document.getElementById('sg-type-mode');
+            const mode = btn?.dataset.mode ?? 'include';
+            sgInsert(mode === 'exclude' ? '!' + sel.value : sel.value);
+        }
+
+        function sgInsertSize(str) {
+            const btn  = document.getElementById('sg-size-mode');
+            const mode = btn?.dataset.mode ?? 'include';
+            sgInsert(mode === 'exclude' ? '!' + str : str);
+        }
+
+        function sgInsertSpecial(str) {
+            const btn  = document.getElementById('sg-special-mode');
+            const mode = btn?.dataset.mode ?? 'include';
+            sgInsert(mode === 'exclude' ? '!' + str : str);
+        }
+
+        // PK 對戰模型：屬性克制表（攻擊方屬性 → 防守方屬性 傷害倍率）
+        const SG_PK_TYPES = ['一般','火','水','電','草','冰','格鬥','毒','地面','飛行','超能力','蟲','岩石','幽靈','龍','惡','鋼','妖精'];
+        const SG_TYPE_CHART = {
+            '一般': {'一般':1,'火':1,'水':1,'電':1,'草':1,'冰':1,'格鬥':1,'毒':1,'地面':1,'飛行':1,'超能力':1,'蟲':1,'岩石':0.5,'幽靈':0,'龍':1,'惡':1,'鋼':0.5,'妖精':1},
+            '火':   {'一般':1,'火':0.5,'水':0.5,'電':1,'草':2,'冰':2,'格鬥':1,'毒':1,'地面':1,'飛行':1,'超能力':1,'蟲':2,'岩石':0.5,'幽靈':1,'龍':0.5,'惡':1,'鋼':2,'妖精':1},
+            '水':   {'一般':1,'火':2,'水':0.5,'電':1,'草':0.5,'冰':1,'格鬥':1,'毒':1,'地面':2,'飛行':1,'超能力':1,'蟲':1,'岩石':2,'幽靈':1,'龍':0.5,'惡':1,'鋼':1,'妖精':1},
+            '電':   {'一般':1,'火':1,'水':2,'電':0.5,'草':0.5,'冰':1,'格鬥':1,'毒':1,'地面':0,'飛行':2,'超能力':1,'蟲':1,'岩石':1,'幽靈':1,'龍':0.5,'惡':1,'鋼':1,'妖精':1},
+            '草':   {'一般':1,'火':0.5,'水':2,'電':1,'草':0.5,'冰':1,'格鬥':1,'毒':0.5,'地面':2,'飛行':0.5,'超能力':1,'蟲':0.5,'岩石':2,'幽靈':1,'龍':0.5,'惡':1,'鋼':0.5,'妖精':1},
+            '冰':   {'一般':1,'火':0.5,'水':0.5,'電':1,'草':2,'冰':0.5,'格鬥':1,'毒':1,'地面':2,'飛行':2,'超能力':1,'蟲':1,'岩石':1,'幽靈':1,'龍':2,'惡':1,'鋼':0.5,'妖精':1},
+            '格鬥': {'一般':2,'火':1,'水':1,'電':1,'草':1,'冰':2,'格鬥':1,'毒':0.5,'地面':1,'飛行':0.5,'超能力':0.5,'蟲':0.5,'岩石':2,'幽靈':0,'龍':1,'惡':2,'鋼':2,'妖精':0.5},
+            '毒':   {'一般':1,'火':1,'水':1,'電':1,'草':2,'冰':1,'格鬥':1,'毒':0.5,'地面':0.5,'飛行':1,'超能力':1,'蟲':1,'岩石':0.5,'幽靈':0.5,'龍':1,'惡':1,'鋼':0,'妖精':2},
+            '地面': {'一般':1,'火':2,'水':1,'電':2,'草':0.5,'冰':1,'格鬥':1,'毒':2,'地面':1,'飛行':0,'超能力':1,'蟲':1,'岩石':2,'幽靈':1,'龍':1,'惡':1,'鋼':2,'妖精':1},
+            '飛行': {'一般':1,'火':1,'水':1,'電':0.5,'草':2,'冰':1,'格鬥':2,'毒':1,'地面':1,'飛行':1,'超能力':1,'蟲':2,'岩石':0.5,'幽靈':1,'龍':1,'惡':1,'鋼':0.5,'妖精':1},
+            '超能力':{'一般':1,'火':1,'水':1,'電':1,'草':1,'冰':1,'格鬥':2,'毒':2,'地面':1,'飛行':1,'超能力':0.5,'蟲':1,'岩石':1,'幽靈':1,'龍':1,'惡':0,'鋼':0.5,'妖精':1},
+            '蟲':   {'一般':1,'火':0.5,'水':1,'電':1,'草':2,'冰':1,'格鬥':0.5,'毒':1,'地面':1,'飛行':0.5,'超能力':2,'蟲':1,'岩石':1,'幽靈':0.5,'龍':1,'惡':2,'鋼':0.5,'妖精':0.5},
+            '岩石': {'一般':1,'火':2,'水':1,'電':1,'草':1,'冰':2,'格鬥':0.5,'毒':1,'地面':0.5,'飛行':2,'超能力':1,'蟲':2,'岩石':1,'幽靈':1,'龍':1,'惡':1,'鋼':0.5,'妖精':1},
+            '幽靈': {'一般':0,'火':1,'水':1,'電':1,'草':1,'冰':1,'格鬥':1,'毒':1,'地面':1,'飛行':1,'超能力':2,'蟲':1,'岩石':1,'幽靈':2,'龍':1,'惡':0.5,'鋼':1,'妖精':1},
+            '龍':   {'一般':1,'火':1,'水':1,'電':1,'草':1,'冰':1,'格鬥':1,'毒':1,'地面':1,'飛行':1,'超能力':1,'蟲':1,'岩石':1,'幽靈':1,'龍':2,'惡':1,'鋼':0.5,'妖精':0},
+            '惡':   {'一般':1,'火':1,'水':1,'電':1,'草':1,'冰':1,'格鬥':0.5,'毒':1,'地面':1,'飛行':1,'超能力':2,'蟲':1,'岩石':1,'幽靈':2,'龍':1,'惡':0.5,'鋼':1,'妖精':0.5},
+            '鋼':   {'一般':1,'火':0.5,'水':0.5,'電':0.5,'草':1,'冰':2,'格鬥':1,'毒':1,'地面':1,'飛行':1,'超能力':1,'蟲':1,'岩石':2,'幽靈':1,'龍':1,'惡':1,'鋼':0.5,'妖精':2},
+            '妖精': {'一般':1,'火':0.5,'水':1,'電':1,'草':1,'冰':1,'格鬥':2,'毒':0.5,'地面':1,'飛行':1,'超能力':1,'蟲':1,'岩石':1,'幽靈':1,'龍':2,'惡':2,'鋼':0.5,'妖精':1}
+        };
+
+        function sgTogglePK(btn) {
+            const active = btn.dataset.active === '1';
+            const panel  = document.getElementById('sg-pk-panel');
+            if (!active) {
+                btn.dataset.active    = '1';
+                btn.textContent       = '要PK';
+                btn.style.background  = 'rgba(74,222,128,0.15)';
+                btn.style.borderColor = 'rgba(74,222,128,0.5)';
+                btn.style.color       = '#4ade80';
+                panel?.classList.remove('hidden');
+            } else {
+                btn.dataset.active    = '0';
+                btn.textContent       = '不要PK';
+                btn.style.background  = 'rgba(100,116,139,0.15)';
+                btn.style.borderColor = 'rgba(100,116,139,0.5)';
+                btn.style.color       = '#94a3b8';
+                panel?.classList.add('hidden');
+            }
+        }
+
+        function sgPKCompute() {
+            const t1 = document.getElementById('sg-pk-type1')?.value;
+            const t2 = document.getElementById('sg-pk-type2')?.value;
+            if (!t1) { showToast('請選擇對方屬性', 'error'); return; }
+            const opp = t2 ? [t1, t2] : [t1];
+
+            const typeEff = T => opp.reduce((m, d) => m * (SG_TYPE_CHART[T]?.[d] ?? 1), 1);
+
+            // 單屬性 TOP10（18 種排序取前10）
+            const singles = SG_PK_TYPES
+                .map(T => ({ T, eff: typeEff(T) }))
+                .sort((a, b) => b.eff - a.eff)
+                .slice(0, 10);
+
+            // 雙屬性 TOP10（153 種排序取前10）
+            const duals = [];
+            for (let i = 0; i < SG_PK_TYPES.length; i++) {
+                for (let j = i+1; j < SG_PK_TYPES.length; j++) {
+                    const T1 = SG_PK_TYPES[i], T2 = SG_PK_TYPES[j];
+                    const e1 = typeEff(T1), e2 = typeEff(T2);
+                    duals.push({ T1, T2, eff: Math.max(e1,e2), sumEff: e1+e2, best: e1>=e2 ? T1 : T2 });
+                }
+            }
+            duals.sort((a, b) => b.eff - a.eff || b.sumEff - a.sumEff);
+            const top10d = duals.slice(0, 10);
+
+            const mTxt = m => {
+                if (m >= 4)   return ['×4 雙克！', 'text-yellow-300 font-bold'];
+                if (m >= 2)   return ['×2',        'text-green-400 font-bold'];
+                if (m >= 1)   return ['×1',        'text-gray-500'];
+                if (m >= 0.5) return ['×½',        'text-orange-400'];
+                if (m > 0)    return ['×¼',        'text-red-500'];
+                return               ['×0',        'text-gray-600'];
+            };
+
+            const row = (label, str, m, i) => {
+                const [txt, cls] = mTxt(m);
+                const rc = i < 3 ? 'text-brand-primary font-bold' : 'text-gray-300';
+                return `<div class="flex items-center gap-1 py-px px-1 rounded cursor-pointer hover:bg-white/8 transition-colors" onclick="sgInsert('${str}')">` +
+                       `<span class="text-gray-600 text-[10px] w-4 shrink-0 text-right">${i+1}</span>` +
+                       `<span class="${rc} font-mono text-[11px] flex-1 truncate">${label}</span>` +
+                       `<span class="${cls} text-[10px] shrink-0 ml-0.5">${txt}</span>` +
+                       `</div>`;
+            };
+
+            let sHtml = '', dHtml = '';
+            singles.forEach(({T, eff}, i) => { sHtml += row(T, T, eff, i); });
+            top10d.forEach(({T1, T2, eff, best}, i) => {
+                const label = `${T1}/${T2}`;
+                const note  = eff > 1 ? `<span class="text-gray-600 text-[9px]">(${best})</span>` : '';
+                dHtml += row(label, `${T1},${T2}`, eff, i).replace('</div>', note+'</div>');
+            });
+
+            const oppLabel = opp.join('/');
+            const box = document.getElementById('sg-pk-result');
+            if (box) {
+                box.classList.remove('hidden');
+                box.innerHTML =
+                    `<div class="text-gray-400 text-[10px] mb-2 pb-1.5 border-b border-gray-700/50">` +
+                        `對手：<span class="text-white font-semibold">${oppLabel}</span>` +
+                        `<span class="ml-2 text-gray-600">點擊任意列加入字串</span>` +
+                    `</div>` +
+                    `<div class="flex gap-2">` +
+                        `<div class="flex-1 min-w-0">` +
+                            `<div class="text-[9px] text-gray-500 font-semibold uppercase tracking-wider mb-1">雙屬性 TOP10</div>` +
+                            dHtml +
+                        `</div>` +
+                        `<div class="w-px bg-gray-700/40 shrink-0 mx-1"></div>` +
+                        `<div class="flex-1 min-w-0">` +
+                            `<div class="text-[9px] text-gray-500 font-semibold uppercase tracking-wider mb-1">單屬性 TOP10</div>` +
+                            sHtml +
+                        `</div>` +
+                    `</div>`;
+            }
+        }
+
+        function sgShowImg(src) {
+            const modal = document.getElementById('sg-img-modal');
+            const img   = document.getElementById('sg-img-modal-img');
+            if (modal && img) { img.src = src; modal.classList.remove('hidden'); }
+        }
+
+        let _sgFightOffset = 0;
+        function sgFightScroll(dir) {
+            const track = document.getElementById('sg-fight-track');
+            const strip = document.getElementById('sg-fight-strip');
+            if (!track || !strip) return;
+            const trackW  = track.clientWidth;
+            const stripW  = strip.scrollWidth;
+            const maxOff  = Math.max(0, stripW - trackW);
+            const step    = Math.round(trackW * 0.75);
+            _sgFightOffset = Math.min(maxOff, Math.max(0, _sgFightOffset + dir * step));
+            strip.style.transform = `translateX(-${_sgFightOffset}px)`;
+        }
+
         function loadRelatedInfoTool(url, name, blocked) {
-            closeMobileSidebar();
             if (!document.body.classList.contains('related-info-mode')) switchToRelatedInfoView();
             const titleEl = document.getElementById('ri-detail-title');
             if (titleEl) titleEl.textContent = name;
@@ -4231,7 +5170,6 @@
         }
 
         function loadCatchQueryTool(url, name, blocked) {
-            closeMobileSidebar();
             if (!document.body.classList.contains('catch-query-mode')) switchToCatchQueryView();
             const titleEl = document.getElementById('cq-detail-title');
             if (titleEl) titleEl.textContent = name;
@@ -4278,7 +5216,6 @@
         }
 
         async function loadPokemonWikiPage(zhPath, displayName, fullUrl) {
-            closeMobileSidebar();
             if (!_pqInitialized) initPokemonQueryList();
             if (!document.body.classList.contains('pokemon-query-mode')) switchToPokemonQueryView();
             const titleEl = document.getElementById('pq-detail-title');
