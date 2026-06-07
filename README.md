@@ -1,6 +1,6 @@
 # CKDK GPX APP — 寶可夢 GO 工具整合平台
 
-單一 HTML 檔案，免安裝、免後端。整合地圖編輯、路徑管理、寶可夢查詢與 PK 對戰分析。
+單一 HTML 檔案，免安裝、免後端。整合地圖編輯、路徑管理、寶可夢查詢、PK 對戰分析與常用工具連結。
 
 ---
 
@@ -26,26 +26,23 @@
 ### 字串產生器
 產生 Pokémon GO 搜尋字串，點擊按鈕自動組合條件並插入游標位置。
 
-| 條件類型 | 說明 |
-|---|---|
-| 寶可夢選擇 | 輸入名稱快速篩選，點擊插入 |
-| CP / HP 比較 | `>`、`<`、`=` 運算符 + 數值快捷鈕 |
-| 星級 | 0★ ~ 4★（完美） |
-| 分類 | 傳說、幻、超夢等，支援 要 / 不要 切換 |
-| 時間 | 今日、近 7 日、近 30 日 |
-| 尺寸 | XXS / XS / XL / XXL，支援 要 / 不要 切換 |
-| 體質 | 迷你、鉅大，支援 要 / 不要 切換 |
-| 地區 | 關都、城都等，支援 要 / 不要 切換 |
-| 屬性 | 18 種屬性，支援 要 / 不要 切換 |
-| 登錄 / 道具進化 | 快速插入特殊進化條件 |
-| 特別條件 | 影子、淨化、幸運、穿梭等，支援 要 / 不要 切換 |
+| 條件類型 | 說明 | 分隔符 |
+|---|---|---|
+| 寶可夢選擇 | 輸入編號或中文名稱篩選，點擊插入；支援 +進化體系 | `,` |
+| CP / HP 比較 | `>`、`<`、`=` 運算符 + 預設值快捷鈕 | `&` |
+| 自定義 CP | 輸入數值產生 CP- 或 CP- 範圍字串 | `&` |
+| 星級 | 0★ ~ 4★（完美），含複合快捷鈕 | `&` |
+| 分類 | 色違、傳說、幻、極巨化等，支援 要 / 不要 | `&` |
+| 時間 | 今日、近 7 日、近 30 日 | `&` |
+| 尺寸 | XXS / XS / XL / XXL，支援 要 / 不要 | `&` |
+| 體質 | 迷你、鉅大，支援 要 / 不要 | `&` |
+| 地區 | 關都→帕底亞（全 9 世代），支援 要 / 不要 | `,` |
+| 屬性 | 18 種屬性；單屬性多選用 `,`，多屬性連集用 `&` | `,` / `&` |
+| 登錄 / 道具進化 | 新進化、道具、進化&未登錄 | `&` |
+| 特別條件 | 影子、淨化、幸運、穿梭等，支援 要 / 不要 | `&` |
 
 **自動插入規則**
-
-- 自動去除空格
-- 自動補 `&` 連接詞
-- 重複 `&&` 自動合併
-- 開頭多餘 `&` / `,` 自動清除
+- 去除空格；自動補連接符；重複 `&&` → `&`、`,,` → `,`；開頭 `&` / `,` 自動清除
 
 #### PK 對戰分析
 選擇對手的 1 ~ 2 種屬性，點擊「分析最佳攻擊屬性」後顯示兩欄結果：
@@ -58,16 +55,64 @@
 點擊任意列，直接將屬性組合插入字串框。
 
 #### 屬性克制圖
-底部橫向輪播列（7 張參考圖），左右箭頭切換，點擊任一張可全螢幕放大。
+底部橫向輪播列（7 張參考圖），左右箭頭切換，點擊放大查閱。
 
-### 寶可夢查詢 / 抓寶查詢 / 相關資訊
-內嵌 iframe 顯示外部工具頁面，右側地圖同步可用。
+### 寶可夢查詢
+- 內建全世代寶可夢清單（含編號、中 / 日 / 英文名稱）
+- 輸入關鍵字即時篩選，點擊任一隻嵌入顯示 52Poke Wiki 詳細資料
+- 資料來源：[wiki.52poke.com](https://wiki.52poke.com/wiki/)
+
+### 抓寶查詢
+
+| 工具 | 網址 | 顯示方式 |
+|---|---|---|
+| IV100 | [moonani.com/PokeList/index.php](https://moonani.com/PokeList/index.php) | 嵌入 |
+| 報寶貝 | [twpkinfo.com/ipoke.aspx](https://twpkinfo.com/ipoke.aspx) | 另開分頁 |
+| PVP寶可夢戰力資訊 | [pvpoketw.com](https://pvpoketw.com/) | 嵌入 |
+| IV → CP | [jie-bao.online/pkg/iv2cp/](https://jie-bao.online/pkg/iv2cp/) | 嵌入 |
+| CP → IV | [jie-bao.online/pkg/](https://jie-bao.online/pkg/) | 嵌入 |
+| IV計算機 | [pokemon.gameinfo.io/zh-tw/tools/iv-calculator](https://pokemon.gameinfo.io/zh-tw/tools/iv-calculator) | 另開分頁 |
+
+### 相關資訊
+
+#### 可嵌入顯示
+
+| 網站 | 網址 |
+|---|---|
+| ポケモンGO攻略 | [9db.jp/pokemongo/](https://9db.jp/pokemongo/) |
+| Go Raid Finder | [9db.jp/pokego/data/62](https://9db.jp/pokego/data/62) |
+| PokéBase | [pokebase.app/pokemon-go](https://pokebase.app/pokemon-go) |
+
+#### 另開新分頁
+
+| 網站 | 網址 |
+|---|---|
+| PokemonGO 官網（繁中） | [pokemongo.com/zh_hant](https://pokemongo.com/zh_hant) |
+| PokemonGO 官網（多國語系） | pokemongo.com/{ja/en/ko/pt-BR/es/fr/de/th/hi/id/it/pl/ru/tr} |
+| Pokémon GO Wiki | [pokemongo.fandom.com](https://pokemongo.fandom.com/wiki/Pok%C3%A9mon_GO_Wiki) |
+| ポケモンGO攻略速報 | [pokemongo.gamewith.jp](https://pokemongo.gamewith.jp/) |
+| Pokémon GO Database | [db.pokemongohub.net](https://db.pokemongohub.net/) |
+| Pokémon Database | [pokemondb.net](https://pokemondb.net/) |
+| Pocket Monsters | [pocketmonsters.net](https://www.pocketmonsters.net/) |
+| Pokemon-Zone | [pokemon-zone.com](https://www.pokemon-zone.com/) |
+| 寶可夢集換式卡牌（台灣） | [asia.pokemon-card.com/tw](https://asia.pokemon-card.com/tw/) |
+| The Official Pokémon Website | [pokemon.com/us](https://www.pokemon.com/us) |
+| 台灣寶可夢官方網站 | [tw.portal-pokemon.com](https://tw.portal-pokemon.com/) |
+| PokemonGO 資訊網 | [pokemon.wingzero.tw](https://pokemon.wingzero.tw/zh-TW) |
+| PokoGuide | [pokemongo.gishan.net](https://pokemongo.gishan.net/) |
+| Bulbagarden | [bulbagarden.net](https://bulbagarden.net/home/) |
+| PokemonGO Info | [pokemon.gameinfo.io](https://pokemon.gameinfo.io/zh-tw) |
+| J-Channel Facebook | [facebook.com/J-Channel](https://www.facebook.com/p/J-Channel-100064760946461/) |
+| J-Channel X | [x.com/junochannel](https://x.com/junochannel) |
+| PokemonGo X (Twitter) | [x.com/pokemon](https://x.com/pokemon?lang=zh-Hant) |
+| PokemonGo Facebook 社群 | [facebook.com/groups/pokemongo](https://www.facebook.com/groups/932304146879607/) |
+| PokemonGo Reddit | [reddit.com/r/pokemongo](https://www.reddit.com/r/pokemongo/) |
 
 ---
 
 ## 地圖
 
-- 底圖：OpenStreetMap（預設）、Google Maps 衛星、Google 街景混合
+- 底圖：CartoDB Dark（預設）、CartoDB Light、OpenStreetMap、Google 道路、Google 衛星、Google 混合
 - 即時滑鼠座標顯示
 - 右鍵選單 → 複製座標 / 插入地標
 - 搜尋地址定位
@@ -84,6 +129,7 @@
 | 圖示 | Lucide Icons |
 | 字型 | Inter、Outfit、JetBrains Mono（Google Fonts） |
 | PK 模型 | 18×18 完整屬性克制 JS 物件（Pokémon GO 倍率規則） |
+| 圖片 | 7 張屬性克制圖以 Base64 內嵌，單檔可離線使用 |
 
 ---
 
@@ -91,12 +137,9 @@
 
 ```
 AI Project/
-├── CKDK_GPX_POKEMON.html        主程式（單一檔案）
-├── FIGHT/
-│   ├── sshot-1.png              屬性克制參考圖
-│   ├── sshot-2.png
-│   ├── ...
-│   └── sshot-7.png
+├── CKDK_GPX_POKEMON.html        主程式（單一自含檔案，約 3.4 MB）
+├── FIGHT/                       屬性克制圖原始檔（已內嵌至 HTML）
+│   ├── sshot-1.png ~ sshot-7.png
 ├── *.gpx                        範例路徑（可直接匯入）
 └── FavoriteLists_iTools_*.json  iToolsBT 最愛位置匯出檔
 ```
@@ -109,5 +152,6 @@ AI Project/
 2. 頂部導覽列切換功能模組
 3. **字串產生器**：左側點擊條件 → 右側文字框即時組合 → 複製貼入遊戲搜尋欄
 4. **Android 飛人**：匯入 GPX 或 JSON → 編輯節點 → 儲存標準 GPX
+5. **PK 對戰**：選擇對手屬性 → 分析 → 點擊結果列插入字串
 
-> 所有操作皆在本機執行，無任何資料上傳。
+> 所有操作皆在本機執行，無任何資料上傳。圖片已內嵌，部署單一 HTML 檔案即可完整運作。
