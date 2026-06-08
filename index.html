@@ -46,15 +46,21 @@
     </script>
 
     <style>
+        /* Global Firefox scrollbar styling */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.15) rgba(9, 13, 22, 0.5);
+        }
+
         ::-webkit-scrollbar {
             width: 8px;
             height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #0d1117;
+            background: rgba(9, 13, 22, 0.5);
         }
         ::-webkit-scrollbar-thumb {
-            background: #30363d;
+            background: rgba(255, 255, 255, 0.15);
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
@@ -342,6 +348,20 @@
             padding: 0.5rem !important;
         }
 
+        /* 手機版字串產生器主滾動區平滑滾動 */
+        #sg-content-panel .overflow-y-auto {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* 當字串產生器內容被移至手機版容器時，停用它自身的滾動，併入外層統一滾動，以避免觸控滑動衝突或卡住 */
+        #sg-mobile-options-placeholder #sidebar-string-generator-content {
+            overflow-y: visible !important;
+            max-height: none !important;
+            height: auto !important;
+            flex: none !important;
+            padding: 0 !important;
+        }
+
         body.vivillon-info-mode #map-section { display: none !important; }
         body.vivillon-info-mode #vi-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; }
         body.iv100-snipe-mode aside { display: none !important; }
@@ -504,7 +524,7 @@
             </div>
 
             <!-- 編輯清單區 -->
-            <div class="flex-1 min-h-0 overflow-y-auto bg-[#090d16]/30 p-3 space-y-2.5" style="max-height: calc(100vh - 280px);">
+            <div class="flex-1 min-h-0 overflow-y-auto bg-[#090d16]/30 p-3 space-y-2.5">
                 
                 <!-- 地標列表 -->
                 <div id="list-waypoints" class="space-y-3">
@@ -709,7 +729,7 @@
                 </div>
                 
                 <!-- 手風琴分類清單區 -->
-                <div class="flex-1 min-h-0 overflow-y-auto bg-[#090d16]/30 p-3 space-y-3" style="max-height: calc(100vh - 165px);">
+                <div class="flex-1 min-h-0 overflow-y-auto bg-[#090d16]/30 p-3 space-y-3">
                     <div id="favorites-category-accordion" class="space-y-2.5">
                         <!-- 由 JS 動態生成 -->
                     </div>
@@ -766,7 +786,7 @@
                 </div>
                 
                 <!-- 節點清單區 -->
-                <div class="flex-1 min-h-0 overflow-y-auto bg-[#090d16]/30 p-3 space-y-3" style="max-height: calc(100vh - 250px);">
+                <div class="flex-1 min-h-0 overflow-y-auto bg-[#090d16]/30 p-3 space-y-3">
                     <div id="itools-route-points-container" class="space-y-2">
                         <!-- 由 JS 動態生成 -->
                     </div>
