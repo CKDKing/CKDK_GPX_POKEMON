@@ -5012,15 +5012,7 @@
         }
 
         // ── 寶可夢詳細頁面 ──────────────────────────────────────────
-        function switchToPokemonQueryView() {
-            document.body.classList.remove('catch-query-mode');
-            document.body.classList.remove('related-info-mode');
-            document.body.classList.remove('string-generator-mode');
-            document.body.classList.add('pokemon-query-mode');
-            lucide.createIcons();
-        }
-
-        function switchToMapView() {
+        function clearAllViewModes() {
             document.body.classList.remove('pokemon-query-mode');
             document.body.classList.remove('catch-query-mode');
             document.body.classList.remove('related-info-mode');
@@ -5028,29 +5020,33 @@
             document.body.classList.remove('vivillon-info-mode');
             document.body.classList.remove('iv100-snipe-mode');
             iv100StopClipPoll();
+        }
+
+        function switchToPokemonQueryView() {
+            clearAllViewModes();
+            document.body.classList.add('pokemon-query-mode');
+            lucide.createIcons();
+        }
+
+        function switchToMapView() {
+            clearAllViewModes();
             if (currentMap) setTimeout(() => currentMap.invalidateSize(), 50);
         }
 
         function switchToCatchQueryView() {
-            document.body.classList.remove('pokemon-query-mode');
-            document.body.classList.remove('related-info-mode');
-            document.body.classList.remove('string-generator-mode');
+            clearAllViewModes();
             document.body.classList.add('catch-query-mode');
             lucide.createIcons();
         }
 
         function switchToRelatedInfoView() {
-            document.body.classList.remove('pokemon-query-mode');
-            document.body.classList.remove('catch-query-mode');
-            document.body.classList.remove('string-generator-mode');
+            clearAllViewModes();
             document.body.classList.add('related-info-mode');
             lucide.createIcons();
         }
 
         function switchToStringGeneratorView() {
-            document.body.classList.remove('pokemon-query-mode');
-            document.body.classList.remove('catch-query-mode');
-            document.body.classList.remove('related-info-mode');
+            clearAllViewModes();
             document.body.classList.add('string-generator-mode');
             lucide.createIcons();
             // 初次進入時載入預設清單
@@ -5069,11 +5065,7 @@
         let _iv100MapInited = false;
 
         function switchToIV100SnipeView() {
-            document.body.classList.remove('pokemon-query-mode');
-            document.body.classList.remove('catch-query-mode');
-            document.body.classList.remove('related-info-mode');
-            document.body.classList.remove('string-generator-mode');
-            document.body.classList.remove('vivillon-info-mode');
+            clearAllViewModes();
             document.body.classList.add('iv100-snipe-mode');
             lucide.createIcons();
             // 初始化地圖（只做一次）
@@ -5992,10 +5984,7 @@
         };
 
         function openVivillonInfo() {
-            document.body.classList.remove('pokemon-query-mode');
-            document.body.classList.remove('catch-query-mode');
-            document.body.classList.remove('related-info-mode');
-            document.body.classList.remove('string-generator-mode');
+            clearAllViewModes();
             document.body.classList.add('vivillon-info-mode');
             lucide.createIcons();
             const iframe   = document.getElementById('vi-detail-iframe');
