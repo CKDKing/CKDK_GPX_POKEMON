@@ -2031,7 +2031,7 @@
             }).addTo(currentMap);
         }
 
-        // ── 地圖搜尋 (Nominatim / OSM) ────────────────────────────
+        // ── 地圖搜尋 (Esri Geocoding / ArcGIS) ────────────────────────────
         let _searchTimer = null;
         let _searchMarker = null;
 
@@ -2047,10 +2047,19 @@
             query = query || document.getElementById('map-search-input').value;
             if (!query.trim()) return;
             try {
-                const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=6&addressdetails=1`;
-                const res = await fetch(url, { headers: { 'Accept-Language': 'zh-TW,zh,en' } });
+                // 改用 Esri 世界定位服務，搜尋結果精準度與 Google Maps 非常接近，且完全免費、免 API 金鑰
+                const url = `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?singleLine=${encodeURIComponent(query)}&f=json&maxLocations=6&outFields=Match_addr`;
+                const res = await fetch(url);
                 const data = await res.json();
-                displaySearchResults(data);
+                
+                // 將 Esri candidates 格式轉換成與原 Nominatim 相容的格式
+                const results = (data.candidates || []).map(cand => ({
+                    display_name: cand.address,
+                    lat: cand.location.y,
+                    lon: cand.location.x
+                }));
+                
+                displaySearchResults(results);
             } catch(e) {
                 displaySearchResults([]);
             }
@@ -5107,6 +5116,22 @@
             const isMobile = window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024);
             updateIv100IframeScale(isMobile ? 0.75 : 1.0);
 
+            // 檢查剪貼簿讀取權限/支援度，給予提示
+            const coordInput = document.getElementById('iv100-coord-input');
+            const hasClipboardAPI = navigator.clipboard && navigator.clipboard.readText;
+            const isSecure = window.isSecureContext; // 檢查是否為安全上下文
+            
+            if (coordInput) {
+                if (!hasClipboardAPI || !isSecure) {
+                    coordInput.placeholder = "⚠️ 非 HTTPS 限制，請在此手動貼上";
+                    if (isMobile) {
+                        showToast("瀏覽器安全限制：非安全環境 (HTTPS) 無法自動讀取剪貼簿，請點選輸入框手動貼上並送出", "info");
+                    }
+                } else {
+                    coordInput.placeholder = "貼上座標: 25.0330, 121.5654";
+                }
+            }
+
             // 初始化地圖（只做一次）
             setTimeout(() => {
                 if (!_iv100MapInited) {
@@ -5281,6 +5306,7 @@
         }
 
         async function iv100AcquireClipPermission() {
+            if (!navigator.clipboard || !navigator.clipboard.readText) return;
             if (_iv100ClipGranted) { iv100StartClipPoll(); return; }
             try {
                 // 在 click 手勢環境內呼叫 → 瀏覽器只詢問一次
