@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -185,11 +185,46 @@
             height: auto !important;
             min-height: 52px;
             padding: 8px 10px !important;
-            flex-wrap: wrap;
-            gap: 5px;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 8px !important;
         }
-        .mobile-mode header > div:first-child { flex-wrap: wrap; gap: 4px; }
-        .mobile-mode #android-pokemon-toolbar { flex-wrap: wrap; gap: 4px; }
+        .mobile-mode header > div:first-child {
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 4px;
+        }
+        .mobile-mode header nav {
+            margin-left: 0 !important;
+            margin-top: 8px !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            flex: 0 0 100%;
+            overflow-x: auto !important;
+            display: flex !important;
+            -webkit-overflow-scrolling: touch;
+        }
+        .mobile-mode header nav::-webkit-scrollbar {
+            display: none;
+        }
+        .mobile-mode #android-pokemon-toolbar {
+            width: 100%;
+            justify-content: space-between;
+            margin-left: 0 !important;
+            margin-top: 4px;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .mobile-mode #android-pokemon-toolbar button, 
+        .mobile-mode #android-pokemon-toolbar div {
+            flex-grow: 1;
+            text-align: center;
+            justify-content: center;
+            font-size: 11px !important;
+            padding: 8px 6px !important;
+        }
 
         /* 手機：顯示開關按鈕 */
         .mobile-mode #mobile-sidebar-toggle { display: flex !important; }
