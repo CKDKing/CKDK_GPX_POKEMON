@@ -293,13 +293,13 @@
         }
         @keyframes spin { to { transform: rotate(360deg); } }
         body.pokemon-query-mode #map-section { display: none !important; }
-        body.pokemon-query-mode #pq-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; }
+        body.pokemon-query-mode #pq-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
         body.catch-query-mode #map-section { display: none !important; }
-        body.catch-query-mode #cq-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; }
+        body.catch-query-mode #cq-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
         body.related-info-mode #map-section { display: none !important; }
-        body.related-info-mode #ri-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; }
+        body.related-info-mode #ri-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
         body.string-generator-mode #map-section { display: none !important; }
-        body.string-generator-mode #sg-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; }
+        body.string-generator-mode #sg-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
         
         /* 手機版字串產生器選項微調，使其極度緊湊 */
         #sg-mobile-options-placeholder .space-y-4 > * {
@@ -349,8 +349,11 @@
         }
 
         /* 手機版字串產生器主滾動區平滑滾動 */
-        #sg-content-panel .overflow-y-auto {
-            -webkit-overflow-scrolling: touch;
+        #sg-content-panel div.overflow-y-auto {
+            overflow-y: auto !important;
+            flex: 1 1 0% !important;
+            min-height: 0 !important;
+            -webkit-overflow-scrolling: touch !important;
         }
 
         /* 當字串產生器內容被移至手機版容器時，停用它自身的滾動，併入外層統一滾動，以避免觸控滑動衝突或卡住 */
@@ -363,10 +366,10 @@
         }
 
         body.vivillon-info-mode #map-section { display: none !important; }
-        body.vivillon-info-mode #vi-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; }
+        body.vivillon-info-mode #vi-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
         body.iv100-snipe-mode aside { display: none !important; }
         body.iv100-snipe-mode #map-section { display: none !important; }
-        body.iv100-snipe-mode #iv100-panel { display: flex !important; flex: 1 1 0%; min-width: 0; }
+        body.iv100-snipe-mode #iv100-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
 
         /* 手機：IV100狙擊改為上下分割 */
         .mobile-mode #iv100-panel {
@@ -5658,20 +5661,25 @@
 
         // 字串產生器：修正結果欄首字元（& 和 , 不可在第 0 位；! 和 + 允許）
         function sgCleanLeading() {
-            const ta = document.getElementById('sg-result');
+            const ta = sgGetActiveTextArea();
             if (!ta || !/^[&,]/.test(ta.value)) return;
             const pos = ta.selectionStart;
             const trimmed = ta.value.replace(/^[&,]+/, '');
             const diff = ta.value.length - trimmed.length;
             ta.value = trimmed;
             ta.selectionStart = ta.selectionEnd = Math.max(0, pos - diff);
+
+            // 同步到另一個文字框
+            const otherTaId = ta.id === 'sg-result' ? 'sg-result-mobile' : 'sg-result';
+            const otherTa = document.getElementById(otherTaId);
+            if (otherTa) otherTa.value = trimmed;
         }
 
         // 字串產生器：插入字串至游標位置（含自動規則）
         // sep='&'（預設）或 ','（寶可夢/地區/屬性 同類多選）
         function sgInsert(str, sep) {
             if (sep === undefined) sep = '&';
-            const ta = document.getElementById('sg-result');
+            const ta = sgGetActiveTextArea();
             if (!ta) return;
             // Rule 1: no spaces
             const insertStr = str.replace(/ /g, '');
@@ -5699,11 +5707,16 @@
             const collapsed = rawCursor.replace(/&&+/g, '&').replace(/,,+/g, ',').length;
             ta.selectionStart = ta.selectionEnd = Math.max(0, collapsed - leading);
             ta.focus();
+
+            // 同步到另一個文字框
+            const otherTaId = ta.id === 'sg-result' ? 'sg-result-mobile' : 'sg-result';
+            const otherTa = document.getElementById(otherTaId);
+            if (otherTa) otherTa.value = result;
         }
 
         // 字串產生器：複製全部內容
         function sgCopy() {
-            const ta = document.getElementById('sg-result');
+            const ta = sgGetActiveTextArea();
             if (!ta || !ta.value.trim()) { showToast('結果字串為空，無法複製', 'error'); return; }
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(ta.value).then(() => showToast('已複製到剪貼簿！', 'success'))
@@ -5718,7 +5731,11 @@
         // 字串產生器：清除結果
         function sgClear() {
             const ta = document.getElementById('sg-result');
-            if (ta) { ta.value = ''; ta.focus(); }
+            const taMobile = document.getElementById('sg-result-mobile');
+            if (ta) ta.value = '';
+            if (taMobile) taMobile.value = '';
+            const active = sgGetActiveTextArea();
+            if (active) active.focus();
         }
 
         // 字串產生器：日數插入
