@@ -1278,6 +1278,24 @@
                         </div>
                     </div>
 
+                    <!-- 尺寸 -->
+                    <div class="space-y-1.5">
+                        <div class="flex items-center justify-between">
+                            <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">尺寸</label>
+                            <button id="sg-size-mode" onclick="sgToggleCatMode(this)" data-mode="include"
+                                class="flex items-center gap-1 px-2.5 py-0.5 rounded-full border text-[11px] font-bold transition-all cursor-pointer"
+                                style="background:rgba(74,222,128,0.15);border-color:rgba(74,222,128,0.5);color:#4ade80;">
+                                <span class="font-mono">✓</span>&nbsp;要
+                            </button>
+                        </div>
+                        <div class="grid grid-cols-4 gap-1.5">
+                            <button onclick="sgInsertSize('XXS')" class="py-2.5 bg-orange-500/10 hover:bg-orange-500/25 border border-orange-500/30 hover:border-orange-500 text-orange-400 text-xs font-bold rounded-xl font-mono transition-all cursor-pointer">XXS</button>
+                            <button onclick="sgInsertSize('XS')"  class="py-2.5 bg-orange-500/10 hover:bg-orange-500/25 border border-orange-500/30 hover:border-orange-500 text-orange-400 text-xs font-bold rounded-xl font-mono transition-all cursor-pointer">XS</button>
+                            <button onclick="sgInsertSize('XL')"  class="py-2.5 bg-orange-500/10 hover:bg-orange-500/25 border border-orange-500/30 hover:border-orange-500 text-orange-400 text-xs font-bold rounded-xl font-mono transition-all cursor-pointer">XL</button>
+                            <button onclick="sgInsertSize('XXL')" class="py-2.5 bg-orange-500/10 hover:bg-orange-500/25 border border-orange-500/30 hover:border-orange-500 text-orange-400 text-xs font-bold rounded-xl font-mono transition-all cursor-pointer">XXL</button>
+                        </div>
+                    </div>
+
                     <!-- 特別條件 -->
                     <div class="space-y-1.5">
                         <div class="flex items-center justify-between">
@@ -1579,24 +1597,6 @@
                         </div>
                     </div>
 
-                    <!-- 尺寸 -->
-                    <div class="space-y-1.5">
-                        <div class="flex items-center justify-between">
-                            <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider">尺寸</label>
-                            <button id="sg-size-mode" onclick="sgToggleCatMode(this)" data-mode="include"
-                                class="flex items-center gap-1 px-2.5 py-0.5 rounded-full border text-[11px] font-bold transition-all cursor-pointer"
-                                style="background:rgba(74,222,128,0.15);border-color:rgba(74,222,128,0.5);color:#4ade80;">
-                                <span class="font-mono">✓</span>&nbsp;要
-                            </button>
-                        </div>
-                        <div class="grid grid-cols-4 gap-1.5">
-                            <button onclick="sgInsertSize('XXS')" class="py-2.5 bg-orange-500/10 hover:bg-orange-500/25 border border-orange-500/30 hover:border-orange-500 text-orange-400 text-xs font-bold rounded-xl font-mono transition-all cursor-pointer">XXS</button>
-                            <button onclick="sgInsertSize('XS')"  class="py-2.5 bg-orange-500/10 hover:bg-orange-500/25 border border-orange-500/30 hover:border-orange-500 text-orange-400 text-xs font-bold rounded-xl font-mono transition-all cursor-pointer">XS</button>
-                            <button onclick="sgInsertSize('XL')"  class="py-2.5 bg-orange-500/10 hover:bg-orange-500/25 border border-orange-500/30 hover:border-orange-500 text-orange-400 text-xs font-bold rounded-xl font-mono transition-all cursor-pointer">XL</button>
-                            <button onclick="sgInsertSize('XXL')" class="py-2.5 bg-orange-500/10 hover:bg-orange-500/25 border border-orange-500/30 hover:border-orange-500 text-orange-400 text-xs font-bold rounded-xl font-mono transition-all cursor-pointer">XXL</button>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
@@ -1843,6 +1843,7 @@
                         class="flex items-center gap-1 px-2 py-1 rounded text-[10px] text-gray-400 hover:text-white hover:bg-brand-border transition-all">
                         <i data-lucide="refresh-cw" class="w-3 h-3"></i>
                     </button>
+                </div>
                 <div class="flex-1 w-full relative overflow-hidden bg-brand-darkBg">
                     <iframe id="iv100-iframe"
                         src="https://moonani.com/PokeList/index.php"
