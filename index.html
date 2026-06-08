@@ -227,12 +227,31 @@
         }
 
         /* 手機：顯示開關按鈕 */
-        .mobile-mode #mobile-sidebar-toggle { display: flex !important; }
+        .mobile-mode #mobile-sidebar-toggle {
+            display: flex !important;
+            position: fixed !important;
+            bottom: 24px !important;
+            left: 20px !important;
+            top: auto !important;
+            right: auto !important;
+            z-index: 8998 !important;
+            border-radius: 9999px !important;
+            width: 48px !important;
+            height: 48px !important;
+            box-shadow: 0 4px 16px rgba(0, 255, 204, 0.4) !important;
+            background: rgba(19, 25, 41, 0.95) !important;
+            border: 1.5px solid #00ffcc !important;
+            color: #00ffcc !important;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            justify-content: center;
+            align-items: center;
+        }
 
-        /* 手機：搜尋欄退讓開關按鈕空間 */
+        /* 手機：搜尋欄位置 */
         .mobile-mode #map-search-container {
-            left: 50px !important;
-            right: 56px !important;
+            left: 60px !important;
+            right: 12px !important;
             width: auto !important;
             max-width: none !important;
         }
@@ -257,6 +276,19 @@
         body.iv100-snipe-mode aside { display: none !important; }
         body.iv100-snipe-mode #map-section { display: none !important; }
         body.iv100-snipe-mode #iv100-panel { display: flex !important; flex: 1 1 0%; min-width: 0; }
+
+        /* 手機：IV100狙擊改為上下分割 */
+        .mobile-mode #iv100-panel {
+            flex-direction: column !important;
+        }
+        .mobile-mode #iv100-panel > div {
+            width: 100% !important;
+            height: 50% !important;
+        }
+        .mobile-mode #iv100-panel > div:first-child {
+            border-right: none !important;
+            border-bottom: 1px solid #1f2942 !important;
+        }
     </style>
 </head>
 <body class="bg-brand-darkBg text-gray-200 font-sans min-h-screen overflow-hidden flex flex-col">
@@ -339,6 +371,12 @@
 
     <!-- 主體內容 -->
     <main class="flex-1 flex overflow-hidden">
+
+        <!-- 手機版側邊欄開關按鈕 -->
+        <button id="mobile-sidebar-toggle" onclick="toggleMobileSidebar()"
+            class="absolute top-3 left-3 z-[1600] w-10 h-10 items-center justify-center bg-[#131929]/95 border border-brand-border rounded-xl text-brand-primary backdrop-blur-sm shadow-xl hover:border-brand-primary/60 transition-all">
+            <i data-lucide="panel-left-open" class="w-4 h-4"></i>
+        </button>
         
         <!-- 左側編輯控制台 -->
         <aside class="w-[450px] border-r border-brand-border bg-[#0b0f1b] flex flex-col shrink-0 overflow-hidden" style="height: calc(100vh - 75px); max-height: calc(100vh - 75px);">
@@ -1499,15 +1537,15 @@
         <!-- 右側 Leaflet 編輯地圖 -->
         <section id="map-section" class="flex-1 relative">
             <div id="map" class="w-full h-full bg-brand-darkBg"></div>
-            
-            <!-- 手機版側邊欄開關按鈕 -->
-            <button id="mobile-sidebar-toggle" onclick="toggleMobileSidebar()"
-                class="absolute top-3 left-3 z-[1600] w-10 h-10 items-center justify-center bg-[#131929]/95 border border-brand-border rounded-xl text-brand-primary backdrop-blur-sm shadow-xl hover:border-brand-primary/60 transition-all">
-                <i data-lucide="panel-left-open" class="w-4 h-4"></i>
+
+            <!-- 手機版選單按鈕 -->
+            <button onclick="toggleMobileSidebar()" title="開啟選單"
+                class="md:hidden absolute top-3 left-3 z-[1500] flex items-center justify-center w-10 h-10 rounded-xl bg-white border border-gray-200 shadow-2xl text-gray-700 hover:text-gray-900 active:bg-gray-100 transition-all cursor-pointer">
+                <i data-lucide="menu" class="w-5 h-5 text-brand-secondary stroke-[2.5]"></i>
             </button>
 
             <!-- 地圖搜尋功能 -->
-            <div id="map-search-container" class="absolute top-3 left-3 z-[1500] w-80 max-w-[calc(100%-72px)]">
+            <div id="map-search-container" class="absolute top-3 left-[60px] md:left-3 z-[1500] w-80 max-w-[calc(100%-120px)] md:max-w-[calc(100%-72px)]">
                 <div class="relative flex items-center">
                     <i data-lucide="search" class="absolute left-3 w-3.5 h-3.5 text-gray-400 pointer-events-none shrink-0"></i>
                     <input type="text" id="map-search-input"
@@ -1602,6 +1640,10 @@
         <div id="cq-content-panel" style="display:none" class="flex-1 flex-col bg-white overflow-hidden">
             <!-- 工具列 -->
             <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
+                <button onclick="toggleMobileSidebar()" title="開啟選單"
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+                    <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
+                </button>
                 <button onclick="switchToMapView()" title="關閉面板"
                     class="p-1 rounded text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors shrink-0">
                     <i data-lucide="x" class="w-3.5 h-3.5"></i>
@@ -1629,6 +1671,10 @@
         <div id="ri-content-panel" style="display:none" class="flex-1 flex-col bg-white overflow-hidden">
             <!-- 工具列 -->
             <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
+                <button onclick="toggleMobileSidebar()" title="開啟選單"
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+                    <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
+                </button>
                 <button onclick="switchToMapView()" title="關閉面板"
                     class="p-1 rounded text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors shrink-0">
                     <i data-lucide="x" class="w-3.5 h-3.5"></i>
@@ -1656,6 +1702,10 @@
         <div id="vi-content-panel" style="display:none" class="flex-1 flex-col bg-white overflow-hidden">
             <!-- 工具列 -->
             <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
+                <button onclick="toggleMobileSidebar()" title="開啟選單"
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+                    <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
+                </button>
                 <button onclick="switchToMapView()" title="關閉面板，返回地圖"
                     class="p-1 rounded text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors shrink-0">
                     <i data-lucide="x" class="w-3.5 h-3.5"></i>
@@ -1779,6 +1829,10 @@
         <div id="sg-content-panel" style="display:none" class="flex-1 flex-col bg-brand-darkBg overflow-hidden">
             <!-- 頂部工具列 -->
             <div class="flex items-center px-5 h-12 border-b border-brand-border bg-[#090d16]/80 shrink-0 gap-3">
+                <button onclick="toggleMobileSidebar()" title="開啟選單"
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-400 hover:text-brand-secondary hover:bg-white/5 transition-all shrink-0">
+                    <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
+                </button>
                 <i data-lucide="code-2" class="w-4 h-4 text-brand-primary shrink-0"></i>
                 <span class="text-sm font-semibold text-white">結果字串</span>
                 <div class="flex-1"></div>
@@ -3906,6 +3960,8 @@
             closeRouteDetails();
             refreshMapAndUI();
             fitMapToActiveModuleData();
+
+            closeMobileSidebar();
 
             showToast(`已切換至 ${MODULE_LABELS[mod] || mod} 工作空間`, 'info');
         }
