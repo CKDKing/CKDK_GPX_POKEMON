@@ -46,14 +46,6 @@
     </script>
 
     <style>
-        html, body {
-            height: 100dvh !important;
-            max-height: 100dvh !important;
-            overflow: hidden !important;
-            margin: 0;
-            padding: 0;
-        }
-
         /* Global Firefox scrollbar styling */
         * {
             scrollbar-width: thin;
@@ -285,15 +277,6 @@
             display: none !important;
         }
 
-        /* 手機版：版面切換按鈕優化 */
-        .mobile-mode #device-mode-label {
-            display: none !important;
-        }
-        .mobile-mode #device-mode-toggle-btn {
-            margin-left: auto !important;
-            padding: 6px 8px !important;
-        }
-
         /* 手機：搜尋欄位置 */
         .mobile-mode #map-search-container {
             left: 60px !important;
@@ -388,27 +371,6 @@
         body.iv100-snipe-mode #map-section { display: none !important; }
         body.iv100-snipe-mode #iv100-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
 
-        /* 手動版面切換與響應式隱藏/顯示類別 */
-        .mobile-only-btn {
-            display: none !important;
-        }
-        .mobile-mode .mobile-only-btn {
-            display: flex !important;
-        }
-        
-        .mobile-only {
-            display: none !important;
-        }
-        .desktop-only {
-            display: flex !important;
-        }
-        .mobile-mode .mobile-only {
-            display: flex !important;
-        }
-        .mobile-mode .desktop-only {
-            display: none !important;
-        }
-
         /* 手機：IV100狙擊改為上下分割 */
         .mobile-mode #iv100-panel {
             flex-direction: column !important;
@@ -421,6 +383,11 @@
             border-right: none !important;
             border-bottom: 1px solid #1f2942 !important;
         }
+
+        /* 修正手機版高度計算：body 需有明確高度，content panel 的 height:100% 才能正確解析 */
+        html { height: 100%; }
+        body { height: 100dvh !important; min-height: 0 !important; }
+        main { min-height: 0; }
     </style>
 </head>
 <body class="bg-brand-darkBg text-gray-200 font-sans min-h-screen overflow-hidden flex flex-col">
@@ -436,13 +403,6 @@
                     CKDK GPX APP
                 </h1>
             </div>
-
-            <!-- 電腦/手機版手動切換開關 -->
-            <button onclick="toggleDeviceModeOverride()" id="device-mode-toggle-btn" 
-                class="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-brand-cardBg border border-brand-border hover:border-brand-primary/50 text-gray-300 hover:text-white transition-all cursor-pointer shadow-md shrink-0 ml-4">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
-                <span id="device-mode-label">版面: 自動</span>
-            </button>
             
             <!-- 主要頁籤導覽列 -->
             <nav class="flex items-center space-x-1 bg-brand-inputBg border border-brand-border rounded-xl p-1 ml-6 overflow-x-auto min-w-0" style="max-width: 100%;">
@@ -1704,7 +1664,7 @@
             </button>
 
             <!-- 地圖搜尋功能 -->
-            <div id="map-search-container" class="absolute top-3 left-3 z-[1500] w-80 max-w-[calc(100%-72px)]">
+            <div id="map-search-container" class="absolute top-3 left-[60px] md:left-3 z-[1500] w-80 max-w-[calc(100%-120px)] md:max-w-[calc(100%-72px)]">
                 <div class="relative flex items-center">
                     <i data-lucide="search" class="absolute left-3 w-3.5 h-3.5 text-gray-400 pointer-events-none shrink-0"></i>
                     <input type="text" id="map-search-input"
@@ -1800,7 +1760,7 @@
             <!-- 工具列 -->
             <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
                 <button onclick="toggleMobileSidebar()" title="開啟選單"
-                    class="mobile-only-btn flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
                     <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
                 </button>
                 <button onclick="switchToMapView()" title="關閉面板"
@@ -1831,7 +1791,7 @@
             <!-- 工具列 -->
             <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
                 <button onclick="toggleMobileSidebar()" title="開啟選單"
-                    class="mobile-only-btn flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
                     <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
                 </button>
                 <button onclick="switchToMapView()" title="關閉面板"
@@ -1862,7 +1822,7 @@
             <!-- 工具列 -->
             <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
                 <button onclick="toggleMobileSidebar()" title="開啟選單"
-                    class="mobile-only-btn flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
                     <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
                 </button>
                 <button onclick="switchToMapView()" title="關閉面板，返回地圖"
@@ -1997,7 +1957,7 @@
         <!-- 字串產生器結果面板 -->
         <div id="sg-content-panel" style="display:none" class="flex-1 flex-col bg-brand-darkBg overflow-hidden">
             <!-- 桌機頂部列 (手機隱藏) -->
-            <div class="desktop-only items-center px-5 h-12 border-b border-brand-border bg-[#090d16]/80 shrink-0 gap-3">
+            <div class="hidden md:flex items-center px-5 h-12 border-b border-brand-border bg-[#090d16]/80 shrink-0 gap-3">
                 <i data-lucide="code-2" class="w-4 h-4 text-brand-primary shrink-0"></i>
                 <span class="text-sm font-semibold text-white">結果字串</span>
                 <div class="flex-1"></div>
@@ -2012,7 +1972,7 @@
             </div>
             
             <!-- 手機版專屬頂部列 (包含 3行結果框 + 複製按鈕) (桌機隱藏) -->
-            <div class="mobile-only p-3 bg-[#090d16]/95 border-b border-brand-border shrink-0 flex-col gap-2">
+            <div class="flex md:hidden p-3 bg-[#090d16]/95 border-b border-brand-border shrink-0 flex-col gap-2">
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold text-gray-300 flex items-center gap-1">
                         <i data-lucide="code-2" class="w-3.5 h-3.5 text-brand-primary animate-pulse"></i>
@@ -2035,7 +1995,7 @@
 
             <!-- 主體顯示區域 -->
             <!-- 1. 桌機版顯示主體 (手機隱藏) -->
-            <div class="desktop-only flex-1 p-6 flex-col gap-4 min-h-0">
+            <div class="hidden md:flex flex-1 p-6 flex-col gap-4 min-h-0">
                 <!-- 字串輸入 -->
                 <div class="flex-1 min-h-0 flex flex-col gap-2">
                     <label class="text-[10px] text-gray-500 font-semibold uppercase tracking-wider shrink-0">字串內容（可直接編輯）</label>
@@ -2069,7 +2029,7 @@
             </div>
 
             <!-- 2. 手機版顯示主體 (桌機隱藏) -->
-            <div class="mobile-only flex-1 overflow-y-auto px-4 pb-6 flex-col min-h-0">
+            <div class="flex md:hidden flex-1 overflow-y-auto px-4 pb-6 flex-col min-h-0">
                 <!-- 亮色螢光分隔線 1 -->
                 <div class="h-[2px] bg-brand-primary shadow-[0_0_8px_rgba(74,222,128,0.8)] my-3 shrink-0"></div>
 
@@ -2182,81 +2142,26 @@
         // 「地圖點擊新增」模式狀態：'none' | 'waypoint' | 'routept'
         let mapClickMode = 'none';
 
-        // ── 版面模式切換 (自動偵測 / 強制電腦 / 強制手機) ───────────────────
-        let deviceModeOverride = localStorage.getItem('deviceModeOverride') || 'auto';
-
-        function isMobileLayout() {
-            if (deviceModeOverride === 'desktop') return false;
-            if (deviceModeOverride === 'mobile') return true;
-            return window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024);
-        }
-
-        function updateDeviceModeUI(actualMobile) {
-            const btn = document.getElementById('device-mode-toggle-btn');
-            const label = document.getElementById('device-mode-label');
-            if (!btn || !label) return;
-            
-            let iconName = 'sparkles';
-            let modeText = '版面: 自動';
-            
-            if (deviceModeOverride === 'desktop') {
-                iconName = 'monitor';
-                modeText = '版面: 電腦';
-                btn.style.borderColor = 'rgba(59, 130, 246, 0.5)';
-                btn.style.color = '#3b82f6';
-            } else if (deviceModeOverride === 'mobile') {
-                iconName = 'smartphone';
-                modeText = '版面: 手機';
-                btn.style.borderColor = 'rgba(255, 0, 127, 0.5)';
-                btn.style.color = '#ff007f';
-            } else {
-                iconName = 'sparkles';
-                modeText = '版面: 自動';
-                btn.style.borderColor = '';
-                btn.style.color = '';
-            }
-            
-            label.textContent = modeText;
-            
-            const iconEl = btn.querySelector('i');
-            if (iconEl) {
-                iconEl.setAttribute('data-lucide', iconName);
-                if (window.lucide) window.lucide.createIcons();
-            }
-        }
-
-        function toggleDeviceModeOverride() {
-            if (deviceModeOverride === 'auto') {
-                deviceModeOverride = 'desktop';
-            } else if (deviceModeOverride === 'desktop') {
-                deviceModeOverride = 'mobile';
-            } else {
-                deviceModeOverride = 'auto';
-            }
-            localStorage.setItem('deviceModeOverride', deviceModeOverride);
-            applyResponsiveLayout();
-        }
-
         function adjustSGLayoutForMobile() {
-            const isMobile = isMobileLayout();
+            const isMobile = window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024);
             const srcContainer = document.getElementById('sidebar-string-generator-content');
             const destContainer = document.getElementById('sg-mobile-options-placeholder');
             if (!srcContainer || !destContainer) return;
             
             if (isMobile) {
-                if (srcContainer.parentElement !== destContainer) {
+                if (srcContainer.parentElement.id === 'sidebar-string-generator') {
                     destContainer.appendChild(srcContainer);
                 }
             } else {
-                const sidebar = document.getElementById('sidebar-string-generator');
-                if (sidebar && srcContainer.parentElement !== sidebar) {
-                    sidebar.appendChild(srcContainer);
+                if (srcContainer.parentElement.id === 'sg-mobile-options-placeholder') {
+                    const sidebar = document.getElementById('sidebar-string-generator');
+                    if (sidebar) sidebar.appendChild(srcContainer);
                 }
             }
         }
 
         function sgGetActiveTextArea() {
-            const isMobile = isMobileLayout();
+            const isMobile = window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024);
             if (isMobile) {
                 const taMobile = document.getElementById('sg-result-mobile');
                 if (taMobile) return taMobile;
@@ -2273,7 +2178,7 @@
 
         // ── 響應式版面偵測 ──────────────────────────────────────────
         function applyResponsiveLayout() {
-            const isMobile = isMobileLayout();
+            const isMobile = window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024);
             document.body.classList.toggle('mobile-mode', isMobile);
             // 手機模式下預設收起側邊欄
             if (isMobile) {
@@ -2283,13 +2188,6 @@
                 if (backdrop) backdrop.classList.remove('visible');
             }
             adjustSGLayoutForMobile();
-
-            // 更新版面切換按鈕文字與圖示
-            updateDeviceModeUI(isMobile);
-
-            // 地圖與佈局寬高重置以防破圖
-            if (window.currentMap) setTimeout(() => window.currentMap.invalidateSize(), 150);
-            if (window.iv100Map) setTimeout(() => window.iv100Map.invalidateSize(), 150);
         }
 
         function toggleMobileSidebar() {
@@ -2469,6 +2367,8 @@
             applyResponsiveLayout();
             initMap();
             window.addEventListener('resize', applyResponsiveLayout);
+            // 預先載入寶可夢列表
+            initPokemonQueryList();
 
             // 啟用頂部導航列之滾輪橫向滾動與拖拽滾動
             const headerNav = document.querySelector('header nav');
@@ -5388,7 +5288,6 @@
         function switchToPokemonQueryView() {
             clearAllViewModes();
             document.body.classList.add('pokemon-query-mode');
-            if (!_pqInitialized) initPokemonQueryList();
             lucide.createIcons();
         }
 
@@ -5457,22 +5356,22 @@
             clearAllViewModes();
             document.body.classList.add('iv100-snipe-mode');
             lucide.createIcons();
-            _iv100LastClip = ''; // 重設上次剪貼簿內容，以便再次進入時能自動帶入相同座標
-            
+
             // 預設縮放大小：手機版 75%, 桌機版 100%
-            const isMobile = isMobileLayout();
+            const isMobile = window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024);
             updateIv100IframeScale(isMobile ? 0.75 : 1.0);
 
-            // 初始化地圖（只做一次），並在初始化後與後續進入時均延遲重整地圖尺寸以防尺寸崩塌
+            // 初始化地圖（只做一次）— 延長至 200ms 確保面板 DOM 完全渲染後再建立地圖
             setTimeout(() => {
                 if (!_iv100MapInited) {
                     initIV100Map();
                     _iv100MapInited = true;
+                    // 初始化後再呼叫一次 invalidateSize，修正容器尺寸剛確定時地圖未填滿的問題
+                    setTimeout(() => { if (iv100Map) iv100Map.invalidateSize(); }, 150);
+                } else {
+                    iv100Map.invalidateSize();
                 }
-                setTimeout(() => {
-                    if (iv100Map) iv100Map.invalidateSize();
-                }, 100);
-            }, 100);
+            }, 200);
             // 在 click 手勢環境中取得剪貼簿授權（只需一次），然後啟動輪詢
             iv100AcquireClipPermission();
         }
@@ -5486,11 +5385,6 @@
             L.control.zoom({ position: 'topright' }).addTo(iv100Map);
             const darkCfg = mapTileConfigs.dark;
             iv100TileLayer = L.tileLayer(darkCfg.url, darkCfg.opts).addTo(iv100Map);
-
-            // 監聽視窗重整以更新地圖尺寸避免灰底
-            window.addEventListener('resize', () => {
-                if (iv100Map) iv100Map.invalidateSize();
-            });
         }
 
         function iv100ChangeMapStyle(style) {
@@ -5589,8 +5483,7 @@
 
         function iv100ParseCoordInput(raw) {
             if (!raw || !raw.trim()) return;
-            // 將中文逗號、空格等字元統一替換為英文逗號以利切割
-            const cleaned = raw.trim().replace(/[，\s]+/g, ',');
+            const cleaned = raw.trim().replace(/[，　]/g, ',');
             const parts = cleaned.split(',').map(s => s.trim()).filter(Boolean);
             if (parts.length < 2) { showToast('座標格式錯誤，需為「緯度, 經度」', 'error'); return; }
             const lat = parseFloat(parts[0]);
@@ -5645,9 +5538,7 @@
 
         function iv100LooksLikeCoords(text) {
             if (!text) return false;
-            // 支援逗號、中文逗號、空白等多種分隔符號
-            const cleaned = text.trim().replace(/[，\s]+/g, ',');
-            const m = cleaned.match(/^(-?\d{1,3}\.?\d*),(-?\d{1,3}\.?\d*)$/);
+            const m = text.trim().match(/^(-?\d{1,3}\.?\d*)\s*[,，]\s*(-?\d{1,3}\.?\d*)$/);
             if (!m) return false;
             const lat = +m[1], lng = +m[2];
             return lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180;
@@ -5675,17 +5566,17 @@
                 // 在 click 手勢環境內呼叫 → 瀏覽器只詢問一次
                 await navigator.clipboard.readText();
                 _iv100ClipGranted = true;
+                iv100StartClipPoll();
             } catch(e) {
-                // 用戶拒絕或環境不支援，降級為手動輸入，但仍需啟動輪詢以防後續授權
+                // 用戶拒絕或環境不支援，降級為手動輸入
             }
-            iv100StartClipPoll();
         }
 
         function iv100StartClipPoll() {
             if (_iv100PollId) return;
             _iv100PollId = setInterval(async () => {
                 if (!document.body.classList.contains('iv100-snipe-mode')) return;
-                // 移除 document.hasFocus() 限制，以防焦點移至跨域 iframe (Moonani) 時導致剪貼簿輪詢中斷
+                if (!document.hasFocus()) return; // 沒聚焦時不輪詢避免錯誤
                 await checkClipboardForCoords();
             }, 500);
         }
@@ -6130,6 +6021,7 @@
         }
 
         function loadRelatedInfoTool(url, name, blocked) {
+            closeMobileSidebar();
             if (!document.body.classList.contains('related-info-mode')) switchToRelatedInfoView();
             const titleEl = document.getElementById('ri-detail-title');
             if (titleEl) titleEl.textContent = name;
@@ -6164,6 +6056,7 @@
         }
 
         function loadCatchQueryTool(url, name, blocked) {
+            closeMobileSidebar();
             if (!document.body.classList.contains('catch-query-mode')) switchToCatchQueryView();
             const titleEl = document.getElementById('cq-detail-title');
             if (titleEl) titleEl.textContent = name;
@@ -6210,6 +6103,7 @@
         }
 
         async function loadPokemonWikiPage(zhPath, displayName, fullUrl) {
+            closeMobileSidebar();
             if (!_pqInitialized) initPokemonQueryList();
             if (!document.body.classList.contains('pokemon-query-mode')) switchToPokemonQueryView();
             const titleEl = document.getElementById('pq-detail-title');
