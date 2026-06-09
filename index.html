@@ -383,6 +383,11 @@
             border-right: none !important;
             border-bottom: 1px solid #1f2942 !important;
         }
+
+        /* 修正手機版高度計算：body 需有明確高度，content panel 的 height:100% 才能正確解析 */
+        html { height: 100%; }
+        body { height: 100dvh !important; min-height: 0 !important; }
+        main { min-height: 0; }
     </style>
 </head>
 <body class="bg-brand-darkBg text-gray-200 font-sans min-h-screen overflow-hidden flex flex-col">
@@ -5331,20 +5336,22 @@
             clearAllViewModes();
             document.body.classList.add('iv100-snipe-mode');
             lucide.createIcons();
-            
+
             // 預設縮放大小：手機版 75%, 桌機版 100%
             const isMobile = window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024);
             updateIv100IframeScale(isMobile ? 0.75 : 1.0);
 
-            // 初始化地圖（只做一次）
+            // 初始化地圖（只做一次）— 延長至 200ms 確保面板 DOM 完全渲染後再建立地圖
             setTimeout(() => {
                 if (!_iv100MapInited) {
                     initIV100Map();
                     _iv100MapInited = true;
+                    // 初始化後再呼叫一次 invalidateSize，修正容器尺寸剛確定時地圖未填滿的問題
+                    setTimeout(() => { if (iv100Map) iv100Map.invalidateSize(); }, 150);
                 } else {
                     iv100Map.invalidateSize();
                 }
-            }, 80);
+            }, 200);
             // 在 click 手勢環境中取得剪貼簿授權（只需一次），然後啟動輪詢
             iv100AcquireClipPermission();
         }
@@ -5994,6 +6001,7 @@
         }
 
         function loadRelatedInfoTool(url, name, blocked) {
+            closeMobileSidebar();
             if (!document.body.classList.contains('related-info-mode')) switchToRelatedInfoView();
             const titleEl = document.getElementById('ri-detail-title');
             if (titleEl) titleEl.textContent = name;
@@ -6028,6 +6036,7 @@
         }
 
         function loadCatchQueryTool(url, name, blocked) {
+            closeMobileSidebar();
             if (!document.body.classList.contains('catch-query-mode')) switchToCatchQueryView();
             const titleEl = document.getElementById('cq-detail-title');
             if (titleEl) titleEl.textContent = name;
@@ -6074,6 +6083,7 @@
         }
 
         async function loadPokemonWikiPage(zhPath, displayName, fullUrl) {
+            closeMobileSidebar();
             if (!_pqInitialized) initPokemonQueryList();
             if (!document.body.classList.contains('pokemon-query-mode')) switchToPokemonQueryView();
             const titleEl = document.getElementById('pq-detail-title');
