@@ -388,6 +388,21 @@
         html { height: 100%; }
         body { height: 100dvh !important; min-height: 0 !important; }
         main { min-height: 0; }
+
+        /* ====== 響應式：交換列表 ====== */
+        body.trade-list-mode #map-section { display: none !important; }
+        body.trade-list-mode #trade-list-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
+        body.trade-list-mode #mobile-sidebar-toggle { display: none !important; }
+        
+        .trade-list-iframe-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        .trade-list-iframe-wrapper iframe {
+            border: none;
+        }
     </style>
 </head>
 <body class="bg-brand-darkBg text-gray-200 font-sans min-h-screen overflow-hidden flex flex-col">
@@ -443,6 +458,10 @@
                 <button onclick="switchModule('related-info')" id="module-btn-related-info" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
                     <i data-lucide="info" class="w-3.5 h-3.5"></i>
                     <span>相關資訊</span>
+                </button>
+                <button onclick="switchModule('trade-list')" id="module-btn-trade-list" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
+                    <i data-lucide="arrow-right-left" class="w-3.5 h-3.5"></i>
+                    <span>交換列表</span>
                 </button>
             </nav>
         </div>
@@ -1024,6 +1043,16 @@
                         <div class="flex-1 text-left min-w-0">
                             <div class="text-xs font-semibold text-white">ポケモンGO攻略速報</div>
                             <div class="text-[10px] text-gray-500 truncate">pokemongo.gamewith.jp</div>
+                        </div>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5 text-amber-500/60 shrink-0"></i>
+                    </button>
+                    <button onclick="window.open('https://www.pogomap.info/', '_blank')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-amber-500/40 hover:bg-amber-500/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0 group-hover:bg-amber-500/20 transition-colors">
+                            <i data-lucide="map" class="w-4 h-4 text-amber-400"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">Pogomap</div>
+                            <div class="text-[10px] text-gray-500 truncate">pogomap.info</div>
                         </div>
                         <i data-lucide="external-link" class="w-3.5 h-3.5 text-amber-500/60 shrink-0"></i>
                     </button>
@@ -1651,6 +1680,134 @@
             <!-- IV100狙擊側邊欄 (此模式隱藏 aside) -->
             <div id="sidebar-iv100-snipe" class="hidden flex flex-col h-full overflow-hidden"></div>
 
+            <!-- 交換列表側邊欄 -->
+            <div id="sidebar-trade-list" class="hidden flex flex-col h-full overflow-hidden bg-white text-gray-800">
+                <!-- 標題列 -->
+                <div class="p-4 border-b border-gray-200 bg-gray-50 shrink-0 flex items-center justify-between">
+                    <span class="text-xs font-bold text-gray-600 tracking-wider">Pokémon GO 工具選單</span>
+                    <span class="flex items-center space-x-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-primary pulse-light"></span>
+                        <span class="text-[10px] text-gray-400 font-mono">9DB.JP TOOLS</span>
+                    </span>
+                </div>
+                
+                <!-- 菜單捲動區 -->
+                <div class="flex-1 overflow-y-auto font-sans">
+                    <!-- Raid 分類 -->
+                    <div class="category-group">
+                        <div class="bg-[#404040] text-white px-3 py-2 text-xs font-bold border-l-4 border-[#00bcd4] flex items-center">
+                            <span>Raid</span>
+                        </div>
+                        <div class="divide-y divide-gray-100">
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/62', 'Raid Finder')" class="w-full flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-dashed border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img64_5.png?aab" class="w-6 h-6 mr-3 object-contain shrink-0" alt="Raid Finder">
+                                <span>Raid Finder</span>
+                            </button>
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/38', 'Raid Counters')" class="w-full flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-dashed border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img40_5.png?b1d" class="w-6 h-6 mr-3 object-contain shrink-0" alt="Raid Counters">
+                                <span>Raid Counters</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Tools 分類 -->
+                    <div class="category-group">
+                        <div class="bg-[#404040] text-white px-3 py-2 text-xs font-bold border-l-4 border-[#00bcd4] flex items-center">
+                            <span>Tools</span>
+                        </div>
+                        <div class="divide-y divide-gray-100">
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/2235', 'Trade List Generator')" class="w-full flex items-center px-4 py-2.5 bg-[#fff3f6] hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-dashed border-gray-100" id="trade-list-active-item">
+                                <img src="https://cdn08.net/pokego/data/img2/img2239_5.png?f6d" class="w-6 h-6 mr-3 object-contain shrink-0" alt="Trade List Generator">
+                                <span>Trade List Generator</span>
+                            </button>
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/432', 'Friend Finder')" class="w-full flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-dashed border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img3/img3413_5.png?ebe" class="w-6 h-6 mr-3 object-contain shrink-0" alt="Friend Finder">
+                                <span>Friend Finder</span>
+                            </button>
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/9', 'IV Rank Checker')" class="w-full flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-dashed border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img7_5.png?645" class="w-6 h-6 mr-3 object-contain shrink-0" alt="IV Rank Checker">
+                                <span>IV Rank Checker</span>
+                            </button>
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/map', 'Sharing Map')" class="w-full flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-dashed border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img4_5.png?e78" class="w-6 h-6 mr-3 object-contain shrink-0" alt="Sharing Map">
+                                <span>Sharing Map</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- PvP 分類 -->
+                    <div class="category-group">
+                        <div class="bg-[#404040] text-white px-3 py-2 text-xs font-bold border-l-4 border-[#00bcd4] flex items-center">
+                            <span>PvP</span>
+                        </div>
+                        <div class="divide-y divide-gray-100">
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/427', 'Leaderboard')" class="w-full flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-dashed border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img438_5.png?1e3" class="w-6 h-6 mr-3 object-contain shrink-0" alt="Leaderboard">
+                                <span>Leaderboard</span>
+                            </button>
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/388', 'PvP Finder')" class="w-full flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-dashed border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img389_5.png?98f" class="w-6 h-6 mr-3 object-contain shrink-0" alt="PvP Finder">
+                                <span>PvP Finder</span>
+                            </button>
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/53', 'Matchup Matrix')" class="w-full flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-dashed border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img56_5.png?090" class="w-6 h-6 mr-3 object-contain shrink-0" alt="Matchup Matrix">
+                                <span>Matchup Matrix</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Data 分類 -->
+                    <div class="category-group">
+                        <div class="bg-[#404040] text-white px-3 py-2 text-xs font-bold border-l-4 border-[#00bcd4] flex items-center">
+                            <span>Data</span>
+                        </div>
+                        <div class="grid grid-cols-2 divide-x divide-y divide-gray-100 bg-white">
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/27', 'Pokédex')" class="flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img32_5.png?839" class="w-6 h-6 mr-2 object-contain shrink-0" alt="Pokédex">
+                                <span class="truncate">Pokédex</span>
+                            </button>
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/30', 'Moves')" class="flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img34_5.png?f8f" class="w-6 h-6 mr-2 object-contain shrink-0" alt="Moves">
+                                <span class="truncate">Moves</span>
+                            </button>
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/541', 'GO Rockets')" class="flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img542_5.png?d0f" class="w-6 h-6 mr-2 object-contain shrink-0" alt="GO Rockets">
+                                <span class="truncate">GO Rockets</span>
+                            </button>
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/576', 'Field Research')" class="flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img578_5.png?1d1" class="w-6 h-6 mr-2 object-contain shrink-0" alt="Field Research">
+                                <span class="truncate">Field Research</span>
+                            </button>
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/51', 'Costumed Pokémon')" class="flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img54_5.png?357" class="w-6 h-6 mr-2 object-contain shrink-0" alt="Costumed Pokémon">
+                                <span class="truncate">Costumed</span>
+                            </button>
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/757', 'Shiny Pokémon')" class="flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img0/img758_5.png?910" class="w-6 h-6 mr-2 object-contain shrink-0" alt="Shiny Pokémon">
+                                <span class="truncate">Shiny</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Articles 分類 -->
+                    <div class="category-group">
+                        <div class="bg-[#404040] text-white px-3 py-2 text-xs font-bold border-l-4 border-[#00bcd4] flex items-center">
+                            <span>Articles</span>
+                        </div>
+                        <div class="divide-y divide-gray-100">
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/3383', 'PokémonGO Fun Facts')" class="w-full flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-dashed border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img3/img3386_5.png?aad" class="w-6 h-6 mr-3 object-contain shrink-0" alt="PokémonGO Fun Facts">
+                                <span>PokémonGO Fun Facts</span>
+                            </button>
+                            <button onclick="loadTradeListTool('https://9db.jp/pokego/data/1', 'General Forum')" class="w-full flex items-center px-4 py-2.5 hover:bg-gray-50 transition-colors text-left text-xs text-gray-700 font-semibold border-b border-dashed border-gray-100">
+                                <img src="https://cdn08.net/pokego/data/img3/img3414_5.png?fb5" class="w-6 h-6 mr-3 object-contain shrink-0" alt="General Forum">
+                                <span>General Forum</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
                 </aside>
 
         <!-- 右側 Leaflet 編輯地圖 -->
@@ -1815,6 +1972,60 @@
             <!-- 內容 iframe -->
             <iframe id="ri-detail-iframe" class="hidden flex-1 w-full border-0"
                 sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-top-navigation-by-user-activation"></iframe>
+        </div>
+
+        <!-- 交換列表內容面板 -->
+        <div id="trade-list-panel" style="display:none" class="flex-1 flex-col bg-[#090d16] overflow-hidden">
+            <!-- 工具列 -->
+            <div class="flex items-center px-4 h-11 bg-[#0f1422] border-b border-brand-border shrink-0 gap-3">
+                <button onclick="toggleMobileSidebar()" title="開啟選單"
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-400 hover:text-white hover:bg-brand-border shrink-0">
+                    <i data-lucide="menu" class="w-4 h-4 text-brand-primary stroke-[2.5]"></i>
+                </button>
+                <button onclick="switchToMapView()" title="關閉面板，返回地圖"
+                    class="p-1 rounded text-gray-400 hover:text-white hover:bg-brand-border transition-colors shrink-0">
+                    <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                </button>
+                <span id="trade-list-title" class="flex-1 text-xs font-semibold text-white tracking-wider truncate">交換列表</span>
+                
+                <!-- 縮放控制按鈕 -->
+                <div class="flex items-center bg-[#182030] rounded-lg border border-brand-border p-0.5 shrink-0 gap-0.5">
+                    <button onclick="changeTradeListZoom(-0.05)" title="縮小"
+                        class="p-1 rounded text-gray-400 hover:text-white hover:bg-brand-border transition-colors cursor-pointer flex items-center justify-center">
+                        <i data-lucide="minus" class="w-3.5 h-3.5 text-brand-primary"></i>
+                    </button>
+                    <span id="trade-list-zoom-label" class="text-[10px] text-gray-300 px-1 font-semibold font-mono min-w-[32px] text-center select-none">70%</span>
+                    <button onclick="changeTradeListZoom(0.05)" title="放大"
+                        class="p-1 rounded text-gray-400 hover:text-white hover:bg-brand-border transition-colors cursor-pointer flex items-center justify-center">
+                        <i data-lucide="plus" class="w-3.5 h-3.5 text-brand-primary"></i>
+                    </button>
+                </div>
+
+                <a id="trade-list-ext-link" href="https://9db.jp/pokego/data/2235" target="_blank" rel="noopener noreferrer"
+                    title="在新分頁開啟" class="flex items-center gap-1.5 text-xs text-gray-400 hover:text-brand-primary transition-colors px-2.5 py-1 rounded hover:bg-brand-border">
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    <span>開新分頁</span>
+                </a>
+                <button onclick="refreshTradeListIframe()" title="重新整理"
+                    class="p-1 rounded text-gray-400 hover:text-white hover:bg-brand-border transition-colors shrink-0">
+                    <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+            <!-- 載入中 -->
+            <div id="trade-list-loading" class="flex-1 flex items-center justify-center bg-[#090d16]">
+                <div class="text-center space-y-3">
+                    <div class="w-8 h-8 border-2 border-brand-border border-t-brand-primary rounded-full mx-auto" style="animation:spin 0.8s linear infinite"></div>
+                    <p class="text-xs text-gray-500">載入中...</p>
+                </div>
+            </div>
+            <!-- 內容 iframe 包裝器 -->
+            <div class="flex-1 w-full relative overflow-hidden bg-[#090d16] trade-list-iframe-wrapper">
+                <iframe id="trade-list-iframe" class="absolute border-0"
+                    src="about:blank"
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-top-navigation-by-user-activation"
+                    onload="document.getElementById('trade-list-loading').classList.add('hidden');this.classList.remove('hidden');if(typeof adjustTradeListScale==='function')adjustTradeListScale()">
+                </iframe>
+            </div>
         </div>
 
         <!-- 粉蝶蟲分布資訊面板 -->
@@ -2108,6 +2319,7 @@
         
         // CKDK GPX APP 工作模組狀態: 'android-pokemon' | 'itools-favorites' | 'itools-route-editor'
         let currentModule = 'itools-favorites';
+        let tradeListZoom = 0.70; // 預設 70% 縮放
         
         // 核心資料庫結構 (InMemory)
         let activeData = {
@@ -2188,6 +2400,7 @@
                 if (backdrop) backdrop.classList.remove('visible');
             }
             adjustSGLayoutForMobile();
+            if (typeof adjustTradeListScale === 'function') adjustTradeListScale();
         }
 
         function toggleMobileSidebar() {
@@ -4167,6 +4380,7 @@
             'pokemon-query':       '寶可夢查詢',
             'catch-query':         '抓寶查詢',
             'related-info':        '相關資訊',
+            'trade-list':          '交換列表',
         };
         const ALL_MODULES = Object.keys(MODULE_LABELS);
 
@@ -4216,6 +4430,8 @@
                 switchToStringGeneratorView();
             } else if (mod === 'iv100-snipe') {
                 switchToIV100SnipeView();
+            } else if (mod === 'trade-list') {
+                switchToTradeListView();
             } else {
                 switchToMapView();
             }
@@ -5282,6 +5498,7 @@
             document.body.classList.remove('string-generator-mode');
             document.body.classList.remove('vivillon-info-mode');
             document.body.classList.remove('iv100-snipe-mode');
+            document.body.classList.remove('trade-list-mode');
             iv100StopClipPoll();
         }
 
@@ -6089,6 +6306,113 @@
                 if (welcome) welcome.classList.add('hidden');
                 if (iframe)  { iframe.classList.remove('hidden'); iframe.src = url; }
             }
+        }
+
+        function switchToTradeListView() {
+            clearAllViewModes();
+            document.body.classList.add('trade-list-mode');
+            lucide.createIcons();
+            updateTradeListZoomLabel();
+            const iframe = document.getElementById('trade-list-iframe');
+            if (iframe && (iframe.src === 'about:blank' || iframe.src === '')) {
+                iframe.src = 'https://9db.jp/pokego/data/2235';
+            }
+            setTimeout(adjustTradeListScale, 100);
+        }
+
+        function loadTradeListTool(url, name) {
+            closeMobileSidebar();
+            if (!document.body.classList.contains('trade-list-mode')) switchToTradeListView();
+            
+            const titleEl = document.getElementById('trade-list-title');
+            if (titleEl) titleEl.textContent = name;
+            
+            const extLink = document.getElementById('trade-list-ext-link');
+            if (extLink) extLink.href = url;
+            
+            const welcome = document.getElementById('trade-list-loading');
+            const iframe  = document.getElementById('trade-list-iframe');
+            
+            if (welcome) welcome.classList.remove('hidden');
+            if (iframe)  {
+                iframe.classList.add('hidden');
+                iframe.src = url;
+            }
+
+            // 更新左側選單的選取狀態
+            const sidebar = document.getElementById('sidebar-trade-list');
+            if (sidebar) {
+                const buttons = sidebar.querySelectorAll('button');
+                buttons.forEach(btn => {
+                    btn.classList.remove('bg-[#fff3f6]');
+                    btn.removeAttribute('id');
+                    const onclickAttr = btn.getAttribute('onclick');
+                    if (onclickAttr && onclickAttr.includes(url)) {
+                        btn.classList.add('bg-[#fff3f6]');
+                        btn.setAttribute('id', 'trade-list-active-item');
+                    }
+                });
+            }
+            updateTradeListZoomLabel();
+            setTimeout(adjustTradeListScale, 100);
+        }
+
+        function refreshTradeListIframe() {
+            const iframe = document.getElementById('trade-list-iframe');
+            const welcome = document.getElementById('trade-list-loading');
+            if (iframe) {
+                welcome && welcome.classList.remove('hidden');
+                iframe.classList.add('hidden');
+                iframe.src = iframe.src;
+            }
+        }
+
+        function updateTradeListZoomLabel() {
+            const label = document.getElementById('trade-list-zoom-label');
+            if (label) {
+                label.textContent = `${Math.round(tradeListZoom * 100)}%`;
+            }
+        }
+
+        function changeTradeListZoom(delta) {
+            tradeListZoom = Math.max(0.25, Math.min(2.0, tradeListZoom + delta));
+            tradeListZoom = Math.round(tradeListZoom * 100) / 100;
+            updateTradeListZoomLabel();
+            adjustTradeListScale();
+        }
+
+        function adjustTradeListScale() {
+            const wrapper = document.querySelector('.trade-list-iframe-wrapper');
+            const iframe = document.getElementById('trade-list-iframe');
+            if (!wrapper || !iframe) return;
+            
+            const isMobile = document.body.classList.contains('mobile-mode');
+            const panelWidth = wrapper.clientWidth || wrapper.parentElement.clientWidth || 800;
+            const panelHeight = wrapper.clientHeight || wrapper.parentElement.clientHeight || 600;
+            
+            let targetWidth, scale;
+            
+            if (isMobile) {
+                targetWidth = panelWidth;
+                scale = tradeListZoom;
+            } else {
+                targetWidth = 720; // 限制視口寬度為 720px 以觸發 9db 的手機版排版（無側欄、無廣告）
+                const fullScale = panelWidth / targetWidth;
+                scale = fullScale * tradeListZoom;
+            }
+            
+            const topOffset = 530; // 增加偏移量至 530px，徹底隱藏影片廣告與空白區塊
+            
+            iframe.style.width = `${targetWidth}px`;
+            iframe.style.height = `${(panelHeight / scale) + topOffset}px`;
+            iframe.style.transform = `scale(${scale})`;
+            iframe.style.transformOrigin = 'top left';
+            
+            // 計算置中偏移
+            const scaledWidth = targetWidth * scale;
+            const leftOffset = (panelWidth - scaledWidth) / 2;
+            iframe.style.left = `${leftOffset / scale}px`;
+            iframe.style.top = `-${topOffset}px`; // 隱藏頂部元素
         }
 
         function clearPokemonDetail() {
