@@ -6390,18 +6390,13 @@
             const panelWidth = wrapper.clientWidth || wrapper.parentElement.clientWidth || 800;
             const panelHeight = wrapper.clientHeight || wrapper.parentElement.clientHeight || 600;
             
-            let targetWidth, scale;
+            // 限制視口寬度為 720px 以確保一致的排版與隱藏高度
+            const targetWidth = 720; 
+            const fullScale = panelWidth / targetWidth;
             
-            if (isMobile) {
-                targetWidth = panelWidth;
-                scale = tradeListZoom;
-            } else {
-                targetWidth = 720; // 限制視口寬度為 720px 以觸發 9db 的手機版排版（無側欄、無廣告）
-                const fullScale = panelWidth / targetWidth;
-                scale = fullScale * tradeListZoom;
-            }
-            
-            const topOffset = 530; // 增加偏移量至 530px，徹底隱藏影片廣告與空白區塊
+            // 在移動端，預設以填滿螢幕寬度為基準（將桌機端的 0.70 縮放比率折算為移動端的 100% 寬度）
+            const scale = isMobile ? (fullScale * (tradeListZoom / 0.7)) : (fullScale * tradeListZoom);
+            const topOffset = 530; // 徹底隱藏影片廣告與空白區塊
             
             iframe.style.width = `${targetWidth}px`;
             iframe.style.height = `${(panelHeight / scale) + topOffset}px`;
