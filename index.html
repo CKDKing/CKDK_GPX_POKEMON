@@ -394,6 +394,14 @@
         body.trade-list-mode #trade-list-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
         body.trade-list-mode #mobile-sidebar-toggle { display: none !important; }
         
+        #trade-list-mobile-nav::-webkit-scrollbar {
+            display: none !important;
+        }
+        #trade-list-mobile-nav {
+            scrollbar-width: none !important;
+            -ms-overflow-style: none !important;
+        }
+        
         .trade-list-iframe-wrapper {
             position: relative;
             overflow: hidden;
@@ -2009,6 +2017,82 @@
                 <button onclick="refreshTradeListIframe()" title="重新整理"
                     class="p-1 rounded text-gray-400 hover:text-white hover:bg-brand-border transition-colors shrink-0">
                     <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                </button>
+            </div>
+            <!-- 手機版工具選單 (橫向滾動) -->
+            <div id="trade-list-mobile-nav" class="md:hidden flex items-center bg-[#131929] border-b border-brand-border px-3 py-2 overflow-x-auto gap-2 shrink-0">
+                <!-- Raid -->
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/62', 'Raid Finder')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img64_5.png?aab" class="w-4 h-4 object-contain shrink-0" alt="Raid Finder">
+                    <span>Raid Finder</span>
+                </button>
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/38', 'Raid Counters')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img40_5.png?b1d" class="w-4 h-4 object-contain shrink-0" alt="Raid Counters">
+                    <span>Raid Counters</span>
+                </button>
+                <!-- Tools -->
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/2235', 'Trade List Generator')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-[#fff3f6] text-gray-700 border border-brand-border hover:text-white transition-all duration-300 whitespace-nowrap shrink-0" id="trade-list-mobile-active-item">
+                    <img src="https://cdn08.net/pokego/data/img2/img2239_5.png?f6d" class="w-4 h-4 object-contain shrink-0" alt="Trade List Generator">
+                    <span>Trade List Generator</span>
+                </button>
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/432', 'Friend Finder')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img3/img3413_5.png?ebe" class="w-4 h-4 object-contain shrink-0" alt="Friend Finder">
+                    <span>Friend Finder</span>
+                </button>
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/9', 'IV Rank Checker')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img7_5.png?645" class="w-4 h-4 object-contain shrink-0" alt="IV Rank Checker">
+                    <span>IV Rank Checker</span>
+                </button>
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/map', 'Sharing Map')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img4_5.png?e78" class="w-4 h-4 object-contain shrink-0" alt="Sharing Map">
+                    <span>Sharing Map</span>
+                </button>
+                <!-- PvP -->
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/427', 'Leaderboard')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img438_5.png?1e3" class="w-4 h-4 object-contain shrink-0" alt="Leaderboard">
+                    <span>Leaderboard</span>
+                </button>
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/388', 'PvP Finder')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img389_5.png?98f" class="w-4 h-4 object-contain shrink-0" alt="PvP Finder">
+                    <span>PvP Finder</span>
+                </button>
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/53', 'Matchup Matrix')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img56_5.png?090" class="w-4 h-4 object-contain shrink-0" alt="Matchup Matrix">
+                    <span>Matchup Matrix</span>
+                </button>
+                <!-- Data -->
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/27', 'Pokédex')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img32_5.png?839" class="w-4 h-4 object-contain shrink-0" alt="Pokédex">
+                    <span>Pokédex</span>
+                </button>
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/30', 'Moves')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img34_5.png?f8f" class="w-4 h-4 object-contain shrink-0" alt="Moves">
+                    <span>Moves</span>
+                </button>
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/541', 'GO Rockets')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img542_5.png?d0f" class="w-4 h-4 object-contain shrink-0" alt="GO Rockets">
+                    <span>GO Rockets</span>
+                </button>
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/576', 'Field Research')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img578_5.png?1d1" class="w-4 h-4 object-contain shrink-0" alt="Field Research">
+                    <span>Field Research</span>
+                </button>
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/51', 'Costumed Pokémon')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img54_5.png?357" class="w-4 h-4 object-contain shrink-0" alt="Costumed">
+                    <span>Costumed</span>
+                </button>
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/757', 'Shiny Pokémon')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img0/img758_5.png?910" class="w-4 h-4 object-contain shrink-0" alt="Shiny">
+                    <span>Shiny</span>
+                </button>
+                <!-- Articles -->
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/3383', 'PokémonGO Fun Facts')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img3/img3386_5.png?aad" class="w-4 h-4 object-contain shrink-0" alt="PokémonGO Fun Facts">
+                    <span>Fun Facts</span>
+                </button>
+                <button onclick="loadTradeListTool('https://9db.jp/pokego/data/1', 'General Forum')" class="flex items-center space-x-1 px-2.5 py-1.5 rounded-lg text-[10px] font-semibold bg-brand-cardBg border border-brand-border text-gray-300 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0">
+                    <img src="https://cdn08.net/pokego/data/img3/img3414_5.png?fb5" class="w-4 h-4 object-contain shrink-0" alt="General Forum">
+                    <span>General Forum</span>
                 </button>
             </div>
             <!-- 載入中 -->
@@ -6353,6 +6437,23 @@
                     }
                 });
             }
+
+            // 更新手機版選項的選取狀態
+            const mobileNav = document.getElementById('trade-list-mobile-nav');
+            if (mobileNav) {
+                const buttons = mobileNav.querySelectorAll('button');
+                buttons.forEach(btn => {
+                    btn.classList.remove('bg-[#fff3f6]', 'text-gray-700');
+                    btn.classList.add('bg-brand-cardBg', 'text-gray-300');
+                    btn.removeAttribute('id');
+                    const onclickAttr = btn.getAttribute('onclick');
+                    if (onclickAttr && onclickAttr.includes(url)) {
+                        btn.classList.add('bg-[#fff3f6]', 'text-gray-700');
+                        btn.classList.remove('bg-brand-cardBg', 'text-gray-300');
+                        btn.setAttribute('id', 'trade-list-mobile-active-item');
+                    }
+                });
+            }
             updateTradeListZoomLabel();
             setTimeout(adjustTradeListScale, 100);
         }
@@ -6381,7 +6482,7 @@
             adjustTradeListScale();
         }
 
-        function adjustTradeListScale() {
+         function adjustTradeListScale() {
             const wrapper = document.querySelector('.trade-list-iframe-wrapper');
             const iframe = document.getElementById('trade-list-iframe');
             if (!wrapper || !iframe) return;
@@ -6396,7 +6497,7 @@
             
             // 在移動端，預設以填滿螢幕寬度為基準（將桌機端的 0.70 縮放比率折算為移動端的 100% 寬度）
             const scale = isMobile ? (fullScale * (tradeListZoom / 0.7)) : (fullScale * tradeListZoom);
-            const topOffset = 530; // 徹底隱藏影片廣告與空白區塊
+            const topOffset = 0; // 原本上方530 取消
             
             iframe.style.width = `${targetWidth}px`;
             iframe.style.height = `${(panelHeight / scale) + topOffset}px`;
