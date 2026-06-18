@@ -288,14 +288,53 @@
         /* 手機：地圖控制面板縮小 */
         .mobile-mode .map-style-panel { width: 210px !important; }
 
+        /* 頁籤精緻化與尺寸微調 */
+        .nav-tab-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3.5px 7px; /* 緊湊內縮排 */
+            border-radius: 8px;
+            font-size: 10px; /* 縮小字體 */
+            font-weight: 800; /* 粗體 */
+            color: #9ca3af; /* text-gray-400 */
+            background: transparent;
+            border: 1px solid transparent;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        .nav-tab-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        .nav-tab-btn.active {
+            color: #0b0f19; /* 深色字體，搭配主色背景 */
+            background: #00ffcc; /* 主色 bg-brand-primary */
+            border-color: #00ffcc;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+        }
+        /* icon 尺寸限制，與文字等高 */
+        .nav-tab-btn i, .nav-tab-btn svg {
+            width: 11px !important;
+            height: 11px !important;
+            stroke-width: 2.5px;
+        }
+
         @media (max-width: 767px) {
             body { overflow: hidden; }
         }
         @keyframes spin { to { transform: rotate(360deg); } }
+        body.event-info-mode #map-section { display: none !important; }
+        body.event-info-mode #ei-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
         body.pokemon-query-mode #map-section { display: none !important; }
         body.pokemon-query-mode #pq-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
         body.catch-query-mode #map-section { display: none !important; }
         body.catch-query-mode #cq-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
+        body.type-attack-mode #map-section { display: none !important; }
+        body.type-attack-mode #ta-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
         body.related-info-mode #map-section { display: none !important; }
         body.related-info-mode #ri-content-panel { display: flex !important; flex: 1 1 0%; min-width: 0; min-height: 0; height: 100%; }
         body.string-generator-mode #map-section { display: none !important; }
@@ -429,45 +468,53 @@
             
             <!-- 主要頁籤導覽列 -->
             <nav class="flex items-center space-x-1 bg-brand-inputBg border border-brand-border rounded-xl p-1 ml-6 overflow-x-auto min-w-0" style="max-width: 100%;">
-                <button onclick="switchModule('itools-favorites')" id="module-btn-itools-favorites" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-brand-primary text-brand-darkBg transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
+                <button onclick="switchModule('event-info')" id="module-btn-event-info" class="nav-tab-btn active">
+                    <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                    <span>活動資訊</span>
+                </button>
+                <button onclick="switchModule('itools-favorites')" id="module-btn-itools-favorites" class="nav-tab-btn">
                     <i data-lucide="folder-heart" class="w-3.5 h-3.5"></i>
                     <span>iToolsBT 最愛位置</span>
                 </button>
-                <button onclick="switchModule('itools-route-editor')" id="module-btn-itools-route-editor" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
+                <button onclick="switchModule('itools-route-editor')" id="module-btn-itools-route-editor" class="nav-tab-btn">
                     <i data-lucide="map" class="w-3.5 h-3.5"></i>
                     <span>iToolsBT 路徑編輯</span>
                 </button>
-                <button onclick="switchModule('iv100-snipe')" id="module-btn-iv100-snipe" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
+                <button onclick="switchModule('iv100-snipe')" id="module-btn-iv100-snipe" class="nav-tab-btn">
                     <i data-lucide="crosshair" class="w-3.5 h-3.5"></i>
                     <span>IV100狙擊</span>
                 </button>
-                <button onclick="switchModule('vivillon-location')" id="module-btn-vivillon-location" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
+                <button onclick="switchModule('vivillon-location')" id="module-btn-vivillon-location" class="nav-tab-btn">
                     <i data-lucide="map-pin-plus" class="w-3.5 h-3.5"></i>
                     <span>粉蝶蟲位置</span>
                 </button>
-                <button onclick="switchModule('string-generator')" id="module-btn-string-generator" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
+                <button onclick="switchModule('string-generator')" id="module-btn-string-generator" class="nav-tab-btn">
                     <i data-lucide="code-2" class="w-3.5 h-3.5"></i>
                     <span>字串產生器</span>
                 </button>
-                <button onclick="switchModule('android-pokemon')" id="module-btn-android-pokemon" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
+                <button onclick="switchModule('android-pokemon')" id="module-btn-android-pokemon" class="nav-tab-btn">
                     <i data-lucide="android" class="w-3.5 h-3.5"></i>
                     <span>Android飛人寶可夢</span>
                 </button>
                 <!-- 分隔線 -->
                 <div class="w-px h-5 bg-brand-border/60 mx-1 shrink-0"></div>
-                <button onclick="switchModule('pokemon-query')" id="module-btn-pokemon-query" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
+                <button onclick="switchModule('pokemon-query')" id="module-btn-pokemon-query" class="nav-tab-btn">
                     <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
                     <span>寶可夢查詢</span>
                 </button>
-                <button onclick="switchModule('catch-query')" id="module-btn-catch-query" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
+                <button onclick="switchModule('catch-query')" id="module-btn-catch-query" class="nav-tab-btn">
                     <i data-lucide="target" class="w-3.5 h-3.5"></i>
                     <span>抓寶查詢</span>
                 </button>
-                <button onclick="switchModule('related-info')" id="module-btn-related-info" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
+                <button onclick="switchModule('type-attack')" id="module-btn-type-attack" class="nav-tab-btn">
+                    <i data-lucide="swords" class="w-3.5 h-3.5"></i>
+                    <span>屬性攻擊調查</span>
+                </button>
+                <button onclick="switchModule('related-info')" id="module-btn-related-info" class="nav-tab-btn">
                     <i data-lucide="info" class="w-3.5 h-3.5"></i>
                     <span>相關資訊</span>
                 </button>
-                <button onclick="switchModule('trade-list')" id="module-btn-trade-list" class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0">
+                <button onclick="switchModule('trade-list')" id="module-btn-trade-list" class="nav-tab-btn">
                     <i data-lucide="arrow-right-left" class="w-3.5 h-3.5"></i>
                     <span>交換列表</span>
                 </button>
@@ -734,8 +781,66 @@
             </div>
 
 
+            <!-- 活動資訊側邊欄 -->
+            <div id="sidebar-event-info" class="hidden flex flex-col h-full overflow-hidden">
+                <!-- 標題列 -->
+                <div class="p-4 border-b border-brand-border bg-[#090d16]/30 shrink-0">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-gray-400 tracking-wider">活動與團戰資訊</span>
+                        <span class="flex items-center space-x-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-primary pulse-light"></span>
+                            <span class="text-[10px] text-gray-500 font-mono">EVENT MODE</span>
+                        </span>
+                    </div>
+                </div>
+                <!-- 連結清單 -->
+                <div class="flex-1 overflow-y-auto p-3 space-y-1.5">
+                    <div class="text-[10px] font-bold text-gray-500 tracking-wider px-1 pt-2 pb-0.5">可嵌入顯示</div>
+                    <button onclick="loadEventInfoTool('https://leekduck.com/events/?utm_source=chatgpt.com', 'Leek Duck 活動時程')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-brand-primary/50 hover:bg-brand-primary/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center shrink-0 group-hover:bg-brand-primary/20 transition-colors">
+                            <i data-lucide="calendar" class="w-4 h-4 text-brand-primary"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">Leek Duck 活動時程</div>
+                            <div class="text-[10px] text-gray-500 truncate">leekduck.com</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-600 shrink-0"></i>
+                    </button>
+                    <button onclick="loadEventInfoTool('https://leekduck.com/raid-bosses/?utm_source=chatgpt.com', 'Leek Duck 團戰頭目')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-brand-primary/50 hover:bg-brand-primary/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center shrink-0 group-hover:bg-brand-primary/20 transition-colors">
+                            <i data-lucide="swords" class="w-4 h-4 text-brand-primary"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">Leek Duck 團戰頭目</div>
+                            <div class="text-[10px] text-gray-500 truncate">leekduck.com</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-600 shrink-0"></i>
+                    </button>
+                    <button onclick="loadEventInfoTool('https://pokemongohub.net/post/guide/current-go-raids/?utm_source=chatgpt.com', 'GoHub 目前團戰頭目')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-brand-primary/50 hover:bg-brand-primary/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center shrink-0 group-hover:bg-brand-primary/20 transition-colors">
+                            <i data-lucide="target" class="w-4 h-4 text-brand-primary"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">GoHub 目前團戰頭目</div>
+                            <div class="text-[10px] text-gray-500 truncate">pokemongohub.net</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-600 shrink-0"></i>
+                    </button>
+                    <button onclick="loadEventInfoTool('https://www.snacknap.com/raids?utm_source=chatgpt.com', 'SnackNap 團戰資訊')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-brand-primary/50 hover:bg-brand-primary/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center shrink-0 group-hover:bg-brand-primary/20 transition-colors">
+                            <i data-lucide="activity" class="w-4 h-4 text-brand-primary"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">SnackNap 團戰資訊</div>
+                            <div class="text-[10px] text-gray-500 truncate">snacknap.com</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-600 shrink-0"></i>
+                    </button>
+                </div>
+            </div>
+
             <!-- iToolsBT 最愛位置側邊欄 -->
-            <div id="sidebar-itools-favorites" class="flex flex-col h-full overflow-hidden">
+            <div id="sidebar-itools-favorites" class="hidden flex flex-col h-full overflow-hidden">
                 <!-- 快速操作區 -->
                 <div class="p-4 border-b border-brand-border bg-[#090d16]/30 shrink-0 space-y-3">
                     <div class="flex items-center justify-between">
@@ -924,6 +1029,66 @@
                 </div>
             </div>
 
+            <!-- 屬性攻擊調查側邊欄 -->
+            <div id="sidebar-type-attack" class="hidden flex flex-col h-full overflow-hidden">
+                <!-- 標題列 -->
+                <div class="p-4 border-b border-brand-border bg-[#090d16]/30 shrink-0">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-gray-400 tracking-wider">屬性攻擊調查</span>
+                        <span class="flex items-center space-x-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-brand-accent pulse-light"></span>
+                            <span class="text-[10px] text-gray-500 font-mono">ATTACK MODE</span>
+                        </span>
+                    </div>
+                </div>
+                <!-- 連結清單 -->
+                <div class="flex-1 overflow-y-auto p-3 space-y-1.5">
+                    <div class="text-[10px] font-bold text-gray-500 tracking-wider px-1 pt-2 pb-0.5">可嵌入顯示</div>
+                    <button onclick="loadTypeAttackTool('https://www.dialgadex.com/?strongest=&amp;t=Any', 'DialgaDex 屬性強者')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-brand-accent/50 hover:bg-brand-accent/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-brand-accent/10 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
+                            <i data-lucide="shield" class="w-4 h-4 text-brand-accent"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">DialgaDex 屬性強者</div>
+                            <div class="text-[10px] text-gray-500 truncate">dialgadex.com</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-600 shrink-0"></i>
+                    </button>
+                    <button onclick="loadTypeAttackTool('https://pokebase.app/pokemon-go/p/best-attackers-by-type?utm_source=chatgpt.com', 'PokéBase 最佳打手')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-brand-accent/50 hover:bg-brand-accent/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-brand-accent/10 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
+                            <i data-lucide="layers" class="w-4 h-4 text-brand-accent"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">PokéBase 最佳打手</div>
+                            <div class="text-[10px] text-gray-500 truncate">pokebase.app</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-600 shrink-0"></i>
+                    </button>
+
+                    <div class="text-[10px] font-bold text-gray-500 tracking-wider px-1 pt-2 pb-0.5">另開新分頁（網站封鎖嵌入）</div>
+                    <button onclick="window.open('https://db.pokemongohub.net/best/attackers-per-type?utm_source=chatgpt.com', '_blank')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-amber-500/40 hover:bg-amber-500/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0 group-hover:bg-amber-500/20 transition-colors">
+                            <i data-lucide="swords" class="w-4 h-4 text-amber-400"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">GoHub 屬性最佳打手</div>
+                            <div class="text-[10px] text-gray-500 truncate">db.pokemongohub.net</div>
+                        </div>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5 text-amber-500/60 shrink-0"></i>
+                    </button>
+                    <button onclick="window.open('https://pokemondb.net/type?utm_source=chatgpt.com', '_blank')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-amber-500/40 hover:bg-amber-500/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0 group-hover:bg-amber-500/20 transition-colors">
+                            <i data-lucide="database" class="w-4 h-4 text-amber-400"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">Pokémon Database 屬性</div>
+                            <div class="text-[10px] text-gray-500 truncate">pokemondb.net</div>
+                        </div>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5 text-amber-500/60 shrink-0"></i>
+                    </button>
+                </div>
+            </div>
+
             <!-- 相關資訊側邊欄 -->
             <div id="sidebar-related-info" class="hidden flex flex-col h-full overflow-hidden">
                 <!-- 標題列 -->
@@ -959,13 +1124,53 @@
                         </div>
                         <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-600 shrink-0"></i>
                     </button>
-                    <button onclick="loadRelatedInfoTool('https://pokebase.app/pokemon-go', 'PokéBase')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-brand-accent/50 hover:bg-brand-accent/5 transition-all group">
+                    <button onclick="loadRelatedInfoTool('https://pokebase.app/', 'PokéBase')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-brand-accent/50 hover:bg-brand-accent/5 transition-all group">
                         <div class="w-8 h-8 rounded-lg bg-brand-accent/10 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
                             <i data-lucide="layers" class="w-4 h-4 text-brand-accent"></i>
                         </div>
                         <div class="flex-1 text-left min-w-0">
                             <div class="text-xs font-semibold text-white">PokéBase</div>
                             <div class="text-[10px] text-gray-500 truncate">pokebase.app</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-600 shrink-0"></i>
+                    </button>
+                    <button onclick="loadRelatedInfoTool('https://leekduck.com/', 'Leek Duck')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-brand-accent/50 hover:bg-brand-accent/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-brand-accent/10 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
+                            <i data-lucide="feather" class="w-4 h-4 text-brand-accent"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">Leek Duck</div>
+                            <div class="text-[10px] text-gray-500 truncate">leekduck.com</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-600 shrink-0"></i>
+                    </button>
+                    <button onclick="loadRelatedInfoTool('https://pokemongohub.net/', 'PokemonGoHub')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-brand-accent/50 hover:bg-brand-accent/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-brand-accent/10 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
+                            <i data-lucide="globe" class="w-4 h-4 text-brand-accent"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">PokemonGoHub</div>
+                            <div class="text-[10px] text-gray-500 truncate">pokemongohub.net</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-600 shrink-0"></i>
+                    </button>
+                    <button onclick="loadRelatedInfoTool('https://www.snacknap.com/', '★Snacknap')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-brand-accent/50 hover:bg-brand-accent/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-brand-accent/10 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
+                            <i data-lucide="star" class="w-4 h-4 text-brand-accent"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">★Snacknap</div>
+                            <div class="text-[10px] text-gray-500 truncate">snacknap.com</div>
+                        </div>
+                        <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-600 shrink-0"></i>
+                    </button>
+                    <button onclick="loadRelatedInfoTool('https://www.dialgadex.com/', '★DialgaDex')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-brand-accent/50 hover:bg-brand-accent/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-brand-accent/10 flex items-center justify-center shrink-0 group-hover:bg-brand-accent/20 transition-colors">
+                            <i data-lucide="shield" class="w-4 h-4 text-brand-accent"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">★DialgaDex</div>
+                            <div class="text-[10px] text-gray-500 truncate">dialgadex.com</div>
                         </div>
                         <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-gray-600 shrink-0"></i>
                     </button>
@@ -1101,6 +1306,16 @@
                         <div class="flex-1 text-left min-w-0">
                             <div class="text-xs font-semibold text-white">Pokemon-Zone</div>
                             <div class="text-[10px] text-gray-500 truncate">pokemon-zone.com</div>
+                        </div>
+                        <i data-lucide="external-link" class="w-3.5 h-3.5 text-amber-500/60 shrink-0"></i>
+                    </button>
+                    <button onclick="window.open('https://pvpoke.com/', '_blank')" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-cardBg/60 border border-brand-border/30 hover:border-amber-500/40 hover:bg-amber-500/5 transition-all group">
+                        <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center shrink-0 group-hover:bg-amber-500/20 transition-colors">
+                            <i data-lucide="swords" class="w-4 h-4 text-amber-400"></i>
+                        </div>
+                        <div class="flex-1 text-left min-w-0">
+                            <div class="text-xs font-semibold text-white">PVPoke</div>
+                            <div class="text-[10px] text-gray-500 truncate">pvpoke.com</div>
                         </div>
                         <i data-lucide="external-link" class="w-3.5 h-3.5 text-amber-500/60 shrink-0"></i>
                     </button>
@@ -1951,6 +2166,65 @@
                 sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-top-navigation-by-user-activation"></iframe>
         </div>
 
+        <!-- 活動資訊內容面板 -->
+        <div id="ei-content-panel" style="display:none" class="flex-1 flex-col bg-white overflow-hidden">
+            <!-- 工具列 -->
+            <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
+                <button onclick="toggleMobileSidebar()" title="開啟選單"
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+                    <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
+                </button>
+                <button onclick="switchToMapView()" title="關閉面板"
+                    class="p-1 rounded text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors shrink-0">
+                    <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                </button>
+                <span id="ei-detail-title" class="flex-1 text-sm font-semibold text-gray-700 truncate">點擊左側連結</span>
+                <a id="ei-detail-ext-link" href="#" target="_blank" title="在新分頁開啟"
+                    class="flex items-center gap-1.5 text-xs text-gray-400 hover:text-blue-600 transition-colors px-2 py-1 rounded hover:bg-gray-100">
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    <span>開新分頁</span>
+                </a>
+            </div>
+            <!-- 歡迎畫面 -->
+            <div id="ei-detail-welcome" class="flex-1 overflow-hidden">
+                <!-- 將由 JS 動態載入活動看板結果 -->
+            </div>
+            <!-- 內容 iframe -->
+            <iframe id="ei-detail-iframe" class="hidden flex-1 w-full border-0"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-top-navigation-by-user-activation"></iframe>
+        </div>
+
+        <!-- 屬性攻擊調查內容面板 -->
+        <div id="ta-content-panel" style="display:none" class="flex-1 flex-col bg-white overflow-hidden">
+            <!-- 工具列 -->
+            <div class="flex items-center px-4 h-11 bg-gray-100 border-b border-gray-200 shrink-0 gap-3">
+                <button onclick="toggleMobileSidebar()" title="開啟選單"
+                    class="md:hidden flex items-center justify-center p-1 rounded text-gray-500 hover:text-gray-700 hover:bg-gray-200 shrink-0">
+                    <i data-lucide="menu" class="w-4 h-4 text-brand-secondary stroke-[2.5]"></i>
+                </button>
+                <button onclick="switchToMapView()" title="關閉面板"
+                    class="p-1 rounded text-gray-400 hover:text-gray-700 hover:bg-gray-200 transition-colors shrink-0">
+                    <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                </button>
+                <span id="ta-detail-title" class="flex-1 text-sm font-semibold text-gray-700 truncate">點擊左側連結</span>
+                <a id="ta-detail-ext-link" href="#" target="_blank" title="在新分頁開啟"
+                    class="flex items-center gap-1.5 text-xs text-gray-400 hover:text-blue-600 transition-colors px-2 py-1 rounded hover:bg-gray-100">
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                    <span>開新分頁</span>
+                </a>
+            </div>
+            <!-- 歡迎畫面 -->
+            <div id="ta-detail-welcome" class="flex-1 flex items-center justify-center bg-gray-50">
+                <div class="text-center space-y-3">
+                    <i data-lucide="swords" class="w-14 h-14 text-gray-200 mx-auto"></i>
+                    <p class="text-sm text-gray-400">點擊左側連結開始查詢</p>
+                </div>
+            </div>
+            <!-- 內容 iframe -->
+            <iframe id="ta-detail-iframe" class="hidden flex-1 w-full border-0"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms allow-top-navigation-by-user-activation"></iframe>
+        </div>
+
         <!-- 相關資訊內容面板 -->
         <div id="ri-content-panel" style="display:none" class="flex-1 flex-col bg-white overflow-hidden">
             <!-- 工具列 -->
@@ -2395,6 +2669,7 @@
     </div>
 
     <!-- JS 控制核心 -->
+    <script src="pokolist_data.js"></script>
     <script>
         let currentMap = null;
         let currentStyle = 'dark';
@@ -2402,7 +2677,7 @@
         let currentFilename = 'imported_gpx.gpx';
         
         // CKDK GPX APP 工作模組狀態: 'android-pokemon' | 'itools-favorites' | 'itools-route-editor'
-        let currentModule = 'itools-favorites';
+        let currentModule = '';
         let tradeListZoom = 0.70; // 預設 70% 縮放
         
         // 核心資料庫結構 (InMemory)
@@ -2506,6 +2781,13 @@
             const backdrop = document.getElementById('sidebar-backdrop');
             aside && aside.classList.remove('sidebar-open');
             backdrop && backdrop.classList.remove('visible');
+        }
+
+        function openMobileSidebar() {
+            const aside = document.querySelector('aside');
+            const backdrop = document.getElementById('sidebar-backdrop');
+            aside && aside.classList.add('sidebar-open');
+            backdrop && backdrop.classList.add('visible');
         }
 
         // 在地圖上放置桃紅色定位點（與搜尋結果共用同一個 marker）
@@ -2666,6 +2948,9 @@
             window.addEventListener('resize', applyResponsiveLayout);
             // 預先載入寶可夢列表
             initPokemonQueryList();
+
+            // 依據預設模組進行初始化切換 (固定以活動資訊開啟)
+            switchModule('event-info');
 
             // 啟用頂部導航列之滾輪橫向滾動與拖拽滾動
             const headerNav = document.querySelector('header nav');
@@ -4455,6 +4740,7 @@
 
         // --- 全域工作空間切換 ---
         const MODULE_LABELS = {
+            'event-info':          '活動資訊',
             'itools-favorites':    'iToolsBT 最愛位置',
             'itools-route-editor': 'iToolsBT 路徑編輯',
             'iv100-snipe':         'IV100狙擊',
@@ -4463,13 +4749,17 @@
             'android-pokemon':     'Android飛人寶可夢',
             'pokemon-query':       '寶可夢查詢',
             'catch-query':         '抓寶查詢',
+            'type-attack':         '屬性攻擊調查',
             'related-info':        '相關資訊',
             'trade-list':          '交換列表',
         };
         const ALL_MODULES = Object.keys(MODULE_LABELS);
 
         function switchModule(mod) {
-            if (currentModule === mod) return;
+            if (currentModule === mod) {
+                if (mod === 'event-info') switchToEventInfoView();
+                return;
+            }
             currentModule = mod;
 
             // 更新頁籤樣式
@@ -4477,9 +4767,9 @@
                 const btn = document.getElementById(`module-btn-${m}`);
                 if (!btn) return;
                 if (m === mod) {
-                    btn.className = "flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold bg-brand-primary text-brand-darkBg transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0 shadow-lg";
+                    btn.className = "nav-tab-btn active";
                 } else {
-                    btn.className = "flex items-center space-x-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-gray-400 hover:text-white transition-all duration-300 cursor-pointer whitespace-nowrap shrink-0";
+                    btn.className = "nav-tab-btn";
                 }
             });
 
@@ -4504,10 +4794,14 @@
             }
 
             // 切換地圖 vs 內容面板
-            if (mod === 'pokemon-query') {
+            if (mod === 'event-info') {
+                switchToEventInfoView();
+            } else if (mod === 'pokemon-query') {
                 switchToPokemonQueryView();
             } else if (mod === 'catch-query') {
                 switchToCatchQueryView();
+            } else if (mod === 'type-attack') {
+                switchToTypeAttackView();
             } else if (mod === 'related-info') {
                 switchToRelatedInfoView();
             } else if (mod === 'string-generator') {
@@ -5489,7 +5783,751 @@
 
     
         // ── 寶可夢資料 ──────────────────────────────────────────
-        const POKOLIST=[[1,"妙蛙種子","%E5%A6%99%E8%9B%99%E7%A7%8D%E5%AD%90","フシギダネ","Bulbasaur",1],[2,"妙蛙草","%E5%A6%99%E8%9B%99%E8%8D%89","フシギソウ","Ivysaur",1],[3,"妙蛙花","%E5%A6%99%E8%9B%99%E8%8A%B1","フシギバナ","Venusaur",1],[4,"小火龍","%E5%B0%8F%E7%81%AB%E9%BE%99","ヒトカゲ","Charmander",1],[5,"火恐龍","%E7%81%AB%E6%81%90%E9%BE%99","リザード","Charmeleon",1],[6,"噴火龍","%E5%96%B7%E7%81%AB%E9%BE%99","リザードン","Charizard",1],[7,"傑尼龜","%E6%9D%B0%E5%B0%BC%E9%BE%9F","ゼニガメ","Squirtle",1],[8,"卡咪龜","%E5%8D%A1%E5%92%AA%E9%BE%9F","カメール","Wartortle",1],[9,"水箭龜","%E6%B0%B4%E7%AE%AD%E9%BE%9F","カメックス","Blastoise",1],[10,"綠毛蟲","%E7%BB%BF%E6%AF%9B%E8%99%AB","キャタピー","Caterpie",1],[11,"鐵甲蛹","%E9%93%81%E7%94%B2%E8%9B%B9","トランセル","Metapod",1],[12,"巴大蝶","%E5%B7%B4%E5%A4%A7%E8%9D%B6","バタフリー","Butterfree",1],[13,"獨角蟲","%E7%8B%AC%E8%A7%92%E8%99%AB","ビードル","Weedle",1],[14,"鐵殼蛹","%E9%93%81%E5%A3%B3%E8%9B%B9","コクーン","Kakuna",1],[15,"大針蜂","%E5%A4%A7%E9%92%88%E8%9C%82","スピアー","Beedrill",1],[16,"波波","%E6%B3%A2%E6%B3%A2","ポッポ","Pidgey",1],[17,"比比鳥","%E6%AF%94%E6%AF%94%E9%B8%9F","ピジョン","Pidgeotto",1],[18,"大比鳥","%E5%A4%A7%E6%AF%94%E9%B8%9F","ピジョット","Pidgeot",1],[19,"小拉達","%E5%B0%8F%E6%8B%89%E8%BE%BE","コラッタ","Rattata",1],[20,"拉達","%E6%8B%89%E8%BE%BE","ラッタ","Raticate",1],[21,"烈雀","%E7%83%88%E9%9B%80","オニスズメ","Spearow",1],[22,"大嘴雀","%E5%A4%A7%E5%98%B4%E9%9B%80","オニドリル","Fearow",1],[23,"阿柏蛇","%E9%98%BF%E6%9F%8F%E8%9B%87","アーボ","Ekans",1],[24,"阿柏怪","%E9%98%BF%E6%9F%8F%E6%80%AA","アーボック","Arbok",1],[25,"皮卡丘","%E7%9A%AE%E5%8D%A1%E4%B8%98","ピカチュウ","Pikachu",1],[26,"雷丘","%E9%9B%B7%E4%B8%98","ライチュウ","Raichu",1],[27,"穿山鼠","%E7%A9%BF%E5%B1%B1%E9%BC%A0","サンド","Sandshrew",1],[28,"穿山王","%E7%A9%BF%E5%B1%B1%E7%8E%8B","サンドパン","Sandslash",1],[29,"尼多蘭","%E5%B0%BC%E5%A4%9A%E5%85%B0","ニドラン♀","Nidoran♀",1],[30,"尼多娜","%E5%B0%BC%E5%A4%9A%E5%A8%9C","ニドリーナ","Nidorina",1],[31,"尼多后","%E5%B0%BC%E5%A4%9A%E5%90%8E","ニドクイン","Nidoqueen",1],[32,"尼多朗","%E5%B0%BC%E5%A4%9A%E6%9C%97","ニドラン♂","Nidoran♂",1],[33,"尼多力諾","%E5%B0%BC%E5%A4%9A%E5%8A%9B%E8%AF%BA","ニドリーノ","Nidorino",1],[34,"尼多王","%E5%B0%BC%E5%A4%9A%E7%8E%8B","ニドキング","Nidoking",1],[35,"皮皮","%E7%9A%AE%E7%9A%AE","ピッピ","Clefairy",1],[36,"皮可西","%E7%9A%AE%E5%8F%AF%E8%A5%BF","ピクシー","Clefable",1],[37,"六尾","%E5%85%AD%E5%B0%BE","ロコン","Vulpix",1],[38,"九尾","%E4%B9%9D%E5%B0%BE","キュウコン","Ninetales",1],[39,"胖丁","%E8%83%96%E4%B8%81","プリン","Jigglypuff",1],[40,"胖可丁","%E8%83%96%E5%8F%AF%E4%B8%81","プクリン","Wigglytuff",1],[41,"超音蝠","%E8%B6%85%E9%9F%B3%E8%9D%A0","ズバット","Zubat",1],[42,"大嘴蝠","%E5%A4%A7%E5%98%B4%E8%9D%A0","ゴルバット","Golbat",1],[43,"走路草","%E8%B5%B0%E8%B7%AF%E8%8D%89","ナゾノクサ","Oddish",1],[44,"臭臭花","%E8%87%AD%E8%87%AD%E8%8A%B1","クサイハナ","Gloom",1],[45,"霸王花","%E9%9C%B8%E7%8E%8B%E8%8A%B1","ラフレシア","Vileplume",1],[46,"派拉斯","%E6%B4%BE%E6%8B%89%E6%96%AF","パラス","Paras",1],[47,"派拉斯特","%E6%B4%BE%E6%8B%89%E6%96%AF%E7%89%B9","パラセクト","Parasect",1],[48,"毛球","%E6%AF%9B%E7%90%83","コンパン","Venonat",1],[49,"摩魯蛾","%E6%91%A9%E9%B2%81%E8%9B%BE","モルフォン","Venomoth",1],[50,"地鼠","%E5%9C%B0%E9%BC%A0","ディグダ","Diglett",1],[51,"三地鼠","%E4%B8%89%E5%9C%B0%E9%BC%A0","ダグトリオ","Dugtrio",1],[52,"喵喵","%E5%96%B5%E5%96%B5","ニャース","Meowth",1],[53,"貓老大","%E7%8C%AB%E8%80%81%E5%A4%A7","ペルシアン","Persian",1],[54,"可達鴨","%E5%8F%AF%E8%BE%BE%E9%B8%AD","コダック","Psyduck",1],[55,"哥達鴨","%E5%93%A5%E8%BE%BE%E9%B8%AD","ゴルダック","Golduck",1],[56,"猴怪","%E7%8C%B4%E6%80%AA","マンキー","Mankey",1],[57,"火爆猴","%E7%81%AB%E6%9A%B4%E7%8C%B4","オコリザル","Primeape",1],[58,"卡蒂狗","%E5%8D%A1%E8%92%82%E7%8B%97","ガーディ","Growlithe",1],[59,"風速狗","%E9%A3%8E%E9%80%9F%E7%8B%97","ウインディ","Arcanine",1],[60,"蚊香蝌蚪","%E8%9A%8A%E9%A6%99%E8%9D%8C%E8%9A%AA","ニョロモ","Poliwag",1],[61,"蚊香君","%E8%9A%8A%E9%A6%99%E5%90%9B","ニョロゾ","Poliwhirl",1],[62,"蚊香泳士","%E8%9A%8A%E9%A6%99%E6%B3%B3%E5%A3%AB","ニョロボン","Poliwrath",1],[63,"凱西","%E5%87%AF%E8%A5%BF","ケーシィ","Abra",1],[64,"勇基拉","%E5%8B%87%E5%9F%BA%E6%8B%89","ユンゲラー","Kadabra",1],[65,"胡地","%E8%83%A1%E5%9C%B0","フーディン","Alakazam",1],[66,"腕力","%E8%85%95%E5%8A%9B","ワンリキー","Machop",1],[67,"豪力","%E8%B1%AA%E5%8A%9B","ゴーリキー","Machoke",1],[68,"怪力","%E6%80%AA%E5%8A%9B","カイリキー","Machamp",1],[69,"喇叭芽","%E5%96%87%E5%8F%AD%E8%8A%BD","マダツボミ","Bellsprout",1],[70,"口呆花","%E5%8F%A3%E5%91%86%E8%8A%B1","ウツドン","Weepinbell",1],[71,"大食花","%E5%A4%A7%E9%A3%9F%E8%8A%B1","ウツボット","Victreebel",1],[72,"瑪瑙水母","%E7%8E%9B%E7%91%99%E6%B0%B4%E6%AF%8D","メノクラゲ","Tentacool",1],[73,"毒刺水母","%E6%AF%92%E5%88%BA%E6%B0%B4%E6%AF%8D","ドククラゲ","Tentacruel",1],[74,"小拳石","%E5%B0%8F%E6%8B%B3%E7%9F%B3","イシツブテ","Geodude",1],[75,"隆隆石","%E9%9A%86%E9%9A%86%E7%9F%B3","ゴローン","Graveler",1],[76,"隆隆岩","%E9%9A%86%E9%9A%86%E5%B2%A9","ゴローニャ","Golem",1],[77,"小火馬","%E5%B0%8F%E7%81%AB%E9%A9%AC","ポニータ","Ponyta",1],[78,"烈焰馬","%E7%83%88%E7%84%B0%E9%A9%AC","ギャロップ","Rapidash",1],[79,"呆呆獸","%E5%91%86%E5%91%86%E5%85%BD","ヤドン","Slowpoke",1],[80,"呆殼獸","%E5%91%86%E5%A3%B3%E5%85%BD","ヤドラン","Slowbro",1],[81,"小磁怪","%E5%B0%8F%E7%A3%81%E6%80%AA","コイル","Magnemite",1],[82,"三合一磁怪","%E4%B8%89%E5%90%88%E4%B8%80%E7%A3%81%E6%80%AA","レアコイル","Magneton",1],[83,"大蔥鴨","%E5%A4%A7%E8%91%B1%E9%B8%AD","カモネギ","Farfetch'd",1],[84,"嘟嘟","%E5%98%9F%E5%98%9F","ドードー","Doduo",1],[85,"嘟嘟利","%E5%98%9F%E5%98%9F%E5%88%A9","ドードリオ","Dodrio",1],[86,"小海獅","%E5%B0%8F%E6%B5%B7%E7%8B%AE","パウワウ","Seel",1],[87,"白海獅","%E7%99%BD%E6%B5%B7%E7%8B%AE","ジュゴン","Dewgong",1],[88,"臭泥","%E8%87%AD%E6%B3%A5","ベトベター","Grimer",1],[89,"臭臭泥","%E8%87%AD%E8%87%AD%E6%B3%A5","ベトベトン","Muk",1],[90,"大舌貝","%E5%A4%A7%E8%88%8C%E8%B4%9D","シェルダー","Shellder",1],[91,"刺甲貝","%E5%88%BA%E7%94%B2%E8%B4%9D","パルシェン","Cloyster",1],[92,"鬼斯","%E9%AC%BC%E6%96%AF","ゴース","Gastly",1],[93,"鬼斯通","%E9%AC%BC%E6%96%AF%E9%80%9A","ゴースト","Haunter",1],[94,"耿鬼","%E8%80%BF%E9%AC%BC","ゲンガー","Gengar",1],[95,"大岩蛇","%E5%A4%A7%E5%B2%A9%E8%9B%87","イワーク","Onix",1],[96,"催眠貘","%E5%82%AC%E7%9C%A0%E8%B2%98","スリープ","Drowzee",1],[97,"引夢貘人","%E5%BC%95%E6%A2%A6%E8%B2%98%E4%BA%BA","スリーパー","Hypno",1],[98,"大鉗蟹","%E5%A4%A7%E9%92%B3%E8%9F%B9","クラブ","Krabby",1],[99,"巨鉗蟹","%E5%B7%A8%E9%92%B3%E8%9F%B9","キングラー","Kingler",1],[100,"霹靂電球","%E9%9C%B9%E9%9B%B3%E7%94%B5%E7%90%83","ビリリダマ","Voltorb",1],[101,"頑皮雷彈","%E9%A1%BD%E7%9A%AE%E9%9B%B7%E5%BC%B9","マルマイン","Electrode",1],[102,"蛋蛋","%E8%9B%8B%E8%9B%8B","タマタマ","Exeggcute",1],[103,"椰蛋樹","%E6%A4%B0%E8%9B%8B%E6%A0%91","ナッシー","Exeggutor",1],[104,"卡拉卡拉","%E5%8D%A1%E6%8B%89%E5%8D%A1%E6%8B%89","カラカラ","Cubone",1],[105,"嘎啦嘎啦","%E5%98%8E%E5%95%A6%E5%98%8E%E5%95%A6","ガラガラ","Marowak",1],[106,"飛腿郎","%E9%A3%9E%E8%85%BF%E9%83%8E","サワムラー","Hitmonlee",1],[107,"快拳郎","%E5%BF%AB%E6%8B%B3%E9%83%8E","エビワラー","Hitmonchan",1],[108,"大舌頭","%E5%A4%A7%E8%88%8C%E5%A4%B4","ベロリンガ","Lickitung",1],[109,"瓦斯彈","%E7%93%A6%E6%96%AF%E5%BC%B9","ドガース","Koffing",1],[110,"雙彈瓦斯","%E5%8F%8C%E5%BC%B9%E7%93%A6%E6%96%AF","マタドガス","Weezing",1],[111,"獨角犀牛","%E7%8B%AC%E8%A7%92%E7%8A%80%E7%89%9B","サイホーン","Rhyhorn",1],[112,"鑽角犀獸","%E9%92%BB%E8%A7%92%E7%8A%80%E5%85%BD","サイドン","Rhydon",1],[113,"吉利蛋","%E5%90%89%E5%88%A9%E8%9B%8B","ラッキー","Chansey",1],[114,"蔓藤怪","%E8%94%93%E8%97%A4%E6%80%AA","モンジャラ","Tangela",1],[115,"袋獸","%E8%A2%8B%E5%85%BD","ガルーラ","Kangaskhan",1],[116,"墨海馬","%E5%A2%A8%E6%B5%B7%E9%A9%AC","タッツー","Horsea",1],[117,"海刺龍","%E6%B5%B7%E5%88%BA%E9%BE%99","シードラ","Seadra",1],[118,"角金魚","%E8%A7%92%E9%87%91%E9%B1%BC","トサキント","Goldeen",1],[119,"金魚王","%E9%87%91%E9%B1%BC%E7%8E%8B","アズマオウ","Seaking",1],[120,"海星星","%E6%B5%B7%E6%98%9F%E6%98%9F","ヒトデマン","Staryu",1],[121,"寶石海星","%E5%AE%9D%E7%9F%B3%E6%B5%B7%E6%98%9F","スターミー","Starmie",1],[122,"魔牆人偶","%E9%AD%94%E5%A2%99%E4%BA%BA%E5%81%B6","バリヤード","Mr. Mime",1],[123,"飛天螳螂","%E9%A3%9E%E5%A4%A9%E8%9E%B3%E8%9E%82","ストライク","Scyther",1],[124,"迷唇姐","%E8%BF%B7%E5%94%87%E5%A7%90","ルージュラ","Jynx",1],[125,"電擊獸","%E7%94%B5%E5%87%BB%E5%85%BD","エレブー","Electabuzz",1],[126,"鴨嘴火獸","%E9%B8%AD%E5%98%B4%E7%81%AB%E5%85%BD","ブーバー","Magmar",1],[127,"凱羅斯","%E5%87%AF%E7%BD%97%E6%96%AF","カイロス","Pinsir",1],[128,"肯泰羅","%E8%82%AF%E6%B3%B0%E7%BD%97","ケンタロス","Tauros",1],[129,"鯉魚王","%E9%B2%A4%E9%B1%BC%E7%8E%8B","コイキング","Magikarp",1],[130,"暴鯉龍","%E6%9A%B4%E9%B2%A4%E9%BE%99","ギャラドス","Gyarados",1],[131,"拉普拉斯","%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF","ラプラス","Lapras",1],[132,"百變怪","%E7%99%BE%E5%8F%98%E6%80%AA","メタモン","Ditto",1],[133,"伊布","%E4%BC%8A%E5%B8%83","イーブイ","Eevee",1],[134,"水伊布","%E6%B0%B4%E4%BC%8A%E5%B8%83","シャワーズ","Vaporeon",1],[135,"雷伊布","%E9%9B%B7%E4%BC%8A%E5%B8%83","サンダース","Jolteon",1],[136,"火伊布","%E7%81%AB%E4%BC%8A%E5%B8%83","ブースター","Flareon",1],[137,"多邊獸","%E5%A4%9A%E8%BE%B9%E5%85%BD","ポリゴン","Porygon",1],[138,"菊石獸","%E8%8F%8A%E7%9F%B3%E5%85%BD","オムナイト","Omanyte",1],[139,"多刺菊石獸","%E5%A4%9A%E5%88%BA%E8%8F%8A%E7%9F%B3%E5%85%BD","オムスター","Omastar",1],[140,"化石盔","%E5%8C%96%E7%9F%B3%E7%9B%94","カブト","Kabuto",1],[141,"鐮刀盔","%E9%95%B0%E5%88%80%E7%9B%94","カブトプス","Kabutops",1],[142,"化石翼龍","%E5%8C%96%E7%9F%B3%E7%BF%BC%E9%BE%99","プテラ","Aerodactyl",1],[143,"卡比獸","%E5%8D%A1%E6%AF%94%E5%85%BD","カビゴン","Snorlax",1],[144,"急凍鳥","%E6%80%A5%E5%86%BB%E9%B8%9F","フリーザー","Articuno",1],[145,"閃電鳥","%E9%97%AA%E7%94%B5%E9%B8%9F","サンダー","Zapdos",1],[146,"火焰鳥","%E7%81%AB%E7%84%B0%E9%B8%9F","ファイヤー","Moltres",1],[147,"迷你龍","%E8%BF%B7%E4%BD%A0%E9%BE%99","ミニリュウ","Dratini",1],[148,"哈克龍","%E5%93%88%E5%85%8B%E9%BE%99","ハクリュー","Dragonair",1],[149,"快龍","%E5%BF%AB%E9%BE%99","カイリュー","Dragonite",1],[150,"超夢","%E8%B6%85%E6%A2%A6","ミュウツー","Mewtwo",1],[151,"夢幻","%E6%A2%A6%E5%B9%BB","ミュウ","Mew",1],[152,"菊草葉","%E8%8F%8A%E8%8D%89%E5%8F%B6","チコリータ","Chikorita",2],[153,"月桂葉","%E6%9C%88%E6%A1%82%E5%8F%B6","ベイリーフ","Bayleef",2],[154,"大竺葵","%E5%A4%A7%E7%AB%BA%E8%91%B5","メガニウム","Meganium",2],[155,"火球鼠","%E7%81%AB%E7%90%83%E9%BC%A0","ヒノアラシ","Cyndaquil",2],[156,"火岩鼠","%E7%81%AB%E5%B2%A9%E9%BC%A0","マグマラシ","Quilava",2],[157,"火爆獸","%E7%81%AB%E6%9A%B4%E5%85%BD","バクフーン","Typhlosion",2],[158,"小鋸鱷","%E5%B0%8F%E9%94%AF%E9%B3%84","ワニノコ","Totodile",2],[159,"藍鱷","%E8%93%9D%E9%B3%84","アリゲイツ","Croconaw",2],[160,"大力鱷","%E5%A4%A7%E5%8A%9B%E9%B3%84","オーダイル","Feraligatr",2],[161,"尾立","%E5%B0%BE%E7%AB%8B","オタチ","Sentret",2],[162,"大尾立","%E5%A4%A7%E5%B0%BE%E7%AB%8B","オオタチ","Furret",2],[163,"咕咕","%E5%92%95%E5%92%95","ホーホー","Hoothoot",2],[164,"貓頭夜鷹","%E7%8C%AB%E5%A4%B4%E5%A4%9C%E9%B9%B0","ヨルノズク","Noctowl",2],[165,"芭瓢蟲","%E8%8A%AD%E7%93%A2%E8%99%AB","レディバ","Ledyba",2],[166,"安瓢蟲","%E5%AE%89%E7%93%A2%E8%99%AB","レディアン","Ledian",2],[167,"圓絲蛛","%E5%9C%86%E4%B8%9D%E8%9B%9B","イトマル","Spinarak",2],[168,"阿利多斯","%E9%98%BF%E5%88%A9%E5%A4%9A%E6%96%AF","アリアドス","Ariados",2],[169,"叉字蝠","%E5%8F%89%E5%AD%97%E8%9D%A0","クロバット","Crobat",2],[170,"燈籠魚","%E7%81%AF%E7%AC%BC%E9%B1%BC","チョンチー","Chinchou",2],[171,"電燈怪","%E7%94%B5%E7%81%AF%E6%80%AA","ランターン","Lanturn",2],[172,"皮丘","%E7%9A%AE%E4%B8%98","ピチュー","Pichu",2],[173,"皮寶寶","%E7%9A%AE%E5%AE%9D%E5%AE%9D","ピィ","Cleffa",2],[174,"寶寶丁","%E5%AE%9D%E5%AE%9D%E4%B8%81","ププリン","Igglybuff",2],[175,"波克比","%E6%B3%A2%E5%85%8B%E6%AF%94","トゲピー","Togepi",2],[176,"波克基古","%E6%B3%A2%E5%85%8B%E5%9F%BA%E5%8F%A4","トゲチック","Togetic",2],[177,"天然雀","%E5%A4%A9%E7%84%B6%E9%9B%80","ネイティ","Natu",2],[178,"天然鳥","%E5%A4%A9%E7%84%B6%E9%B8%9F","ネイティオ","Xatu",2],[179,"咩利羊","%E5%92%A9%E5%88%A9%E7%BE%8A","メリープ","Mareep",2],[180,"茸茸羊","%E8%8C%B8%E8%8C%B8%E7%BE%8A","モココ","Flaaffy",2],[181,"電龍","%E7%94%B5%E9%BE%99","デンリュウ","Ampharos",2],[182,"美麗花","%E7%BE%8E%E4%B8%BD%E8%8A%B1","キレイハナ","Bellossom",2],[183,"瑪力露","%E7%8E%9B%E5%8A%9B%E9%9C%B2","マリル","Marill",2],[184,"瑪力露麗","%E7%8E%9B%E5%8A%9B%E9%9C%B2%E4%B8%BD","マリルリ","Azumarill",2],[185,"樹才怪","%E6%A0%91%E6%89%8D%E6%80%AA","ウソッキー","Sudowoodo",2],[186,"蚊香蛙皇","%E8%9A%8A%E9%A6%99%E8%9B%99%E7%9A%87","ニョロトノ","Politoed",2],[187,"毽子草","%E6%AF%BD%E5%AD%90%E8%8D%89","ハネッコ","Hoppip",2],[188,"毽子花","%E6%AF%BD%E5%AD%90%E8%8A%B1","ポポッコ","Skiploom",2],[189,"毽子棉","%E6%AF%BD%E5%AD%90%E6%A3%89","ワタッコ","Jumpluff",2],[190,"長尾怪手","%E9%95%BF%E5%B0%BE%E6%80%AA%E6%89%8B","エイパム","Aipom",2],[191,"向日種子","%E5%90%91%E6%97%A5%E7%A7%8D%E5%AD%90","ヒマナッツ","Sunkern",2],[192,"向日花怪","%E5%90%91%E6%97%A5%E8%8A%B1%E6%80%AA","キマワリ","Sunflora",2],[193,"蜻蜻蜓","%E8%9C%BB%E8%9C%BB%E8%9C%93","ヤンヤンマ","Yanma",2],[194,"烏波","%E4%B9%8C%E6%B3%A2","ウパー","Wooper",2],[195,"沼王","%E6%B2%BC%E7%8E%8B","ヌオー","Quagsire",2],[196,"太陽伊布","%E5%A4%AA%E9%98%B3%E4%BC%8A%E5%B8%83","エーフィ","Espeon",2],[197,"月亮伊布","%E6%9C%88%E4%BA%AE%E4%BC%8A%E5%B8%83","ブラッキー","Umbreon",2],[198,"黑暗鴉","%E9%BB%91%E6%9A%97%E9%B8%A6","ヤミカラス","Murkrow",2],[199,"呆呆王","%E5%91%86%E5%91%86%E7%8E%8B","ヤドキング","Slowking",2],[200,"夢妖","%E6%A2%A6%E5%A6%96","ムウマ","Misdreavus",2],[201,"未知圖騰","%E6%9C%AA%E7%9F%A5%E5%9B%BE%E8%85%BE","アンノーン","Unown",2],[202,"果然翁","%E6%9E%9C%E7%84%B6%E7%BF%81","ソーナンス","Wobbuffet",2],[203,"麒麟奇","%E9%BA%92%E9%BA%9F%E5%A5%87","キリンリキ","Girafarig",2],[204,"榛果球","%E6%A6%9B%E6%9E%9C%E7%90%83","クヌギダマ","Pineco",2],[205,"佛烈托斯","%E4%BD%9B%E7%83%88%E6%89%98%E6%96%AF","フォレトス","Forretress",2],[206,"土龍弟弟","%E5%9C%9F%E9%BE%99%E5%BC%9F%E5%BC%9F","ノコッチ","Dunsparce",2],[207,"天蠍","%E5%A4%A9%E8%9D%8E","グライガー","Gligar",2],[208,"大鋼蛇","%E5%A4%A7%E9%92%A2%E8%9B%87","ハガネール","Steelix",2],[209,"布魯","%E5%B8%83%E9%B2%81","ブルー","Snubbull",2],[210,"布魯皇","%E5%B8%83%E9%B2%81%E7%9A%87","グランブル","Granbull",2],[211,"千針魚","%E5%8D%83%E9%92%88%E9%B1%BC","ハリーセン","Qwilfish",2],[212,"巨鉗螳螂","%E5%B7%A8%E9%92%B3%E8%9E%B3%E8%9E%82","ハッサム","Scizor",2],[213,"壺壺","%E5%A3%B6%E5%A3%B6","ツボツボ","Shuckle",2],[214,"赫拉克羅斯","%E8%B5%AB%E6%8B%89%E5%85%8B%E7%BD%97%E6%96%AF","ヘラクロス","Heracross",2],[215,"狃拉","%E7%8B%83%E6%8B%89","ニューラ","Sneasel",2],[216,"熊寶寶","%E7%86%8A%E5%AE%9D%E5%AE%9D","ヒメグマ","Teddiursa",2],[217,"圈圈熊","%E5%9C%88%E5%9C%88%E7%86%8A","リングマ","Ursaring",2],[218,"熔岩蟲","%E7%86%94%E5%B2%A9%E8%99%AB","マグマッグ","Slugma",2],[219,"熔岩蝸牛","%E7%86%94%E5%B2%A9%E8%9C%97%E7%89%9B","マグカルゴ","Magcargo",2],[220,"小山豬","%E5%B0%8F%E5%B1%B1%E7%8C%AA","ウリムー","Swinub",2],[221,"長毛豬","%E9%95%BF%E6%AF%9B%E7%8C%AA","イノムー","Piloswine",2],[222,"太陽珊瑚","%E5%A4%AA%E9%98%B3%E7%8F%8A%E7%91%9A","サニーゴ","Corsola",2],[223,"鐵炮魚","%E9%93%81%E7%82%AE%E9%B1%BC","テッポウオ","Remoraid",2],[224,"章魚桶","%E7%AB%A0%E9%B1%BC%E6%A1%B6","オクタン","Octillery",2],[225,"信使鳥","%E4%BF%A1%E4%BD%BF%E9%B8%9F","デリバード","Delibird",2],[226,"巨翅飛魚","%E5%B7%A8%E7%BF%85%E9%A3%9E%E9%B1%BC","マンタイン","Mantine",2],[227,"盔甲鳥","%E7%9B%94%E7%94%B2%E9%B8%9F","エアームド","Skarmory",2],[228,"戴魯比","%E6%88%B4%E9%B2%81%E6%AF%94","デルビル","Houndour",2],[229,"黑魯加","%E9%BB%91%E9%B2%81%E5%8A%A0","ヘルガー","Houndoom",2],[230,"刺龍王","%E5%88%BA%E9%BE%99%E7%8E%8B","キングドラ","Kingdra",2],[231,"小小象","%E5%B0%8F%E5%B0%8F%E8%B1%A1","ゴマゾウ","Phanpy",2],[232,"頓甲","%E9%A1%BF%E7%94%B2","ドンファン","Donphan",2],[233,"多邊獸Ⅱ","%E5%A4%9A%E8%BE%B9%E5%85%BD%E2%85%A1","ポリゴン２","Porygon2",2],[234,"驚角鹿","%E6%83%8A%E8%A7%92%E9%B9%BF","オドシシ","Stantler",2],[235,"圖圖犬","%E5%9B%BE%E5%9B%BE%E7%8A%AC","ドーブル","Smeargle",2],[236,"無畏小子","%E6%97%A0%E7%95%8F%E5%B0%8F%E5%AD%90","バルキー","Tyrogue",2],[237,"戰舞郎","%E6%88%98%E8%88%9E%E9%83%8E","カポエラー","Hitmontop",2],[238,"迷唇娃","%E8%BF%B7%E5%94%87%E5%A8%83","ムチュール","Smoochum",2],[239,"電擊怪","%E7%94%B5%E5%87%BB%E6%80%AA","エレキッド","Elekid",2],[240,"鴨嘴寶寶","%E9%B8%AD%E5%98%B4%E5%AE%9D%E5%AE%9D","ブビィ","Magby",2],[241,"大奶罐","%E5%A4%A7%E5%A5%B6%E7%BD%90","ミルタンク","Miltank",2],[242,"幸福蛋","%E5%B9%B8%E7%A6%8F%E8%9B%8B","ハピナス","Blissey",2],[243,"雷公","%E9%9B%B7%E5%85%AC","ライコウ","Raikou",2],[244,"炎帝","%E7%82%8E%E5%B8%9D","エンテイ","Entei",2],[245,"水君","%E6%B0%B4%E5%90%9B","スイクン","Suicune",2],[246,"幼基拉斯","%E5%B9%BC%E5%9F%BA%E6%8B%89%E6%96%AF","ヨーギラス","Larvitar",2],[247,"沙基拉斯","%E6%B2%99%E5%9F%BA%E6%8B%89%E6%96%AF","サナギラス","Pupitar",2],[248,"班基拉斯","%E7%8F%AD%E5%9F%BA%E6%8B%89%E6%96%AF","バンギラス","Tyranitar",2],[249,"洛奇亞","%E6%B4%9B%E5%A5%87%E4%BA%9A","ルギア","Lugia",2],[250,"鳳王","%E5%87%A4%E7%8E%8B","ホウオウ","Ho-Oh",2],[251,"時拉比","%E6%97%B6%E6%8B%89%E6%AF%94","セレビィ","Celebi",2],[252,"木守宮","%E6%9C%A8%E5%AE%88%E5%AE%AB","キモリ","Treecko",3],[253,"森林蜥蜴","%E6%A3%AE%E6%9E%97%E8%9C%A5%E8%9C%B4","ジュプトル","Grovyle",3],[254,"蜥蜴王","%E8%9C%A5%E8%9C%B4%E7%8E%8B","ジュカイン","Sceptile",3],[255,"火稚雞","%E7%81%AB%E7%A8%9A%E9%B8%A1","アチャモ","Torchic",3],[256,"力壯雞","%E5%8A%9B%E5%A3%AE%E9%B8%A1","ワカシャモ","Combusken",3],[257,"火焰雞","%E7%81%AB%E7%84%B0%E9%B8%A1","バシャーモ","Blaziken",3],[258,"水躍魚","%E6%B0%B4%E8%B7%83%E9%B1%BC","ミズゴロウ","Mudkip",3],[259,"沼躍魚","%E6%B2%BC%E8%B7%83%E9%B1%BC","ヌマクロー","Marshtomp",3],[260,"巨沼怪","%E5%B7%A8%E6%B2%BC%E6%80%AA","ラグラージ","Swampert",3],[261,"土狼犬","%E5%9C%9F%E7%8B%BC%E7%8A%AC","ポチエナ","Poochyena",3],[262,"大狼犬","%E5%A4%A7%E7%8B%BC%E7%8A%AC","グラエナ","Mightyena",3],[263,"蛇紋熊","%E8%9B%87%E7%BA%B9%E7%86%8A","ジグザグマ","Zigzagoon",3],[264,"直衝熊","%E7%9B%B4%E5%86%B2%E7%86%8A","マッスグマ","Linoone",3],[265,"刺尾蟲","%E5%88%BA%E5%B0%BE%E8%99%AB","ケムッソ","Wurmple",3],[266,"甲殼繭","%E7%94%B2%E5%A3%B3%E8%8C%A7","カラサリス","Silcoon",3],[267,"狩獵鳳蝶","%E7%8B%A9%E7%8C%8E%E5%87%A4%E8%9D%B6","アゲハント","Beautifly",3],[268,"盾甲繭","%E7%9B%BE%E7%94%B2%E8%8C%A7","マユルド","Cascoon",3],[269,"毒粉蛾","%E6%AF%92%E7%B2%89%E8%9B%BE","ドクケイル","Dustox",3],[270,"蓮葉童子","%E8%8E%B2%E5%8F%B6%E7%AB%A5%E5%AD%90","ハスボー","Lotad",3],[271,"蓮帽小童","%E8%8E%B2%E5%B8%BD%E5%B0%8F%E7%AB%A5","ハスブレロ","Lombre",3],[272,"樂天河童","%E4%B9%90%E5%A4%A9%E6%B2%B3%E7%AB%A5","ルンパッパ","Ludicolo",3],[273,"橡實果","%E6%A9%A1%E5%AE%9E%E6%9E%9C","タネボー","Seedot",3],[274,"長鼻葉","%E9%95%BF%E9%BC%BB%E5%8F%B6","コノハナ","Nuzleaf",3],[275,"狡猾天狗","%E7%8B%A1%E7%8C%BE%E5%A4%A9%E7%8B%97","ダーテング","Shiftry",3],[276,"傲骨燕","%E5%82%B2%E9%AA%A8%E7%87%95","スバメ","Taillow",3],[277,"大王燕","%E5%A4%A7%E7%8E%8B%E7%87%95","オオスバメ","Swellow",3],[278,"長翅鷗","%E9%95%BF%E7%BF%85%E9%B8%A5","キャモメ","Wingull",3],[279,"大嘴鷗","%E5%A4%A7%E5%98%B4%E9%B8%A5","ペリッパー","Pelipper",3],[280,"拉魯拉絲","%E6%8B%89%E9%B2%81%E6%8B%89%E4%B8%9D","ラルトス","Ralts",3],[281,"奇魯莉安","%E5%A5%87%E9%B2%81%E8%8E%89%E5%AE%89","キルリア","Kirlia",3],[282,"沙奈朵","%E6%B2%99%E5%A5%88%E6%9C%B5","サーナイト","Gardevoir",3],[283,"溜溜糖球","%E6%BA%9C%E6%BA%9C%E7%B3%96%E7%90%83","アメタマ","Surskit",3],[284,"雨翅蛾","%E9%9B%A8%E7%BF%85%E8%9B%BE","アメモース","Masquerain",3],[285,"蘑蘑菇","%E8%98%91%E8%98%91%E8%8F%87","キノココ","Shroomish",3],[286,"斗笠菇","%E6%96%97%E7%AC%A0%E8%8F%87","キノガッサ","Breloom",3],[287,"懶人獺","%E6%87%92%E4%BA%BA%E7%8D%AD","ナマケロ","Slakoth",3],[288,"過動猿","%E8%BF%87%E5%8A%A8%E7%8C%BF","ヤルキモノ","Vigoroth",3],[289,"請假王","%E8%AF%B7%E5%81%87%E7%8E%8B","ケッキング","Slaking",3],[290,"土居忍士","%E5%9C%9F%E5%B1%85%E5%BF%8D%E5%A3%AB","ツチニン","Nincada",3],[291,"鐵面忍者","%E9%93%81%E9%9D%A2%E5%BF%8D%E8%80%85","テッカニン","Ninjask",3],[292,"脫殼忍者","%E8%84%B1%E5%A3%B3%E5%BF%8D%E8%80%85","ヌケニン","Shedinja",3],[293,"咕妞妞","%E5%92%95%E5%A6%9E%E5%A6%9E","ゴニョニョ","Whismur",3],[294,"吼爆彈","%E5%90%BC%E7%88%86%E5%BC%B9","ドゴーム","Loudred",3],[295,"爆音怪","%E7%88%86%E9%9F%B3%E6%80%AA","バクオング","Exploud",3],[296,"幕下力士","%E5%B9%95%E4%B8%8B%E5%8A%9B%E5%A3%AB","マクノシタ","Makuhita",3],[297,"鐵掌力士","%E9%93%81%E6%8E%8C%E5%8A%9B%E5%A3%AB","ハリテヤマ","Hariyama",3],[298,"露力麗","%E9%9C%B2%E5%8A%9B%E4%B8%BD","ルリリ","Azurill",3],[299,"朝北鼻","%E6%9C%9D%E5%8C%97%E9%BC%BB","ノズパス","Nosepass",3],[300,"向尾喵","%E5%90%91%E5%B0%BE%E5%96%B5","エネコ","Skitty",3],[301,"優雅貓","%E4%BC%98%E9%9B%85%E7%8C%AB","エネコロロ","Delcatty",3],[302,"勾魂眼","%E5%8B%BE%E9%AD%82%E7%9C%BC","ヤミラミ","Sableye",3],[303,"大嘴娃","%E5%A4%A7%E5%98%B4%E5%A8%83","クチート","Mawile",3],[304,"可可多拉","%E5%8F%AF%E5%8F%AF%E5%A4%9A%E6%8B%89","ココドラ","Aron",3],[305,"可多拉","%E5%8F%AF%E5%A4%9A%E6%8B%89","コドラ","Lairon",3],[306,"波士可多拉","%E6%B3%A2%E5%A3%AB%E5%8F%AF%E5%A4%9A%E6%8B%89","ボスゴドラ","Aggron",3],[307,"瑪沙那","%E7%8E%9B%E6%B2%99%E9%82%A3","アサナン","Meditite",3],[308,"恰雷姆","%E6%81%B0%E9%9B%B7%E5%A7%86","チャーレム","Medicham",3],[309,"落雷獸","%E8%90%BD%E9%9B%B7%E5%85%BD","ラクライ","Electrike",3],[310,"雷電獸","%E9%9B%B7%E7%94%B5%E5%85%BD","ライボルト","Manectric",3],[311,"正電拍拍","%E6%AD%A3%E7%94%B5%E6%8B%8D%E6%8B%8D","プラスル","Plusle",3],[312,"負電拍拍","%E8%B4%9F%E7%94%B5%E6%8B%8D%E6%8B%8D","マイナン","Minun",3],[313,"電螢蟲","%E7%94%B5%E8%90%A4%E8%99%AB","バルビート","Volbeat",3],[314,"甜甜螢","%E7%94%9C%E7%94%9C%E8%90%A4","イルミーゼ","Illumise",3],[315,"毒薔薇","%E6%AF%92%E8%94%B7%E8%96%87","ロゼリア","Roselia",3],[316,"溶食獸","%E6%BA%B6%E9%A3%9F%E5%85%BD","ゴクリン","Gulpin",3],[317,"吞食獸","%E5%90%9E%E9%A3%9F%E5%85%BD","マルノーム","Swalot",3],[318,"利牙魚","%E5%88%A9%E7%89%99%E9%B1%BC","キバニア","Carvanha",3],[319,"巨牙鯊","%E5%B7%A8%E7%89%99%E9%B2%A8","サメハダー","Sharpedo",3],[320,"吼吼鯨","%E5%90%BC%E5%90%BC%E9%B2%B8","ホエルコ","Wailmer",3],[321,"吼鯨王","%E5%90%BC%E9%B2%B8%E7%8E%8B","ホエルオー","Wailord",3],[322,"呆火駝","%E5%91%86%E7%81%AB%E9%A9%BC","ドンメル","Numel",3],[323,"噴火駝","%E5%96%B7%E7%81%AB%E9%A9%BC","バクーダ","Camerupt",3],[324,"煤炭龜","%E7%85%A4%E7%82%AD%E9%BE%9F","コータス","Torkoal",3],[325,"跳跳豬","%E8%B7%B3%E8%B7%B3%E7%8C%AA","バネブー","Spoink",3],[326,"噗噗豬","%E5%99%97%E5%99%97%E7%8C%AA","ブーピッグ","Grumpig",3],[327,"晃晃斑","%E6%99%83%E6%99%83%E6%96%91","パッチール","Spinda",3],[328,"大顎蟻","%E5%A4%A7%E9%A2%9A%E8%9A%81","ナックラー","Trapinch",3],[329,"超音波幼蟲","%E8%B6%85%E9%9F%B3%E6%B3%A2%E5%B9%BC%E8%99%AB","ビブラーバ","Vibrava",3],[330,"沙漠蜻蜓","%E6%B2%99%E6%BC%A0%E8%9C%BB%E8%9C%93","フライゴン","Flygon",3],[331,"刺球仙人掌","%E5%88%BA%E7%90%83%E4%BB%99%E4%BA%BA%E6%8E%8C","サボネア","Cacnea",3],[332,"夢歌仙人掌","%E6%A2%A6%E6%AD%8C%E4%BB%99%E4%BA%BA%E6%8E%8C","ノクタス","Cacturne",3],[333,"青綿鳥","%E9%9D%92%E7%BB%B5%E9%B8%9F","チルット","Swablu",3],[334,"七夕青鳥","%E4%B8%83%E5%A4%95%E9%9D%92%E9%B8%9F","チルタリス","Altaria",3],[335,"貓鼬斬","%E7%8C%AB%E9%BC%AC%E6%96%A9","ザングース","Zangoose",3],[336,"飯匙蛇","%E9%A5%AD%E5%8C%99%E8%9B%87","ハブネーク","Seviper",3],[337,"月石","%E6%9C%88%E7%9F%B3","ルナトーン","Lunatone",3],[338,"太陽岩","%E5%A4%AA%E9%98%B3%E5%B2%A9","ソルロック","Solrock",3],[339,"泥泥鰍","%E6%B3%A5%E6%B3%A5%E9%B3%85","ドジョッチ","Barboach",3],[340,"鯰魚王","%E9%B2%B6%E9%B1%BC%E7%8E%8B","ナマズン","Whiscash",3],[341,"龍蝦小兵","%E9%BE%99%E8%99%BE%E5%B0%8F%E5%85%B5","ヘイガニ","Corphish",3],[342,"鐵螯龍蝦","%E9%93%81%E8%9E%AF%E9%BE%99%E8%99%BE","シザリガー","Crawdaunt",3],[343,"天秤偶","%E5%A4%A9%E7%A7%A4%E5%81%B6","ヤジロン","Baltoy",3],[344,"念力土偶","%E5%BF%B5%E5%8A%9B%E5%9C%9F%E5%81%B6","ネンドール","Claydol",3],[345,"觸手百合","%E8%A7%A6%E6%89%8B%E7%99%BE%E5%90%88","リリーラ","Lileep",3],[346,"搖籃百合","%E6%91%87%E7%AF%AE%E7%99%BE%E5%90%88","ユレイドル","Cradily",3],[347,"太古羽蟲","%E5%A4%AA%E5%8F%A4%E7%BE%BD%E8%99%AB","アノプス","Anorith",3],[348,"太古盔甲","%E5%A4%AA%E5%8F%A4%E7%9B%94%E7%94%B2","アーマルド","Armaldo",3],[349,"醜醜魚","%E4%B8%91%E4%B8%91%E9%B1%BC","ヒンバス","Feebas",3],[350,"美納斯","%E7%BE%8E%E7%BA%B3%E6%96%AF","ミロカロス","Milotic",3],[351,"飄浮泡泡","%E9%A3%98%E6%B5%AE%E6%B3%A1%E6%B3%A1","ポワルン","Castform",3],[352,"變隱龍","%E5%8F%98%E9%9A%90%E9%BE%99","カクレオン","Kecleon",3],[353,"怨影娃娃","%E6%80%A8%E5%BD%B1%E5%A8%83%E5%A8%83","カゲボウズ","Shuppet",3],[354,"詛咒娃娃","%E8%AF%85%E5%92%92%E5%A8%83%E5%A8%83","ジュペッタ","Banette",3],[355,"夜巡靈","%E5%A4%9C%E5%B7%A1%E7%81%B5","ヨマワル","Duskull",3],[356,"彷徨夜靈","%E5%BD%B7%E5%BE%A8%E5%A4%9C%E7%81%B5","サマヨール","Dusclops",3],[357,"熱帶龍","%E7%83%AD%E5%B8%A6%E9%BE%99","トロピウス","Tropius",3],[358,"風鈴鈴","%E9%A3%8E%E9%93%83%E9%93%83","チリーン","Chimecho",3],[359,"阿勃梭魯","%E9%98%BF%E5%8B%83%E6%A2%AD%E9%B2%81","アブソル","Absol",3],[360,"小果然","%E5%B0%8F%E6%9E%9C%E7%84%B6","ソーナノ","Wynaut",3],[361,"雪童子","%E9%9B%AA%E7%AB%A5%E5%AD%90","ユキワラシ","Snorunt",3],[362,"冰鬼護","%E5%86%B0%E9%AC%BC%E6%8A%A4","オニゴーリ","Glalie",3],[363,"海豹球","%E6%B5%B7%E8%B1%B9%E7%90%83","タマザラシ","Spheal",3],[364,"海魔獅","%E6%B5%B7%E9%AD%94%E7%8B%AE","トドグラー","Sealeo",3],[365,"帝牙海獅","%E5%B8%9D%E7%89%99%E6%B5%B7%E7%8B%AE","トドゼルガ","Walrein",3],[366,"珍珠貝","%E7%8F%8D%E7%8F%A0%E8%B4%9D","パールル","Clamperl",3],[367,"獵斑魚","%E7%8C%8E%E6%96%91%E9%B1%BC","ハンテール","Huntail",3],[368,"櫻花魚","%E6%A8%B1%E8%8A%B1%E9%B1%BC","サクラビス","Gorebyss",3],[369,"古空棘魚","%E5%8F%A4%E7%A9%BA%E6%A3%98%E9%B1%BC","ジーランス","Relicanth",3],[370,"愛心魚","%E7%88%B1%E5%BF%83%E9%B1%BC","ラブカス","Luvdisc",3],[371,"寶貝龍","%E5%AE%9D%E8%B4%9D%E9%BE%99","タツベイ","Bagon",3],[372,"甲殼龍","%E7%94%B2%E5%A3%B3%E9%BE%99","コモルー","Shelgon",3],[373,"暴飛龍","%E6%9A%B4%E9%A3%9E%E9%BE%99","ボーマンダ","Salamence",3],[374,"鐵啞鈴","%E9%93%81%E5%93%91%E9%93%83","ダンバル","Beldum",3],[375,"金屬怪","%E9%87%91%E5%B1%9E%E6%80%AA","メタング","Metang",3],[376,"巨金怪","%E5%B7%A8%E9%87%91%E6%80%AA","メタグロス","Metagross",3],[377,"雷吉洛克","%E9%9B%B7%E5%90%89%E6%B4%9B%E5%85%8B","レジロック","Regirock",3],[378,"雷吉艾斯","%E9%9B%B7%E5%90%89%E8%89%BE%E6%96%AF","レジアイス","Regice",3],[379,"雷吉斯奇魯","%E9%9B%B7%E5%90%89%E6%96%AF%E5%A5%87%E9%B2%81","レジสチル","Registeel",3],[380,"拉帝亞斯","%E6%8B%89%E5%B8%9D%E4%BA%9A%E6%96%AF","ラティアス","Latias",3],[381,"拉帝歐斯","%E6%8B%89%E5%B8%9D%E6%AC%A7%E6%96%AF","ラティオス","Latios",3],[382,"蓋歐卡","%E7%9B%96%E6%AC%A7%E5%8D%A1","カイオーガ","Kyogre",3],[383,"固拉多","%E5%9B%BA%E6%8B%89%E5%A4%9A","グラードン","Groudon",3],[384,"烈空坐","%E7%83%88%E7%A9%BA%E5%9D%90","レックウザ","Rayquaza",3],[385,"基拉祈","%E5%9F%BA%E6%8B%89%E7%A5%88","ジラーチ","Jirachi",3],[386,"代歐奇希斯","%E4%BB%A3%E6%AC%A7%E5%A5%87%E5%B8%8C%E6%96%AF","デオキシス","Deoxys",3],[387,"草苗龜","%E8%8D%89%E8%8B%97%E9%BE%9F","ナエトル","Turtwig",4],[388,"樹林龜","%E6%A0%91%E6%9E%97%E9%BE%9F","ハヤシガメ","Grotle",4],[389,"土台龜","%E5%9C%9F%E5%8F%B0%E9%BE%9F","ドダイトス","Torterra",4],[390,"小火焰猴","%E5%B0%8F%E7%81%AB%E7%84%B0%E7%8C%B4","ヒコザル","Chimchar",4],[391,"猛火猴","%E7%8C%9B%E7%81%AB%E7%8C%B4","モウカザル","Monferno",4],[392,"烈焰猴","%E7%83%88%E7%84%B0%E7%8C%B4","ゴウカザル","Infernape",4],[393,"波加曼","%E6%B3%A2%E5%8A%A0%E6%9B%BC","ポッチャマ","Piplup",4],[394,"波皇子","%E6%B3%A2%E7%9A%87%E5%AD%90","ポッタイシ","Prinplup",4],[395,"帝王拿波","%E5%B8%9D%E7%8E%8B%E6%8B%BF%E6%B3%A2","エンペルト","Empoleon",4],[396,"姆克兒","%E5%A7%86%E5%85%8B%E5%84%BF","ムックル","Starly",4],[397,"姆克鳥","%E5%A7%86%E5%85%8B%E9%B8%9F","ムクバード","Staravia",4],[398,"姆克鷹","%E5%A7%86%E5%85%8B%E9%B9%B0","ムクホーク","Staraptor",4],[399,"大牙狸","%E5%A4%A7%E7%89%99%E7%8B%B8","ビッパ","Bidoof",4],[400,"大尾狸","%E5%A4%A7%E5%B0%BE%E7%8B%B8","ビーダル","Bibarel",4],[401,"圓法師","%E5%9C%86%E6%B3%95%E5%B8%88","コロボーシ","Kricketot",4],[402,"音箱蟀","%E9%9F%B3%E7%AE%B1%E8%9F%80","コロトック","Kricketune",4],[403,"小貓怪","%E5%B0%8F%E7%8C%AB%E6%80%AA","コリンク","Shinx",4],[404,"勒克貓","%E5%8B%92%E5%85%8B%E7%8C%AB","ルクシオ","Luxio",4],[405,"倫琴貓","%E4%BC%A6%E7%90%B4%E7%8C%AB","レントラー","Luxray",4],[406,"含羞苞","%E5%90%AB%E7%BE%9E%E8%8B%9E","スボミー","Budew",4],[407,"羅絲雷朵","%E7%BD%97%E4%B8%9D%E9%9B%B7%E6%9C%B5","ロズレイド","Roserade",4],[408,"頭蓋龍","%E5%A4%A4%E7%9B%96%E9%BE%99","ズガイドス","Cranidos",4],[409,"戰槌龍","%E6%88%98%E6%A7%8C%E9%BE%99","ラムパルド","Rampardos",4],[410,"盾甲龍","%E7%9B%BE%E7%94%B2%E9%BE%99","タテトプス","Shieldon",4],[411,"護城龍","%E6%8A%A4%E5%9F%8E%E9%BE%99","トリデプス","Bastiodon",4],[412,"結草兒","%E7%BB%93%E8%8D%89%E5%84%BF","ミノムッチ","Burmy",4],[413,"結草貴婦","%E7%BB%93%E8%8D%89%E8%B4%B5%E5%A6%87","ミノマダム","Wormadam",4],[414,"紳士蛾","%E7%BB%85%E5%A3%AB%E8%9B%BE","ガーメイル","Mothim",4],[415,"三蜜蜂","%E4%B8%89%E8%9C%9C%E8%9C%82","ミツハニー","Combee",4],[416,"蜂女王","%E8%9C%82%E5%A5%B3%E7%8E%8B","ビークイン","Vespiquen",4],[417,"帕奇利茲","%E5%B8%95%E5%A5%87%E5%88%A9%E5%85%B9","パチリス","Pachirisu",4],[418,"泳圈鼬","%E6%B3%B3%E5%9C%88%E9%BC%AC","ブイゼル","Buizel",4],[419,"浮潛鼬","%E6%B5%AE%E6%BD%9C%E9%BC%AC","フローゼル","Floatzel",4],[420,"櫻花寶","%E6%A8%B1%E8%8A%B1%E5%AE%9D","チェリンボ","Cherubi",4],[421,"櫻花兒","%E6%A8%B1%E8%8A%B1%E5%84%BF","チェリム","Cherrim",4],[422,"無殼海兔","%E6%97%A0%E5%A3%B3%E6%B5%B7%E5%85%94","カラナクシ","Shellos",4],[423,"海兔獸","%E6%B5%B7%E5%85%94%E5%85%BD","トリトドン","Gastrodon",4],[424,"雙尾怪手","%E5%8F%8C%E5%B0%BE%E6%80%AA%E6%89%8B","エテボース","Ambipom",4],[425,"飄飄球","%E9%A3%98%E9%A3%98%E7%90%83","フワンテ","Drifloon",4],[426,"隨風球","%E9%9A%8F%E9%A3%8E%E7%90%83","フワライド","Drifblim",4],[427,"捲捲耳","%E5%8D%B7%E5%8D%B7%E8%80%B3","ミミロル","Buneary",4],[428,"長耳兔","%E9%95%BF%E8%80%B3%E5%85%94","ミミロップ","Lopunny",4],[429,"夢妖魔","%E6%A2%A6%E5%A6%96%E9%AD%94","ムウマージ","Mismagius",4],[430,"烏鴉頭頭","%E4%B9%8C%E9%B8%A6%E5%A4%B4%E5%A4%B4","ドンカラス","Honchkrow",4],[431,"魅力喵","%E9%AD%85%E5%8A%9B%E5%96%B5","ニャルマー","Glameow",4],[432,"東施喵","%E4%B8%8C%E6%96%BD%E5%96%B5","ブニャット","Purugly",4],[433,"鈴鐺響","%E9%93%83%E9%93%9B%E5%93%8D","リーシャン","Chingling",4],[434,"臭鼬噗","%E8%87%AD%E9%BC%AC%E5%99%97","スカンプー","Stunky",4],[435,"坦克臭鼬","%E5%9D%A6%E5%85%8B%E8%87%AD%E9%BC%AC","スカタンク","Skuntank",4],[436,"銅鏡怪","%E9%93%9C%E9%95%9C%E6%80%AA","ドーミラー","Bronzor",4],[437,"青銅鐘","%E9%9D%92%E9%93%9C%E9%92%9F","ドータクン","Bronzong",4],[438,"盆才怪","%E7%9B%86%E6%89%8D%E6%80%AA","ウソハチ","Bonsly",4],[439,"魔尼尼","%E9%AD%94%E5%B0%BC%E5%B0%BC","マネネ","Mime Jr.",4],[440,"小福蛋","%E5%B0%8F%E7%A6%8F%E8%9B%8B","ピンプク","Happiny",4],[441,"聒噪鳥","%E8%81%92%E5%99%AA%E9%B8%9F","ペラップ","Chatot",4],[442,"花岩怪","%E8%8A%B1%E5%B2%A9%E6%80%AA","ミカルゲ","Spiritomb",4],[443,"圓陸鯊","%E5%9C%86%E9%99%86%E9%B2%A8","フカマル","Gible",4],[444,"尖牙陸鯊","%E5%B0%96%E7%89%99%E9%99%86%E9%B2%A8","ガバイト","Gabite",4],[445,"烈咬陸鯊","%E7%83%88%E5%92%AC%E9%99%86%E9%B2%A8","ガブリアス","Garchomp",4],[446,"小卡比獸","%E5%B0%8F%E5%8D%A1%E6%AF%94%E5%85%BD","ゴンベ","Munchlax",4],[447,"利歐路","%E5%88%A9%E6%AC%A7%E8%B7%AF","リオル","Riolu",4],[448,"路卡利歐","%E8%B7%AF%E5%8D%A1%E5%88%A9%E6%AC%A7","ルカリオ","Lucario",4],[449,"沙河馬","%E6%B2%99%E6%B2%B3%E9%A9%AC","ヒポポタス","Hippopotas",4],[450,"河馬獸","%E6%B2%93%E9%A9%AC%E5%85%BD","カバルドン","Hippowdon",4],[451,"鉗尾蠍","%E9%92%B3%E5%B0%BE%E8%9D%8E","スコルピ","Skorupi",4],[452,"龍王蠍","%E9%BE%99%E7%8E%8B%E8%9D%8E","ドラピオン","Drapion",4],[453,"不良蛙","%E4%B8%8D%E8%89%AF%E8%9B%99","グレッグル","Croagunk",4],[454,"毒骷蛙","%E6%AF%92%E9%AA%B7%E8%9B%99","ドクロッグ","Toxicroak",4],[455,"尖牙籠","%E5%B0%96%E7%89%99%E7%AC%BC","マスキッパ","Carnivine",4],[456,"螢光魚","%E8%8D%A7%E5%85%89%E9%B1%BC","ケイコウオ","Finneon",4],[457,"霓虹魚","%E9%9C%93%E8%99%B9%E9%B1%BC","ネオラント","Lumineon",4],[458,"小球飛魚","%E5%B0%8F%E7%90%83%E9%A3%9E%E9%B1%BC","タマンタ","Mantyke",4],[459,"雪笠怪","%E9%9B%AA%E7%AC%A0%E6%80%AA","ユキカブリ","Snover",4],[460,"暴雪王","%E6%9A%B4%E9%9B%AA%E7%8E%8B","ユキノオー","Abomasnow",4],[461,"瑪狃拉","%E7%8E%9B%E7%8B%83%E6%8B%89","マニューラ","Weavile",4],[462,"自爆磁怪","%E8%87%AA%E7%88%86%E7%A3%81%E6%80%AA","ジバコイル","Magnezone",4],[463,"大舌舔","%E5%A4%A7%E8%88%8C%E8%88%94","ベロベルト","Lickilicky",4],[464,"超甲狂犀","%E8%B6%85%E7%94%B2%E7%8B%82%E7%8A%80","ドサイドン","Rhyperior",4],[465,"巨蔓藤","%E5%B7%A8%E8%94%93%E8%97%A4","モジャンボ","Tangrowth",4],[466,"電擊魔獸","%E7%94%B5%E5%87%BB%E9%AD%94%E5%85%BD","エレキブル","Electivire",4],[467,"鴨嘴炎獸","%E9%B8%AD%E5%98%B4%E7%82%8E%E5%85%BD","ブーバーン","Magmortar",4],[468,"波克基斯","%E6%B3%A2%E5%85%8B%E5%9F%BA%E6%96%AF","トゲキッス","Togekiss",4],[469,"遠古巨蜓","%E8%BF%9C%E5%8F%A4%E5%B7%A8%E8%9C%93","メガヤンマ","Yanmega",4],[470,"葉伊布","%E5%8F%B6%E4%BC%8A%E5%B8%83","リーフィア","Leafeon",4],[471,"冰伊布","%E5%86%B0%E4%BC%8A%E5%B8%83","グレイシア","Glaceon",4],[472,"天蠍王","%E5%A4%A9%E8%9D%8E%E7%8E%8B","グライオン","Gliscor",4],[473,"象牙豬","%E8%B1%A1%E7%89%99%E7%8C%AA","マンムー","Mamoswine",4],[474,"多邊獸Ｚ","%E5%A4%9A%E8%BE%B9%E5%85%BD%EF%BC%BA","ポリゴンＺ","Porygon-Z",4],[475,"艾路雷朵","%E8%89%BE%E8%B7%AF%E9%9B%B7%E6%9C%B5","エルレイド","Gallade",4],[476,"大朝北鼻","%E5%A4%A7%E6%9C%9D%E5%8C%97%E9%BC%BB","ダイノーズ","Probopass",4],[477,"黑夜魔靈","%E9%BB%91%E5%A4%9C%E9%AD%94%E7%81%B5","ヨノワール","Dusknoir",4],[478,"雪妖女","%E9%9B%AA%E5%A6%96%E5%A5%B3","ユキメノコ","Froslass",4],[479,"洛托姆","%E6%B4%9B%E6%89%98%E5%A7%86","ロトム","Rotom",4],[480,"由克希","%E7%94%B1%E5%85%8B%E5%B8%8C","ユクシー","Uxie",4],[481,"艾姆利多","%E8%89%BE%E5%A7%86%E5%88%A9%E5%A4%9A","エムリット","Mesprit",4],[482,"亞克諾姆","%E4%BA%9A%E5%85%8B%E8%AF%BA%E5%A7%86","アグノム","Azelf",4],[483,"帝牙盧卡","%E5%B8%9D%E7%89%99%E5%8D%A2%E5%8D%A1","ディアルガ","Dialga",4],[484,"帕路奇亞","%E5%B8%95%E8%B7%AF%E5%A5%87%E4%BA%9A","パルキア","Palkia",4],[485,"席多藍恩","%E5%B8%AD%E5%A4%9A%E8%93%9D%E6%81%A9","ヒードラン","Heatran",4],[486,"雷吉奇卡斯","%E9%9B%B7%E5%90%89%E5%A5%87%E5%8D%A1%E6%96%AF","レジギガス","Regigigas",4],[487,"騎拉帝納","%E9%AA%91%E6%8B%89%E5%B8%9D%E7%BA%B3","ギラティナ","Giratina",4],[488,"克雷色利亞","%E5%85%8B%E9%9B%B7%E8%89%B2%E5%88%A9%E4%BA%9A","クレセリア","Cresselia",4],[489,"霏歐納","%E9%9C%8F%E6%AC%A7%E7%BA%B3","フィオネ","Phione",4],[490,"瑪納霏","%E7%8E%9B%E7%BA%B3%E9%9C%8F","マナフィ","Manaphy",4],[491,"達克萊伊","%E8%BE%BE%E5%85%8B%E8%8E%B1%E4%BC%8A","ダークライ","Darkrai",4],[492,"謝米","%E8%B0%A2%E7%B1%B3","シェイミ","Shaymin",4],[493,"阿爾宙斯","%E9%98%BF%E5%B0%94%E5%AE%99%E6%96%AF","アルセウス","Arceus",4],[494,"比克提尼","%E6%AF%94%E5%85%8B%E6%8F%90%E5%B0%BC","ビクティニ","Victini",5],[495,"藤藤蛇","%E8%97%A4%E8%97%A4%E8%9B%87","ツタージャ","Snivy",5],[496,"青藤蛇","%E9%9D%92%E8%97%A4%E8%9B%87","ジャノビー","Servine",5],[497,"君主蛇","%E5%90%9B%E4%B8%BB%E8%9B%87","ジャローダ","Serperior",5],[498,"暖暖豬","%E6%9A%96%E6%9A%96%E7%8C%AA","ポカブ","Tepig",5],[499,"炒炒豬","%E7%82%92%E7%82%92%E7%8C%AA","チャオブー","Pignite",5],[500,"炎武王","%E7%82%8E%E6%AD%A6%E7%8E%8B","エンブオー","Emboar",5],[501,"水水獺","%E6%B0%B4%E6%B0%B4%E7%8D%AD","ミジュマル","Oshawott",5],[502,"雙刃丸","%E5%8F%8C%E5%88%83%E4%B8%B8","フタチマル","Dewott",5],[503,"大劍鬼","%E5%A4%A7%E5%89%91%E9%AC%BC","ダイケンキ","Samurott",5],[504,"探探鼠","%E6%8E%A2%E6%8E%A2%E9%BC%A0","ミネズミ","Patrat",5],[505,"步哨鼠","%E6%AD%A5%E5%93%A8%E9%BC%A0","ミルホッグ","Watchog",5],[506,"小約克","%E5%B0%8F%E7%BA%A6%E5%85%8B","ヨーテリー","Lillipup",5],[507,"哈約克","%E5%93%88%E7%BA%A6%E5%85%8B","ハーデリア","Herdier",5],[508,"長毛狗","%E9%95%BF%E6%AF%9B%E7%8B%97","ムーランド","Stoutland",5],[509,"扒手貓","%E6%89%92%E6%89%8B%E7%8C%AB","チョロネコ","Purrloin",5],[510,"酷豹","%E9%85%B7%E8%B1%B9","レパルダス","Liepard",5],[511,"花椰猴","%E8%8A%B1%E6%A4%B0%E7%8C%B4","ヤナップ","Pansage",5],[512,"花椰猿","%E8%8A%B1%E6%A4%B0%E7%8C%BF","ヤナッキー","Simisage",5],[513,"爆香猴","%E7%88%86%E9%A6%99%E7%8C%B4","バオップ","Pansear",5],[514,"爆香猿","%E7%88%86%E9%A6%99%E7%8C%BF","バオッキー","Simisear",5],[515,"冷水猴","%E5%86%B7%E6%B0%B4%E7%8C%B4","ヒヤップ","Panpour",5],[516,"冷水猿","%E5%86%B7%E6%B0%B4%E7%8C%BF","ヒヤッキー","Simipour",5],[517,"食夢夢","%E9%A3%9F%E6%A2%A6%E6%A2%A6","ムンナ","Munna",5],[518,"夢夢蝕","%E6%A2%A6%E6%A2%A6%E8%9A%80","ムシャーナ","Musharna",5],[519,"豆豆鴿","%E8%B1%86%E8%B1%86%E9%B8%BD","マメパト","Pidove",5],[520,"咕咕鴿","%E5%92%95%E5%92%95%E9%B8%BD","ハトーボー","Tranquill",5],[521,"高傲雉雞","%E9%AB%98%E5%82%B2%E9%9B%89%E9%B8%A1","ケンホロウ","Unfezant",5],[522,"斑斑馬","%E6%96%91%E6%96%91%E9%A9%AC","シママ","Blitzle",5],[523,"雷電斑馬","%E9%9B%B7%E7%94%B5%E6%96%91%E9%A9%AC","ゼブライカ","Zebstrika",5],[524,"石丸子","%E7%9F%B3%E4%B8%B8%E5%AD%90","ダンゴロ","Roggenrola",5],[525,"地幔岩","%E5%9C%B0%E5%B9%94%E5%B2%A9","ガントル","Boldore",5],[526,"龐岩怪","%E5%BA%9E%E5%B2%A9%E6%80%AA","ギガイアス","Gigalith",5],[527,"滾滾蝙蝠","%E6%BB%9A%E6%BB%9A%E8%9D%99%E8%9D%A0","コロモリ","Woobat",5],[528,"心蝙蝠","%E5%BF%83%E8%9D%99%E8%9D%A0","ココロモリ","Swoobat",5],[529,"螺釘地鼠","%E8%9E%BA%E9%92%89%E5%9C%B0%E9%BC%A0","モグリュー","Drilbur",5],[530,"龍頭地鼠","%E9%BE%99%E5%A4%B4%E5%9C%B0%E9%BC%A0","ドリュウズ","Excadrill",5],[531,"差不多娃娃","%E5%B7%AE%E4%B8%8D%E5%A4%9A%E5%A8%83%E5%A8%83","タブンネ","Audino",5],[532,"搬運小匠","%E6%90%AC%E8%BF%90%E5%B0%8F%E5%8C%A0","ドッコラー","Timburr",5],[533,"鐵骨土人","%E9%93%81%E9%AA%A8%E5%9C%9F%E4%BA%BA","ドテッコツ","Gurdurr",5],[534,"修建老匠","%E4%BF%AE%E5%BB%BA%E8%80%81%E5%8C%A0","ローブシン","Conkeldurr",5],[535,"圓蝌蚪","%E5%9C%86%E8%9D%8C%E8%9A%AA","オタマロ","Tympole",5],[536,"藍蟾蜍","%E8%93%9D%E8%9F%BE%E8%9C%8D","ガマガル","Palpitoad",5],[537,"蟾蜍王","%E8%9F%BE%E8%9C%8D%E7%8E%8B","ガマゲロゲ","Seismitoad",5],[538,"投摔鬼","%E6%8A%95%E6%91%94%E9%AC%BC","ナゲキ","Throh",5],[539,"打擊鬼","%E6%89%93%E5%87%BB%E9%AC%BC","ダゲキ","Sawk",5],[540,"蟲寶包","%E8%99%AB%E5%AE%9D%E5%8C%85","クルミル","Sewaddle",5],[541,"寶包繭","%E5%AE%9D%E5%8C%85%E8%8C%A7","クルマユ","Swadloon",5],[542,"保母蟲","%E4%BF%9D%E5%A7%86%E8%99%AB","ハハコモリ","Leavanny",5],[543,"百足蜈蚣","%E7%99%BE%E8%B6%B3%E8%9C%88%E8%9A%A3","フシデ","Venipede",5],[544,"車輪毬","%E8%BD%A6%E8%BD%AE%E7%90%83","ホイーガ","Whirlipede",5],[545,"蜈蚣王","%E8%9C%88%E8%9A%A3%E7%8E%8B","ペンドラー","Scolipede",5],[546,"木棉球","%E6%9C%A8%E6%A3%89%E7%90%83","モンメン","Cottonee",5],[547,"風妖精","%E9%A3%8E%E5%A6%96%E7%B2%BE","エルフーン","Whimsicott",5],[548,"百合根娃娃","%E7%99%BE%E5%90%88%E6%A0%B9%E5%A8%83%E5%A8%83","チュリネ","Petilil",5],[549,"裙兒小姐","%E8%A3%99%E5%84%BF%E5%B0%8F%E5%A7%90","ドレディア","Lilligant",5],[550,"野蠻鱸魚","%E9%87%8E%E8%9B%AE%E9%B2%88%E9%B1%BC","バスラオ","Basculin",5],[551,"黑眼鱷","%E9%BB%91%E7%9C%BC%E9%B3%84","メグロコ","Sandile",5],[552,"混混鱷","%E6%B7%B7%E6%B7%B7%E9%B3%84","ワルビル","Krokorok",5],[553,"流氓鱷","%E6%B5%81%E6%B0%93%E9%B3%84","ワルビアル","Krookodile",5],[554,"火紅不倒翁","%E7%81%AB%E7%BA%A2%E4%B8%8D%E5%80%92%E7%BF%81","ダルマッカ","Darumaka",5],[555,"達摩狒狒","%E8%BE%BE%E6%91%A9%E7%8B%92%E7%8B%92","ヒヒダルマ","Darmanitan",5],[556,"沙鈴仙人掌","%E6%B2%99%E9%93%83%E4%BB%99%E4%BA%BA%E6%8E%8C","マラカッチ","Maractus",5],[557,"石居蟹","%E7%9F%B3%E5%B1%85%E8%9F%B9","イシズマイ","Dwebble",5],[558,"岩殿居蟹","%E5%B2%A9%E6%AE%BF%E5%B1%85%E8%9F%B9","イワパレス","Crustle",5],[559,"滑滑小子","%E6%BB%91%E6%BB%91%E5%B0%8F%E5%AD%90","ズルッグ","Scraggy",5],[560,"頭巾混混","%E5%A4%B4%E5%B7%BE%E6%B7%B7%E6%B7%B7","ズルズキン","Scrafty",5],[561,"象徵鳥","%E8%B1%A1%E5%BE%81%E9%B8%9F","シンボラー","Sigilyph",5],[562,"哭哭面具","%E5%93%AD%E5%93%AD%E9%9D%A2%E5%85%B7","デスマス","Yamask",5],[563,"死神棺","%E6%AD%BB%E7%A5%9E%E6%A3%BA","デスカーン","Cofagrigus",5],[564,"原蓋海龜","%E5%8E%9F%E7%9B%96%E6%B5%B7%E9%BE%9F","プロトーガ","Tirtouga",5],[565,"肋骨海龜","%E8%82%8B%E9%AA%A8%E6%B5%B7%E9%BE%9F","アバゴーラ","Carracosta",5],[566,"始祖小鳥","%E5%A7%8B%E7%A5%96%E5%B0%8F%E9%B8%9F","アーケン","Archen",5],[567,"始祖大鳥","%E5%A7%8B%E7%A5%96%E5%A4%A7%E9%B8%9F","アーケオス","Archeops",5],[568,"破破袋","%E7%A0%B4%E7%A0%B4%E8%A2%8B","ヤブクロン","Trubbish",5],[569,"灰塵山","%E7%81%B0%E5%B0%98%E5%B1%B1","ダストダス","Garbodor",5],[570,"索羅亞","%E7%B4%A2%E7%BD%97%E4%BA%9A","ゾロア","Zorua",5],[571,"索羅亞克","%E7%B4%A2%E7%BD%97%E4%BA%9A%E5%85%8B","ゾロアーク","Zoroark",5],[572,"泡沫栗鼠","%E6%B3%A1%E6%B2%AB%E6%A0%97%E9%BC%A0","チラーミィ","Minccino",5],[573,"奇諾栗鼠","%E5%A5%87%E8%AF%BA%E6%A0%97%E9%BC%A0","チラチーノ","Cinccino",5],[574,"哥德寶寶","%E5%93%A5%E5%BE%B7%E5%AE%9D%E5%AE%9D","ゴチム","Gothita",5],[575,"哥德小童","%E5%93%A5%E5%BE%B7%E5%B0%8F%E7%AB%A5","ゴチミル","Gothorita",5],[576,"哥德小姐","%E5%93%A5%E5%BE%B7%E5%B0%8F%E5%A7%90","ゴチルゼル","Gothitelle",5],[577,"單卵細胞球","%E5%8D%95%E5%8D%B5%E7%BB%86%E8%83%9E%E7%90%83","ユニラン","Solosis",5],[578,"雙卵細胞球","%E5%8F%8C%E5%8D%B5%E7%BB%86%E8%83%9E%E7%90%83","ダブラン","Duosion",5],[579,"人造細胞卵","%E4%BA%BA%E9%80%A0%E7%BB%86%E8%83%9E%E5%8D%B5","ランクルス","Reuniclus",5],[580,"鴨寶寶","%E9%B8%AD%E5%AE%9D%E5%AE%9D","コアルヒー","Ducklett",5],[581,"舞天鵝","%E8%88%9E%E5%A4%A9%E9%B9%85","スワンナ","Swanna",5],[582,"迷你冰","%E8%BF%B7%E4%BD%A0%E5%86%B0","バニプッチ","Vanillite",5],[583,"多多冰","%E5%A4%9A%E5%A4%9A%E5%86%B0","バニリッチ","Vanillish",5],[584,"雙倍多多冰","%E5%8F%8C%E5%80%8D%E5%A4%9A%E5%A4%9A%E5%86%B0","バイバニラ","Vanilluxe",5],[585,"四季鹿","%E5%9B%9B%E5%AD%A3%E9%B9%BF","シキジカ","Deerling",5],[586,"萌芽鹿","%E8%90%8C%E8%8A%BD%E9%B9%BF","メブキジカ","Sawsbuck",5],[587,"電飛鼠","%E7%94%B5%E9%A3%9E%E9%BC%A0","エモンガ","Emolga",5],[588,"蓋蓋蟲","%E7%9B%96%E7%9B%96%E8%99%AB","カブルモ","Karrablast",5],[589,"騎士蝸牛","%E9%AA%91%E5%A3%AB%E8%9C%97%E7%89%9B","シュバルゴ","Escavalier",5],[590,"哎呀球菇","%E5%93%8E%E5%91%80%E7%90%83%E8%8F%87","タマゲタケ","Foongus",5],[591,"敗露球菇","%E8%B4%A5%E9%9C%B2%E7%90%83%E8%8F%87","モロバレル","Amoonguss",5],[592,"輕飄飄","%E8%BD%BB%E9%A3%98%E9%A3%98","プルリル","Frillish",5],[593,"胖嘟嘟","%E8%83%96%E5%98%9F%E5%98%9F","ブルンゲル","Jellicent",5],[594,"保母曼波","%E4%BF%9D%E5%A7%86%E6%9B%BC%E6%B3%A2","ママンボウ","Alomomola",5],[595,"電電蟲","%E7%94%B5%E7%94%B5%E8%99%AB","バチュル","Joltik",5],[596,"電蜘蛛","%E7%94%B5%E8%9C%98%E8%9B%9B","デンチュラ","Galvantula",5],[597,"種子鐵球","%E7%A7%8D%E5%AD%90%E9%93%81%E7%90%83","テッシード","Ferroseed",5],[598,"堅果啞鈴","%E5%9D%9A%E6%9E%9C%E5%93%91%E9%93%83","ナットレイ","Ferrothorn",5],[599,"齒輪兒","%E9%BD%BF%E8%BD%AE%E5%84%BF","ギアル","Klink",5],[600,"齒輪組","%E9%BD%BF%E8%BD%AE%E7%BB%84","ギギアル","Klang",5],[601,"齒輪怪","%E9%BD%BF%E8%BD%AE%E6%80%AA","ギギギアル","Klinklang",5],[602,"麻麻小魚","%E9%BA%BB%E9%BA%BB%E5%B0%8F%E9%B1%BC","シビシラス","Tynamo",5],[603,"麻麻鰻","%E9%BA%BB%E9%BA%BB%E9%B3%97","シビビール","Eelektrik",5],[604,"麻麻鰻魚王","%E9%BA%BB%E9%BA%BB%E9%B3%97%E9%B1%BC%E7%8E%8B","シビルドン","Eelektross",5],[605,"小灰怪","%E5%B0%8F%E7%81%B0%E6%80%AA","リグレー","Elgyem",5],[606,"大宇怪","%E5%A4%A7%E5%AE%87%E6%80%AA","オーベム","Beheeyem",5],[607,"燭光靈","%E7%83%9B%E5%85%89%E7%81%B5","ヒトモシ","Litwick",5],[608,"燈火幽靈","%E7%81%AF%E7%81%AB%E5%B9%BD%E7%81%B5","ランプラー","Lampent",5],[609,"水晶燈火靈","%E6%B0%B4%E6%99%B6%E7%81%AF%E7%81%AB%E7%81%B5","シャンデラ","Chandelure",5],[610,"牙牙","%E7%89%99%E7%89%99","キバゴ","Axew",5],[611,"斧牙龍","%E6%96%A7%E7%89%99%E9%BE%99","オノンド","Fraxure",5],[612,"雙斧戰龍","%E5%8F%8C%E6%96%A7%E6%88%98%E9%BE%99","オノノクス","Haxorus",5],[613,"噴嚏熊","%E5%96%B7%E5%9A%8F%E7%86%8A","クマシュン","Cubchoo",5],[614,"凍原熊","%E5%86%BB%E5%8E%9F%E7%86%8A","ツンベアー","Beartic",5],[615,"幾何雪花","%E5%87%A0%E4%BD%95%E9%9B%AA%E8%8A%B1","フリージオ","Cryogonal",5],[616,"小嘴蝸","%E5%B0%8F%E5%98%B4%E8%9C%97","チョボマキ","Shelmet",5],[617,"敏捷蟲","%E6%95%8F%E6%8D%B7%E8%99%AB","アギルダー","Accelgor",5],[618,"泥巴魚","%E6%B3%A5%E5%B7%B4%E9%B1%BC","マッギョ","Stunfisk",5],[619,"功夫鼬","%E5%8A%9F%E5%A4%AB%E9%BC%AC","コジョフー","Mienfoo",5],[620,"師父鼬","%E5%B8%88%E7%88%B6%E9%BC%AC","コジョンド","Mienshao",5],[621,"赤面龍","%E8%B5%A4%E9%9D%A2%E9%BE%99","クリムガン","Druddigon",5],[622,"泥偶小人","%E6%B3%A5%E5%81%B6%E5%B0%8F%E4%BA%BA","ゴビット","Golett",5],[623,"泥偶巨人","%E6%B3%A5%E5%81%B6%E5%B7%A8%E4%BA%BA","ゴルーグ","Golurk",5],[624,"駒刀小兵","%E9%A9%B9%E5%88%80%E5%B0%8F%E5%85%B5","コマタナ","Pawniard",5],[625,"劈斬司令","%E5%8A%88%E6%96%A9%E5%8F%B8%E4%BB%A4","キリキザン","Bisharp",5],[626,"爆炸頭水牛","%E7%88%86%E7%82%B8%E5%A4%B4%E6%B0%B4%E7%89%9B","バッフロン","Bouffalant",5],[627,"毛頭小鷹","%E6%AF%9B%E5%A4%B4%E5%B0%8F%E9%B9%B0","ワシボン","Rufflet",5],[628,"勇士雄鷹","%E5%8B%87%E5%A3%AB%E9%9B%84%E9%B9%B0","ウォーグル","Braviary",5],[629,"禿鷹丫頭","%E7%A7%83%E9%B9%B0%E4%B8%AB%E5%A4%B4","バルチャイ","Vullaby",5],[630,"禿鷹娜","%E7%A7%83%E9%B9%B0%E5%A8%9C","バルジーナ","Mandibuzz",5],[631,"熔蟻獸","%E7%86%94%E8%9A%81%E5%85%BD","クイタラン","Heatmor",5],[632,"鐵蟻","%E9%93%81%E8%9A%81","アイアント","Durant",5],[633,"單首龍","%E5%8D%95%E9%A6%96%E9%BE%99","モノズ","Deino",5],[634,"雙首暴龍","%E5%8F%8C%E9%A6%96%E6%9A%B4%E9%BE%99","ジヘッド","Zweilous",5],[635,"三首惡龍","%E4%B8%89%E9%A6%96%E6%81%B6%E9%BE%99","サザンドラ","Hydreigon",5],[636,"燃燒蟲","%E7%87%83%E7%83%A7%E8%99%AB","メラルバ","Larvesta",5],[637,"火神蛾","%E7%81%AB%E7%A5%9E%E8%9B%BE","ウルガモス","Volcarona",5],[638,"勾帕路翁","%E5%8B%BE%E5%B8%95%E8%B7%AF%E7%BF%81","コバルオン","Cobalion",5],[639,"代拉基翁","%E4%BB%A3%E6%8B%89%E5%9F%BA%E7%BF%81","テラキオン","Terrakion",5],[640,"畢力吉翁","%E6%AF%95%E5%8A%9B%E5%90%89%E7%BF%81","ビリジオン","Virizion",5],[641,"龍捲雲","%E9%BE%99%E5%8D%B7%E4%BA%91","トルネロス","Tornadus",5],[642,"雷電雲","%E9%9B%B7%E7%94%B5%E4%BA%91","ボルトロス","Thundurus",5],[643,"萊希拉姆","%E8%8E%B1%E5%B8%8C%E6%8B%89%E5%A7%86","レシラム","Reshiram",5],[644,"捷克羅姆","%E6%8D%B7%E5%85%8B%E7%BD%97%E5%A7%86","ゼクロム","Zekrom",5],[645,"土地雲","%E5%9C%9F%E5%9C%B0%E4%BA%91","ランドロス","Landorus",5],[646,"酋雷姆","%E9%85%8B%E9%9B%B7%E5%A7%86","キュレム","Kyurem",5],[647,"凱路迪歐","%E5%87%AF%E8%B7%AF%E8%BF%AA%E6%AC%A7","ケルディオ","Keldeo",5],[648,"美洛耶塔","%E7%BE%8E%E6%B4%9B%E8%80%B6%E5%A1%94","メロエッタ","Meloetta",5],[649,"蓋諾賽克特","%E7%9B%96%E8%AF%BA%E8%B5%9B%E5%85%8B%E7%89%99","ゲノセクト","Genesect",5],[650,"哈力栗","%E5%93%88%E5%8A%9B%E6%A0%97","ハリマロン","Chespin",6],[651,"胖胖哈力","%E8%83%96%E8%83%96%E5%93%88%E5%8A%9B","ハリボーグ","Quilladin",6],[652,"布里卡隆","%E5%B8%83%E9%87%8C%E5%8D%A1%E9%9A%86","ブリガロン","Chesnaught",6],[653,"火狐狸","%E7%81%AB%E7%8B%90%E7%8B%B8","フォッコ","Fennekin",6],[654,"長尾火狐","%E9%95%BF%E5%B0%BE%E7%81%AB%E7%8B%90","テールナー","Braixen",6],[655,"妖火紅狐","%E5%A6%96%E7%81%AB%E7%BA%A2%E7%8B%90","マフォクシー","Delphox",6],[656,"呱呱泡蛙","%E5%91%B1%E5%91%B1%E6%B3%A1%E8%9B%99","ケロマツ","Froakie",6],[657,"呱頭蛙","%E5%91%B1%E5%A4%B4%E8%9B%99","ゲコガシラ","Frogadier",6],[658,"甲賀忍蛙","%E7%94%B2%E8%B4%BA%E5%BF%8D%E8%9B%99","ゲッコウガ","Greninja",6],[659,"掘掘兔","%E6%8E%98%E6%8E%98%E5%85%94","ホルビー","Bunnelby",6],[660,"掘地兔","%E6%8E%98%E5%9C%B0%E5%85%94","ホルード","Diggersby",6],[661,"小箭雀","%E5%B0%8F%E7%AE%AD%E9%9B%80","ヤヤコマ","Fletchling",6],[662,"火箭雀","%E7%81%AB%E7%AE%AD%E9%9B%80","ヒノヤコマ","Fletchinder",6],[663,"烈箭鷹","%E7%83%88%E7%AE%AD%E9%B9%B0","ファイアロー","Talonflame",6],[664,"粉蝶蟲","%E7%B2%89%E8%9D%B6%E8%99%AB","コフキムシ","Scatterbug",6],[665,"粉蝶蛹","%E7%B2%89%E8%9D%B6%E8%9B%B9","コフーライ","Spewpa",6],[666,"彩粉蝶","%E5%BD%A9%E7%B2%89%E8%9D%B6","ビビヨン","Vivillon",6],[667,"小獅獅","%E5%B0%8F%E7%8B%AE%E7%8B%AE","シシコ","Litleo",6],[668,"火炎獅","%E7%81%AB%E7%82%8E%E7%8B%AE","カエンジシ","Pyroar",6],[669,"花蓓蓓","%E8%8A%B1%E8%93%93%E8%93%93","フラベベ","Flabébé",6],[670,"花葉蒂","%E8%8A%B1%E5%8F%B6%E8%92%82","フラエッテ","Floette",6],[671,"花潔夫人","%E8%8A%B1%E6%B4%81%E5%A4%AB%E4%BA%BA","フラージェス","Florges",6],[672,"坐騎小羊","%E5%9D%90%E9%AA%91%E5%B0%8F%E7%BE%8A","メェークル","Skiddo",6],[673,"坐騎山羊","%E5%9D%90%E9%AA%91%E5%B1%B1%E7%BE%8A","ゴーゴート","Gogoat",6],[674,"頑皮熊貓","%E9%A1%BD%E7%9A%AE%E7%86%8A%E7%8C%AB","ヤンチャム","Pancham",6],[675,"流氓熊貓","%E6%B5%81%E6%B0%93%E7%86%8A%E7%8C%AB","ゴロンダ","Pangoro",6],[676,"多麗米亞","%E5%A4%9A%E4%B8%BD%E7%B1%B3%E4%BA%9A","トリミアン","Furfrou",6],[677,"妙喵","%E5%A6%99%E5%96%B5","ニャスパー","Espurr",6],[678,"超能妙喵","%E8%B6%85%E8%83%BD%E5%A6%99%E5%96%B5","ニャオニクス","Meowstic",6],[679,"獨劍鞘","%E7%8B%AC%E5%89%91%E9%9E%98","ヒトツキ","Honedge",6],[680,"雙劍鞘","%E5%8F%8C%E5%89%91%E9%9E%98","ニダンギル","Doublade",6],[681,"堅盾劍怪","%E5%9D%9A%E7%9B%BE%E5%89%91%E6%80%AA","ギルガルド","Aegislash",6],[682,"粉香香","%E7%B2%89%E9%A6%99%E9%A6%99","シュシュプ","Spritzee",6],[683,"芳香精","%E8%8A%B3%E9%A6%99%E7%B2%BE","フレフワン","Aromatisse",6],[684,"綿綿泡芙","%E7%BB%B5%E7%BB%B5%E6%B3%A1%E8%8A%99","ペロッパフ","Swirlix",6],[685,"胖甜妮","%E8%83%96%E7%94%9C%E5%A6%AE","ペロリーム","Slurpuff",6],[686,"好啦魷","%E5%A5%BD%E5%95%A6%E9%B1%BF","マーイーカ","Inkay",6],[687,"烏賊王","%E4%B9%8C%E8%B4%BC%E7%8E%8B","カラマネロ","Malamar",6],[688,"龜腳腳","%E9%BE%9F%E8%84%9A%E8%84%9A","カメテテ","Binacle",6],[689,"龜足巨鎧","%E9%BE%9F%E8%B6%B3%E5%B7%A8%E9%93%A0","ガメノデス","Barbaracle",6],[690,"垃垃藻","%E5%9E%83%E5%9E%83%E8%97%BB","クズモー","Skrelp",6],[691,"毒藻龍","%E6%AF%92%E8%97%BB%E9%BE%99","ドラミドロ","Dragalge",6],[692,"鐵臂槍蝦","%E9%93%81%E8%87%82%E6%9E%AA%E8%99%BE","ウデッポウ","Clauncher",6],[693,"鋼炮臂蝦","%E9%92%A2%E7%82%AE%E8%87%82%E8%99%BE","ブロスター","Clawitzer",6],[694,"傘電蜥","%E4%BC%9E%E7%94%B5%E8%9C%A5","エリキテル","Helioptile",6],[695,"光電傘蜥","%E5%85%89%E7%94%B5%E4%BC%9E%E8%9C%A5","エレザード","Heliolisk",6],[696,"寶寶暴龍","%E5%AE%9D%E5%AE%9D%E6%9A%B4%E9%BE%99","チゴラス","Tyrunt",6],[697,"怪顎龍","%E6%80%AA%E9%A2%9A%E9%BE%99","ガチゴラス","Tyrantrum",6],[698,"冰雪龍","%E5%86%B0%E9%9B%AA%E9%BE%99","アマルス","Amaura",6],[699,"冰雪巨龍","%E5%86%B0%E9%9B%AA%E5%B7%A8%E9%BE%99","アマルルガ","Aurorus",6],[700,"仙子伊布","%E4%BB%99%E5%AD%90%E4%BC%8A%E5%B8%83","ニンフィア","Sylveon",6],[701,"摔角鷹人","%E6%91%94%E8%A7%92%E9%B9%B0%E4%BA%BA","ルチャブル","Hawlucha",6],[702,"咚咚鼠","%E5%92%9A%E5%92%9A%E9%BC%A0","デデンネ","Dedenne",6],[703,"小碎鑽","%E5%B0%8F%E7%A2%8E%E9%92%BB","メレシー","Carbink",6],[704,"黏黏寶","%E9%BB%8F%E9%BB%8F%E5%AE%9D","ヌメラ","Goomy",6],[705,"黏美兒","%E9%BB%8F%E7%BE%8E%E5%84%BF","ヌメイル","Sliggoo",6],[706,"黏美龍","%E9%BB%8F%E7%BE%8E%E9%BE%99","ヌメルゴン","Goodra",6],[707,"鑰圈兒","%E9%92%A5%E5%9C%88%E5%84%BF","クレッフィ","Klefki",6],[708,"小木靈","%E5%B0%8F%E6%9C%A8%E7%81%B5","ボクレー","Phantump",6],[709,"朽木妖","%E6%9C%BD%E6%9C%A8%E5%A6%96","オーロット","Trevenant",6],[710,"南瓜精","%E5%8D%97%E7%93%9C%E7%B2%BE","バケッチャ","Pumpkaboo",6],[711,"南瓜怪人","%E5%8D%97%E7%93%9C%E6%80%AA%E4%BA%BA","パンプジン","Gourgeist",6],[712,"冰寶","%E5%86%B0%E5%AE%9D","カチコール","Bergmite",6],[713,"冰岩怪","%E5%86%B0%E5%B2%A9%E6%80%AA","クレベース","Avalugg",6],[714,"嗡蝠","%E5%97%A1%E8%9D%A0","オンバット","Noibat",6],[715,"音波龍","%E9%9F%B3%E6%B3%A2%E9%BE%99","オンバーン","Noivern",6],[716,"哲爾尼亞斯","%E5%93%B2%E5%B0%94%E5%B0%BC%E4%BA%9A%E6%96%AF","ゼルネアス","Xerneas",6],[717,"伊裴爾塔爾","%E4%BC%8A%E8%A3%B4%E5%B0%94%E5%A1%94%E5%B0%94","イベルタル","Yveltal",6],[718,"基格爾德","%E5%9F%BA%E6%A0%BC%E5%B0%94%E5%BE%B7","ジガルデ","Zygarde",6],[719,"蒂安希","%E8%92%82%E5%AE%89%E5%B8%8C","ディアンシー","Diancie",6],[720,"胡帕","%E8%83%A1%E5%B8%95","フーパ","Hoopa",6],[721,"波爾凱尼恩","%E6%B3%A2%E5%B0%94%E5%87%AF%E5%B0%BC%E6%81%A9","ボルケニオン","Volcanion",6],[722,"木木梟","%E6%9C%A8%E6%9C%A8%E6%9E%AD","モクロー","Rowlet",7],[723,"投羽梟","%E6%8A%95%E7%BE%BD%E6%9E%AD","フクスロー","Dartrix",7],[724,"狙射樹梟","%E7%8B%99%E5%B0%84%E6%A0%91%E6%9E%AD","ジュナイパー","Decidueye",7],[725,"火斑喵","%E7%81%AB%E6%96%91%E5%96%B5","ニャビー","Litten",7],[726,"炎熱喵","%E7%82%8E%E7%83%AD%E5%96%B5","ニャヒート","Torracat",7],[727,"熾焰咆哮虎","%E7%82%BD%E7%84%B0%E5%92%86%E5%93%AE%E8%99%8E","ガオガエン","Incineroar",7],[728,"球球海獅","%E7%90%83%E7%90%83%E6%B5%B7%E7%8B%AE","アシマリ","Popplio",7],[729,"花漾海獅","%E8%8A%B1%E6%BC%BE%E6%B5%B7%E7%8B%AE","オシャマリ","Brionne",7],[730,"西獅海壬","%E8%A5%BF%E7%8B%AE%E6%B5%B7%E5%A3%AC","アシレーヌ","Primarina",7],[731,"小篤兒","%E5%B0%8F%E7%AC%83%E5%84%BF","ツツケラ","Pikipek",7],[732,"喇叭啄鳥","%E5%96%87%E5%8F%AD%E5%95%84%E9%B8%9F","ケララッパ","Trumbeak",7],[733,"銃嘴大鳥","%E9%93%B3%E5%98%B4%E5%A4%A7%E9%B8%9F","ドデカバシ","Toucannon",7],[734,"貓鼬少","%E7%8C%AB%E9%BC%AC%E5%B0%91","ヤングース","Yungoos",7],[735,"貓鼬探長","%E7%8C%AB%E9%BC%AC%E6%8E%A2%E9%95%BF","デカグース","Gumshoos",7],[736,"強顎雞母蟲","%E5%BC%BA%E9%A2%9A%E9%B8%A1%E6%AF%8D%E8%99%AB","アゴジムシ","Grubbin",7],[737,"蟲電寶","%E8%99%AB%E7%94%B5%E5%AE%9D","デンヂムシ","Charjabug",7],[738,"鍬農炮蟲","%E9%94%B9%E5%86%9C%E7%82%AE%E8%99%AB","クワガノン","Vikavolt",7],[739,"好勝蟹","%E5%A5%BD%E8%83%9C%E8%9F%B9","マケンカニ","Crabrawler",7],[740,"好勝毛蟹","%E5%A5%BD%E8%83%9C%E6%AF%9B%E8%9F%B9","ケケンカニ","Crabominable",7],[741,"花舞鳥","%E8%8A%B1%E8%88%9E%E9%B8%9F","オドリドリ","Oricorio",7],[742,"萌虻","%E8%90%8C%E8%99%BB","アブリー","Cutiefly",7],[743,"蝶結萌虻","%E8%9D%B6%E7%BB%93%E8%90%8C%E8%99%BB","アブリボン","Ribombee",7],[744,"岩狗狗","%E5%B2%A9%E7%8B%97%E7%8B%97","イワンコ","Rockruff",7],[745,"鬃岩狼人","%E9%AC%83%E5%B2%A9%E7%8B%BC%E4%BA%BA","ルガルガン","Lycanroc",7],[746,"弱丁魚","%E5%BC%B1%E4%B8%81%E9%B1%BC","ヨワシ","Wishiwashi",7],[747,"好壞星","%E5%A5%BD%E5%9D%8F%E6%98%9F","ヒドイデ","Mareanie",7],[748,"超壞星","%E8%B6%85%E5%9D%8F%E6%98%9F","ドヒドイデ","Toxapex",7],[749,"泥驢仔","%E6%B3%A5%E9%A9%B4%E4%BB%94","ドロバンコ","Mudbray",7],[750,"重泥挽馬","%E9%87%8D%E6%B3%A5%E6%8C%BD%E9%A9%AC","バンバドロ","Mudsdale",7],[751,"滴蛛","%E6%BB%B4%E8%9B%9B","シズクモ","Dewpider",7],[752,"滴蛛霸","%E6%BB%B4%E8%9B%9B%E9%9C%B8","オニシズクモ","Araquanid",7],[753,"偽螳草","%E4%BC%AA%E8%9E%B3%E8%8D%89","カリキリ","Fomantis",7],[754,"蘭螳花","%E5%85%B0%E8%9E%B3%E8%8A%B1","ラランテス","Lurantis",7],[755,"睡睡菇","%E7%9D%A1%E7%9D%A1%E8%8F%87","ネマシュ","Morelull",7],[756,"燈罩夜菇","%E7%81%AF%E7%BD%A9%E5%A4%9C%E8%8F%87","マシェード","Shiinotic",7],[757,"夜盜火蜥","%E5%A4%9C%E7%9B%97%E7%81%AB%E8%9C%A5","ヤトウモリ","Salandit",7],[758,"焰后蜥","%E7%84%B0%E5%90%8E%E8%9C%A5","エンニュート","Salazzle",7],[759,"童偶熊","%E7%AB%A5%E5%81%B6%E7%86%8A","ヌイコグマ","Stufful",7],[760,"穿著熊","%E7%A9%BF%E7%9D%80%E7%86%8A","キテルグマ","Bewear",7],[761,"甜竹竹","%E7%94%9C%E7%AB%B9%E7%AB%B9","アマカジ","Bounsweet",7],[762,"甜舞妮","%E7%94%9C%E8%88%9E%E5%A6%AE","アママイコ","Steenee",7],[763,"甜冷美后","%E7%94%9C%E5%86%B7%E7%BE%8E%E5%90%8E","アマージョ","Tsareena",7],[764,"花療環環","%E8%8A%B1%E7%96%97%E7%8E%AF%E7%8E%AF","キュワワー","Comfey",7],[765,"智揮猩","%E6%99%BA%E6%8C%A5%E7%8C%A9","ヤレユータン","Oranguru",7],[766,"投擲猴","%E6%8A%95%E6%8E%B7%E7%8C%B4","ナゲツケサル","Passimian",7],[767,"膽小蟲","%E8%83%86%E5%B0%8F%E8%99%AB","コソクムシ","Wimpod",7],[768,"具甲武者","%E5%85%B7%E7%94%B2%E6%AD%A6%E8%80%85","グソクムシャ","Golisopod",7],[769,"沙丘娃","%E6%B2%99%E4%B8%98%E5%A8%83","スナバァ","Sandygast",7],[770,"噬沙堡爺","%E5%99%AC%E6%B2%99%E5%A0%A1%E7%88%B7","シロデスナ","Palossand",7],[771,"拳海參","%E6%8B%B3%E6%B5%B7%E5%8F%82","ナマコブシ","Pyukumuku",7],[772,"屬性：空","%E5%B1%9E%E6%80%A7%EF%BC%9A%E7%A9%BA","タイプ：ヌル","Type: Null",7],[773,"銀伴戰獸","%E9%93%B6%E4%BC%B4%E6%88%98%E5%85%BD","シルヴァディ","Silvally",7],[774,"小隕星","%E5%B0%8F%E9%99%A8%E6%98%9F","メテノ","Minior",7],[775,"樹枕尾熊","%E6%A0%91%E6%9E%95%E5%B0%BE%E7%86%8A","ネッコアラ","Komala",7],[776,"爆焰龜獸","%E7%88%86%E7%84%B0%E9%BE%9F%E5%85%BD","バクガメス","Turtonator",7],[777,"托戈德瑪爾","%E6%89%98%E6%88%88%E5%BE%B7%E7%8E%9B%E5%B0%94","トゲデマル","Togedemaru",7],[778,"謎擬Ｑ","%E8%B0%9C%E6%8B%9F%EF%BC%B1","ミミッキュ","Mimikyu",7],[779,"磨牙彩皮魚","%E7%A3%A8%E7%89%99%E5%BD%A9%E7%9A%AE%E9%B1%BC","ハギギシリ","Bruxish",7],[780,"老翁龍","%E8%80%81%E7%BF%81%E9%BE%99","ジジーロン","Drampa",7],[781,"破破舵輪","%E7%A0%B4%E7%A0%B4%E8%88%B5%E8%BD%AE","ダダリン","Dhelmise",7],[782,"心鱗寶","%E5%BF%83%E9%B3%9E%E5%AE%9D","ジャラコ","Jangmo-o",7],[783,"鱗甲龍","%E9%B3%9E%E7%94%B2%E9%BE%99","ジャランゴ","Hakamo-o",7],[784,"杖尾鱗甲龍","%E6%9D%96%E5%B0%BE%E9%B3%9E%E7%94%B2%E9%BE%99","ジャラランガ","Kommo-o",7],[785,"卡璞・鳴鳴","%E5%8D%A1%E7%92%9E%E3%83%BB%E9%B8%A3%E9%B8%A3","カプ・コケコ","Tapu Koko",7],[786,"卡璞・蝶蝶","%E5%8D%A1%E7%92%9E%E3%83%BB%E8%9D%B6%E8%9D%B6","カプ・テテフ","Tapu Lele",7],[787,"卡璞・哞哞","%E5%8D%A1%E7%92%9E%E3%83%BB%E5%93%9E%E5%93%9E","カプ・ブルル","Tapu Bulu",7],[788,"卡璞・鰭鰭","%E5%8D%A1%E7%92%9E%E3%83%BB%E9%B3%8D%E9%B3%8D","カプ・レヒレ","Tapu Fini",7],[789,"科斯莫古","%E7%A7%91%E6%96%AF%E8%8E%AB%E5%8F%A4","コスモッグ","Cosmog",7],[790,"科斯莫姆","%E7%A7%91%E6%96%AF%E8%8E%AB%E5%A7%86","コスモウム","Cosmoem",7],[791,"索爾迦雷歐","%E7%B4%A2%E5%B0%94%E8%BF%A6%E9%9B%B7%E6%AC%A7","ソルガレオ","Solgaleo",7],[792,"露奈雅拉","%E9%9C%B2%E5%A5%88%E9%9B%85%E6%8B%89","ルナアーラ","Lunala",7],[793,"虛吾伊德","%E8%99%9A%E5%90%BE%E4%BC%8A%E5%BE%B7","ウツロイド","Nihilego",7],[794,"爆肌蚊","%E7%88%86%E8%82%8C%E8%9A%8A","マッシブーン","Buzzwole",7],[795,"費洛美螂","%E8%B4%B9%E6%B4%9B%E7%BE%8E%E8%9E%82","フェローチェ","Pheromosa",7],[796,"電束木","%E7%94%B5%E6%9D%9F%E6%9C%A8","デンジュモク","Xurkitree",7],[797,"鐵火輝夜","%E9%93%81%E7%81%AB%E8%BE%89%E5%A4%9C","テッカグヤ","Celesteela",7],[798,"紙御劍","%E7%BA%B8%E5%BE%A1%E5%89%91","カミツルギ","Kartana",7],[799,"惡食大王","%E6%81%B6%E9%A3%9F%E5%A4%A7%E7%8E%8B","アクジキング","Guzzlord",7],[800,"奈克洛茲瑪","%E5%A5%88%E5%85%8B%E6%B4%9B%E5%85%B9%E7%8E%9B","ネクロズマ","Necrozma",7],[801,"瑪機雅娜","%E7%8E%9B%E6%9C%BA%E9%9B%85%E5%A8%9C","マギアナ","Magearna",7],[802,"瑪夏多","%E7%8E%9B%E5%A4%8F%E5%A4%9A","マーシャドー","Marshadow",7],[803,"毒貝比","%E6%AF%92%E8%B4%9D%E6%AF%94","ベベノム","Poipole",7],[804,"四顎針龍","%E5%9B%9B%E9%A2%9A%E9%92%88%E9%BE%99","アーゴヨン","Naganadel",7],[805,"壘磊石","%E5%9E%92%E7%A3%8A%E7%9F%B3","ツンデツンデ","Stakataka",7],[806,"砰頭小丑","%E7%A0%B0%E5%A4%B4%E5%B0%8F%E4%B8%91","ズガドーン","Blacephalon",7],[807,"捷拉奧拉","%E6%8D%B7%E6%8B%89%E5%A5%A5%E6%8B%89","ゼラオラ","Zeraora",7],[808,"美錄坦","%E7%BE%8E%E5%BD%95%E5%9D%A6","メルタン","Meltan",7],[809,"美錄梅塔","%E7%BE%8E%E5%BD%95%E6%A2%85%E5%A1%94","メルメタル","Melmetal",7],[810,"敲音猴","%E6%95%B2%E9%9F%B3%E7%8C%B4","サルノリ","Grookey",8],[811,"啪咚猴","%E5%95%AA%E5%92%9A%E7%8C%B4","バチンキー","Thwackey",8],[812,"轟擂金剛猩","%E8%BD%B0%E6%93%82%E9%87%91%E5%88%9A%E7%8C%A9","ゴリランダー","Rillaboom",8],[813,"炎兔兒","%E7%82%8E%E5%85%94%E5%84%BF","ヒバニー","Scorbunny",8],[814,"騰蹴小將","%E8%85%BE%E8%B9%B4%E5%B0%8F%E5%B0%86","ラビフット","Raboot",8],[815,"閃焰王牌","%E9%97%AA%E7%84%B0%E7%8E%8B%E7%89%8C","エースバーン","Cinderace",8],[816,"淚眼蜥","%E6%B3%AA%E7%9C%BC%E8%9C%A5","メッソン","Sobble",8],[817,"變澀蜥","%E5%8F%98%E6%B6%A9%E8%9C%A5","ジメレオン","Drizzile",8],[818,"千面避役","%E5%8D%83%E9%9D%A2%E9%81%BF%E5%BD%B9","インテレオン","Inteleon",8],[819,"貪心栗鼠","%E8%B4%AA%E5%BF%83%E6%A0%97%E9%BC%A0","ホシガリス","Skwovet",8],[820,"藏飽栗鼠","%E8%97%8F%E9%A5%B1%E6%A0%97%E9%BC%A0","ヨクバリス","Greedent",8],[821,"稚山雀","%E7%A8%9A%E5%B1%B1%E9%9B%80","ココガラ","Rookidee",8],[822,"藍鴉","%E8%93%9D%E9%B8%A6","アオガラス","Corvisquire",8],[823,"鋼鎧鴉","%E9%92%A2%E9%93%A0%E9%B8%A6","アーマーガア","Corviknight",8],[824,"索偵蟲","%E7%B4%A2%E4%BE%A6%E8%99%AB","サッチムシ","Blipbug",8],[825,"天罩蟲","%E5%A4%A9%E7%BD%A9%E8%99%AB","レドームシ","Dottler",8],[826,"以歐路普","%E4%BB%A5%E6%AC%A7%E8%B7%AF%E6%99%AE","イオルブ","Orbeetle",8],[827,"偷兒狐","%E5%81%B7%E5%84%BF%E7%8B%90","クスネ","Nickit",8],[828,"狐大盜","%E7%8B%90%E5%A4%A7%E7%9B%97","フォクスライ","Thievul",8],[829,"幼棉棉","%E5%B9%BC%E6%A3%89%E6%A3%89","ヒメンカ","Gossifleur",8],[830,"白蓬蓬","%E7%99%BD%E8%93%AC%E8%93%AC","ワタシラガ","Eldegoss",8],[831,"毛辮羊","%E6%AF%9b%E8%BE%ab%E7%BE%8A","ウールー","Wooloo",8],[832,"毛毛角羊","%E6%AF%9b%E6%AF%9b%E8%A7%92%E7%BE%8A","バイウールー","Dubwool",8],[833,"咬咬龜","%E5%92%AC%E5%92%AC%E9%BE%9F","カムカメ","Chewtle",8],[834,"暴噬龜","%E6%9A%B4%E5%99%AC%E9%BE%9F","カジリガメ","Drednaw",8],[835,"來電汪","%E6%9D%A5%E7%94%B5%E6%B1%AA","ワンパチ","Yamper",8],[836,"逐電犬","%E9%80%90%E7%94%B5%E7%8A%AC","パルスワン","Boltund",8],[837,"小炭仔","%E5%B0%8F%E7%82%AD%E4%BB%94","タンドン","Rolycoly",8],[838,"大炭車","%E5%A4%A7%E7%82%AD%E8%BD%A6","トロッゴン","Carkol",8],[839,"巨炭山","%E5%B7%A8%E7%82%AD%E5%B1%B1","セキタンザン","Coalossal",8],[840,"啃果蟲","%E5%95%83%E6%9E%9C%E8%99%AB","カジッチュ","Applin",8],[841,"蘋裹龍","%E8%8B%B9%E8%A3%B9%E9%BE%99","アップリュー","Flapple",8],[842,"豐蜜龍","%E4%B8%B0%E8%9C%9C%E9%BE%99","タルップル","Appletun",8],[843,"沙包蛇","%E6%B2%99%E5%8C%85%E8%9B%87","スナヘビ","Silicobra",8],[844,"沙螺蟒","%E6%B2%99%E8%9E%BA%E8%9F%92","サダイジャ","Sandaconda",8],[845,"古月鳥","%E5%8F%A4%E6%9C%88%E9%B8%9F","ウッウ","Cramorant",8],[846,"刺梭魚","%E5%88%BA%E6%A2%AD%E9%B1%BC","サシカマス","Arrokuda",8],[847,"戽斗尖梭","%E6%88%BD%E6%96%97%E5%B0%96%E6%A2%AD","カマスジョー","Barraskewda",8],[848,"毒電嬰","%E6%AF%92%E7%94%B5%E5%A9%B4","エレズン","Toxel",8],[849,"顫弦蠑螈","%E9%A2%A4%E5%BC%A6%E8%9D%BE%E8%9E%88","ストリンダー","Toxtricity",8],[850,"燒火蚣","%E7%83%A7%E7%81%AB%E8%9A%A3","ヤクデ","Sizzlipede",8],[851,"焚焰蚣","%E7%84%9A%E7%84%B0%E8%9A%A3","マルヤクデ","Centiskorch",8],[852,"拳拳蛸","%E6%8B%B3%E6%8B%B3%E8%9B%B8","タタッコ","Clobbopus",8],[853,"八爪武師","%E5%85%AB%E7%88%AA%E6%AD%A6%E5%B8%88","オトスパス","Grapploct",8],[854,"來悲茶","%E6%9D%A5%E6%82%B2%E8%8C%B6","ヤバチャ","Sinistea",8],[855,"怖思壺","%E6%80%96%E6%80%9D%E5%A3%B6","ポットデス","Polteageist",8],[856,"迷布莉姆","%E8%BF%B7%E5%B8%83%E8%8E%89%E5%A7%86","ミブリム","Hatenna",8],[857,"提布莉姆","%E6%8F%90%E5%B8%83%E8%8E%89%E5%A7%86","テブリム","Hattrem",8],[858,"布莉姆溫","%E5%B8%83%E8%8E%89%E5%A7%86%E6%B8%A9","ブリムオン","Hatterene",8],[859,"搗蛋小妖","%E6%8D%A3%E8%9B%8B%E5%B0%8F%E5%A6%96","ベロバー","Impidimp",8],[860,"詐唬魔","%E8%AF%88%E5%94%AC%E9%AD%94","ギモー","Morgrem",8],[861,"長毛巨魔","%E9%95%BF%E6%AF%9B%E5%B7%A8%E9%AD%94","オーロンゲ","Grimmsnarl",8],[862,"堵攔熊","%E5%A0%B5%E6%8B%A6%E7%86%8A","タチフサグマ","Obstagoon",8],[863,"喵頭目","%E5%96%B5%E5%A4%B4%E7%9B%AE","ニャイキング","Perrserker",8],[864,"魔靈珊瑚","%E9%AD%94%E7%81%B5%E7%8F%8A%E7%91%9A","サニゴーン","Cursola",8],[865,"蔥遊兵","%E8%91%B1%E6%B8%B8%E5%85%B5","ネギガナイト","Sirfetch'd",8],[866,"踏冰人偶","%E8%B8%8F%E5%86%B0%E4%BA%BA%E5%81%B6","バリコオル","Mr. Rime",8],[867,"死神板","%E6%AD%BB%E7%A5%9E%E6%9D%BF","デスバーン","Runerigus",8],[868,"小仙奶","%E5%B0%8F%E4%BB%99%E5%A5%6","マホミル","Milcery",8],[869,"霜奶仙","%E9%9C%9C%E5%A5%B6%E4%BB%99","マホイップ","Alcremie",8],[870,"列陣兵","%E5%88%97%E9%98%B5%E5%85%B5","タイレーツ","Falinks",8],[871,"啪嚓海膽","%E5%95%AA%E5%9A%93%E6%B5%B7%E8%83%86","バチンウニ","Pincurchin",8],[872,"雪吞蟲","%E9%9B%AA%E5%90%9E%E8%99%AB","ユキハミ","Snom",8],[873,"雪絨蛾","%E9%9B%AA%E7%BB%92%E8%9B%BE","モスノウ","Frosmoth",8],[874,"巨石丁","%E5%B7%A8%E7%9F%B3%E4%B8%81","イシヘンジン","Stonjourner",8],[875,"冰砌鵝","%E5%86%B0%E7%A0%8C%E9%B9%85","コオリッポ","Eiscue",8],[876,"愛管侍","%E7%88%B1%E7%AE%A1%E4%BE%8D","イエッサン","Indeedee",8],[877,"莫魯貝可","%E8%8E%AB%E9%B2%81%E8%B4%9D%E5%8F%AF","モルペコ","Morpeko",8],[878,"銅象","%E9%93%9C%E8%B1%A1","ゾウドウ","Cufant",8],[879,"大王銅象","%E5%A4%A7%E7%8E%8B%E9%93%9C%E8%B1%A1","ダイオウドウ","Copperajah",8],[880,"雷鳥龍","%E9%9B%B7%E9%B8%9F%E9%BE%99","パッチラゴン","Dracozolt",8],[881,"雷鳥海獸","%E9%9B%B7%E9%B8%9F%E6%B5%B7%E5%85%BD","パッチルドン","Arctozolt",8],[882,"鰓魚龍","%E9%B3%83%E9%B1%BC%E9%BE%99","ウオノラゴン","Dracovish",8],[883,"鰓魚海獸","%E9%B3%83%E9%B1%BC%E6%B5%B7%E5%85%BD","ウオチルドン","Arctovish",8],[884,"鋁鋼龍","%E9%93%9D%E9%92%A2%E9%BE%99","ジュラルドン","Duraludon",8],[885,"多龍梅西亞","%E5%A4%9A%E9%BE%99%E6%A2%85%E8%A5%BF%E4%BA%9A","ドラメシヤ","Dreepy",8],[886,"多龍奇","%E5%A4%9A%E9%BE%99%E5%A5%87","ドロンチ","Drakloak",8],[887,"多龍巴魯托","%E5%A4%9A%E9%BE%99%E5%B7%B4%E9%B2%81%E6%89%98","ドラパルト","Dragapult",8],[888,"蒼響","%E8%8B%8D%E5%93%8D","ザシアン","Zacian",8],[889,"藏瑪然特","%E8%97%8F%E7%8E%9B%E7%84%B6%E7%89%B9","ザマゼンタ","Zamazenta",8],[890,"無極汰那","%E6%97%A0%E6%9E%81%E6%B1%B0%E9%82%A3","ムゲンダイナ","Eternatus",8],[891,"熊徒弟","%E7%86%8A%E5%BE%92%E5%BC%9F","ダクマ","Kubfu",8],[892,"武道熊師","%E6%AD%A6%E9%81%93%E7%86%8A%E5%B8%88","ウーラオス","Urshifu",8],[893,"薩戮德","%E8%90%A8%E6%88%AE%E5%BE%B7","ザルード","Zarude",8],[894,"雷吉艾勒奇","%E9%9B%B7%E5%90%89%E8%89%BE%E5%8B%92%E5%A5%87","レジエレキ","Regieleki",8],[895,"雷吉鐸拉戈","%E9%9B%B7%E5%90%89%E9%93%8E%E6%8B%89%E6%88%88","レジドラゴ","Regidrago",8],[896,"雪暴馬","%E9%9B%AA%E6%9A%B4%E9%A9%AC","ブリザポス","Glastrier",8],[897,"靈幽馬","%E7%81%B5%E5%B9%BD%E9%A9%AC","レイスポス","Spectrier",8],[898,"蕾冠王","%E8%95%BE%E5%86%A0%E7%8E%8B","バドレックス","Calyrex",8],[899,"詭角鹿","%E8%AF%A1%E8%A7%92%E9%B9%BF","アヤシシ","Wyrdeer",8],[900,"劈斧螳螂","%E5%8A%88%E6%96%A7%E8%9E%B3%E8%9E%82","バサギリ","Kleavor",8],[901,"月月熊","%E6%9C%88%E6%9C%88%E7%86%8A","ガチグマ","Ursaluna",8],[902,"幽尾玄魚","%E5%B9%BD%E5%B0%BE%E7%8E%84%E9%B1%BC","イダイトウ","Basculegion",8],[903,"大狃拉","%E5%A4%A7%E7%8B%83%E6%8B%89","オオニューラ","Sneasler",8],[904,"萬針魚","%E4%B8%87%E9%92%88%E9%B1%BC","ハリーマン","Overqwil",8],[905,"眷戀雲","%E7%9C%B7%E6%81%8B%E4%BA%91","ラブトロス","Enamorus",8],[906,"新葉喵","%E6%96%B0%E5%8F%B6%E5%96%B5","ニャオハ","Sprigatito",9],[907,"蒂蕾喵","%E8%92%82%E8%95%BE%E5%96%B5","ニャローテ","Floragato",9],[908,"魔幻假面喵","%E9%AD%94%E5%B9%BB%E5%81%87%E9%9D%A2%E5%96%B5","マスカーニャ","Meowscarada",9],[909,"呆火鱷","%E5%91%86%E7%81%AB%E9%B3%84","ホゲータ","Fuecoco",9],[910,"炙燙鱷","%E7%82%99%E7%83%AB%E9%B3%84","アチゲータ","Crocalor",9],[911,"骨紋巨聲鱷","%E9%AA%A8%E7%BA%B9%E5%B7%A8%E5%A3%B0%E9%B3%84","ラウドボーン","Skeledirge",9],[912,"潤水鴨","%E6%B6%A6%E6%B0%B4%E9%B8%AD","クワッス","Quaxly",9],[913,"湧躍鴨","%E6%B6%8C%E8%B7%83%E9%B8%AD","ウェルカモ","Quaxwell",9],[914,"狂歡浪舞鴨","%E7%8B%82%E6%AC%A2%E6%B5%AA%E8%88%9E%E9%B8%AD","ウェーニバル","Quaquaval",9],[915,"愛吃豚","%E7%88%B1%E5%90%83%E8%B1%9A","グルトン","Lechonk",9],[916,"飄香豚","%E9%A3%98%E9%A6%99%E8%B1%9A","パフュートン","Oinkologne",9],[917,"團珠蛛","%E5%9B%BD%E7%8F%A0%E8%9B%9B","タマンチュラ","Tarountula",9],[918,"操陷蛛","%E6%93%8D%E9%99%B7%E8%9B%9B","ワナイダー","Spidops",9],[919,"豆蟋蟀","%E8%B1%86%E8%9F%8B%E8%9F%80","マメバッタ","Nymble",9],[920,"烈腿蝗","%E7%83%88%E8%85%BF%E8%9D%97","エクスレッグ","Lokix",9],[921,"布撥","%E5%B8%83%E6%8B%A8","パモ","Pawmi",9],[922,"布土撥","%E5%B8%83%E5%9C%9F%E6%8B%A8","パモット","Pawmo",9],[923,"巴布土撥","%E5%B7%B4%E5%B8%83%E5%9C%9F%E6%8B%A8","パーモット","Pawmot",9],[924,"一對鼠","%E4%B8%80%E5%AF%B9%E9%BC%A0","ワッカネズミ","Tandemaus",9],[925,"一家鼠","%E4%B8%80%E5%AE%B6%E9%BC%A0","イッカネズミ","Maushold",9],[926,"狗仔包","%E7%8B%97%E4%BB%94%E5%8C%85","パピモッチ","Fidough",9],[927,"麻花犬","%E9%BA%BB%E8%8A%B1%E7%8A%AC","バウッツェル","Dachsbun",9],[928,"迷你芙","%E8%BF%B7%E4%BD%A0%E8%8A%99","ミニーブ","Smoliv",9],[929,"奧利紐","%E5%A5%A5%E5%88%A9%E7%BA%BD","オリーニョ","Dolliv",9],[930,"奧利瓦","%E5%A5%A5%E5%88%A9%E7%93%A6","オリーヴァ","Arboliva",9],[931,"怒鸚哥","%E6%80%92%E9%B9%A6%E5%93%A5","イキリンコ","Squawkabilly",9],[932,"鹽石寶","%E7%9B%90%E7%9F%B3%E5%AE%9D","コジオ","Nacli",9],[933,"鹽石壘","%E7%9B%90%E7%9F%B3%E5%9E%92","ジオヅム","Naclstack",9],[934,"鹽石巨靈","%E7%9B%90%E7%9F%B3%E5%B7%A8%E7%81%B5","キョジオーン","Garganacl",9],[935,"炭小侍","%E7%82%AD%E5%B0%8F%E4%BE%8D","カルボウ","Charcadet",9],[936,"紅蓮鎧騎","%E7%BA%A2%E8%8E%B2%E9%93%A0%E9%AA%91","グレンアルマ","Armarouge",9],[937,"蒼炎刃鬼","%E8%8B%8D%E7%82%8E%E5%88%83%E9%AC%BC","ソウブレイズ","Ceruledge",9],[938,"光蚪仔","%E5%85%89%E8%9A%AA%E4%BB%94","ズピカ","Tadbulb",9],[939,"電肚蛙","%E7%94%B5%E8%82%9A%E8%9B%99","ハラバリー","Bellibolt",9],[940,"電海燕","%E7%94%B5%E6%B5%B7%E7%87%95","カイデン","Wattrel",9],[941,"大電海燕","%E5%A4%A7%E7%94%B5%E6%B5%B7%E7%87%95","タイカイデン","Kilowattrel",9],[942,"偶叫獒","%E5%81%B6%E5%8F%AB%E7%8D%92","オラチフ","Maschiff",9],[943,"獒教父","%E7%8D%92%E6%95%99%E7%88%B6","マフィティフ","Mabosstiff",9],[944,"滋汁鼴","%E6%BB%8B%E6%B1%81%E9%BC%B9","シルシュルー","Shroodle",9],[945,"塗標客","%E6%B6%82%E6%A0%87%E5%AE%A2","タギングル","Grafaiai",9],[946,"納噬草","%E7%BA%B3%E5%99%AC%E8%8D%89","アノクサ","Bramblin",9],[947,"怖納噬草","%E6%80%96%E7%BA%B3%E5%99%AC%E8%8D%89","アノホラグサ","Brambleghast",9],[948,"原野水母","%E5%8E%9F%E9%87%8E%E6%B0%B4%E6%AF%8D","ノノクラゲ","Toedscool",9],[949,"陸地水母","%E9%99%86%E5%9C%B0%E6%B0%B4%E6%AF%8D","リククラゲ","Toedscruel",9],[950,"毛崖蟹","%E6%AF%9B%E5%B4%96%E8%9F%B9","ガケガニ","Klawf",9],[951,"熱辣娃","%E7%83%AD%E8%BE%A3%E5%A8%83","カプサイジ","Capsakid",9],[952,"狠辣椒","%E7%8B%A0%E8%BE%A3%E6%A4%92","スコヴィラン","Scovillain",9],[953,"蟲滾泥","%E8%99%AB%E6%BB%9A%E6%B3%A5","シガロコ","Rellor",9],[954,"蟲甲聖","%E8%99%AB%E7%94%B2%E5%9C%A3","ベラカス","Rabsca",9],[955,"飄飄雛","%E9%A3%98%E9%A3%98%E9%9B%8F","ヒラヒナ","Flittle",9],[956,"超能豔鴕","%E8%B6%85%E8%83%BD%E8%89%B3%E9%B8%B5","クエスパトラ","Espathra",9],[957,"小鍛匠","%E5%B0%8F%E9%94%BB%E5%8C%A0","カヌチャン","Tinkatink",9],[958,"巧鍛匠","%E5%B7%A7%E9%94%BB%E5%8C%A0","ナカヌチャン","Tinkatuff",9],[959,"巨鍛匠","%E5%B7%A8%E9%94%BB%E5%8C%A0","デカヌチャン","Tinkaton",9],[960,"海地鼠","%E6%B5%B7%E5%9C%B0%E9%BC%A0","ウミディグダ","Wiglett",9],[961,"三海地鼠","%E4%B8%89%E6%B5%B7%E5%9C%B0%E9%BC%A0","ウミトリオ","Wugtrio",9],[962,"下石鳥","%E4%B8%8B%E7%9F%B3%E9%B8%9F","オトシドリ","Bombirdier",9],[963,"波普海豚","%E6%B3%A2%E6%99%AE%E6%B5%B7%E8%B1%9A","ナミイルカ","Finizen",9],[964,"海豚俠","%E6%B5%B7%E8%B1%9A%E4%BE%A0","イルカマン","Palafin",9],[965,"噗隆隆","%E5%99%97%E9%9A%86%E9%9A%86","ブロロン","Varoom",9],[966,"普隆隆姆","%E6%99%AE%E9%9A%86%E9%9A%86%E5%A7%86","ブロロローム","Revavroom",9],[967,"摩托蜥","%E6%91%A9%E6%89%98%E8%9C%A5","モトトカゲ","Cyclizar",9],[968,"拖拖蚓","%E6%8B%96%E6%8B%96%E8%9A%93","ミミズズ","Orthworm",9],[969,"晶光芽","%E6%99%B6%E5%85%89%E8%8A%BD","キラーメ","Glimmet",9],[970,"晶光花","%E6%99%B6%E5%85%89%E8%8A%B1","キラフロル","Glimmora",9],[971,"墓仔狗","%E5%A2%93%E4%BB%94%E7%8B%97","ボチ","Greavard",9],[972,"墓揚犬","%E5%A2%93%E6%89%AC%E7%8A%AC","ハカドッグ","Houndstone",9],[973,"纏紅鶴","%E7%BC%A0%E7%BA%A2%E9%B9%A4","カラミンゴ","Flamigo",9],[974,"走鯨","%E8%B5%B0%E9%B2%B8","アルクジラ","Cetoddle",9],[975,"浩大鯨","%E6%B5%A9%E5%A4%A7%E9%B2%B8","ハルクジラ","Cetitan",9],[976,"輕身鱈","%E8%BD%BB%E8%BA%AB%E9%B3%95","ミガルーサ","Veluza",9],[977,"吃吼霸","%E5%90%83%E5%90%BC%E9%B9%B8","ヘイラッシャ","Dondozo",9],[978,"米立龍","%E7%B1%B3%E7%AB%8B%E9%BE%99","シャリタツ","Tatsugiri",9],[979,"棄世猴","%E5%BC%83%E4%B8%96%E7%8C%B4","コノヨザル","Annihilape",9],[980,"土王","%E5%9C%9F%E7%8E%8B","ドオー","Clodsire",9],[981,"奇麒麟","%E5%A5%87%E9%BA%92%E9%BA%9F","リキキリン","Farigiraf",9],[982,"土龍節節","%E5%9C%9F%E9%BE%99%E8%8A%82%E8%8A%82","ノココッチ","Dudunsparce",9],[983,"仆斬將軍","%E4%BB%86%E6%96%A9%E5%B0%86%E5%86%9B","ドドゲザン","Kingambit",9],[984,"雄偉牙","%E9%9B%84%E4%BC%9F%E7%89%99","イダイナキバ","Great Tusk",9],[985,"吼叫尾","%E5%90%BC%E5%8F%AB%E5%B0%BE","サケブシッポ","Scream Tail",9],[986,"猛惡菇","%E7%8C%9B%E6%81%B6%E8%8F%87","アラブルタケ","Brute Bonnet",9],[987,"振翼髮","%E6%8C%AF%E7%BF%BC%E5%8F%91","ハバタクカミ","Flutter Mane",9],[988,"爬地翅","%E7%88%AC%E5%9C%B0%E7%BF%85","チヲハウハネ","Slither Wing",9],[989,"沙鐵皮","%E6%B2%99%E9%93%81%E7%9A%AE","スナノケガワ","Sandy Shocks",9],[990,"鐵轍跡","%E9%93%81%E8%BE%99%E8%BF%B9","テツノワダチ","Iron Treads",9],[991,"鐵包袱","%E9%93%81%E5%8C%85%E8%A2%B1","テツノツツミ","Iron Bundle",9],[992,"鐵臂膀","%E9%93%81%E8%87%82%E8%86%80","テツノカイナ","Iron Hands",9],[993,"鐵脖頸","%E9%93%81%E8%84%96%E9%A2%88","テツノコウベ","Iron Jugulis",9],[994,"鐵毒蛾","%E9%93%81%E6%AF%92%E8%9B%BE","テツノドクガ","Iron Moth",9],[995,"鐵荊棘","%E9%93%81%E8%8D%86%E6%A3%98","テツノイバラ","Iron Thorns",9],[996,"涼脊龍","%E5%87%89%E8%84%8A%E9%BE%99","セビエ","Frigibax",9],[997,"凍脊龍","%E5%86%BB%E8%84%8A%E9%BE%99","セゴール","Arctibax",9],[998,"戟脊龍","%E6%88%9F%E8%84%8A%E9%BE%99","セグレイブ","Baxcalibur",9],[999,"索財靈","%E7%B4%A2%E8%B4%A2%E7%81%B5","コレクレー","Gimmighoul",9],[1000,"賽富豪","%E8%B5%9B%E5%AF%8C%E8%B1%AA","サーフゴー","Gholdengo",9],[1001,"古簡蝸","%E5%8F%A4%E7%AE%80%E8%9C%97","チオンジェン","Wo-Chien",9],[1002,"古劍豹","%E5%8F%A4%E5%89%91%E8%B1%B9","パオジアン","Chien-Pao",9],[1003,"古鼎鹿","%E5%8F%A4%E9%BC%8E%E9%B9%BF","ディンルー","Ting-Lu",9],[1004,"古玉魚","%E5%8F%A4%E7%8E%89%E9%B1%BC","イーユイ","Chi-Yu",9],[1005,"轟鳴月","%E8%BD%B0%E9%B8%A3%E6%9C%88","トドロクツキ","Roaring Moon",9],[1006,"鐵武者","%E9%93%81%E6%AD%A6%E8%80%85","テツノブジン","Iron Valiant",9],[1007,"故勒頓","%E6%95%85%E5%8B%92%E9%A1%BF","コライドン","Koraidon",9],[1008,"密勒頓","%E5%AF%86%E5%8B%92%E9%A1%BF","ミライドン","Miraidon",9],[1009,"波盪水","%E6%B3%A2%E8%8D%A1%E6%B0%B4","ウネルミナモ","Walking Wake",9],[1010,"鐵斑葉","%E9%93%81%E6%96%91%E5%8F%B6","テツノイサハ","Iron Leaves",9],[1011,"裹蜜蟲","%E8%A3%B9%E8%9C%9C%E8%99%AB","カミッチュ","Dipplin",9],[1012,"斯魔茶","%E6%96%AF%E9%AD%94%E8%8C%B6","チャデス","Poltchageist",9],[1013,"來悲粗茶","%E6%9D%A5%E6%82%B2%E7%B2%97%E8%8C%B6","ヤバソチャ","Sinistcha",9],[1014,"夠讚狗","%E5%A4%9F%E8%B5%9E%E7%8B%97","イイネイヌ","Okidogi",9],[1015,"願增猿","%E6%84%BF%E5%A2%9E%E7%8C%BF","マシマシラ","Munkidori",9],[1016,"吉雉雞","%E5%90%89%E9%9B%89%E9%B8%A1","キチキギス","Fezandipiti",9],[1017,"厄鬼椪","%E5%8E%84%E8%AF%A1%E6%A4%AA","オーガポン","Ogerpon",9],[1018,"鋁鋼橋龍","%E9%93%9D%E9%92%A2%E6%A1%A5%E9%BE%99","ブリジュラス","Archaludon",9],[1019,"蜜集大蛇","%E8%9C%9C%E9%9B%86%E5%A4%A7%E8%9B%87","カミツオロチ","Hydrapple",9],[1020,"破空焰","%E7%A0%B4%E7%A9%BA%E7%84%B0","ウガツホムラ","Gouging Fire",9],[1021,"猛雷鼓","%E7%8C%9B%E9%9B%B7%E9%BC%93","タケルライコ","Raging Bolt",9],[1022,"鐵磐岩","%E9%93%81%E7%A3%90%E5%B2%A9","テツノイワオ","Iron Boulder",9],[1023,"鐵頭殼","%E9%93%81%E5%A4%B4%E5%A3%B3","テツノカシラ","Iron Crown",9],[1024,"太樂巴戈斯","%E5%A4%AA%E4%B9%90%E5%B7%B4%E6%88%88%E6%96%AF","テラパゴス","Terapagos",9],[1025,"桃歹郎","%E6%A1%83%E6%AD%B9%E9%83%8E","モモワロウ","Pecharunt",9]];
+        let WINGZERO_EVENTS_DATA = {
+            sourceUrl: "https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events",
+            updateTime: "2026-06-18",
+            ongoing: [
+                {
+                    title: "帝牙盧卡暗影傳說團體戰",
+                    time: "結束時間: 2026-06-30 21:30",
+                    desc: "暗影傳說團體戰首度登場！挑戰強大的暗影帝牙盧卡並有機會遇見異色版。",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1565",
+                    type: "raid"
+                },
+                {
+                    title: "Pokémon GO：嶄新的步伐",
+                    time: "結束時間: 2026-09-08 10:00",
+                    desc: "達成「GO Pass」主里程碑解鎖加碼獎勵：交換額外糖果、禮物增加、薰香加倍、孵蛋星沙與經驗增加。突破性進展可遇見：快龍、牙牙、獨劍鞘、心鱗寶、愛管侍、毛崖蟹。",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1564",
+                    type: "event"
+                },
+                {
+                    title: "GO對戰聯盟：嶄新的步伐",
+                    time: "結束時間: 2026-09-02 13:00",
+                    desc: "GO對戰聯盟全新賽季展開，包含全新盃賽與豐富道具/寶可夢遇見獎勵。",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1562",
+                    type: "pvp"
+                },
+                {
+                    title: "奈克洛茲瑪傳說團體戰",
+                    time: "結束時間: 2026-06-23 21:30",
+                    desc: "究極異獸奈克洛茲瑪降臨傳說團體戰，挑戰強敵並收集能量進行合體！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1565",
+                    type: "raid"
+                },
+                {
+                    title: "超級巨鉗螳螂超級團體戰",
+                    time: "結束時間: 2026-06-23 21:30",
+                    desc: "超級巨鉗螳螂回歸超級團體戰，擊敗可獲得超級能量並有機會遇見異色巨鉗螳螂。",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1565",
+                    type: "mega"
+                },
+                {
+                    title: "自選限時調查：化石解析",
+                    time: "結束時間: 2026-06-21 20:00",
+                    desc: "選擇你喜愛的調查路線，探索古代化石寶可夢，並獲得豐富道具與遇見獎勵。",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1570",
+                    type: "research"
+                }
+            ],
+            upcoming: [
+                {
+                    title: "小山豬聚焦時刻",
+                    time: "開始時間: 2026-06-18 18:00 ~ 19:00",
+                    desc: "小山豬大量出現，且捕捉寶可夢獲得的星星沙子加倍！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1570"
+                },
+                {
+                    title: "涼脊龍社群日",
+                    time: "開始時間: 2026-06-20 14:00 ~ 17:00",
+                    desc: "涼脊龍大量出現！在活動期間或結束後5小時內進化為戟脊龍可獲得限定招式。",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1563"
+                },
+                {
+                    title: "空中飛翔的影子",
+                    time: "開始時間: 2026-06-23 10:00",
+                    desc: "火箭隊全新計畫發動，空中飛翔的飛行系與影子寶可夢將會大量出沒！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1568"
+                },
+                {
+                    title: "鐵火輝夜 (南半球) 、 紙御劍 (北半球）傳說團體戰",
+                    time: "開始時間: 2026-06-24 06:00",
+                    desc: "地區限定的究極異獸再次降臨！北半球可挑戰紙御劍，南半球為鐵火輝夜。",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1565"
+                },
+                {
+                    title: "超級大比鳥超級團體戰",
+                    time: "開始時間: 2026-06-24 06:00",
+                    desc: "超級大比鳥降臨超級團體戰，擊敗可獲得超級大比鳥能量。",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1565"
+                },
+                {
+                    title: "空中飛翔的影子：佔領",
+                    time: "開始時間: 2026-06-25 00:00",
+                    desc: "GO火箭隊大舉佔領寶可補給站與熱氣球，幫助救出全新的暗影寶可夢！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1569"
+                },
+                {
+                    title: "長翅鷗聚焦時刻",
+                    time: "開始時間: 2026-06-25 18:00 ~ 19:00",
+                    desc: "長翅鷗大量出現，且傳送寶可夢獲得的糖果加倍！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1570"
+                },
+                {
+                    title: "盔甲鳥極致超級團體戰日",
+                    time: "開始時間: 2026-06-27 14:00 ~ 17:00",
+                    desc: "盔甲鳥大量出現在團體戰中，活動期間獲得額外免費團體戰入場券！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1567"
+                },
+                {
+                    title: "自選限時調查：火焰與放電",
+                    time: "開始時間: 2026-06-30 10:00",
+                    desc: "自選火焰或放電主題的調查，解鎖電系/火系寶可夢遭遇及豐富道具。",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1570"
+                },
+                {
+                    title: "波波聚焦時刻",
+                    time: "開始時間: 2026-07-02 18:00",
+                    desc: "波波大量出現，進化寶可夢經驗加倍！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1570"
+                },
+                {
+                    title: "超音蝠聚焦時刻",
+                    time: "開始時間: 2026-07-16 18:00",
+                    desc: "超音蝠大量出現，捕捉寶可夢獲得糖果加倍！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1570"
+                },
+                {
+                    title: "伊布聚焦時刻",
+                    time: "開始時間: 2026-07-23 18:00",
+                    desc: "伊布大量出現，傳送寶可夢糖果加倍！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1570"
+                },
+                {
+                    title: "自選限時調查：妖精漫步",
+                    time: "開始時間: 2026-07-28 10:00",
+                    desc: "妖精系主題限時調查，漫步並解鎖妖精系寶可夢與道具獎勵。",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1570"
+                },
+                {
+                    title: "大牙狸聚焦時刻",
+                    time: "開始時間: 2026-07-30 18:00",
+                    desc: "大牙狸大量出現，捕捉寶可夢獲得經驗值加倍！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1570"
+                },
+                {
+                    title: "自選限時調查：毒＆草",
+                    time: "開始時間: 2026-08-11 10:00",
+                    desc: "探索毒系與草系寶可夢，自選完成調查獲得主題好禮。",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1570"
+                },
+                {
+                    title: "Pokémon RUN 30 台中中央公園",
+                    time: "開始時間: 2026-10-17 00:00",
+                    desc: "Pokémon RUN 30 實體路跑賽事台中站，購票參賽可獲得主題賽事包與獎牌！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1566"
+                },
+                {
+                    title: "Pokémon RUN 30 高雄夢時代",
+                    time: "開始時間: 2026-10-31 00:00",
+                    desc: "Pokémon RUN 30 實體路跑賽事高雄夢時代站，快來一同奔跑！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1566"
+                },
+                {
+                    title: "Pokémon RUN 30 新北大都會公園",
+                    time: "開始時間: 2026-11-14 00:00",
+                    desc: "Pokémon RUN 30 實體路跑賽事台北新北站，精彩路跑活動不容錯過！",
+                    link: "https://pokemon.wingzero.tw/zh-TW/article/1566"
+                }
+            ],
+            timeline: [
+                {title: "Pokémon GO：嶄新的步伐", startDate: "2026-06-01", endDate: "2026-09-08", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1564"},
+                {title: "GO對戰聯盟：嶄新的步伐", startDate: "2026-06-01", endDate: "2026-09-02", type: "pvp", link: "https://pokemon.wingzero.tw/zh-TW/article/1562"},
+                {title: "奈克洛茲瑪傳說團體戰", startDate: "2026-06-10", endDate: "2026-06-23", type: "raid", link: "https://pokemon.wingzero.tw/zh-TW/article/1565"},
+                {title: "超級巨鉗螳螂超級團體戰", startDate: "2026-06-10", endDate: "2026-06-23", type: "mega", link: "https://pokemon.wingzero.tw/zh-TW/article/1565"},
+                {title: "帝牙盧卡暗影傳說團體戰", startDate: "2026-06-14", endDate: "2026-06-30", type: "raid", link: "https://pokemon.wingzero.tw/zh-TW/article/1565"},
+                {title: "自選限時調查：化石解析", startDate: "2026-06-18", endDate: "2026-06-21", type: "research", link: "https://pokemon.wingzero.tw/zh-TW/article/1570"},
+                {title: "小山豬聚焦時刻", startDate: "2026-06-18", endDate: "2026-06-18", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1570"},
+                {title: "涼脊龍社群日", startDate: "2026-06-20", endDate: "2026-06-20", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1563"},
+                {title: "空中飛翔的影子", startDate: "2026-06-23", endDate: "2026-06-25", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1568"},
+                {title: "鐵火輝夜/紙御劍傳說團體戰", startDate: "2026-06-24", endDate: "2026-07-07", type: "raid", link: "https://pokemon.wingzero.tw/zh-TW/article/1565"},
+                {title: "超級大比鳥超級團體戰", startDate: "2026-06-24", endDate: "2026-07-07", type: "mega", link: "https://pokemon.wingzero.tw/zh-TW/article/1565"},
+                {title: "空中飛翔的影子：佔領", startDate: "2026-06-25", endDate: "2026-06-28", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1569"},
+                {title: "長翅鷗聚焦時刻", startDate: "2026-06-25", endDate: "2026-06-25", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1570"},
+                {title: "盔甲鳥極致超級團體戰日", startDate: "2026-06-27", endDate: "2026-06-27", type: "raid", link: "https://pokemon.wingzero.tw/zh-TW/article/1567"},
+                {title: "自選限時調查：火焰與放電", startDate: "2026-06-30", endDate: "2026-07-07", type: "research", link: "https://pokemon.wingzero.tw/zh-TW/article/1570"},
+                {title: "波波聚焦時刻", startDate: "2026-07-02", endDate: "2026-07-02", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1570"},
+                {title: "超音蝠聚焦時刻", startDate: "2026-07-16", endDate: "2026-07-16", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1570"},
+                {title: "伊布聚焦時刻", startDate: "2026-07-23", endDate: "2026-07-23", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1570"},
+                {title: "自選限時調查：妖精漫步", startDate: "2026-07-28", endDate: "2026-08-04", type: "research", link: "https://pokemon.wingzero.tw/zh-TW/article/1570"},
+                {title: "大牙狸聚焦時刻", startDate: "2026-07-30", endDate: "2026-07-30", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1570"},
+                {title: "自選限時調查：毒＆草", startDate: "2026-08-11", endDate: "2026-08-18", type: "research", link: "https://pokemon.wingzero.tw/zh-TW/article/1570"},
+                {title: "Pokémon RUN 30 台中中央公園", startDate: "2026-10-17", endDate: "2026-10-17", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1566"},
+                {title: "Pokémon RUN 30 高雄夢時代", startDate: "2026-10-31", endDate: "2026-10-31", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1566"},
+                {title: "Pokémon RUN 30 新北大都會公園", startDate: "2026-11-14", endDate: "2026-11-14", type: "event", link: "https://pokemon.wingzero.tw/zh-TW/article/1566"}
+            ]
+        };
+
+        function parseWingZeroEvents(htmlText) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlText, 'text/html');
+            
+            // 1. Parse Ongoing Events
+            const ongoingList = [];
+            const liveCards = doc.querySelectorAll('.go-event-live-card');
+            liveCards.forEach(card => {
+                const titleEl = card.querySelector('h3');
+                const descEl = card.querySelector('p');
+                const timeEl = card.querySelector('time');
+                const linkEl = card.querySelector('a');
+                
+                if (titleEl) {
+                    let link = linkEl ? linkEl.getAttribute('href') : '';
+                    if (link && !link.startsWith('http')) {
+                        link = 'https://pokemon.wingzero.tw' + link;
+                    }
+                    
+                    let type = 'event';
+                    const titleText = titleEl.textContent;
+                    if (titleText.includes('傳說團體戰') || titleText.includes('團體戰日')) {
+                        type = 'raid';
+                    } else if (titleText.includes('超級團體戰') || titleText.includes('超級精靈') || titleText.includes('超級大比鳥')) {
+                        type = 'mega';
+                    } else if (titleText.includes('對戰聯盟') || titleText.includes('對戰日')) {
+                        type = 'pvp';
+                    } else if (titleText.includes('限時調查') || titleText.includes('特別調查') || titleText.includes('田野調查') || titleText.includes('化石解析')) {
+                        type = 'research';
+                    }
+                    
+                    ongoingList.push({
+                        title: titleText.trim(),
+                        time: timeEl ? `結束時間: ${timeEl.textContent.trim()}` : '',
+                        desc: descEl ? descEl.textContent.trim() : '查看活動細節以了解更多獎勵內容。',
+                        link: link || 'https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events',
+                        type: type
+                    });
+                }
+            });
+
+            // 2. Parse Upcoming Events
+            const upcomingList = [];
+            const upcomingCards = doc.querySelectorAll('.go-event-upcoming-card');
+            upcomingCards.forEach(card => {
+                const titleEl = card.querySelector('h3');
+                const timeEl = card.querySelector('time');
+                const linkEl = card.querySelector('a');
+                
+                if (titleEl) {
+                    const titleText = titleEl.textContent.trim();
+                    let link = linkEl ? linkEl.getAttribute('href') : '';
+                    if (link && !link.startsWith('http')) {
+                        link = 'https://pokemon.wingzero.tw' + link;
+                    }
+                    
+                    let desc = '即將開始的官方主題活動，點擊外部連結以查看更多細節。';
+                    if (titleText.includes('聚焦時刻')) {
+                        desc = '此寶可夢將在此小時內大量出現，且享有專屬加碼獎勵！';
+                    } else if (titleText.includes('社群日')) {
+                        desc = '主角寶可夢將大量出沒，且進化可獲得特別招式！還有多重社群日獎勵。';
+                    } else if (titleText.includes('火箭隊') || titleText.includes('佔領')) {
+                        desc = '火箭隊爪牙大舉入侵！挑戰他們拯救被遺棄的暗影寶可夢吧！';
+                    }
+                    
+                    upcomingList.push({
+                        title: titleText,
+                        time: timeEl ? `開始時間: ${timeEl.textContent.trim()}` : '',
+                        desc: desc,
+                        link: link || 'https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events'
+                    });
+                }
+            });
+
+            // 3. Parse Timeline (vis.js format: {id, content, start, end, className})
+            let timelineList = [];
+            const timelineEl = doc.querySelector('.go-event-timeline');
+            if (timelineEl) {
+                try {
+                    const dataEventsStr = timelineEl.getAttribute('data-events');
+                    if (dataEventsStr) {
+                        const events = JSON.parse(dataEventsStr);
+                        const seen = new Set();
+                        events.forEach(e => {
+                            if (e.content && !seen.has(e.content)) {
+                                seen.add(e.content);
+                                const cls = (e.className || '').toLowerCase();
+                                let type = 'event';
+                                if (cls.includes('raid') || cls.includes('legendary')) type = 'raid';
+                                else if (cls.includes('mega')) type = 'mega';
+                                else if (cls.includes('pvp') || cls.includes('league')) type = 'pvp';
+                                else if (cls.includes('research') || cls.includes('field')) type = 'research';
+                                timelineList.push({
+                                    title: e.content,
+                                    startDate: e.start ? String(e.start).substring(0, 10) : '',
+                                    endDate: e.end ? String(e.end).substring(0, 10) : '',
+                                    type: type,
+                                    link: 'https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events'
+                                });
+                            }
+                        });
+                        timelineList.sort((a, b) => (a.startDate || '').localeCompare(b.startDate || ''));
+                    }
+                } catch (e) {
+                    console.error('Error parsing timeline events data attribute', e);
+                }
+            }
+            // Fallback: build timeline from ongoing + upcoming if empty
+            if (timelineList.length === 0) {
+                const dateRe = /(\d{4}-\d{2}-\d{2})/g;
+                [...ongoingList, ...upcomingList].forEach(ev => {
+                    const dates = (ev.time || '').match(dateRe) || [];
+                    timelineList.push({
+                        title: ev.title,
+                        startDate: dates[0] || '',
+                        endDate: dates[1] || dates[0] || '',
+                        type: ev.type || 'event',
+                        link: ev.link || ''
+                    });
+                });
+                timelineList.sort((a, b) => (a.startDate || '').localeCompare(b.startDate || ''));
+            }
+            
+            if (ongoingList.length === 0 && upcomingList.length === 0) {
+                return null;
+            }
+            
+            return {
+                updateTime: new Date().toISOString().substring(0, 10),
+                ongoing: ongoingList,
+                upcoming: upcomingList,
+                timeline: timelineList
+            };
+        }
+
+        async function fetchAndLoadWingZeroEvents() {
+            if (window.wingZeroEventsLoaded) {
+                renderWingZeroEvents();
+                return;
+            }
+            // Use localStorage cache (valid for today) — only fetch when reopening the app on a new day
+            const _EV_CACHE_KEY = 'ckdk_pgo_events_v1';
+            try {
+                const cached = JSON.parse(localStorage.getItem(_EV_CACHE_KEY) || 'null');
+                if (cached && cached.ts && new Date(cached.ts).toDateString() === new Date().toDateString()) {
+                    if (cached.ongoing) WINGZERO_EVENTS_DATA.ongoing = cached.ongoing;
+                    if (cached.upcoming) WINGZERO_EVENTS_DATA.upcoming = cached.upcoming;
+                    if (cached.timeline) WINGZERO_EVENTS_DATA.timeline = cached.timeline;
+                    if (cached.updateTime) WINGZERO_EVENTS_DATA.updateTime = cached.updateTime;
+                    window.wingZeroEventsLoaded = true;
+                    renderWingZeroEvents();
+                    return;
+                }
+            } catch (_e) {}
+            
+            const welcomeEl = document.getElementById('ei-detail-welcome');
+            if (welcomeEl) {
+                welcomeEl.innerHTML = `
+                    <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#070b13] to-[#0f172a] text-white p-6">
+                        <div class="text-center space-y-4 max-w-sm">
+                            <style>
+                                @keyframes spin {
+                                    to { transform: rotate(360deg); }
+                                }
+                                .loading-spin {
+                                    animation: spin 1s linear infinite;
+                                }
+                            </style>
+                            <div class="w-14 h-14 rounded-2xl bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center mx-auto loading-spin">
+                                <i data-lucide="loader-2" class="w-7 h-7 text-brand-primary"></i>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="text-sm font-semibold text-gray-200">正在獲取最新寶可夢活動資訊...</p>
+                                <p class="text-[10px] text-gray-500 leading-relaxed">資料來源自 Pokémon-Info 寶可夢資訊站，請稍候</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                lucide.createIcons();
+            }
+
+            const targetUrl = 'https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events';
+            const proxies = [
+                {
+                    url: `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`,
+                    type: 'json',
+                    extractor: (data) => data.contents
+                },
+                {
+                    url: `https://api.allorigins.win/raw?url=${encodeURIComponent(targetUrl)}`,
+                    type: 'text',
+                    extractor: (data) => data
+                },
+                {
+                    url: `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`,
+                    type: 'text',
+                    extractor: (data) => data
+                }
+            ];
+
+            const fetchFromProxy = async (proxy) => {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 6000);
+                try {
+                    const response = await fetch(proxy.url, { signal: controller.signal });
+                    if (!response.ok) throw new Error('Response status error');
+                    let rawData;
+                    if (proxy.type === 'json') {
+                        rawData = await response.json();
+                    } else {
+                        rawData = await response.text();
+                    }
+                    const html = proxy.extractor(rawData);
+                    if (html && (html.includes('go-events-shell') || html.includes('go-event-live-card'))) {
+                        return html;
+                    }
+                    throw new Error('Invalid HTML content');
+                } finally {
+                    clearTimeout(timeoutId);
+                }
+            };
+
+            let htmlText = null;
+            
+            // 併行請求 (Parallel Race)
+            try {
+                htmlText = await new Promise((resolve, reject) => {
+                    let finished = false;
+                    let errors = 0;
+                    proxies.forEach(proxy => {
+                        fetchFromProxy(proxy).then(html => {
+                            if (!finished) {
+                                finished = true;
+                                resolve(html);
+                            }
+                        }).catch(err => {
+                            errors++;
+                            if (errors === proxies.length && !finished) {
+                                reject(new Error('All proxies failed'));
+                            }
+                        });
+                    });
+                });
+            } catch (err) {
+                console.warn('All CORS proxies failed to fetch latest WingZero events online:', err);
+            }
+
+            // Fallback: 嘗試讀取本地預置的 wingzero_events_real.html
+            if (!htmlText) {
+                try {
+                    console.log('Attempting local fallback fetch...');
+                    const localRes = await fetch('wingzero_events_real.html');
+                    if (localRes.ok) {
+                        htmlText = await localRes.text();
+                        console.log('Successfully loaded local fallback events.');
+                    }
+                } catch (localErr) {
+                    console.error('Failed to load local fallback events HTML:', localErr);
+                }
+            }
+
+            if (htmlText) {
+                const parsed = parseWingZeroEvents(htmlText);
+                if (parsed) {
+                    WINGZERO_EVENTS_DATA.updateTime = parsed.updateTime;
+                    WINGZERO_EVENTS_DATA.ongoing = parsed.ongoing;
+                    WINGZERO_EVENTS_DATA.upcoming = parsed.upcoming;
+                    WINGZERO_EVENTS_DATA.timeline = parsed.timeline;
+                    window.wingZeroEventsLoaded = true;
+                    try {
+                        localStorage.setItem('ckdk_pgo_events_v1', JSON.stringify({
+                            ts: Date.now(),
+                            updateTime: WINGZERO_EVENTS_DATA.updateTime,
+                            ongoing: WINGZERO_EVENTS_DATA.ongoing,
+                            upcoming: WINGZERO_EVENTS_DATA.upcoming,
+                            timeline: WINGZERO_EVENTS_DATA.timeline
+                        }));
+                    } catch (_e) {}
+                    showToast('活動資訊已成功同步更新！', 'success');
+                } else {
+                    console.error('Failed to parse WingZero events HTML');
+                    showToast('活動資訊同步失敗，已載入預設暫存資訊', 'warning');
+                }
+            } else {
+                showToast('同步失敗，已顯示預設暫存資訊', 'info');
+            }
+
+            renderWingZeroEvents();
+        }
+
+        function renderWingZeroEvents() {
+            const welcomeEl = document.getElementById('ei-detail-welcome');
+            if (!welcomeEl) return;
+            
+            let html = `
+                <div class="w-full h-full overflow-y-auto bg-gradient-to-br from-[#070b13] to-[#0f172a] text-white p-5 md:p-6 space-y-6">
+                    <!-- 標頭資訊 -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-4 shrink-0 gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-primary/10 flex items-center justify-center border border-brand-primary/20 shrink-0">
+                                <i data-lucide="sparkles" class="w-5 h-5 text-brand-primary animate-pulse"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-sm md:text-base font-bold text-white tracking-wide">Pokémon GO 即時活動與團戰看板</h2>
+                                <p class="text-[10px] text-gray-400">彙整最新進行中、即將開始的官方活動、團體戰與限時調查</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5 text-[9px] md:text-[10px] text-gray-500">
+                            <i data-lucide="info" class="w-3.5 h-3.5 shrink-0 text-gray-600"></i>
+                            <span>資料來源：Pokémon-Info 寶可夢資訊站 | 更新：${WINGZERO_EVENTS_DATA.updateTime}</span>
+                        </div>
+                    </div>
+
+                    <!-- 活動看板雙欄佈局 -->
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                        
+                        <!-- 進行中的活動 (左欄) -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-2">
+                                <span class="flex h-2 w-2 relative">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                                </span>
+                                <h3 class="text-xs font-extrabold text-emerald-400 uppercase tracking-wider">進行中的活動</h3>
+                            </div>
+                            
+                            <div class="space-y-3">
+            `;
+
+            WINGZERO_EVENTS_DATA.ongoing.forEach(ev => {
+                let badgeColor = "bg-brand-primary/15 text-brand-primary border-brand-primary/30";
+                let badgeIcon = "calendar";
+                let badgeLabel = "EVENT";
+                if (ev.type === 'raid') {
+                    badgeColor = "bg-red-500/15 text-red-400 border-red-500/30";
+                    badgeIcon = "swords";
+                    badgeLabel = "RAID";
+                } else if (ev.type === 'mega') {
+                    badgeColor = "bg-orange-500/15 text-orange-400 border-orange-500/30";
+                    badgeIcon = "zap";
+                    badgeLabel = "MEGA";
+                } else if (ev.type === 'pvp') {
+                    badgeColor = "bg-blue-500/15 text-blue-400 border-blue-500/30";
+                    badgeIcon = "swords";
+                    badgeLabel = "PVP";
+                } else if (ev.type === 'research') {
+                    badgeColor = "bg-purple-500/15 text-purple-400 border-purple-500/30";
+                    badgeIcon = "clipboard-list";
+                    badgeLabel = "RESEARCH";
+                }
+
+                html += `
+                                <div class="p-4 rounded-xl bg-[#111827]/60 border border-white/[0.06] hover:border-brand-primary/40 hover:bg-[#111827]/80 transition-all duration-300 group">
+                                    <div class="flex items-start justify-between gap-3">
+                                        <div class="space-y-1.5 flex-1 min-w-0">
+                                            <div class="flex items-center gap-2 flex-wrap">
+                                                <span class="inline-flex items-center gap-1 text-[9px] font-bold px-2 py-0.5 rounded border ${badgeColor}">
+                                                    <i data-lucide="${badgeIcon}" class="w-3 h-3"></i>
+                                                    <span>${badgeLabel}</span>
+                                                </span>
+                                                <span class="text-[9px] font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-1.5 py-0.5 rounded">ONGOING</span>
+                                            </div>
+                                            <h4 class="text-xs md:text-sm font-bold text-white group-hover:text-brand-primary transition-colors">${ev.title}</h4>
+                                            <p class="text-[10px] md:text-xs text-gray-400 leading-relaxed">${ev.desc}</p>
+                                            <div class="flex items-center gap-1.5 text-[9px] text-gray-500 pt-1">
+                                                <i data-lucide="clock" class="w-3 h-3 text-gray-600 shrink-0"></i>
+                                                <span>${ev.time}</span>
+                                            </div>
+                                        </div>
+                                        <button onclick="window.open('${ev.link}', '_blank')" class="p-2 rounded-lg bg-white/5 border border-white/10 hover:bg-brand-primary hover:border-brand-primary hover:text-brand-darkBg transition-all shrink-0 cursor-pointer" title="查看活動細節">
+                                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                `;
+            });
+
+            html += `
+                            </div>
+                        </div>
+
+                        <!-- 即將開始 (右欄) -->
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-2">
+                                <span class="flex h-2 w-2 relative">
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                                </span>
+                                <h3 class="text-xs font-extrabold text-amber-400 uppercase tracking-wider">即將開始</h3>
+                            </div>
+                            
+                            <div class="space-y-3 max-h-[500px] overflow-y-auto pr-1">
+            `;
+
+            WINGZERO_EVENTS_DATA.upcoming.forEach(ev => {
+                html += `
+                                <div class="p-3.5 rounded-xl bg-[#111827]/40 border border-white/[0.04] hover:border-amber-500/40 hover:bg-[#111827]/60 transition-all duration-300 group">
+                                    <div class="flex items-start justify-between gap-3">
+                                        <div class="space-y-1.5 flex-1 min-w-0">
+                                            <div class="flex items-center gap-2">
+                                                <span class="text-[9px] font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.5 rounded">UPCOMING</span>
+                                            </div>
+                                            <h4 class="text-xs md:text-sm font-bold text-white group-hover:text-amber-400 transition-colors">${ev.title}</h4>
+                                            <p class="text-[10px] md:text-xs text-gray-400 leading-relaxed">${ev.desc}</p>
+                                            <div class="flex items-center gap-1.5 text-[9px] text-gray-500 pt-1">
+                                                <i data-lucide="clock" class="w-3 h-3 text-gray-600 shrink-0"></i>
+                                                <span>${ev.time}</span>
+                                            </div>
+                                        </div>
+                                        <button onclick="window.open('${ev.link}', '_blank')" class="p-1.5 rounded-lg bg-white/5 border border-white/10 hover:bg-amber-500 hover:border-amber-500 hover:text-brand-darkBg transition-all shrink-0 cursor-pointer" title="查看活動細節">
+                                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                `;
+            });
+
+            html += `
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 活動時間軸 (卡片格狀版面) -->
+                    <div class="space-y-4 border-t border-white/10 pt-5">
+                        <div class="flex items-center justify-between gap-2">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="calendar-range" class="w-4 h-4 text-brand-secondary"></i>
+                                <h3 class="text-xs font-extrabold text-brand-secondary uppercase tracking-wider">活動時間軸</h3>
+                            </div>
+                            <span class="text-[10px] text-gray-600 font-mono">${WINGZERO_EVENTS_DATA.timeline.length} 個活動</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
+            `;
+
+            const _today = new Date().toISOString().substring(0, 10);
+            const _sortedTimeline = [...WINGZERO_EVENTS_DATA.timeline].sort((a, b) => {
+                const sa = typeof a === 'object' ? (a.startDate || '') : '';
+                const sb = typeof b === 'object' ? (b.startDate || '') : '';
+                return sa.localeCompare(sb);
+            });
+
+            _sortedTimeline.forEach(item => {
+                const isObj = typeof item === 'object' && item !== null;
+                const title = isObj ? (item.title || '') : String(item);
+                const startDate = isObj ? (item.startDate || '') : '';
+                const endDate = isObj ? (item.endDate || '') : '';
+                const type = isObj ? (item.type || 'event') : 'event';
+                const link = isObj ? (item.link || '') : '';
+
+                const isOngoing = startDate && endDate && startDate <= _today && _today <= endDate;
+                const isPast = endDate ? endDate < _today : (startDate ? startDate < _today : false);
+
+                const fmtD = d => d ? d.replace(/^\d{4}-/, '').replace('-', '/') : '';
+                const fmtFull = d => d ? d.replace(/-/g, '/') : '';
+
+                let badge = 'EVENT', badgeCls = 'text-brand-primary bg-brand-primary/10 border-brand-primary/20';
+                if (type === 'raid')     { badge = 'RAID';     badgeCls = 'text-red-400 bg-red-500/10 border-red-500/20'; }
+                else if (type === 'mega')     { badge = 'MEGA';     badgeCls = 'text-orange-400 bg-orange-500/10 border-orange-500/20'; }
+                else if (type === 'pvp')      { badge = 'PvP';      badgeCls = 'text-blue-400 bg-blue-500/10 border-blue-500/20'; }
+                else if (type === 'research') { badge = 'RESEARCH'; badgeCls = 'text-purple-400 bg-purple-500/10 border-purple-500/20'; }
+
+                const dotHtml = isOngoing
+                    ? '<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" title="進行中"></span>'
+                    : isPast
+                        ? '<span class="w-2 h-2 rounded-full bg-gray-700 shrink-0" title="已結束"></span>'
+                        : '<span class="w-2 h-2 rounded-full bg-amber-400 shrink-0" title="即將開始"></span>';
+
+                const cardCls = isOngoing
+                    ? 'bg-emerald-500/5 border-emerald-500/20 hover:border-emerald-400/40'
+                    : isPast
+                        ? 'bg-[#0d1117]/40 border-white/[0.03] opacity-45 hover:opacity-70'
+                        : 'bg-[#111827]/40 border-white/[0.05] hover:border-brand-secondary/30';
+
+                const dateStr = startDate ? (endDate && endDate !== startDate ? `${fmtD(startDate)} → ${fmtD(endDate)}` : fmtFull(startDate)) : '';
+
+                html += `
+                            <div class="flex items-center gap-2.5 p-2.5 rounded-xl ${cardCls} transition-all duration-200 group">
+                                ${dotHtml}
+                                <div class="flex-1 min-w-0 space-y-0.5">
+                                    <div class="flex items-center gap-1.5 flex-wrap">
+                                        <span class="inline-flex text-[8px] font-bold px-1.5 py-0.5 rounded border ${badgeCls}">${badge}</span>
+                                        ${dateStr ? `<span class="text-[9px] font-mono text-gray-500">${dateStr}</span>` : ''}
+                                    </div>
+                                    <div class="text-[11px] text-gray-200 font-semibold leading-snug truncate" title="${title.replace(/"/g, '&quot;')}">${title}</div>
+                                </div>
+                                ${link ? `<a href="${link}" target="_blank" rel="noopener" class="shrink-0 p-1 rounded text-gray-700 hover:text-brand-secondary transition-colors opacity-0 group-hover:opacity-100" title="查看活動細節"><i data-lucide="external-link" class="w-3 h-3"></i></a>` : ''}
+                            </div>
+                `;
+            });
+
+            html += `
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            welcomeEl.innerHTML = html;
+            lucide.createIcons();
+        }
+
+        function switchToEventInfoView() {
+            clearAllViewModes();
+            document.body.classList.add('event-info-mode');
+            
+            // 重設主標題及重置為載入看板
+            const titleEl = document.getElementById('ei-detail-title');
+            if (titleEl) titleEl.textContent = "活動與團戰資訊";
+            
+            const welcome = document.getElementById('ei-detail-welcome');
+            if (welcome) welcome.classList.remove('hidden');
+            
+            const iframe = document.getElementById('ei-detail-iframe');
+            if (iframe) { iframe.classList.add('hidden'); iframe.src = 'about:blank'; }
+            
+            fetchAndLoadWingZeroEvents();
+            
+            if (document.body.classList.contains('mobile-mode')) {
+                // 如果是手機版且目前未載入特定外部連結，自動拉開左側選單
+                if (!iframe || iframe.classList.contains('hidden')) {
+                    openMobileSidebar();
+                }
+            }
+        }
+
+        function loadEventInfoTool(url, name, blocked) {
+            closeMobileSidebar();
+            if (!document.body.classList.contains('event-info-mode')) switchToEventInfoView();
+            const titleEl = document.getElementById('ei-detail-title');
+            if (titleEl) titleEl.textContent = name;
+            const extLink = document.getElementById('ei-detail-ext-link');
+            if (extLink) extLink.href = url;
+            const welcome = document.getElementById('ei-detail-welcome');
+            const iframe  = document.getElementById('ei-detail-iframe');
+            if (blocked) {
+                if (iframe) { iframe.classList.add('hidden'); iframe.src = 'about:blank'; }
+                if (welcome) {
+                    welcome.innerHTML = `<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#070b13] to-[#0f172a] text-white p-6">
+                        <div class="text-center space-y-4 px-8 max-w-sm">
+                            <div class="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto">
+                                <i data-lucide="shield-x" class="w-7 h-7 text-red-400"></i>
+                            </div>
+                            <div class="space-y-2">
+                                <p class="text-sm font-semibold text-gray-200">${name}</p>
+                                <p class="text-xs text-gray-400 leading-relaxed">此官方網站設定了安全限制，無法直接嵌入本軟體面板中顯示。</p>
+                            </div>
+                            <a href="${url}" target="_blank"
+                                class="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-brand-primary hover:bg-brand-primary/80 text-brand-darkBg text-xs font-bold transition-all shadow-lg shadow-brand-primary/10">
+                                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                在瀏覽器新分頁開啟
+                            </a>
+                        </div>
+                    </div>`;
+                    welcome.classList.remove('hidden');
+                    lucide.createIcons();
+                }
+            } else {
+                if (welcome) welcome.classList.add('hidden');
+                if (iframe)  { iframe.classList.remove('hidden'); iframe.src = url; }
+            }
+        }
         // ── 寶可夢查詢模組 ──────────────────────────────────────────
         const PQ_BASE = 'https://wiki.52poke.com/wiki/';
         const PQ_GENS = [
@@ -5576,8 +6614,10 @@
 
         // ── 寶可夢詳細頁面 ──────────────────────────────────────────
         function clearAllViewModes() {
+            document.body.classList.remove('event-info-mode');
             document.body.classList.remove('pokemon-query-mode');
             document.body.classList.remove('catch-query-mode');
+            document.body.classList.remove('type-attack-mode');
             document.body.classList.remove('related-info-mode');
             document.body.classList.remove('string-generator-mode');
             document.body.classList.remove('vivillon-info-mode');
@@ -5603,10 +6643,29 @@
             lucide.createIcons();
         }
 
+
+        function switchToTypeAttackView() {
+            clearAllViewModes();
+            document.body.classList.add('type-attack-mode');
+            lucide.createIcons();
+            if (document.body.classList.contains('mobile-mode')) {
+                const iframe = document.getElementById('ta-detail-iframe');
+                if (!iframe || !iframe.src || iframe.src === 'about:blank') {
+                    openMobileSidebar();
+                }
+            }
+        }
+
         function switchToRelatedInfoView() {
             clearAllViewModes();
             document.body.classList.add('related-info-mode');
             lucide.createIcons();
+            if (document.body.classList.contains('mobile-mode')) {
+                const iframe = document.getElementById('ri-detail-iframe');
+                if (!iframe || !iframe.src || iframe.src === 'about:blank') {
+                    openMobileSidebar();
+                }
+            }
         }
 
         function switchToStringGeneratorView() {
@@ -6340,6 +7399,41 @@
                         <div class="space-y-1.5">
                             <p class="text-sm font-semibold text-gray-300">${name}</p>
                             <p class="text-xs text-gray-500 leading-relaxed">此網站封鎖嵌入顯示<br>（X-Frame-Options DENY）</p>
+                        </div>
+                        <a href="${url}" target="_blank"
+                            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors">
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            在新分頁開啟
+                        </a>
+                    </div>`;
+                    welcome.classList.remove('hidden');
+                    lucide.createIcons();
+                }
+            } else {
+                if (welcome) welcome.classList.add('hidden');
+                if (iframe)  { iframe.classList.remove('hidden'); iframe.src = url; }
+            }
+        }
+
+        function loadTypeAttackTool(url, name, blocked) {
+            closeMobileSidebar();
+            if (!document.body.classList.contains('type-attack-mode')) switchToTypeAttackView();
+            const titleEl = document.getElementById('ta-detail-title');
+            if (titleEl) titleEl.textContent = name;
+            const extLink = document.getElementById('ta-detail-ext-link');
+            if (extLink) extLink.href = url;
+            const welcome = document.getElementById('ta-detail-welcome');
+            const iframe  = document.getElementById('ta-detail-iframe');
+            if (blocked) {
+                if (iframe) { iframe.classList.add('hidden'); iframe.src = 'about:blank'; }
+                if (welcome) {
+                    welcome.innerHTML = `<div class="text-center space-y-4 px-8">
+                        <div class="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center mx-auto">
+                            <i data-lucide="shield-x" class="w-7 h-7 text-red-400"></i>
+                        </div>
+                        <div class="space-y-1.5">
+                            <p class="text-sm font-semibold text-gray-300">${name}</p>
+                            <p class="text-xs text-gray-500 leading-relaxed">此網站封鎖嵌入顯示<br>（X-Frame-Options）</p>
                         </div>
                         <a href="${url}" target="_blank"
                             class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition-colors">
