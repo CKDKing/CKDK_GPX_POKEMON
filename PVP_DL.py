@@ -194,6 +194,35 @@ def _parse_date_str(update_time: str) -> str:
         return ""
 
 
+def cleanup_old_versions(keep: int = 3) -> None:
+    """PVPData/ 內只保留最新 keep 個日期版本，刪除更舊的 CSV + parquet。"""
+    date_re = re.compile(r' (\d{8})\.(csv|parquet)$')
+
+    dates: set[str] = set()
+    for f in PVPDATA_DIR.iterdir():
+        m = date_re.search(f.name)
+        if m:
+            dates.add(m.group(1))
+
+    if len(dates) <= keep:
+        return
+
+    sorted_dates  = sorted(dates, reverse=True)   # 最新在前
+    old_dates     = set(sorted_dates[keep:])       # 第 keep+1 之後的全刪
+
+    deleted = []
+    for f in PVPDATA_DIR.iterdir():
+        m = date_re.search(f.name)
+        if m and m.group(1) in old_dates:
+            f.unlink()
+            deleted.append(f.name)
+
+    if deleted:
+        print(f"\n  [汰舊] 刪除 {len(deleted)} 個檔案（版本：{sorted(old_dates)}）")
+        for name in sorted(deleted):
+            print(f"    - {name}")
+
+
 async def download_and_process(date_str: str, visible: bool = False) -> bool:
     PVPDATA_DIR.mkdir(parents=True, exist_ok=True)
     all_ok = True
@@ -300,7 +329,7 @@ def git_commit(update_time: str) -> None:
                            encoding="utf-8", cwd=str(REPO_DIR))
         return r.returncode, r.stderr.strip()
 
-    rc, err = run(["git", "add", str(PVPDATA_DIR)])
+    rc, err = run(["git", "add", "-A", "--", str(PVPDATA_DIR)])
     if rc != 0:
         print(f"  Git add 失敗：{err}"); return
 
@@ -357,7 +386,7 @@ async def main() -> int:
         save_log(log)
         return 0
 
-    if last_known is None:
+    if last_known is None and not force:
         print("  首次記錄，不觸發下載。")
         log["last_known_update"] = update_time
         log["history"].append({"scan_time": scan, "website_update": update_time,
@@ -379,6 +408,10 @@ async def main() -> int:
     print("\n[3/4] 下載 / 處理 / 輸出 CSV + parquet…")
     date_str = _parse_date_str(update_time)
     success  = await download_and_process(date_str=date_str, visible=visible)
+
+    # ── [4.5] 汰舊：只保留最近 3 個版本 ─────────────────────────────────────
+    if success:
+        cleanup_old_versions(keep=3)
 
     # ── [5] Git commit（本機用；Actions 以 --no-git 跳過，由 workflow 處理）────
     if success:
