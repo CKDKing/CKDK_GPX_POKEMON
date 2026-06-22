@@ -5,7 +5,12 @@ on:
     # UTC 01:00 = 台灣時間 09:00 (UTC+8)
     - cron: '0 1 * * *'
   workflow_dispatch:
-    # 允許在 GitHub 頁面手動觸發
+    inputs:
+      force_download:
+        description: '強制重新下載（初始化 / 手動補跑）'
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write   # 允許 commit + push
@@ -27,7 +32,7 @@ jobs:
           cache: 'pip'
 
       - name: Install Python dependencies
-        run: pip install playwright pandas pyarrow
+        run: pip install -r requirements.txt
 
       - name: Install Playwright + Chromium
         run: playwright install --with-deps chromium
@@ -35,8 +40,13 @@ jobs:
       - name: Run PVP_DL
         id: pvp
         run: |
+          ARGS="--no-git"
+          if [ "${{ github.event.inputs.force_download }}" = "true" ]; then
+            ARGS="$ARGS --force"
+            echo "→ 強制下載模式"
+          fi
           set +e
-          python PVP_DL.py --no-git
+          python PVP_DL.py $ARGS
           echo "exit_code=$?" >> $GITHUB_OUTPUT
 
       - name: Commit and push (only when downloaded)
@@ -45,13 +55,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add PVPData/
-          git commit -m "data: PVPData auto-update $(date -u +'%Y-%m-%d')"
+          git commit -m "data: PVPData auto-update $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push
 
       - name: Summary
         run: |
           CODE="${{ steps.pvp.outputs.exit_code }}"
           if   [ "$CODE" = "10" ]; then echo "✓ 下載並 commit 完成。"
-          elif [ "$CODE" = "0"  ]; then echo "— 無新更新，跳過。"
+          elif [ "$CODE" = "0"  ]; then echo "— 無新更新或僅掃描，跳過。"
           else                          echo "✗ 腳本失敗 (exit $CODE)。"; exit 1
           fi
