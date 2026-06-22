@@ -185,7 +185,16 @@ def _to_parquet(csv_path: Path) -> None:
     df.to_parquet(csv_path.with_suffix('.parquet'), index=False)
 
 
-async def download_and_process(visible: bool = False) -> bool:
+def _parse_date_str(update_time: str) -> str:
+    """'Wed Jun 17 18:55:06 2026 +0800'  →  '20260617'"""
+    try:
+        dt = datetime.strptime(update_time.strip(), "%a %b %d %H:%M:%S %Y %z")
+        return dt.strftime("%Y%m%d")
+    except ValueError:
+        return ""
+
+
+async def download_and_process(date_str: str, visible: bool = False) -> bool:
     PVPDATA_DIR.mkdir(parents=True, exist_ok=True)
     all_ok = True
 
@@ -243,7 +252,8 @@ async def download_and_process(visible: bool = False) -> bool:
                 orig     = download.suggested_filename or "rankings.csv"
                 m        = re.search(r'cp(\d+)_', orig)
                 cp_num   = m.group(1) if m else orig
-                fname    = _safe_filename(f"{fmt_text} CP{cp_num}.csv")
+                suffix   = f" {date_str}" if date_str else ""
+                fname    = _safe_filename(f"{fmt_text} CP{cp_num}{suffix}.csv")
                 dest     = PVPDATA_DIR / fname
 
                 await download.save_as(dest)
@@ -367,7 +377,8 @@ async def main() -> int:
 
     # ── [3] 下載 + 資料處理  /  [4] 輸出雙格式 ───────────────────────────────
     print("\n[3/4] 下載 / 處理 / 輸出 CSV + parquet…")
-    success = await download_and_process(visible=visible)
+    date_str = _parse_date_str(update_time)
+    success  = await download_and_process(date_str=date_str, visible=visible)
 
     # ── [5] Git commit（本機用；Actions 以 --no-git 跳過，由 workflow 處理）────
     if success:
