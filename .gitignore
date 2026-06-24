@@ -1,0 +1,13 @@
+# IG session（含登入 cookie，不能上 Git）
+ig_session
+ig_username.txt
+ig_profile/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db
