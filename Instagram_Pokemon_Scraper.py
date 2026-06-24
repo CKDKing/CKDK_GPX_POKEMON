@@ -369,13 +369,6 @@ def setup_login():
 # ── 主程式 ───────────────────────────────────────────────────
 
 def scrape():
-    if not SESSION_FILE.exists() or not USERNAME_FILE.exists():
-        print("找不到 session，請先執行 --setup：")
-        print("  python Instagram_Pokemon_Scraper.py --setup")
-        sys.exit(1)
-
-    username = USERNAME_FILE.read_text(encoding="utf-8").strip()
-
     ensure_dirs()
     print("清理舊小圖及過期圖片...")
     clean_small_images()
@@ -401,21 +394,23 @@ def scrape():
         quiet=True,
     )
 
-    try:
-        L.load_session_from_file(username, str(SESSION_FILE))
-    except Exception as e:
-        print(f"✗ 載入 session 失敗: {e}")
-        print("請重新執行 --from-browser。")
-        sys.exit(1)
-
-    # IG web GraphQL API (doc_id 模式) 必須帶 x-ig-app-id，否則 400
-    csrftoken = L.context._session.cookies.get("csrftoken", "")
-    L.context._session.headers.update({
-        "x-ig-app-id": "936619743392459",
-        "x-csrftoken": csrftoken,
-        "x-ig-www-claim": "0",
-        "Referer": "https://www.instagram.com/",
-    })
+    # 有 session 就用（本機執行）；沒有就匿名（GitHub Actions 雲端）
+    if SESSION_FILE.exists() and USERNAME_FILE.exists():
+        username = USERNAME_FILE.read_text(encoding="utf-8").strip()
+        try:
+            L.load_session_from_file(username, str(SESSION_FILE))
+            csrftoken = L.context._session.cookies.get("csrftoken", "")
+            L.context._session.headers.update({
+                "x-ig-app-id": "936619743392459",
+                "x-csrftoken": csrftoken,
+                "x-ig-www-claim": "0",
+                "Referer": "https://www.instagram.com/",
+            })
+            print("模式：已登入 session")
+        except Exception as e:
+            print(f"⚠  session 載入失敗 ({e})，改用匿名模式")
+    else:
+        print("模式：匿名（公開帳號）")
 
     try:
         profile = instaloader.Profile.from_username(L.context, TARGET_USERNAME)
@@ -423,14 +418,21 @@ def scrape():
         print(f"✗ 找不到帳號: {TARGET_USERNAME}")
         sys.exit(1)
     except Exception as e:
-        print(f"✗ 載入個人頁失敗（可能 session 過期）: {e}")
-        print("請重新執行 --from-browser。")
+        print(f"✗ 載入個人頁失敗: {e}")
         sys.exit(1)
 
     # instaloader 4.15 的 _obtain_metadata (doc_id 25980296051578533) 使用
     # 過期的 __relay_internal__pv__ 變數導致 400；logged_in 模式下
     # get_posts() 的 NodeIterator 不依賴這份 metadata，直接跳過。
     profile._has_full_metadata = True
+
+    # 繞過 _obtain_metadata（doc_id 25980296051578533 在雲端/匿名皆不穩定）
+    profile._has_full_metadata = True
+    if not L.context.is_logged_in:
+        # 匿名模式：get_posts() 需要 edge_owner_to_timeline_media，給空結構讓它從頭分頁
+        profile._node.setdefault("edge_owner_to_timeline_media", {
+            "edges": [], "page_info": {"has_next_page": True, "end_cursor": None}
+        })
 
     saved_count    = 0
     new_done_posts: list[str] = []
