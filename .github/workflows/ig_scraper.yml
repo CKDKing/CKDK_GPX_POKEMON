@@ -24,11 +24,6 @@ jobs:
       - name: Install dependencies
         run: pip install instaloader requests
 
-      - name: Restore IG session
-        run: |
-          echo "${{ secrets.IG_SESSION_B64 }}" | base64 -d > ig_session
-          echo "${{ secrets.IG_USERNAME }}"      > ig_username.txt
-
       - name: Run scraper
         run: python Instagram_Pokemon_Scraper.py
 
