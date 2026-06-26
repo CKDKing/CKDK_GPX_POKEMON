@@ -1,0 +1,18 @@
+{
+  "last_known_update": "Wed Jun 17 18:55:06 2026 +0800",
+  "last_download": "2026-06-26T15:30:00+08:00",
+  "history": [
+    {
+      "scan_time": "2026-06-22T00:00:00+08:00",
+      "website_update": "Wed Jun 17 18:55:06 2026 +0800",
+      "action": "downloaded",
+      "note": "手動初始下載"
+    },
+    {
+      "scan_time": "2026-06-26T15:30:00+08:00",
+      "website_update": "Wed Jun 17 18:55:06 2026 +0800",
+      "action": "downloaded",
+      "note": "手動執行"
+    }
+  ]
+}
