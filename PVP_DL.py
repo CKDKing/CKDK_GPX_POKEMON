@@ -31,7 +31,6 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-import pandas as pd
 from playwright.async_api import async_playwright, TimeoutError as PwTimeout
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -273,11 +272,6 @@ def _process_csv(path: Path) -> None:
         w.writerows(new_rows)
 
 
-def _to_parquet(csv_path: Path) -> None:
-    df = pd.read_csv(csv_path, encoding='utf-8-sig', dtype=str)
-    df.to_parquet(csv_path.with_suffix('.parquet'), index=False)
-
-
 def _parse_date_str(update_time: str) -> str:
     """'Wed Jun 17 18:55:06 2026 +0800'  →  '20260617'"""
     try:
@@ -386,10 +380,8 @@ async def download_and_process(date_str: str, visible: bool = False) -> bool:
 
                 _fix_cp_header(dest)   # 補齊缺失的 CP 欄標頭
                 _process_csv(dest)     # 展開名稱欄 → 9 個分類欄位
-                _to_parquet(dest)      # 輸出同名 .parquet
 
                 print(f"    ✓ {fname}")
-                print(f"    ✓ {fname[:-4]}.parquet")
 
             except Exception as e:
                 import traceback
