@@ -160,8 +160,8 @@ async def fetch_update_time() -> str | None:
         browser = await p.chromium.launch(headless=True)
         page    = await browser.new_page()
         try:
-            await page.goto(HOMEPAGE, wait_until="networkidle", timeout=30000)
-            await page.wait_for_timeout(2000)
+            await page.goto(HOMEPAGE, wait_until="load", timeout=60000)
+            await page.wait_for_timeout(3000)
             body = await page.inner_text("body")
         finally:
             await browser.close()
@@ -320,7 +320,10 @@ async def download_and_process(version: str, visible: bool = False) -> bool:
         context = await browser.new_context(accept_downloads=True)
         page    = await context.new_page()
 
-        await page.goto(RANKINGS, wait_until="networkidle")
+        try:
+            await page.goto(RANKINGS, wait_until="load", timeout=60000)
+        except Exception:
+            await page.wait_for_timeout(3000)
         await page.wait_for_timeout(2000)
 
         options  = page.locator(".format-select option")
@@ -331,12 +334,15 @@ async def download_and_process(version: str, visible: bool = False) -> bool:
         for idx, fmt_text in enumerate(fmt_list):
             print(f"\n  [{idx+1}/{len(fmt_list)}] {fmt_text}")
             try:
-                await page.goto(RANKINGS, wait_until="networkidle")
+                try:
+                    await page.goto(RANKINGS, wait_until="load", timeout=60000)
+                except Exception:
+                    pass
                 await page.wait_for_timeout(1500)
 
                 fmt_sel = page.locator(".format-select")
                 try:
-                    async with page.expect_navigation(wait_until="networkidle", timeout=8000):
+                    async with page.expect_navigation(wait_until="load", timeout=8000):
                         await fmt_sel.select_option(index=idx)
                 except PwTimeout:
                     await page.wait_for_timeout(3000)
@@ -441,7 +447,14 @@ async def main() -> int:
 
     # ── [1] Fetch version ─────────────────────────────────────────────────────
     print("\n[1] Checking site version…")
-    version = await fetch_update_time()
+    try:
+        version = await fetch_update_time()
+    except Exception as e:
+        print(f"  ✗ Error fetching version: {e}")
+        log["history"].append({"scan_time": scan, "website_update": None,
+                               "action": "error", "note": f"fetch error: {e}"})
+        save_log(log)
+        return 0
 
     if version is None:
         print("  ✗ Could not detect version number.")
