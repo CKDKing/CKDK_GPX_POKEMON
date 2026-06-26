@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# 虛擬環境
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 追蹤輸出與 log（讓 GitHub Actions 可以 commit 更新）
+!pokemon_go_events.json
+!pokemon_go_events.md
+!pokemon_go_events_scanner_log.txt
