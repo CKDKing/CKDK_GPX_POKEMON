@@ -6,7 +6,7 @@
     {
       "region": "🇮🇹 義大利",
       "region_code": "it",
-      "event_name": "Vivi appieno la primavera con Un’avventura meravigliovosa in Europa!",
+      "event_name": "Enjoy spring to the fullest with A Marvelous Adventure in Europe!",
       "start_date": "2026-04-06",
       "end_date": null,
       "status": "active",
@@ -19,7 +19,7 @@
     {
       "region": "🇹🇷 土耳其",
       "region_code": "tr",
-      "event_name": "Nisan Topluluk Günü: Tinkatink",
+      "event_name": "April Community Day: Tinkatink",
       "start_date": "2026-04-11",
       "end_date": null,
       "status": "active",
@@ -32,7 +32,7 @@
     {
       "region": "🇧🇷 巴西",
       "region_code": "pt_br",
-      "event_name": "Celebrem no espaço de Pokémon na gamescom latam 2026",
+      "event_name": "Celebrate at the Pokémon space at gamescom latam 2026",
       "start_date": "2026-04-30",
       "end_date": "2026-06-26",
       "status": "active",
@@ -58,7 +58,7 @@
     {
       "region": "🇰🇷 韓國",
       "region_code": "ko",
-      "event_name": "“Pokémon GO 나의 최애 포켓몬 챌린지”에 참여해 보세요!",
+      "event_name": "Join the Pokémon GO My Favorite Pokémon Challenge!",
       "start_date": "2026-05-01",
       "end_date": "2026-06-30",
       "status": "active",
@@ -123,7 +123,7 @@
     {
       "region": "🇧🇷 巴西",
       "region_code": "pt_br",
-      "event_name": "Celebrem o 10º aniversário de Pokémon GO à moda do futebol!",
+      "event_name": "Celebrate the 10th anniversary of Pokémon GO in soccer style!",
       "start_date": "2026-06-20",
       "end_date": "2026-06-26",
       "status": "active",
@@ -149,7 +149,7 @@
     {
       "region": "🇧🇷 巴西",
       "region_code": "pt_br",
-      "event_name": "Preparem-se para as Celebrações Comunitárias do Pokémon GO Fest 2026: Global na América Latina!",
+      "event_name": "Get ready for Pokémon GO Fest 2026: Global Community Celebrations in Latin America!",
       "start_date": "2026-06-26",
       "end_date": "2026-07-12",
       "status": "active",
@@ -162,7 +162,7 @@
     {
       "region": "🌎 拉丁美洲",
       "region_code": "es_mx",
-      "event_name": "¡Celebren el 10.º aniversario de Pokémon GO al estilo futbolero!",
+      "event_name": "Celebrate the 10th anniversary of Pokémon GO in soccer style! (Latin America)",
       "start_date": "2026-06-26",
       "end_date": "2026-07-20",
       "status": "active",
@@ -201,7 +201,7 @@
     {
       "region": "🇩🇪 德國",
       "region_code": "de",
-      "event_name": "Ihr könnt euch jetzt wieder mithilfe von Pokémon GO verloben: Plant eine epische Verlobung beim Pokémon GO Fest in Chicago und Kopenhagen!",
+      "event_name": "Propose again with Pokémon GO: Plan an epic proposal at Pokémon GO Fest in Chicago and Copenhagen!",
       "start_date": "2026-06-26",
       "end_date": null,
       "status": "active",
@@ -227,10 +227,10 @@
     {
       "region": "🇧🇷 巴西",
       "region_code": "pt_br",
-      "event_name": "Peguem um Tauros de Paldea da Espécie Aquática no Arraiá do Pokémon GO!",
-      "start_date": "2026-06-29",
-      "end_date": null,
-      "status": "upcoming",
+      "event_name": "Catch a Water-type Paldean Tauros at the Pokémon GO Arraiá (June Festival)!",
+      "start_date": "2026-06-23",
+      "end_date": "2026-06-29",
+      "status": "active",
       "url": "https://pokemongo.com/pt_br/news/festa-junina-2026",
       "article_slug": "festa-junina-2026",
       "found_in_regions": [
@@ -240,7 +240,7 @@
     {
       "region": "🇰🇷 韓國",
       "region_code": "ko",
-      "event_name": "올여름 한강에서 만나요! \"Pokémon GO Fest 2026: 글로벌\" 기념 한국 현장 이벤트",
+      "event_name": "Meet at Hangang River this summer! Pokémon GO Fest 2026: Global Korea On-site Event",
       "start_date": "2026-07-11",
       "end_date": null,
       "status": "upcoming",
@@ -266,7 +266,7 @@
     {
       "region": "🇫🇷 法國",
       "region_code": "fr",
-      "event_name": "Célébrez le Festival Pokémon GO 2026 : Mondial à Bordeaux !",
+      "event_name": "Celebrate Pokémon GO Fest 2026: Global in Bordeaux!",
       "start_date": "2026-07-11",
       "end_date": "2026-07-12",
       "status": "upcoming",
@@ -279,7 +279,7 @@
     {
       "region": "🇩🇪 德國",
       "region_code": "de",
-      "event_name": "Feiert gemeinsam mit der Community das Pokémon GO Fest 2026: Global im XPERION Hamburg!",
+      "event_name": "Celebrate Pokémon GO Fest 2026: Global with the Community at XPERION Hamburg!",
       "start_date": "2026-07-11",
       "end_date": null,
       "status": "upcoming",
@@ -292,7 +292,7 @@
     {
       "region": "🇪🇸 西班牙",
       "region_code": "es",
-      "event_name": "¡Celebra el Festival de Pokémon GO: Global con las comunidades de Barcelona!",
+      "event_name": "Celebrate Pokémon GO Fest: Global with the Barcelona Communities!",
       "start_date": "2026-07-11",
       "end_date": null,
       "status": "upcoming",
@@ -305,7 +305,7 @@
     {
       "region": "🌎 拉丁美洲",
       "region_code": "es_mx",
-      "event_name": "¡Prepárense para las Celebraciones Comunitarias de Pokémon GO Fest 2026: Global en América Latina!",
+      "event_name": "Get ready for Pokémon GO Fest 2026: Global Community Celebrations in Latin America!",
       "start_date": "2026-07-12",
       "end_date": null,
       "status": "upcoming",
@@ -331,7 +331,7 @@
     {
       "region": "🇮🇹 義大利",
       "region_code": "it",
-      "event_name": "Pokémon GO के सस्टेनेबिलिटी वीक इवेंट के दौरान बाहर निकलें और रूट को एक्सप्लोर करें!",
+      "event_name": "Go outside and explore routes during the Pokémon GO Sustainability Week event!",
       "start_date": null,
       "end_date": null,
       "status": "unknown",
@@ -346,7 +346,7 @@
     {
       "region": "🇧🇷 巴西",
       "region_code": "pt_br",
-      "event_name": "Confiram o vencedor do sorteio brasileiro do #GOMemories!",
+      "event_name": "Check out the winner of the Brazilian #GOMemories giveaway!",
       "start_date": null,
       "end_date": null,
       "status": "unknown",
@@ -398,7 +398,7 @@
     {
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
-      "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
+      "event_name": "Join the Pokémon GO Fest 2026: Global celebrations at Elektrownia Powiśle",
       "start_date": null,
       "end_date": null,
       "status": "unknown",

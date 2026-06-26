@@ -176,6 +176,36 @@ _EN_DATE2 = re.compile(
     r"jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)\s+(202[6-9])\b",
     re.IGNORECASE,
 )
+# 多語言月份（葡萄牙、西班牙、法語、德語、義大利、土耳其、印尼）
+_MONTHS_MULTI = {
+    # 葡萄牙 / 西班牙
+    "janeiro":1,"fevereiro":2,"março":3,"marco":3,"abril":4,"maio":5,"junho":6,
+    "julho":7,"agosto":8,"setembro":9,"outubro":10,"novembro":11,"dezembro":12,
+    "enero":1,"febrero":2,"marzo":3,"mayo":5,"junio":6,"julio":7,
+    "septiembre":9,"octubre":10,"noviembre":11,"diciembre":12,
+    # 法語
+    "janvier":1,"février":2,"fevrier":2,"mars":3,"avril":4,"mai":5,"juin":6,
+    "juillet":7,"août":8,"aout":8,"octobre":10,"novembre":11,"décembre":12,"decembre":12,
+    # 德語
+    "januar":1,"februar":2,"märz":3,"marz":3,"juni":6,"juli":7,"oktober":10,"dezember":12,
+    # 義大利
+    "gennaio":1,"febbraio":2,"giugno":6,"luglio":7,"settembre":9,"ottobre":10,
+    # 土耳其
+    "ocak":1,"şubat":2,"subat":2,"mart":3,"nisan":4,"haziran":6,"temmuz":7,
+    "ekim":10,"kasım":11,"kasim":11,"aralık":12,"aralik":12,
+    # 印尼（與英文相近，補充差異）
+    "maret":3,"mei":5,"agustus":8,"desember":12,
+}
+# 葡萄牙語/西班牙語：23 de junho de 2026
+_PT_DATE = re.compile(
+    r"\b(\d{1,2})\s+de\s+([a-záàâãéèêíìîóòôõúùûç]+)\s+de\s+(202[6-9])\b",
+    re.IGNORECASE,
+)
+# 歐洲通用：23. Juni 2026 / 23 juin 2026 / 23 giugno 2026 / 23 Haziran 2026
+_EU_DATE = re.compile(
+    r"\b(\d{1,2})\.?\s+([a-záàâãéèêíìîóòôõúùûçäöüß]{4,})\s+(202[6-9])\b",
+    re.IGNORECASE,
+)
 
 
 def _regex_dates(text: str) -> List[date]:
@@ -197,6 +227,25 @@ def _regex_dates(text: str) -> List[date]:
 
     for day, mo_str, year in _EN_DATE2.findall(text):
         mo = _MONTHS_EN.get(mo_str.lower())
+        if mo:
+            try:
+                found.append(date(int(year), mo, int(day)))
+            except ValueError:
+                pass
+
+    # 葡萄牙語/西班牙語："23 de junho de 2026"
+    for day, mo_str, year in _PT_DATE.findall(text):
+        key = mo_str.lower().replace("ç", "c").replace("ã", "a").replace("ó", "o")
+        mo = _MONTHS_MULTI.get(mo_str.lower()) or _MONTHS_MULTI.get(key)
+        if mo:
+            try:
+                found.append(date(int(year), mo, int(day)))
+            except ValueError:
+                pass
+
+    # 歐洲通用："23. Juni 2026" / "23 juin 2026"
+    for day, mo_str, year in _EU_DATE.findall(text):
+        mo = _MONTHS_MULTI.get(mo_str.lower())
         if mo:
             try:
                 found.append(date(int(year), mo, int(day)))
@@ -266,6 +315,26 @@ def event_status(start: Optional[date], end: Optional[date]) -> str:
     if today >= start:
         return "active"
     return "upcoming"
+
+# 這些語系的 event_name 需嘗試以英文版替換（只允許中/英/日）
+_NON_NATIVE_CODES = {
+    "ko","th","id","hi","pt_br","es_mx","fr","de","it","es","pl","ru","tr"
+}
+
+
+def fetch_english_title(slug: str, log: logging.Logger) -> Optional[str]:
+    """嘗試從英文版頁面取得 H1 標題，失敗時回傳 None。"""
+    url = f"{BASE_URL}/en/news/{slug}"
+    html = fetch_html(url, log)
+    if html:
+        soup = BeautifulSoup(html, "lxml")
+        h1 = soup.find("h1")
+        if h1:
+            t = h1.get_text(" ", strip=True)
+            if t:
+                return t
+    return None
+
 
 # ──────────────────────────────────────────────────────────────────────────────
 # 主掃描流程
@@ -348,6 +417,14 @@ def scan(log: logging.Logger) -> List[Dict]:
                     if t:
                         title = t
                 start_date, end_date = extract_dates(html, region["lang"], log)
+
+            # 非中/英/日語系：嘗試取英文標題
+            if region_code in _NON_NATIVE_CODES:
+                en_title = fetch_english_title(slug, log)
+                time.sleep(REQUEST_DELAY)
+                if en_title:
+                    log.debug(f"    🔤 英文標題：{en_title[:60]}")
+                    title = en_title
 
             status = event_status(start_date, end_date)
             log.info(f"    標題  : {title[:60]}")
