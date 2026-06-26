@@ -1,0 +1,48 @@
+{
+  "last_known_update": "1.37.3.18",
+  "last_download": "2026-06-26T16:22:44+08:00",
+  "history": [
+    {
+      "scan_time": "2026-06-26T16:09:05+08:00",
+      "website_update": "1.37.3.18",
+      "action": "check-only",
+      "note": "--check mode"
+    },
+    {
+      "scan_time": "2026-06-26T16:09:23+08:00",
+      "website_update": "1.37.3.18",
+      "action": "downloaded",
+      "note": "forced"
+    },
+    {
+      "scan_time": "2026-06-26T16:14:29+08:00",
+      "website_update": "1.37.3.18",
+      "action": "downloaded",
+      "note": "forced"
+    },
+    {
+      "scan_time": "2026-06-26T16:17:07+08:00",
+      "website_update": "1.37.3.18",
+      "action": "downloaded",
+      "note": "forced"
+    },
+    {
+      "scan_time": "2026-06-26T16:22:44+08:00",
+      "website_update": "1.37.3.18",
+      "action": "downloaded",
+      "note": "forced"
+    },
+    {
+      "scan_time": "2026-06-26T16:26:20+08:00",
+      "website_update": "1.37.3.18",
+      "action": "check-only",
+      "note": "--check mode"
+    },
+    {
+      "scan_time": "2026-06-26T16:31:20+08:00",
+      "website_update": "1.37.3.18",
+      "action": "check-only",
+      "note": "--check mode"
+    }
+  ]
+}
