@@ -40,6 +40,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 REPO_DIR    = Path(__file__).parent
 PVPDATA_DIR = REPO_DIR / "PVPData"
 LOG_FILE    = PVPDATA_DIR / "pvpoke_log.json"
+DB_FILE     = REPO_DIR / "pokemon_db.csv"
 HOMEPAGE    = "https://pvpoketw.com/"
 RANKINGS    = "https://pvpoketw.com/rankings/"
 
@@ -79,6 +80,90 @@ _FIXED_HEADER = (
     "名稱,評分,圖鑑編號,第一屬性,第二屬性,攻擊力,防禦力,HP,Stat Product,"
     "等級,CP,一般招式,特殊招式1,特殊招式2,幾下可用特招1,幾下可用特招2,夥伴行走距離,開第二招星塵花費"
 )
+
+
+# ══════════════════════════════════════════════════════════════════════════════
+#  寶可夢資料庫（防呆校正用）
+# ══════════════════════════════════════════════════════════════════════════════
+
+# (dex:int, type1:str, type2:str) → correct_name:str
+_POKE_DB_DEX_TYPES: dict[tuple, str]  = {}
+# (name:str, type1:str, type2:str) → correct_dex:int
+_POKE_DB_NAME_TYPES: dict[tuple, int] = {}
+_POKE_DB_LOADED = False
+
+
+def _load_poke_db() -> None:
+    """從 pokemon_db.csv 建立防呆校正用對照表（只載入一次）。"""
+    global _POKE_DB_LOADED
+    if _POKE_DB_LOADED:
+        return
+    _POKE_DB_LOADED = True
+    if not DB_FILE.exists():
+        print(f"  ⚠ 找不到 {DB_FILE}，跳過防呆校正。")
+        return
+    with open(DB_FILE, encoding="utf-8-sig", newline="") as f:
+        for row in csv.DictReader(f):
+            try:
+                dex = int(row["dex"])
+            except (ValueError, KeyError):
+                continue
+            name  = row.get("name",  "").strip()
+            type1 = row.get("type1", "").strip()
+            type2 = row.get("type2", "").strip()   # 空字串 = 單屬性
+            key_dt = (dex, type1, type2)
+            key_nt = (name, type1, type2)
+            if key_dt not in _POKE_DB_DEX_TYPES:
+                _POKE_DB_DEX_TYPES[key_dt] = name
+            if key_nt not in _POKE_DB_NAME_TYPES:
+                _POKE_DB_NAME_TYPES[key_nt] = dex
+    print(f"  ✓ 寶可夢資料庫已載入：{len(_POKE_DB_DEX_TYPES)} 筆")
+
+
+def _validate_row(row: dict) -> tuple[dict, list[str]]:
+    """
+    防呆校正：
+    Case 1 — 圖鑑編號 + 屬性 吻合 DB → 檢查名稱是否錯植 → 自動修正
+    Case 2 — 名稱 + 屬性 吻合 DB     → 檢查圖鑑編號是否錯植 → 自動修正
+    回傳 (修正後的 row, 警告訊息 list)
+    """
+    if not _POKE_DB_DEX_TYPES:
+        return row, []
+
+    try:
+        dex = int(row.get("圖鑑編號", "0") or 0)
+    except ValueError:
+        return row, []
+
+    name      = row.get("寶可夢", "").strip()
+    type1     = row.get("第一屬性", "-").strip()
+    type2_raw = row.get("第二屬性", "-").strip()
+    type2     = "" if type2_raw == "-" else type2_raw   # DB 用空字串代表無第二屬性
+
+    fixes: list[str] = []
+
+    # ── Case 1：編號 + 屬性 對，校正名稱 ────────────────────────────────────
+    expected_name = _POKE_DB_DEX_TYPES.get((dex, type1, type2))
+    if expected_name is not None and name != expected_name:
+        fixes.append(
+            f"[名稱錯植] #{dex} ({type1}/{type2_raw}) "
+            f"{name!r} → {expected_name!r}"
+        )
+        row = dict(row)
+        row["寶可夢"] = expected_name
+        name = expected_name   # 更新後繼續做 Case 2
+
+    # ── Case 2：名稱 + 屬性 對，校正圖鑑編號 ────────────────────────────────
+    expected_dex = _POKE_DB_NAME_TYPES.get((name, type1, type2))
+    if expected_dex is not None and dex != expected_dex:
+        fixes.append(
+            f"[編號錯植] {name} ({type1}/{type2_raw}) "
+            f"#{dex} → #{expected_dex}"
+        )
+        row = dict(row)
+        row["圖鑑編號"] = str(expected_dex)
+
+    return row, fixes
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -170,10 +255,18 @@ def _process_csv(path: Path) -> None:
     with open(path, 'r', encoding='utf-8-sig', newline='') as f:
         rows = list(csv.DictReader(f))
     new_rows = []
+    fix_count = 0
     for row in rows:
         parsed = _parse_name(row['名稱'])
         merged = {**row, **parsed}
+        merged, fixes = _validate_row(merged)
+        if fixes:
+            fix_count += 1
+            for msg in fixes:
+                print(f"      {msg}")
         new_rows.append({col: merged.get(col, '-') for col in OUTPUT_COLUMNS})
+    if fix_count:
+        print(f"    ⚠ 防呆校正：共修正 {fix_count} 筆")
     with open(path, 'w', encoding='utf-8-sig', newline='') as f:
         w = csv.DictWriter(f, fieldnames=OUTPUT_COLUMNS)
         w.writeheader()
@@ -224,6 +317,7 @@ def cleanup_old_versions(keep: int = 3) -> None:
 
 
 async def download_and_process(date_str: str, visible: bool = False) -> bool:
+    _load_poke_db()
     PVPDATA_DIR.mkdir(parents=True, exist_ok=True)
     all_ok = True
 
