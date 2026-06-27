@@ -1,6 +1,6 @@
 # 🗺️ Pokémon GO 地區限定活動
 
-> 掃描時間：**2026-06-26 22:19**（台灣時間）
+> 掃描時間：**2026-06-27 22:08**（台灣時間）
 > 僅顯示地區限定活動，已結束的不列入
 > 全球性共同活動不列入
 
@@ -19,12 +19,12 @@
 | 🇫🇷 法國 | Construisez votre aventure au Festival Pokémon GO 2026 : Copenhag | 2026-06-14 | — | ✅ 進行中 | [🔗](https://pokemongo.com/fr/news/gofest-2026-copenhagen-lego) |
 | 🇹🇼 台灣 | 台北捷運與你一起加入「Pokémon GO Fest 2026：全球」歡慶的行列！ | 2026-06-15 | 2026-07-11 | ✅ 進行中 | [🔗](https://pokemongo.com/zh_hant/news/gofesttw-2026zhongshan) |
 | 🇯🇵 日本 | 「『Pokémon GO』パートナーリサーチ」を開催します！ | 2026-06-19 | 2026-09-30 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/202606partnerresearch-jp) |
-| 🇯🇵 日本 | 公式パートナーと「Pokémon GO Fest 2026：東京」をもっと楽しみましょう！ | 2026-06-26 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/gofest2026tokyo_partner) |
-| 🇮🇹 義大利 | Entei brings the heat in GO Pass: April! | 2026-06-26 | — | ✅ 進行中 | [🔗](https://pokemongo.com/it/news/go-pass-april-2026) |
-| 🇺🇸 英文 | Super Mega Raid Update at Pokémon GO Fest 2026: Copenhagen Park E | 2026-06-26 | — | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/gofest-copenhagen-super-mega-raid) |
-| 🇺🇸 英文 | Super Mega Raid Update at Pokémon GO Fest 2026: Chicago Park Expe | 2026-06-26 | — | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/gofest-chicago-super-mega-raid) |
-| 🇩🇪 德國 | Ihr könnt euch jetzt wieder mithilfe von Pokémon GO verloben: Pla | 2026-06-26 | — | ✅ 進行中 | [🔗](https://pokemongo.com/de/news/gofest-2026-chicago-copenhagen-proposals) |
-| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-06-26 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
+| 🇯🇵 日本 | 公式パートナーと「Pokémon GO Fest 2026：東京」をもっと楽しみましょう！ | 2026-06-27 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/gofest2026tokyo_partner) |
+| 🇮🇹 義大利 | Entei brings the heat in GO Pass: April! | 2026-06-27 | — | ✅ 進行中 | [🔗](https://pokemongo.com/it/news/go-pass-april-2026) |
+| 🇺🇸 英文 | Super Mega Raid Update at Pokémon GO Fest 2026: Copenhagen Park E | 2026-06-27 | — | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/gofest-copenhagen-super-mega-raid) |
+| 🇺🇸 英文 | Super Mega Raid Update at Pokémon GO Fest 2026: Chicago Park Expe | 2026-06-27 | — | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/gofest-chicago-super-mega-raid) |
+| 🇩🇪 德國 | Ihr könnt euch jetzt wieder mithilfe von Pokémon GO verloben: Pla | 2026-06-27 | — | ✅ 進行中 | [🔗](https://pokemongo.com/de/news/gofest-2026-chicago-copenhagen-proposals) |
+| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-06-27 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
 | 🇧🇷 巴西 | Peguem um Tauros de Paldea da Espécie Aquática no Arraiá do Pokém | 2026-06-29 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/pt_br/news/festa-junina-2026) |
 | 🇯🇵 日本 | 『Pokémon GO』10周年をお祝いしよう！ | 2026-07-01 | 2026-07-11 | 🔜 即將開始 | [🔗](https://pokemongo.com/ja/news/assistant_pikachu) |
 | 🇰🇷 韓國 | 올여름 한강에서 만나요! "Pokémon GO Fest 2026: 글로벌" 기념 한국 현장 이벤트 | 2026-07-11 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ko/news/ko-gofest-global-on-site-event-2026) |
