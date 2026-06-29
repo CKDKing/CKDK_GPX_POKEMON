@@ -2182,3 +2182,447 @@
 2026-06-28 22:07:16 [INFO    ]   JSON  → pokemon_go_events.json
 2026-06-28 22:07:16 [INFO    ]   MD    → pokemon_go_events.md
 2026-06-28 22:07:16 [INFO    ] ✅ 掃描完成
+
+─────────────────────────────────────────────────────────────────
+  掃描開始：2026-06-29 22:09:03
+─────────────────────────────────────────────────────────────────
+2026-06-29 22:09:03 [INFO    ] Pokémon GO Events Scanner 啟動
+2026-06-29 22:09:03 [INFO    ] =================================================================
+2026-06-29 22:09:03 [INFO    ]   Pokémon GO Regional Events Scanner  |  2026-06-29
+2026-06-29 22:09:03 [INFO    ]   掃描 16 個地區  |  REGIONAL_THRESHOLD = 4
+2026-06-29 22:09:03 [INFO    ] =================================================================
+2026-06-29 22:09:03 [INFO    ] 【Phase 1】蒐集各地區新聞頁文章 slug
+2026-06-29 22:09:03 [INFO    ]   🇹🇼 台灣        →  https://pokemongo.com/zh_hant/news
+2026-06-29 22:09:03 [DEBUG   ]     OK 69,202 chars : https://pokemongo.com/zh_hant/news
+2026-06-29 22:09:05 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:05 [INFO    ]   🇯🇵 日本        →  https://pokemongo.com/ja/news
+2026-06-29 22:09:06 [DEBUG   ]     OK 69,591 chars : https://pokemongo.com/ja/news
+2026-06-29 22:09:08 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:08 [INFO    ]   🇰🇷 韓國        →  https://pokemongo.com/ko/news
+2026-06-29 22:09:08 [DEBUG   ]     OK 69,932 chars : https://pokemongo.com/ko/news
+2026-06-29 22:09:10 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:10 [INFO    ]   🇹🇭 泰國        →  https://pokemongo.com/th/news
+2026-06-29 22:09:11 [DEBUG   ]     OK 71,379 chars : https://pokemongo.com/th/news
+2026-06-29 22:09:13 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:13 [INFO    ]   🇮🇩 印尼        →  https://pokemongo.com/id/news
+2026-06-29 22:09:13 [DEBUG   ]     OK 71,766 chars : https://pokemongo.com/id/news
+2026-06-29 22:09:15 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:15 [INFO    ]   🇮🇳 印度        →  https://pokemongo.com/hi/news
+2026-06-29 22:09:16 [DEBUG   ]     OK 71,184 chars : https://pokemongo.com/hi/news
+2026-06-29 22:09:18 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:18 [INFO    ]   🇧🇷 巴西        →  https://pokemongo.com/pt_br/news
+2026-06-29 22:09:18 [DEBUG   ]     OK 72,198 chars : https://pokemongo.com/pt_br/news
+2026-06-29 22:09:20 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:20 [INFO    ]   🌎 拉丁美洲      →  https://pokemongo.com/es_mx/news
+2026-06-29 22:09:21 [DEBUG   ]     OK 72,443 chars : https://pokemongo.com/es_mx/news
+2026-06-29 22:09:23 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:23 [INFO    ]   🇺🇸 英文        →  https://pokemongo.com/en/news
+2026-06-29 22:09:23 [DEBUG   ]     OK 71,773 chars : https://pokemongo.com/en/news
+2026-06-29 22:09:25 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:25 [INFO    ]   🇫🇷 法國        →  https://pokemongo.com/fr/news
+2026-06-29 22:09:26 [DEBUG   ]     OK 72,492 chars : https://pokemongo.com/fr/news
+2026-06-29 22:09:28 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:28 [INFO    ]   🇩🇪 德國        →  https://pokemongo.com/de/news
+2026-06-29 22:09:28 [DEBUG   ]     OK 71,869 chars : https://pokemongo.com/de/news
+2026-06-29 22:09:30 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:30 [INFO    ]   🇮🇹 義大利       →  https://pokemongo.com/it/news
+2026-06-29 22:09:30 [DEBUG   ]     OK 72,065 chars : https://pokemongo.com/it/news
+2026-06-29 22:09:32 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:32 [INFO    ]   🇪🇸 西班牙       →  https://pokemongo.com/es/news
+2026-06-29 22:09:33 [DEBUG   ]     OK 71,956 chars : https://pokemongo.com/es/news
+2026-06-29 22:09:35 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:35 [INFO    ]   🇵🇱 波蘭        →  https://pokemongo.com/pl/news
+2026-06-29 22:09:35 [DEBUG   ]     OK 72,070 chars : https://pokemongo.com/pl/news
+2026-06-29 22:09:37 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:37 [INFO    ]   🇷🇺 俄羅斯       →  https://pokemongo.com/ru/news
+2026-06-29 22:09:38 [DEBUG   ]     OK 72,903 chars : https://pokemongo.com/ru/news
+2026-06-29 22:09:40 [INFO    ]     找到 2 篇文章
+2026-06-29 22:09:40 [INFO    ]   🇹🇷 土耳其       →  https://pokemongo.com/tr/news
+2026-06-29 22:09:40 [DEBUG   ]     OK 71,410 chars : https://pokemongo.com/tr/news
+2026-06-29 22:09:42 [INFO    ]     找到 30 篇文章
+2026-06-29 22:09:42 [INFO    ] 
+  不重複 slug 總計：72
+2026-06-29 22:09:42 [INFO    ] 
+【Phase 2】篩選地區限定 slug（出現 < 4 個地區）
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] ozone-ascent-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] happy-birthday-professor-willow-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] special-anniversary-pikachu-celebration  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] pvp-updates-competitors-cup-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] road-of-legends-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [ 7地區] community-celebrations-go-fest-2026-details-asia-pacific  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] communityday-july-2026-sobble  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [ 5地區] save-the-date-apac-30th-anniversary-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] raichu-super-mega-raid-day-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] gofesttw-2026zhongshan
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] 10th-anniversary-party  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] choose-your-path-forever-forward-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] flying-taxi-taken-over-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] flying-taxi-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] skarmory-super-mega-raid-day-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [ 4地區] pokemon-run-30-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] go-pass-june-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] communityday-june-2026-frigibax  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] go-battle-league-forever-forward  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [ 4地區] gofest-tokyo-super-mega-raid  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [15地區] global-events-gofest2026-overlays  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [13地區] community-celebrations-go-fest-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [14地區] mega-mewtwo-gofest-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [14地區] falinks-super-mega-raid-day-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [13地區] go-pass-may-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [13地區] communitydayclassic-deino-may-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [13地區] save-the-date-s23  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [13地區] spring-marathon-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [12地區] communityday-may-2026-lechonk  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [12地區] shadow-entei-raid-day-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] assistant_pikachu
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] 202606partnerresearch-jp
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] gofest2026tokyo_partner
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] pokemongogiftcard_gofest2026
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] baystars_game
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] marines_game
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] buffaloes_game
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] lions_game
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] ko-gofest-global-on-site-event-2026
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] pokemon-sports-day-2026
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] school-festa-korea
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] my-favorite-pokemon-challenge-kr
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [10地區] steeled-resolve-taken-over-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [ 9地區] steeled-resolve-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [ 6地區] replay-go-bigger-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 3地區] go-pass-april-2026
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] suitup_the_10
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] community-celebrations-go-fest-2026-details-ptbr
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] festa-junina-2026
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] gomemories_brazil_winner
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] pokemon-go-at-gamescomlatam2026
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] suitup_the_10_la
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] community-celebrations-go-fest-2026-details-lat
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] community-celebrations-go-fest-2026-details-en
+2026-06-29 22:09:42 [DEBUG   ]   ✗ [ 6地區] lego-pokemon-go-2026  ← 全球性，略過
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] gofest-copenhagen-super-mega-raid
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] gofest-chicago-saturday-update
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] gofest-chicago-super-mega-raid
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] go-fest-chicago-2026-community
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] know-before-you-go-gofest-2026-in-person-events
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] pgo-pokemon-fossil-musuem-chicago-2026
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] 100-thieves-mega-mewtwo-go-fest-2026
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] community-celebration-bordeaux
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 3地區] gofest-2026-copenhagen-lego
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] community-celebration-hamburg
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] gofest-2026-chicago-copenhagen-proposals
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 2地區] replay-riolu-hatch-day-2026
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] community-celebration-barcelona
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] community-celebration-warszawa
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] welcome-to-tales-of-transformation
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] gofestmaxfinale
+2026-06-29 22:09:42 [DEBUG   ]   ✓ [ 1地區] sustainability-week-2026
+2026-06-29 22:09:42 [INFO    ]   地區限定：39 篇  |  全球性：33 篇
+2026-06-29 22:09:42 [INFO    ] 
+【Phase 3】抓取地區限定文章，解析日期
+2026-06-29 22:09:42 [INFO    ] 
+  🇹🇼 台灣  /  gofesttw-2026zhongshan
+2026-06-29 22:09:43 [DEBUG   ]     OK 39,699 chars : https://pokemongo.com/zh_hant/news/gofesttw-2026zhongshan
+2026-06-29 22:09:45 [DEBUG   ]     📅 [regex] 2026-06-15 → 2026-07-11  (共 3 個日期)
+2026-06-29 22:09:45 [INFO    ]     標題  : 台北捷運與你一起加入「Pokémon GO Fest 2026：全球」歡慶的行列！
+2026-06-29 22:09:45 [INFO    ]     日期  : 2026-06-15 → 2026-07-11  |  狀態：active
+2026-06-29 22:09:45 [INFO    ] 
+  🇯🇵 日本  /  assistant_pikachu
+2026-06-29 22:09:45 [DEBUG   ]     OK 39,063 chars : https://pokemongo.com/ja/news/assistant_pikachu
+2026-06-29 22:09:47 [DEBUG   ]     📅 [regex] 2026-07-01 → 2026-07-11  (共 2 個日期)
+2026-06-29 22:09:47 [INFO    ]     標題  : 『Pokémon GO』10周年をお祝いしよう！
+2026-06-29 22:09:47 [INFO    ]     日期  : 2026-07-01 → 2026-07-11  |  狀態：upcoming
+2026-06-29 22:09:47 [INFO    ] 
+  🇯🇵 日本  /  202606partnerresearch-jp
+2026-06-29 22:09:48 [DEBUG   ]     OK 35,524 chars : https://pokemongo.com/ja/news/202606partnerresearch-jp
+2026-06-29 22:09:50 [DEBUG   ]     📅 [regex] 2026-06-19 → 2026-09-30  (共 4 個日期)
+2026-06-29 22:09:50 [INFO    ]     標題  : 「『Pokémon GO』パートナーリサーチ」を開催します！
+2026-06-29 22:09:50 [INFO    ]     日期  : 2026-06-19 → 2026-09-30  |  狀態：active
+2026-06-29 22:09:50 [INFO    ] 
+  🇯🇵 日本  /  gofest2026tokyo_partner
+2026-06-29 22:09:50 [DEBUG   ]     OK 34,550 chars : https://pokemongo.com/ja/news/gofest2026tokyo_partner
+2026-06-29 22:09:53 [DEBUG   ]     📅 [dateparser] 2026-06-29 → None  (共 1 個日期)
+2026-06-29 22:09:53 [INFO    ]     標題  : 公式パートナーと「Pokémon GO Fest 2026：東京」をもっと楽しみましょう！
+2026-06-29 22:09:53 [INFO    ]     日期  : 2026-06-29 → None  |  狀態：active
+2026-06-29 22:09:53 [INFO    ] 
+  🇯🇵 日本  /  pokemongogiftcard_gofest2026
+2026-06-29 22:09:53 [DEBUG   ]     OK 33,952 chars : https://pokemongo.com/ja/news/pokemongogiftcard_gofest2026
+2026-06-29 22:09:55 [DEBUG   ]     📅 [regex] 2026-05-29 → None  (共 1 個日期)
+2026-06-29 22:09:55 [INFO    ]     標題  : 特別なデザインの「Pokémon GO ギフトカード」が発売決定！
+2026-06-29 22:09:55 [INFO    ]     日期  : 2026-05-29 → None  |  狀態：active
+2026-06-29 22:09:55 [INFO    ] 
+  🇯🇵 日本  /  baystars_game
+2026-06-29 22:09:56 [DEBUG   ]     OK 34,843 chars : https://pokemongo.com/ja/news/baystars_game
+2026-06-29 22:09:58 [DEBUG   ]     📅 [regex] 2026-05-23 → 2026-05-24  (共 2 個日期)
+2026-06-29 22:09:58 [INFO    ]     標題  : 「ポケモンベースボールフェスタ2026」連携イベントの詳細（横浜DeNAベイスターズ）
+2026-06-29 22:09:58 [INFO    ]     日期  : 2026-05-23 → 2026-05-24  |  狀態：ended
+2026-06-29 22:09:58 [INFO    ]     ⏭  已結束，跳過
+2026-06-29 22:09:58 [INFO    ] 
+  🇯🇵 日本  /  marines_game
+2026-06-29 22:09:59 [DEBUG   ]     OK 34,709 chars : https://pokemongo.com/ja/news/marines_game
+2026-06-29 22:10:01 [DEBUG   ]     📅 [regex] 2026-05-15 → 2026-05-17  (共 3 個日期)
+2026-06-29 22:10:01 [INFO    ]     標題  : 「ポケモンベースボールフェスタ2026」連携イベントの詳細（千葉ロッテマリーンズ）
+2026-06-29 22:10:01 [INFO    ]     日期  : 2026-05-15 → 2026-05-17  |  狀態：ended
+2026-06-29 22:10:01 [INFO    ]     ⏭  已結束，跳過
+2026-06-29 22:10:01 [INFO    ] 
+  🇯🇵 日本  /  buffaloes_game
+2026-06-29 22:10:02 [DEBUG   ]     OK 34,797 chars : https://pokemongo.com/ja/news/buffaloes_game
+2026-06-29 22:10:04 [DEBUG   ]     📅 [regex] 2026-05-08 → 2026-05-10  (共 3 個日期)
+2026-06-29 22:10:04 [INFO    ]     標題  : 「ポケモンベースボールフェスタ2026」連携イベントの詳細（オリックス・バファローズ）
+2026-06-29 22:10:04 [INFO    ]     日期  : 2026-05-08 → 2026-05-10  |  狀態：ended
+2026-06-29 22:10:04 [INFO    ]     ⏭  已結束，跳過
+2026-06-29 22:10:04 [INFO    ] 
+  🇯🇵 日本  /  lions_game
+2026-06-29 22:10:04 [DEBUG   ]     OK 34,667 chars : https://pokemongo.com/ja/news/lions_game
+2026-06-29 22:10:06 [DEBUG   ]     📅 [regex] 2026-05-04 → 2026-05-06  (共 3 個日期)
+2026-06-29 22:10:06 [INFO    ]     標題  : 「ポケモンベースボールフェスタ2026」連携イベントの詳細（埼玉西武ライオンズ）
+2026-06-29 22:10:06 [INFO    ]     日期  : 2026-05-04 → 2026-05-06  |  狀態：ended
+2026-06-29 22:10:06 [INFO    ]     ⏭  已結束，跳過
+2026-06-29 22:10:06 [INFO    ] 
+  🇰🇷 韓國  /  ko-gofest-global-on-site-event-2026
+2026-06-29 22:10:07 [DEBUG   ]     OK 34,735 chars : https://pokemongo.com/ko/news/ko-gofest-global-on-site-event-2026
+2026-06-29 22:10:09 [DEBUG   ]     📅 [regex] 2026-07-11 → None  (共 1 個日期)
+2026-06-29 22:10:09 [DEBUG   ]     OK 35,276 chars : https://pokemongo.com/en/news/ko-gofest-global-on-site-event-2026
+2026-06-29 22:10:11 [INFO    ]     標題  : 올여름 한강에서 만나요! "Pokémon GO Fest 2026: 글로벌" 기념 한국 현장 이벤트
+2026-06-29 22:10:11 [INFO    ]     日期  : 2026-07-11 → None  |  狀態：upcoming
+2026-06-29 22:10:11 [INFO    ] 
+  🇰🇷 韓國  /  pokemon-sports-day-2026
+2026-06-29 22:10:12 [DEBUG   ]     OK 36,672 chars : https://pokemongo.com/ko/news/pokemon-sports-day-2026
+2026-06-29 22:10:14 [DEBUG   ]     📅 [regex] 2026-05-24 → 2026-06-03  (共 3 個日期)
+2026-06-29 22:10:14 [DEBUG   ]     OK 37,213 chars : https://pokemongo.com/en/news/pokemon-sports-day-2026
+2026-06-29 22:10:16 [INFO    ]     標題  : 여러분의 열정을 펼쳐보세요! “포켓몬 스포츠데이 2026” 이벤트가 시작됩니다.
+2026-06-29 22:10:16 [INFO    ]     日期  : 2026-05-24 → 2026-06-03  |  狀態：ended
+2026-06-29 22:10:16 [INFO    ]     ⏭  已結束，跳過
+2026-06-29 22:10:16 [INFO    ] 
+  🇰🇷 韓國  /  school-festa-korea
+2026-06-29 22:10:16 [DEBUG   ]     OK 36,069 chars : https://pokemongo.com/ko/news/school-festa-korea
+2026-06-29 22:10:19 [DEBUG   ]     📅 [regex] 2026-05-11 → 2026-05-31  (共 2 個日期)
+2026-06-29 22:10:19 [DEBUG   ]     OK 36,610 chars : https://pokemongo.com/en/news/school-festa-korea
+2026-06-29 22:10:21 [INFO    ]     標題  : 전국 스쿨존에서 특별한 모험을 즐길 시간! "스쿨페스타" 이벤트가 찾아옵니다.
+2026-06-29 22:10:21 [INFO    ]     日期  : 2026-05-11 → 2026-05-31  |  狀態：ended
+2026-06-29 22:10:21 [INFO    ]     ⏭  已結束，跳過
+2026-06-29 22:10:21 [INFO    ] 
+  🇰🇷 韓國  /  my-favorite-pokemon-challenge-kr
+2026-06-29 22:10:21 [DEBUG   ]     OK 37,687 chars : https://pokemongo.com/ko/news/my-favorite-pokemon-challenge-kr
+2026-06-29 22:10:23 [DEBUG   ]     📅 [regex] 2026-05-01 → 2026-06-30  (共 2 個日期)
+2026-06-29 22:10:24 [DEBUG   ]     OK 38,228 chars : https://pokemongo.com/en/news/my-favorite-pokemon-challenge-kr
+2026-06-29 22:10:26 [INFO    ]     標題  : “Pokémon GO 나의 최애 포켓몬 챌린지”에 참여해 보세요!
+2026-06-29 22:10:26 [INFO    ]     日期  : 2026-05-01 → 2026-06-30  |  狀態：active
+2026-06-29 22:10:26 [INFO    ] 
+  🇮🇳 印度  /  go-pass-april-2026
+2026-06-29 22:10:26 [DEBUG   ]     OK 45,470 chars : https://pokemongo.com/hi/news/go-pass-april-2026
+2026-06-29 22:10:28 [DEBUG   ]     📅 [regex] 2026-05-12 → None  (共 1 個日期)
+2026-06-29 22:10:28 [DEBUG   ]     OK 45,629 chars : https://pokemongo.com/en/news/go-pass-april-2026
+2026-06-29 22:10:30 [INFO    ]     標題  : Entei brings the heat in GO Pass: April!
+2026-06-29 22:10:30 [INFO    ]     日期  : 2026-05-12 → None  |  狀態：active
+2026-06-29 22:10:30 [INFO    ] 
+  🇮🇹 義大利  /  go-pass-april-2026
+2026-06-29 22:10:30 [DEBUG   ]     OK 47,137 chars : https://pokemongo.com/it/news/go-pass-april-2026
+2026-06-29 22:10:32 [DEBUG   ]     📅 [dateparser] 2026-06-29 → None  (共 1 個日期)
+2026-06-29 22:10:33 [DEBUG   ]     OK 45,629 chars : https://pokemongo.com/en/news/go-pass-april-2026
+2026-06-29 22:10:35 [INFO    ]     標題  : Entei brings the heat in GO Pass: April!
+2026-06-29 22:10:35 [INFO    ]     日期  : 2026-06-29 → None  |  狀態：active
+2026-06-29 22:10:35 [INFO    ] 
+  🇹🇷 土耳其  /  go-pass-april-2026
+2026-06-29 22:10:35 [DEBUG   ]     OK 46,131 chars : https://pokemongo.com/tr/news/go-pass-april-2026
+2026-06-29 22:10:37 [DEBUG   ]     📅 [dateparser] 2026-05-12 → None  (共 1 個日期)
+2026-06-29 22:10:37 [DEBUG   ]     OK 45,629 chars : https://pokemongo.com/en/news/go-pass-april-2026
+2026-06-29 22:10:39 [INFO    ]     標題  : Entei brings the heat in GO Pass: April!
+2026-06-29 22:10:39 [INFO    ]     日期  : 2026-05-12 → None  |  狀態：active
+2026-06-29 22:10:39 [INFO    ] 
+  🇧🇷 巴西  /  suitup_the_10
+2026-06-29 22:10:40 [DEBUG   ]     OK 37,177 chars : https://pokemongo.com/pt_br/news/suitup_the_10
+2026-06-29 22:10:42 [DEBUG   ]     📅 [regex] 2026-07-20 → None  (共 1 個日期)
+2026-06-29 22:10:42 [DEBUG   ]     OK 36,849 chars : https://pokemongo.com/en/news/suitup_the_10
+2026-06-29 22:10:44 [INFO    ]     標題  : Celebrem o 10º aniversário de Pokémon GO à moda do futebol!
+2026-06-29 22:10:44 [INFO    ]     日期  : 2026-07-20 → None  |  狀態：upcoming
+2026-06-29 22:10:44 [INFO    ] 
+  🇧🇷 巴西  /  community-celebrations-go-fest-2026-details-ptbr
+2026-06-29 22:10:45 [DEBUG   ]     OK 39,164 chars : https://pokemongo.com/pt_br/news/community-celebrations-go-fest-2026-details-ptbr
+2026-06-29 22:10:47 [DEBUG   ]     📅 [regex] 2026-07-12 → None  (共 1 個日期)
+2026-06-29 22:10:47 [DEBUG   ]     OK 38,836 chars : https://pokemongo.com/en/news/community-celebrations-go-fest-2026-details-ptbr
+2026-06-29 22:10:49 [INFO    ]     標題  : Preparem-se para as Celebrações Comunitárias do Pokémon GO F
+2026-06-29 22:10:49 [INFO    ]     日期  : 2026-07-12 → None  |  狀態：upcoming
+2026-06-29 22:10:49 [INFO    ] 
+  🇧🇷 巴西  /  festa-junina-2026
+2026-06-29 22:10:49 [DEBUG   ]     OK 37,972 chars : https://pokemongo.com/pt_br/news/festa-junina-2026
+2026-06-29 22:10:51 [DEBUG   ]     📅 [regex] 2026-06-29 → None  (共 1 個日期)
+2026-06-29 22:10:52 [DEBUG   ]     OK 37,644 chars : https://pokemongo.com/en/news/festa-junina-2026
+2026-06-29 22:10:54 [INFO    ]     標題  : Peguem um Tauros de Paldea da Espécie Aquática no Arraiá do 
+2026-06-29 22:10:54 [INFO    ]     日期  : 2026-06-29 → None  |  狀態：active
+2026-06-29 22:10:54 [INFO    ] 
+  🇧🇷 巴西  /  gomemories_brazil_winner
+2026-06-29 22:10:54 [DEBUG   ]     OK 34,543 chars : https://pokemongo.com/pt_br/news/gomemories_brazil_winner
+2026-06-29 22:10:56 [DEBUG   ]     ❌ 找不到日期
+2026-06-29 22:10:56 [DEBUG   ]     OK 34,215 chars : https://pokemongo.com/en/news/gomemories_brazil_winner
+2026-06-29 22:10:58 [INFO    ]     標題  : Confiram o vencedor do sorteio brasileiro do #GOMemories!
+2026-06-29 22:10:58 [INFO    ]     日期  : None → None  |  狀態：unknown
+2026-06-29 22:10:58 [INFO    ] 
+  🇧🇷 巴西  /  pokemon-go-at-gamescomlatam2026
+2026-06-29 22:10:59 [DEBUG   ]     OK 35,328 chars : https://pokemongo.com/pt_br/news/pokemon-go-at-gamescomlatam2026
+2026-06-29 22:11:01 [DEBUG   ]     📅 [regex] 2026-05-03 → None  (共 1 個日期)
+2026-06-29 22:11:01 [DEBUG   ]     OK 35,000 chars : https://pokemongo.com/en/news/pokemon-go-at-gamescomlatam2026
+2026-06-29 22:11:03 [INFO    ]     標題  : Celebrem no espaço de Pokémon na gamescom latam 2026
+2026-06-29 22:11:03 [INFO    ]     日期  : 2026-05-03 → None  |  狀態：active
+2026-06-29 22:11:03 [INFO    ] 
+  🌎 拉丁美洲  /  suitup_the_10_la
+2026-06-29 22:11:04 [DEBUG   ]     OK 37,353 chars : https://pokemongo.com/es_mx/news/suitup_the_10_la
+2026-06-29 22:11:06 [DEBUG   ]     📅 [regex] 2026-07-20 → None  (共 1 個日期)
+2026-06-29 22:11:07 [DEBUG   ]     OK 37,044 chars : https://pokemongo.com/en/news/suitup_the_10_la
+2026-06-29 22:11:09 [INFO    ]     標題  : ¡Celebren el 10.º aniversario de Pokémon GO al estilo futbol
+2026-06-29 22:11:09 [INFO    ]     日期  : 2026-07-20 → None  |  狀態：upcoming
+2026-06-29 22:11:09 [INFO    ] 
+  🌎 拉丁美洲  /  community-celebrations-go-fest-2026-details-lat
+2026-06-29 22:11:09 [DEBUG   ]     OK 39,009 chars : https://pokemongo.com/es_mx/news/community-celebrations-go-fest-2026-details-lat
+2026-06-29 22:11:11 [DEBUG   ]     📅 [regex] 2026-07-12 → None  (共 1 個日期)
+2026-06-29 22:11:11 [DEBUG   ]     OK 38,700 chars : https://pokemongo.com/en/news/community-celebrations-go-fest-2026-details-lat
+2026-06-29 22:11:13 [INFO    ]     標題  : ¡Prepárense para las Celebraciones Comunitarias de Pokémon G
+2026-06-29 22:11:13 [INFO    ]     日期  : 2026-07-12 → None  |  狀態：upcoming
+2026-06-29 22:11:13 [INFO    ] 
+  🇺🇸 英文  /  community-celebrations-go-fest-2026-details-en
+2026-06-29 22:11:14 [DEBUG   ]     OK 40,750 chars : https://pokemongo.com/en/news/community-celebrations-go-fest-2026-details-en
+2026-06-29 22:11:16 [DEBUG   ]     📅 [regex] 2026-07-11 → 2026-07-12  (共 2 個日期)
+2026-06-29 22:11:16 [INFO    ]     標題  : Get ready for Pokémon GO Fest 2026: Global Community Celebra
+2026-06-29 22:11:16 [INFO    ]     日期  : 2026-07-11 → 2026-07-12  |  狀態：upcoming
+2026-06-29 22:11:16 [INFO    ] 
+  🇺🇸 英文  /  gofest-copenhagen-super-mega-raid
+2026-06-29 22:11:16 [DEBUG   ]     OK 35,244 chars : https://pokemongo.com/en/news/gofest-copenhagen-super-mega-raid
+2026-06-29 22:11:18 [DEBUG   ]     📅 [dateparser] 2026-06-29 → None  (共 1 個日期)
+2026-06-29 22:11:18 [INFO    ]     標題  : Super Mega Raid Update at Pokémon GO Fest 2026: Copenhagen P
+2026-06-29 22:11:18 [INFO    ]     日期  : 2026-06-29 → None  |  狀態：active
+2026-06-29 22:11:18 [INFO    ] 
+  🇺🇸 英文  /  gofest-chicago-saturday-update
+2026-06-29 22:11:18 [DEBUG   ]     OK 35,042 chars : https://pokemongo.com/en/news/gofest-chicago-saturday-update
+2026-06-29 22:11:20 [DEBUG   ]     ❌ 找不到日期
+2026-06-29 22:11:20 [INFO    ]     標題  : Gameplay Update: Chicago Pokémon GO Fest
+2026-06-29 22:11:20 [INFO    ]     日期  : None → None  |  狀態：unknown
+2026-06-29 22:11:20 [INFO    ] 
+  🇺🇸 英文  /  gofest-chicago-super-mega-raid
+2026-06-29 22:11:21 [DEBUG   ]     OK 35,193 chars : https://pokemongo.com/en/news/gofest-chicago-super-mega-raid
+2026-06-29 22:11:23 [DEBUG   ]     📅 [dateparser] 2026-06-29 → None  (共 1 個日期)
+2026-06-29 22:11:23 [INFO    ]     標題  : Super Mega Raid Update at Pokémon GO Fest 2026: Chicago Park
+2026-06-29 22:11:23 [INFO    ]     日期  : 2026-06-29 → None  |  狀態：active
+2026-06-29 22:11:23 [INFO    ] 
+  🇺🇸 英文  /  go-fest-chicago-2026-community
+2026-06-29 22:11:24 [DEBUG   ]     OK 38,458 chars : https://pokemongo.com/en/news/go-fest-chicago-2026-community
+2026-06-29 22:11:26 [DEBUG   ]     ❌ 找不到日期
+2026-06-29 22:11:26 [INFO    ]     標題  : Pokémon GO Fest 2026: Chicago Community Ambassador Meet-ups
+2026-06-29 22:11:26 [INFO    ]     日期  : None → None  |  狀態：unknown
+2026-06-29 22:11:26 [INFO    ] 
+  🇺🇸 英文  /  know-before-you-go-gofest-2026-in-person-events
+2026-06-29 22:11:26 [DEBUG   ]     OK 59,713 chars : https://pokemongo.com/en/news/know-before-you-go-gofest-2026-in-person-events
+2026-06-29 22:11:28 [DEBUG   ]     📅 [regex] 2026-06-04 → 2026-06-07  (共 2 個日期)
+2026-06-29 22:11:28 [INFO    ]     標題  : Know before you GO to Pokémon GO Fest 2026: Tokyo, Chicago, 
+2026-06-29 22:11:28 [INFO    ]     日期  : 2026-06-04 → 2026-06-07  |  狀態：ended
+2026-06-29 22:11:28 [INFO    ]     ⏭  已結束，跳過
+2026-06-29 22:11:28 [INFO    ] 
+  🇺🇸 英文  /  pgo-pokemon-fossil-musuem-chicago-2026
+2026-06-29 22:11:29 [DEBUG   ]     OK 35,872 chars : https://pokemongo.com/en/news/pgo-pokemon-fossil-musuem-chicago-2026
+2026-06-29 22:11:31 [DEBUG   ]     📅 [regex] 2026-05-22 → 2027-04-11  (共 2 個日期)
+2026-06-29 22:11:31 [INFO    ]     標題  : Celebrate with Pokémon GO at the Pokémon Fossil Museum in Ch
+2026-06-29 22:11:31 [INFO    ]     日期  : 2026-05-22 → 2027-04-11  |  狀態：active
+2026-06-29 22:11:31 [INFO    ] 
+  🇺🇸 英文  /  100-thieves-mega-mewtwo-go-fest-2026
+2026-06-29 22:11:31 [DEBUG   ]     OK 35,710 chars : https://pokemongo.com/en/news/100-thieves-mega-mewtwo-go-fest-2026
+2026-06-29 22:11:33 [DEBUG   ]     ❌ 找不到日期
+2026-06-29 22:11:33 [INFO    ]     標題  : Pokémon GO Fest 2026 and 100 Thieves team up for an exclusiv
+2026-06-29 22:11:33 [INFO    ]     日期  : None → None  |  狀態：unknown
+2026-06-29 22:11:33 [INFO    ] 
+  🇫🇷 法國  /  community-celebration-bordeaux
+2026-06-29 22:11:33 [DEBUG   ]     OK 41,460 chars : https://pokemongo.com/fr/news/community-celebration-bordeaux
+2026-06-29 22:11:35 [DEBUG   ]     📅 [regex] 2026-07-11 → None  (共 1 個日期)
+2026-06-29 22:11:36 [DEBUG   ]     OK 41,209 chars : https://pokemongo.com/en/news/community-celebration-bordeaux
+2026-06-29 22:11:38 [INFO    ]     標題  : Célébrez le Festival Pokémon GO 2026 : Mondial à Bordeaux !
+2026-06-29 22:11:38 [INFO    ]     日期  : 2026-07-11 → None  |  狀態：upcoming
+2026-06-29 22:11:38 [INFO    ] 
+  🇩🇪 德國  /  gofest-2026-copenhagen-lego
+2026-06-29 22:11:38 [DEBUG   ]     OK 40,546 chars : https://pokemongo.com/de/news/gofest-2026-copenhagen-lego
+2026-06-29 22:11:40 [DEBUG   ]     📅 [regex] 2026-06-14 → None  (共 1 個日期)
+2026-06-29 22:11:41 [DEBUG   ]     OK 40,114 chars : https://pokemongo.com/en/news/gofest-2026-copenhagen-lego
+2026-06-29 22:11:43 [INFO    ]     標題  : Construisez votre aventure au Festival Pokémon GO 2026 : Cop
+2026-06-29 22:11:43 [INFO    ]     日期  : 2026-06-14 → None  |  狀態：active
+2026-06-29 22:11:43 [INFO    ] 
+  🇪🇸 西班牙  /  gofest-2026-copenhagen-lego
+2026-06-29 22:11:43 [DEBUG   ]     OK 40,705 chars : https://pokemongo.com/es/news/gofest-2026-copenhagen-lego
+2026-06-29 22:11:45 [DEBUG   ]     📅 [dateparser] 2026-06-14 → None  (共 1 個日期)
+2026-06-29 22:11:45 [DEBUG   ]     OK 40,114 chars : https://pokemongo.com/en/news/gofest-2026-copenhagen-lego
+2026-06-29 22:11:47 [INFO    ]     標題  : Construisez votre aventure au Festival Pokémon GO 2026 : Cop
+2026-06-29 22:11:47 [INFO    ]     日期  : 2026-06-14 → None  |  狀態：active
+2026-06-29 22:11:47 [INFO    ] 
+  🇫🇷 法國  /  gofest-2026-copenhagen-lego
+2026-06-29 22:11:48 [DEBUG   ]     OK 41,029 chars : https://pokemongo.com/fr/news/gofest-2026-copenhagen-lego
+2026-06-29 22:11:50 [DEBUG   ]     📅 [regex] 2026-06-14 → None  (共 1 個日期)
+2026-06-29 22:11:50 [DEBUG   ]     OK 40,114 chars : https://pokemongo.com/en/news/gofest-2026-copenhagen-lego
+2026-06-29 22:11:52 [INFO    ]     標題  : Construisez votre aventure au Festival Pokémon GO 2026 : Cop
+2026-06-29 22:11:52 [INFO    ]     日期  : 2026-06-14 → None  |  狀態：active
+2026-06-29 22:11:52 [INFO    ] 
+  🇩🇪 德國  /  community-celebration-hamburg
+2026-06-29 22:11:52 [DEBUG   ]     OK 44,033 chars : https://pokemongo.com/de/news/community-celebration-hamburg
+2026-06-29 22:11:54 [DEBUG   ]     📅 [regex] 2026-07-11 → None  (共 1 個日期)
+2026-06-29 22:11:55 [DEBUG   ]     OK 43,909 chars : https://pokemongo.com/en/news/community-celebration-hamburg
+2026-06-29 22:11:57 [INFO    ]     標題  : Feiert gemeinsam mit der Community das Pokémon GO Fest 2026:
+2026-06-29 22:11:57 [INFO    ]     日期  : 2026-07-11 → None  |  狀態：upcoming
+2026-06-29 22:11:57 [INFO    ] 
+  🇩🇪 德國  /  gofest-2026-chicago-copenhagen-proposals
+2026-06-29 22:11:57 [DEBUG   ]     OK 38,819 chars : https://pokemongo.com/de/news/gofest-2026-chicago-copenhagen-proposals
+2026-06-29 22:11:59 [DEBUG   ]     📅 [dateparser] 2026-06-29 → None  (共 1 個日期)
+2026-06-29 22:11:59 [DEBUG   ]     OK 38,068 chars : https://pokemongo.com/en/news/gofest-2026-chicago-copenhagen-proposals
+2026-06-29 22:12:01 [INFO    ]     標題  : Ihr könnt euch jetzt wieder mithilfe von Pokémon GO verloben
+2026-06-29 22:12:01 [INFO    ]     日期  : 2026-06-29 → None  |  狀態：active
+2026-06-29 22:12:01 [INFO    ] 
+  🇮🇹 義大利  /  replay-riolu-hatch-day-2026
+2026-06-29 22:12:01 [DEBUG   ]     OK 42,804 chars : https://pokemongo.com/it/news/replay-riolu-hatch-day-2026
+2026-06-29 22:12:03 [DEBUG   ]     📅 [dateparser] 2026-04-18 → None  (共 1 個日期)
+2026-06-29 22:12:04 [DEBUG   ]     OK 42,012 chars : https://pokemongo.com/en/news/replay-riolu-hatch-day-2026
+2026-06-29 22:12:06 [INFO    ]     標題  : È tutto pronto per il replay della giornata della schiusa de
+2026-06-29 22:12:06 [INFO    ]     日期  : 2026-04-18 → None  |  狀態：active
+2026-06-29 22:12:06 [INFO    ] 
+  🇹🇷 土耳其  /  replay-riolu-hatch-day-2026
+2026-06-29 22:12:06 [DEBUG   ]     OK 42,445 chars : https://pokemongo.com/tr/news/replay-riolu-hatch-day-2026
+2026-06-29 22:12:08 [DEBUG   ]     📅 [regex] 2026-04-18 → None  (共 1 個日期)
+2026-06-29 22:12:08 [DEBUG   ]     OK 42,012 chars : https://pokemongo.com/en/news/replay-riolu-hatch-day-2026
+2026-06-29 22:12:10 [INFO    ]     標題  : È tutto pronto per il replay della giornata della schiusa de
+2026-06-29 22:12:10 [INFO    ]     日期  : 2026-04-18 → None  |  狀態：active
+2026-06-29 22:12:10 [INFO    ] 
+  🇪🇸 西班牙  /  community-celebration-barcelona
+2026-06-29 22:12:10 [DEBUG   ]     OK 38,184 chars : https://pokemongo.com/es/news/community-celebration-barcelona
+2026-06-29 22:12:12 [DEBUG   ]     📅 [regex] 2026-07-11 → None  (共 1 個日期)
+2026-06-29 22:12:13 [DEBUG   ]     OK 38,009 chars : https://pokemongo.com/en/news/community-celebration-barcelona
+2026-06-29 22:12:15 [INFO    ]     標題  : ¡Celebra el Festival de Pokémon GO: Global con las comunidad
+2026-06-29 22:12:15 [INFO    ]     日期  : 2026-07-11 → None  |  狀態：upcoming
+2026-06-29 22:12:15 [INFO    ] 
+  🇵🇱 波蘭  /  community-celebration-warszawa
+2026-06-29 22:12:15 [DEBUG   ]     OK 38,183 chars : https://pokemongo.com/pl/news/community-celebration-warszawa
+2026-06-29 22:12:17 [DEBUG   ]     ❌ 找不到日期
+2026-06-29 22:12:18 [DEBUG   ]     OK 38,040 chars : https://pokemongo.com/en/news/community-celebration-warszawa
+2026-06-29 22:12:20 [INFO    ]     標題  : Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni
+2026-06-29 22:12:20 [INFO    ]     日期  : None → None  |  狀態：unknown
+2026-06-29 22:12:20 [INFO    ] 
+  🇷🇺 俄羅斯  /  welcome-to-tales-of-transformation
+2026-06-29 22:12:21 [DEBUG   ]     OK 153,357 chars : https://pokemongo.com/ru/news/welcome-to-tales-of-transformation
+2026-06-29 22:12:23 [DEBUG   ]     📅 [dateparser] 2026-06-29 → None  (共 1 個日期)
+2026-06-29 22:12:24 [DEBUG   ]     OK 153,357 chars : https://pokemongo.com/en/news/welcome-to-tales-of-transformation
+2026-06-29 22:12:26 [INFO    ]     標題  : Welcome to Pokémon GO: Tales of Transformation
+2026-06-29 22:12:26 [INFO    ]     日期  : 2026-06-29 → None  |  狀態：active
+2026-06-29 22:12:26 [INFO    ] 
+  🇷🇺 俄羅斯  /  gofestmaxfinale
+2026-06-29 22:12:27 [DEBUG   ]     OK 248,649 chars : https://pokemongo.com/ru/news/gofestmaxfinale
+2026-06-29 22:12:29 [DEBUG   ]     ❌ 找不到日期
+2026-06-29 22:12:30 [DEBUG   ]     OK 248,649 chars : https://pokemongo.com/en/news/gofestmaxfinale
+2026-06-29 22:12:32 [DEBUG   ]     🔤 英文標題：Pokémon GO Fest 2025
+2026-06-29 22:12:32 [INFO    ]     標題  : Pokémon GO Fest 2025
+2026-06-29 22:12:32 [INFO    ]     日期  : None → None  |  狀態：unknown
+2026-06-29 22:12:32 [INFO    ] 
+  🇹🇷 土耳其  /  sustainability-week-2026
+2026-06-29 22:12:32 [DEBUG   ]     OK 50,700 chars : https://pokemongo.com/tr/news/sustainability-week-2026
+2026-06-29 22:12:34 [DEBUG   ]     📅 [regex] 2026-04-14 → 2026-04-22  (共 3 個日期)
+2026-06-29 22:12:34 [DEBUG   ]     OK 50,154 chars : https://pokemongo.com/en/news/sustainability-week-2026
+2026-06-29 22:12:36 [INFO    ]     標題  : Pokémon GO Sürdürülebilirlik Haftasında dışarı çıkın ve Rota
+2026-06-29 22:12:36 [INFO    ]     日期  : 2026-04-14 → 2026-04-22  |  狀態：ended
+2026-06-29 22:12:36 [INFO    ]     ⏭  已結束，跳過
+2026-06-29 22:12:36 [INFO    ] 
+  最終有效地區限定活動：36 筆
+2026-06-29 22:12:36 [INFO    ] 
+【輸出結果】
+2026-06-29 22:12:36 [INFO    ]   JSON  → pokemon_go_events.json
+2026-06-29 22:12:36 [INFO    ]   MD    → pokemon_go_events.md
+2026-06-29 22:12:36 [INFO    ] ✅ 掃描完成
