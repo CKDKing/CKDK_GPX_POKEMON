@@ -20,3 +20,11 @@ Thumbs.db
 !pokemon_go_events.json
 !pokemon_go_events.md
 !pokemon_go_events_scanner_log.txt
+
+# Card 抽卡應用：原始素材（已嵌入 bg-data.js，不需追蹤）
+card/*.jpg
+card/*.png
+card/*.mjs
+
+# 退版備份
+*.bak_*

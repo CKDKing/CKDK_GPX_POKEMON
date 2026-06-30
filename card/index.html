@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokémon TCG — Card Showcase</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { background: #000010; }
+
+    :root {
+      --card-w: 220px;
+      --card-h: 308px;
+      --shine-size: 400%;
+    }
+
+    body {
+      min-height: 100vh;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      overflow: hidden;
+    }
+
+    /* ── Particles ── */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      animation: drift linear infinite;
+    }
+    @keyframes drift {
+      0%   { transform: translateY(110vh) scale(0);   opacity: 0; }
+      10%  { opacity: 0.7; }
+      90%  { opacity: 0.4; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+
+    /* ══════════════════════════════════════════
+       INTRO OVERLAY
+    ══════════════════════════════════════════ */
+    .intro {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      background: radial-gradient(ellipse at 50% 50%, #1a1060 0%, #060318 60%, #000008 100%);
+      transition: opacity 0.9s ease;
+      cursor: pointer;
+    }
+    .intro.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ── Spinning rays ── */
+    .rays-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .ray-layer {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 260vmax; height: 260vmax;
+      margin: -130vmax;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .ray-layer.visible { opacity: 1; }
+
+    .ray-gold {
+      background: conic-gradient(
+        from 0deg,
+        transparent 0deg,    rgba(247,229,59,0.18)  7deg,  transparent 14deg,
+        transparent 26deg,   rgba(247,229,59,0.12)  33deg, transparent 40deg,
+        transparent 53deg,   rgba(247,229,59,0.18)  60deg, transparent 67deg,
+        transparent 80deg,   rgba(247,229,59,0.12)  87deg, transparent 94deg,
+        transparent 107deg,  rgba(247,229,59,0.18)  114deg,transparent 121deg,
+        transparent 134deg,  rgba(247,229,59,0.12)  141deg,transparent 148deg,
+        transparent 161deg,  rgba(247,229,59,0.18)  168deg,transparent 175deg,
+        transparent 188deg,  rgba(247,229,59,0.12)  195deg,transparent 202deg,
+        transparent 215deg,  rgba(247,229,59,0.18)  222deg,transparent 229deg,
+        transparent 242deg,  rgba(247,229,59,0.12)  249deg,transparent 256deg,
+        transparent 269deg,  rgba(247,229,59,0.18)  276deg,transparent 283deg,
+        transparent 296deg,  rgba(247,229,59,0.12)  303deg,transparent 310deg,
+        transparent 323deg,  rgba(247,229,59,0.18)  330deg,transparent 337deg,
+        transparent 350deg,  rgba(247,229,59,0.12)  357deg,transparent 360deg
+      );
+      animation: spinSlow 14s linear infinite;
+    }
+    .ray-white {
+      background: conic-gradient(
+        from 45deg,
+        transparent 0deg,  rgba(255,255,255,0.07) 4deg,  transparent 8deg,
+        transparent 16deg, rgba(255,255,255,0.05) 20deg, transparent 24deg,
+        transparent 32deg, rgba(255,255,255,0.07) 36deg, transparent 40deg,
+        transparent 48deg, rgba(255,255,255,0.05) 52deg, transparent 56deg,
+        transparent 64deg, rgba(255,255,255,0.07) 68deg, transparent 72deg,
+        transparent 80deg, rgba(255,255,255,0.05) 84deg, transparent 88deg,
+        transparent 96deg, rgba(255,255,255,0.07) 100deg,transparent 104deg,
+        transparent 112deg,rgba(255,255,255,0.05) 116deg,transparent 120deg,
+        transparent 128deg,rgba(255,255,255,0.07) 132deg,transparent 136deg,
+        transparent 144deg,rgba(255,255,255,0.05) 148deg,transparent 152deg,
+        transparent 160deg,rgba(255,255,255,0.07) 164deg,transparent 168deg,
+        transparent 176deg,rgba(255,255,255,0.05) 180deg,transparent 184deg,
+        transparent 192deg,rgba(255,255,255,0.07) 196deg,transparent 200deg,
+        transparent 208deg,rgba(255,255,255,0.05) 212deg,transparent 216deg,
+        transparent 224deg,rgba(255,255,255,0.07) 228deg,transparent 232deg,
+        transparent 240deg,rgba(255,255,255,0.05) 244deg,transparent 248deg,
+        transparent 256deg,rgba(255,255,255,0.07) 260deg,transparent 264deg,
+        transparent 272deg,rgba(255,255,255,0.05) 276deg,transparent 280deg,
+        transparent 288deg,rgba(255,255,255,0.07) 292deg,transparent 296deg,
+        transparent 304deg,rgba(255,255,255,0.05) 308deg,transparent 312deg,
+        transparent 320deg,rgba(255,255,255,0.07) 324deg,transparent 328deg,
+        transparent 336deg,rgba(255,255,255,0.05) 340deg,transparent 344deg,
+        transparent 352deg,rgba(255,255,255,0.07) 356deg,transparent 360deg
+      );
+      animation: spinFast 7s linear infinite reverse;
+    }
+
+    @keyframes spinSlow { to { transform: rotate(360deg); } }
+    @keyframes spinFast { to { transform: rotate(360deg); } }
+
+    /* center glow */
+    .center-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle,
+        rgba(247,229,59,0.28) 0%,
+        rgba(180,100,255,0.18) 45%,
+        transparent 70%
+      );
+      opacity: 0;
+      pointer-events: none;
+      animation: glowPulse 2.2s ease-in-out infinite;
+      transition: opacity 1s ease;
+    }
+    .center-glow.visible { opacity: 1; }
+    @keyframes glowPulse {
+      0%,100% { transform: translate(-50%,-50%) scale(1);    opacity: 0.7; }
+      50%      { transform: translate(-50%,-50%) scale(1.18); opacity: 1;   }
+    }
+
+    /* ── Intro card stage ── */
+    .intro-stage {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .intro-anchor {
+      position: relative;
+      width: 0;
+      height: var(--card-h);
+    }
+
+    /* each intro card wrapper — handles 2D fan/stack position */
+    .ic {
+      position: absolute;
+      width: var(--card-w);
+      height: var(--card-h);
+      left: calc(var(--card-w) / -2);
+      top: 0;
+      perspective: 800px;
+      transition: transform 0.7s cubic-bezier(.25,.8,.25,1);
+    }
+
+    /* 3D flip container */
+    .ic-inner {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.55s cubic-bezier(.4,0,.2,1);
+    }
+    .ic-inner.flipped { transform: rotateY(180deg); }
+
+    /* card faces */
+    .ic-back,
+    .ic-front {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      overflow: hidden;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      box-shadow:
+        0 8px 28px rgba(0,0,0,0.7),
+        0 0 0 1.5px rgba(255,255,255,0.1);
+    }
+    .ic-back img,
+    .ic-front img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      user-select: none;
+      pointer-events: none;
+    }
+    .ic-front { transform: rotateY(180deg); }
+
+    /* shimmer flash on flip */
+    .ic-flip-flash {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: rgba(255,255,255,0);
+      pointer-events: none;
+      z-index: 5;
+    }
+    @keyframes flipFlash {
+      0%   { background: rgba(255,255,255,0); }
+      30%  { background: rgba(255,255,255,0.7); }
+      100% { background: rgba(255,255,255,0); }
+    }
+    .ic-flip-flash.flash { animation: flipFlash 0.4s ease forwards; }
+
+    /* intro prompt */
+    .intro-prompt {
+      position: relative;
+      z-index: 2;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-align: center;
+      transition: opacity 0.4s ease;
+      animation: promptBob 2s ease-in-out infinite;
+    }
+    @keyframes promptBob {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-5px); }
+    }
+
+    .skip-btn {
+      position: absolute;
+      bottom: 28px; right: 28px;
+      z-index: 60;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.5);
+      padding: 7px 18px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .skip-btn:hover { background: rgba(255,255,255,0.18); color: #fff; }
+
+    /* ── White flash overlay ── */
+    .flash-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: #fff;
+      opacity: 0;
+      pointer-events: none;
+    }
+    @keyframes bigFlash {
+      0%   { opacity: 0; }
+      25%  { opacity: 1; }
+      100% { opacity: 0; }
+    }
+    .flash-overlay.go { animation: bigFlash 0.7s ease forwards; }
+
+    /* ══════════════════════════════════════════
+       MAIN SHOWCASE
+    ══════════════════════════════════════════ */
+    .showcase {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 36px;
+      padding: 40px 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.7s ease;
+    }
+    .showcase.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .title {
+      color: #fff;
+      font-size: clamp(1.4rem, 4vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-shadow: 0 0 30px rgba(120,100,255,0.9), 0 2px 8px rgba(0,0,0,0.8);
+    }
+    .title span {
+      color: #f7e53b;
+      text-shadow: 0 0 20px rgba(255,220,0,0.8), 0 0 40px rgba(255,200,0,0.4);
+    }
+
+    /* ── Mode toggle ── */
+    .mode-toggle {
+      display: flex;
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+      padding: 4px;
+      gap: 4px;
+      backdrop-filter: blur(8px);
+    }
+    .mode-btn {
+      padding: 7px 22px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+    }
+    .mode-btn.active {
+      background: #f7e53b;
+      color: #1a0f00;
+      box-shadow: 0 0 14px rgba(247,229,59,0.55);
+    }
+    .mode-btn:not(.active):hover {
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.1);
+    }
+
+    /* ── Fan mode strip ── */
+    .card-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+    }
+    .card-slot {
+      position: relative;
+      width: var(--card-w);
+      height: var(--card-h);
+      cursor: pointer;
+      margin: 0 -22px;
+      transition: transform 0.35s cubic-bezier(.25,.8,.25,1), filter 0.35s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .card-slot:nth-child(1) { transform: rotate(-12deg) translateY(14px); }
+    .card-slot:nth-child(2) { transform: rotate( -6deg) translateY( 6px); }
+    .card-slot:nth-child(3) { transform: rotate(  0deg) translateY( 0px); }
+    .card-slot:nth-child(4) { transform: rotate(  6deg) translateY( 6px); }
+    .card-slot:nth-child(5) { transform: rotate( 12deg) translateY(14px); }
+
+    .card-strip:has(.card-slot:nth-child(1):hover) .card-slot:not(:nth-child(1)) { filter: brightness(0.55) blur(0.5px); }
+    .card-strip:has(.card-slot:nth-child(2):hover) .card-slot:not(:nth-child(2)) { filter: brightness(0.55) blur(0.5px); }
+    .card-strip:has(.card-slot:nth-child(3):hover) .card-slot:not(:nth-child(3)) { filter: brightness(0.55) blur(0.5px); }
+    .card-strip:has(.card-slot:nth-child(4):hover) .card-slot:not(:nth-child(4)) { filter: brightness(0.55) blur(0.5px); }
+    .card-strip:has(.card-slot:nth-child(5):hover) .card-slot:not(:nth-child(5)) { filter: brightness(0.55) blur(0.5px); }
+
+    .card-slot:hover {
+      z-index: 10;
+      filter: brightness(1) !important;
+      transform: rotate(0deg) translateY(-30px) translateZ(30px)
+                 rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(1.13) !important;
+    }
+
+    /* shared card face */
+    .card-face {
+      width: 100%; height: 100%;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5), 0 0 0 1.5px rgba(255,255,255,0.08);
+      position: relative;
+    }
+    .card-face img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 14px;
+      user-select: none;
+      pointer-events: none;
+    }
+    .holo {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background: linear-gradient(
+        115deg,
+        transparent 20%,
+        rgba(255,120,180,0.35) 30%,
+        rgba(255,220,50,0.35) 38%,
+        rgba(60,255,120,0.35) 46%,
+        rgba(50,180,255,0.35) 54%,
+        rgba(180,60,255,0.35) 62%,
+        transparent 72%
+      );
+      background-size: var(--shine-size) var(--shine-size);
+      background-position: var(--bx, 50%) var(--by, 50%);
+      mix-blend-mode: color-dodge;
+    }
+    .glare {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      background: radial-gradient(
+        circle at var(--gx, 50%) var(--gy, 50%),
+        rgba(255,255,255,0.38) 0%,
+        transparent 65%
+      );
+    }
+    .card-slot:hover .holo,
+    .card-slot:hover .glare { opacity: 1; }
+
+    .card-slot::after {
+      content: '';
+      position: absolute;
+      bottom: -18px; left: 50%;
+      transform: translateX(-50%);
+      width: 70%; height: 30px;
+      background: radial-gradient(ellipse, rgba(160,100,255,0.55), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.35s;
+      filter: blur(6px);
+      border-radius: 50%;
+    }
+    .card-slot:hover::after { opacity: 1; }
+
+    .card-label {
+      position: absolute;
+      bottom: -36px; left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      color: rgba(255,255,255,0);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.8);
+    }
+    .card-slot:hover .card-label { color: rgba(255,255,255,0.85); }
+
+    /* ── Single mode ── */
+    .single-stage {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .single-row {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .single-wrap {
+      position: relative;
+      width: 280px;
+      height: 392px;
+      perspective: 900px;
+      cursor: pointer;
+    }
+    .single-card {
+      width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    @keyframes spinOut {
+      0%   { transform: rotateY(0deg)   scale(1);    }
+      100% { transform: rotateY(90deg)  scale(0.92); }
+    }
+    @keyframes spinIn {
+      0%   { transform: rotateY(-90deg) scale(0.92); }
+      100% { transform: rotateY(0deg)   scale(1);    }
+    }
+    .single-card.spin-out { animation: spinOut 0.28s cubic-bezier(.4,0,.6,1) forwards; }
+    .single-card.spin-in  { animation: spinIn  0.28s cubic-bezier(.4,0,.6,1) forwards; }
+
+    .single-wrap:hover .single-card .card-face {
+      box-shadow:
+        0 8px 32px rgba(0,0,0,0.7),
+        0 0 0 2px rgba(247,229,59,0.5),
+        0 0 28px rgba(247,229,59,0.25);
+    }
+    .single-wrap:hover .holo,
+    .single-wrap:hover .glare { opacity: 1; }
+
+    .single-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -22px; left: 50%;
+      transform: translateX(-50%);
+      width: 65%; height: 36px;
+      background: radial-gradient(ellipse, rgba(160,100,255,0.6), transparent 70%);
+      filter: blur(8px);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .single-wrap:hover::after { opacity: 1; }
+
+    .click-hint {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.3s;
+    }
+    .click-hint svg {
+      width: 14px; height: 14px;
+      fill: currentColor;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 0.4; transform: scale(1); }
+      50%      { opacity: 1;   transform: scale(1.2); }
+    }
+    .card-counter {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+    .card-counter strong { color: #f7e53b; text-shadow: 0 0 10px rgba(255,220,0,0.6); }
+
+    /* ── Shared arrow + dots ── */
+    .arrow-btn {
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      color: #fff;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      backdrop-filter: blur(6px);
+      flex-shrink: 0;
+    }
+    .arrow-btn:hover { background: rgba(255,255,255,0.18); transform: scale(1.1); }
+
+    .nav { display: flex; gap: 10px; align-items: center; }
+    .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      border: 2px solid rgba(255,255,255,0.35);
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .dot.active {
+      background: #f7e53b;
+      border-color: #f7e53b;
+      transform: scale(1.3);
+      box-shadow: 0 0 10px rgba(255,220,0,0.7);
+    }
+
+    /* ── Draw button ── */
+    .draw-btn {
+      position: relative;
+      background: linear-gradient(135deg, #b8860b 0%, #f7e53b 35%, #ffd700 60%, #c8920a 100%);
+      border: 2px solid rgba(255,255,255,0.45);
+      color: #1a0800;
+      padding: 13px 40px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      box-shadow:
+        0 0 22px rgba(247,229,59,0.55),
+        0 0 50px rgba(255,200,30,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.55);
+      animation: drawBtnPulse 2.6s ease-in-out infinite;
+    }
+    @keyframes drawBtnPulse {
+      0%,100% { box-shadow: 0 0 22px rgba(247,229,59,0.55), 0 0 50px rgba(255,200,30,0.25), inset 0 1px 0 rgba(255,255,255,0.55); }
+      50%      { box-shadow: 0 0 38px rgba(247,229,59,0.85), 0 0 80px rgba(255,200,30,0.5),  inset 0 1px 0 rgba(255,255,255,0.55); }
+    }
+    .draw-btn:hover:not(:disabled) {
+      transform: scale(1.07);
+      box-shadow: 0 0 50px rgba(247,229,59,0.95), 0 0 100px rgba(255,200,30,0.65), inset 0 1px 0 rgba(255,255,255,0.55);
+    }
+    .draw-btn:active:not(:disabled) { transform: scale(0.97); }
+    .draw-btn:disabled {
+      background: linear-gradient(135deg, #2a2a2a, #444);
+      color: rgba(255,255,255,0.35);
+      border-color: rgba(255,255,255,0.08);
+      animation: none;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ── Cooldown display ── */
+    .cooldown-display {
+      color: rgba(255,200,60,0.85);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      min-height: 1.3em;
+      text-shadow: 0 0 10px rgba(255,160,0,0.5);
+    }
+
+    /* ── Special card (5th slot) ── */
+    .card-slot.special-card .card-face {
+      box-shadow:
+        0 0 0 2.5px #f7e53b,
+        0 0 18px rgba(255,220,0,0.75),
+        0 0 40px rgba(255,180,0,0.4),
+        0 4px 12px rgba(0,0,0,0.55);
+    }
+    .card-slot.special-card::before {
+      content: '★ SPECIAL';
+      position: absolute;
+      top: -22px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.58rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: #f7e53b;
+      text-shadow: 0 0 10px rgba(255,220,0,0.9);
+      white-space: nowrap;
+    }
+
+    /* ── Gold burst overlay ── */
+    .gold-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 150;
+      pointer-events: none;
+      opacity: 0;
+      background: radial-gradient(ellipse at 50% 45%,
+        rgba(255,252,180,1)   0%,
+        rgba(255,220, 50,0.94) 20%,
+        rgba(255,160,  0,0.65) 48%,
+        rgba(200, 80,  0,0.25) 70%,
+        transparent 85%
+      );
+    }
+    @keyframes goldBurst {
+      0%   { opacity:0;   transform:scale(0.65); }
+      18%  { opacity:1;   transform:scale(1.04); }
+      65%  { opacity:0.9; transform:scale(1);    }
+      100% { opacity:0;   transform:scale(1.12); }
+    }
+    .gold-overlay.burst { animation: goldBurst 1.15s ease forwards; }
+
+    /* ── Card deal (appear after draw) ── */
+    @keyframes cardDeal {
+      0%   { opacity:0; filter:brightness(6) saturate(0) blur(8px); }
+      35%  { opacity:1; filter:brightness(2.5) saturate(2) blur(0); }
+      100% { opacity:1; filter:brightness(1) saturate(1) blur(0); }
+    }
+    .card-slot.dealing { animation: cardDeal 0.7s ease forwards; }
+
+    /* ── Background photo (blurred) ── */
+    .bg-layer {
+      position: fixed;
+      inset: -8%;
+      z-index: -1;
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px) brightness(0.78) saturate(1.2);
+    }
+
+    /* ── Gradient colour-tone overlay ── */
+    .bg-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: radial-gradient(
+        ellipse at 50% 0%,
+        rgba(10,5,40,0.20)  0%,
+        rgba(5, 2,16,0.32) 55%,
+        rgba(0, 0, 8,0.42) 100%
+      );
+    }
+
+    /* ── Star sparkles ── */
+    .spkl-wrap {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .spkl {
+      position: absolute;
+      opacity: 0;
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,1) 4%, rgba(255,255,255,0.55) 18%, transparent 45%),
+        linear-gradient(to bottom, transparent 46%, rgba(255,255,255,0.82) 50%, transparent 54%),
+        linear-gradient(to right,  transparent 46%, rgba(255,255,255,0.82) 50%, transparent 54%);
+      animation:
+        spklLife   var(--dur, 5s) ease-in-out infinite var(--del, 0s),
+        spklDrift  var(--dur, 5s) ease-in-out infinite var(--del, 0s);
+    }
+    @keyframes spklLife {
+      0%,100%    { opacity: 0;          transform: scale(0.08) rotate(-25deg); }
+      15%, 85%   { opacity: var(--op, 0.85); }
+      50%        { opacity: var(--op, 0.85); transform: scale(1)    rotate(40deg);  }
+    }
+    @keyframes spklDrift {
+      0%,100%    { translate: 0 0; }
+      50%        { translate: var(--dx, 5px) var(--dy, -7px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background layers -->
+<div class="bg-layer"   id="bgLayer"></div>
+<div class="bg-overlay"></div>
+
+<!-- Particles -->
+<div class="particles" id="particles"></div>
+
+<!-- Star sparkles -->
+<div class="spkl-wrap" id="spklWrap"></div>
+
+<!-- ════════════════════════════
+     INTRO OVERLAY
+════════════════════════════ -->
+<div class="intro" id="intro">
+
+  <!-- Light rays -->
+  <div class="rays-wrap">
+    <div class="ray-layer ray-gold" id="rayGold"></div>
+    <div class="ray-layer ray-white" id="rayWhite"></div>
+    <div class="center-glow" id="centerGlow"></div>
+  </div>
+
+  <!-- Card stage -->
+  <div class="intro-stage">
+    <div class="intro-anchor" id="introAnchor">
+
+      <div class="ic" id="ic0">
+        <div class="ic-inner" id="icin0">
+          <div class="ic-back"><img src="data:," alt="Card back" draggable="false" /></div>
+          <div class="ic-front">
+            <img src="data:," alt="Card front" draggable="false" />
+            <div class="ic-flip-flash" id="flash0"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ic" id="ic1">
+        <div class="ic-inner" id="icin1">
+          <div class="ic-back"><img src="data:," alt="Card back" draggable="false" /></div>
+          <div class="ic-front">
+            <img src="data:," alt="Card front" draggable="false" />
+            <div class="ic-flip-flash" id="flash1"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ic" id="ic2">
+        <div class="ic-inner" id="icin2">
+          <div class="ic-back"><img src="data:," alt="Card back" draggable="false" /></div>
+          <div class="ic-front">
+            <img src="data:," alt="Card front" draggable="false" />
+            <div class="ic-flip-flash" id="flash2"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ic" id="ic3">
+        <div class="ic-inner" id="icin3">
+          <div class="ic-back"><img src="data:," alt="Card back" draggable="false" /></div>
+          <div class="ic-front">
+            <img src="data:," alt="Card front" draggable="false" />
+            <div class="ic-flip-flash" id="flash3"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ic" id="ic4">
+        <div class="ic-inner" id="icin4">
+          <div class="ic-back"><img src="data:," alt="Card back" draggable="false" /></div>
+          <div class="ic-front">
+            <img src="" alt="Card front" draggable="false" />
+            <div class="ic-flip-flash" id="flash4"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Prompt -->
+  <p class="intro-prompt" id="introPrompt">✦ Click anywhere to reveal ✦</p>
+
+  <!-- Skip -->
+  <button class="skip-btn" id="skipBtn">Skip ›</button>
+</div>
+
+<!-- White flash overlay -->
+<div class="flash-overlay" id="flashOverlay"></div>
+
+<!-- Gold burst overlay -->
+<div class="gold-overlay" id="goldOverlay"></div>
+
+<!-- ════════════════════════════
+     MAIN SHOWCASE
+════════════════════════════ -->
+<section class="showcase" id="showcase">
+
+  <h1 class="title">Pokémon <span>Trading Card Game</span></h1>
+
+  <!-- Draw button -->
+  <button class="draw-btn" id="drawBtn">✦ Draw Cards ✦</button>
+  <p class="cooldown-display" id="cooldownDisplay"></p>
+
+  <!-- Mode toggle -->
+  <div class="mode-toggle">
+    <button class="mode-btn active" id="modeFanBtn">⊞ Fan</button>
+    <button class="mode-btn"        id="modeSingleBtn">↺ Single</button>
+  </div>
+
+  <!-- Fan mode -->
+  <div class="card-strip" id="cardStrip">
+    <div class="card-slot" data-name="SN54 Card 35">
+      <div class="card-face">
+        <img src="data:," alt="SN54 EN 35" draggable="false" />
+        <div class="holo"></div><div class="glare"></div>
+      </div>
+      <span class="card-label">SN54 · 035</span>
+    </div>
+    <div class="card-slot" data-name="SN54 Card 15">
+      <div class="card-face">
+        <img src="data:," alt="SN54 EN 15" draggable="false" />
+        <div class="holo"></div><div class="glare"></div>
+      </div>
+      <span class="card-label">SN54 · 015</span>
+    </div>
+    <div class="card-slot" data-name="SN54 Card 65">
+      <div class="card-face">
+        <img src="data:," alt="SN54 EN 65" draggable="false" />
+        <div class="holo"></div><div class="glare"></div>
+      </div>
+      <span class="card-label">SN54 · 065</span>
+    </div>
+    <div class="card-slot" data-name="SN54 Card 22">
+      <div class="card-face">
+        <img src="data:," alt="SN54 EN 22" draggable="false" />
+        <div class="holo"></div><div class="glare"></div>
+      </div>
+      <span class="card-label">SN54 · 022</span>
+    </div>
+    <div class="card-slot special-card" data-name="Special">
+      <div class="card-face">
+        <img src="" alt="Special Card" draggable="false" />
+        <div class="holo"></div><div class="glare"></div>
+      </div>
+      <span class="card-label">Special</span>
+    </div>
+  </div>
+
+  <!-- Single mode -->
+  <div class="single-stage" id="singleStage">
+    <div class="single-row">
+      <button class="arrow-btn" id="singlePrev">&#8592;</button>
+      <div class="single-wrap" id="singleWrap">
+        <div class="single-card" id="singleCard">
+          <div class="card-face">
+            <img id="singleImg" src="data:," alt="" draggable="false" />
+            <div class="holo" id="singleHolo"></div>
+            <div class="glare" id="singleGlare"></div>
+          </div>
+        </div>
+      </div>
+      <button class="arrow-btn" id="singleNext">&#8594;</button>
+    </div>
+    <div class="card-counter">
+      <strong id="counterCur">1</strong>
+      <span style="opacity:.4"> / </span>
+      <span id="counterTotal">4</span>
+    </div>
+    <div class="click-hint">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14.93V15a1 1 0 0 0-2 0v1.93A8 8 0 0 1 4.07 11H6a1 1 0 0 0 0-2H4.07A8 8 0 0 1 11 4.07V6a1 1 0 0 0 2 0V4.07A8 8 0 0 1 19.93 11H18a1 1 0 0 0 0 2h1.93A8 8 0 0 1 13 16.93z"/></svg>
+      Click card to spin next
+    </div>
+  </div>
+
+  <!-- Fan mode nav -->
+  <div class="nav" id="navRow">
+    <button class="arrow-btn" id="prevBtn">&#8592;</button>
+    <span class="dot active" data-idx="0"></span>
+    <span class="dot"        data-idx="1"></span>
+    <span class="dot"        data-idx="2"></span>
+    <span class="dot"        data-idx="3"></span>
+    <span class="dot"        data-idx="4"></span>
+    <button class="arrow-btn" id="nextBtn">&#8594;</button>
+  </div>
+
+</section>
+
+<script src="bg-data.js"></script>
+<script src="galleries.js"></script>
+<script>
+/* ══════════════════════════════════════════
+   CARD DATA
+══════════════════════════════════════════ */
+let CARDS = [];
+
+/* ── Stacked & fan transforms for intro cards ── */
+const STACK_T = [
+  'translateX(-10px) translateY(10px)  rotate(-5deg)',
+  'translateX( -5px) translateY( 5px)  rotate(-2.5deg)',
+  'translateX(  0px) translateY( 0px)  rotate(0deg)',
+  'translateX(  5px) translateY(-5px)  rotate(+2.5deg)',
+  'translateX( 10px) translateY(-10px) rotate(+5deg)',
+];
+const STACK_Z = [5, 4, 3, 2, 1];
+
+const FAN_T = [
+  'translateX(-240px) translateY(12px) rotate(-10deg)',
+  'translateX(-120px) translateY( 4px) rotate( -5deg)',
+  'translateX(   0px) translateY( 0px) rotate(  0deg)',
+  'translateX(+120px) translateY( 4px) rotate( +5deg)',
+  'translateX(+240px) translateY(12px) rotate(+10deg)',
+];
+const FAN_Z = [1, 2, 3, 4, 5];
+
+/* ══════════════════════════════════════════
+   BACKGROUND IMAGE (random 3-pick, embedded)
+══════════════════════════════════════════ */
+(function () {
+  const pick = BG_DATA[Math.floor(Math.random() * BG_DATA.length)];
+  document.getElementById('bgLayer').style.backgroundImage = `url('${pick}')`;
+})();
+
+/* ══════════════════════════════════════════
+   PARTICLES
+══════════════════════════════════════════ */
+(function () {
+  const wrap = document.getElementById('particles');
+  const COLS = ['#f7e53b','#a06eff','#60c8ff','#ff80c8','#80ffb0'];
+  for (let i = 0; i < 40; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const s = 2 + Math.random() * 5;
+    p.style.cssText = `
+      width:${s}px;height:${s}px;
+      left:${Math.random()*100}%;
+      background:${COLS[Math.floor(Math.random()*COLS.length)]};
+      box-shadow:0 0 ${s*2}px currentColor;
+      animation-delay:${Math.random()*12}s;
+      animation-duration:${8+Math.random()*14}s;
+    `;
+    wrap.appendChild(p);
+  }
+})();
+
+/* ══════════════════════════════════════════
+   STAR SPARKLES
+══════════════════════════════════════════ */
+(function () {
+  const wrap = document.getElementById('spklWrap');
+  for (let i = 0; i < 28; i++) {
+    const el  = document.createElement('div');
+    el.className = 'spkl';
+    const size = 10 + Math.random() * 32;
+    const dur  = 3.5 + Math.random() * 6;
+    const del  = -(Math.random() * dur);
+    const dx   = (Math.random() - 0.5) * 18;
+    const dy   = (Math.random() - 0.5) * 18;
+    const op   = 0.45 + Math.random() * 0.5;
+    el.style.cssText = `
+      left:${Math.random() * 100}%;
+      top:${Math.random() * 100}%;
+      width:${size}px;
+      height:${size}px;
+      --dur:${dur}s;
+      --del:${del}s;
+      --dx:${dx}px;
+      --dy:${dy}px;
+      --op:${op};
+    `;
+    wrap.appendChild(el);
+  }
+})();
+
+/* ══════════════════════════════════════════
+   INTRO SEQUENCE
+══════════════════════════════════════════ */
+const introEl     = document.getElementById('intro');
+const flashEl     = document.getElementById('flashOverlay');
+const showcaseEl  = document.getElementById('showcase');
+const rayGold     = document.getElementById('rayGold');
+const rayWhite    = document.getElementById('rayWhite');
+const centerGlow  = document.getElementById('centerGlow');
+const promptEl    = document.getElementById('introPrompt');
+const skipBtn     = document.getElementById('skipBtn');
+
+const ics   = [0,1,2,3,4].map(i => document.getElementById(`ic${i}`));
+const icins = [0,1,2,3,4].map(i => document.getElementById(`icin${i}`));
+const flipFlashes = [0,1,2,3,4].map(i => document.getElementById(`flash${i}`));
+
+/* init stack */
+ics.forEach((ic, i) => {
+  ic.style.transform = STACK_T[i];
+  ic.style.zIndex    = STACK_Z[i];
+});
+
+let introPhase = 'idle'; // idle → fanning → flipping → done
+let introTimers = [];
+
+function addT(fn, ms) { introTimers.push(setTimeout(fn, ms)); }
+function clearTs() { introTimers.forEach(clearTimeout); introTimers = []; }
+
+function showRays() {
+  rayGold.classList.add('visible');
+  rayWhite.classList.add('visible');
+  centerGlow.classList.add('visible');
+}
+
+function fanOut() {
+  ics.forEach((ic, i) => {
+    ic.style.transform = FAN_T[i];
+    ic.style.zIndex    = FAN_Z[i];
+  });
+}
+
+function flipCard(i) {
+  icins[i].classList.add('flipped');
+  /* brief shimmer on the front face */
+  addT(() => {
+    flipFlashes[i].classList.add('flash');
+    flipFlashes[i].addEventListener('animationend', () => {
+      flipFlashes[i].classList.remove('flash');
+    }, { once: true });
+  }, 280); /* triggers near the end of the flip */
+}
+
+function endIntro() {
+  clearTs();
+  introPhase = 'done';
+  /* big flash */
+  flashEl.classList.add('go');
+  flashEl.addEventListener('animationend', () => {
+    flashEl.classList.remove('go');
+  }, { once: true });
+  /* reveal showcase at flash peak */
+  setTimeout(() => {
+    showcaseEl.classList.add('visible');
+    introEl.classList.add('fade-out');
+  }, 180);
+}
+
+function startIntro() {
+  if (introPhase !== 'idle') return;
+  introPhase = 'fanning';
+
+  /* phase 1: rays appear + cards fan out */
+  showRays();
+  promptEl.style.opacity = '0';
+  fanOut();
+
+  /* phase 2: flip each card with stagger */
+  const FLIP_DELAY = 750;   /* wait for fan animation */
+  const FLIP_GAP   = 290;   /* stagger between cards  */
+  [0,1,2,3,4].forEach(i => addT(() => flipCard(i), FLIP_DELAY + i * FLIP_GAP));
+
+  /* phase 3: end intro */
+  const END = FLIP_DELAY + 4 * FLIP_GAP + 900;
+  addT(endIntro, END);
+}
+
+/* click intro body to start (or skip to end) */
+introEl.addEventListener('click', () => {
+  if (introPhase === 'idle') { clearTs(); startIntro(); }
+  else if (introPhase !== 'done') { clearTs(); endIntro(); }
+});
+
+skipBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  clearTs();
+  endIntro();
+});
+
+/* ══════════════════════════════════════════
+   FAN MODE
+══════════════════════════════════════════ */
+const slots   = document.querySelectorAll('.card-slot');
+const dots    = document.querySelectorAll('.dot');
+const navRow  = document.getElementById('navRow');
+const strip   = document.getElementById('cardStrip');
+const ROTS    = [-12,-6,0,6,12];
+const YS      = [14, 6, 0, 6, 14];
+let fanActive = -1;
+
+slots.forEach(slot => {
+  const holo  = slot.querySelector('.holo');
+  const glare = slot.querySelector('.glare');
+  slot.addEventListener('mousemove', e => {
+    const r = slot.getBoundingClientRect();
+    const cx = (e.clientX-r.left)/r.width;
+    const cy = (e.clientY-r.top)/r.height;
+    slot.style.setProperty('--rx', `${(cy-.5)*-22}deg`);
+    slot.style.setProperty('--ry', `${(cx-.5)*22}deg`);
+    const bx = (cx*100).toFixed(1)+'%', by = (cy*100).toFixed(1)+'%';
+    holo.style.setProperty('--bx',bx); holo.style.setProperty('--by',by);
+    glare.style.setProperty('--gx',bx); glare.style.setProperty('--gy',by);
+  });
+  slot.addEventListener('mouseleave', () => {
+    slot.style.setProperty('--rx','0deg');
+    slot.style.setProperty('--ry','0deg');
+  });
+});
+
+function fanSetActive(idx) {
+  fanActive = idx;
+  dots.forEach((d,i) => d.classList.toggle('active', i===idx));
+  slots.forEach((s,i) => {
+    s.style.transition = 'transform 0.45s cubic-bezier(.25,.8,.25,1), filter 0.35s ease';
+    if (i===idx) {
+      s.style.transform = 'rotate(0deg) translateY(-28px) scale(1.1)';
+      s.style.zIndex='10'; s.style.filter='brightness(1)';
+    } else {
+      s.style.transform = `rotate(${ROTS[i]}deg) translateY(${YS[i]}px)`;
+      s.style.zIndex='1'; s.style.filter='brightness(0.55) blur(0.5px)';
+    }
+  });
+}
+function fanClear() {
+  fanActive = -1;
+  dots.forEach(d => d.classList.remove('active'));
+  slots.forEach((s,i) => {
+    s.style.transform = `rotate(${ROTS[i]}deg) translateY(${YS[i]}px)`;
+    s.style.zIndex='1'; s.style.filter='';
+  });
+}
+
+dots.forEach(d => d.addEventListener('click', () => {
+  const idx = +d.dataset.idx;
+  fanActive===idx ? fanClear() : fanSetActive(idx);
+}));
+document.getElementById('prevBtn').addEventListener('click', () =>
+  fanSetActive(fanActive<=0 ? slots.length-1 : fanActive-1));
+document.getElementById('nextBtn').addEventListener('click', () =>
+  fanSetActive(fanActive>=slots.length-1 ? 0 : fanActive+1));
+slots.forEach((s,i) => s.addEventListener('click', () =>
+  fanActive===i ? fanClear() : fanSetActive(i)));
+
+let autoTimer = setInterval(() =>
+  fanSetActive(((fanActive<0?-1:fanActive)+1) % slots.length), 4000);
+const sc = document.getElementById('showcase');
+sc.addEventListener('mouseenter', () => clearInterval(autoTimer));
+sc.addEventListener('mouseleave', () => {
+  clearInterval(autoTimer);
+  autoTimer = setInterval(() =>
+    fanSetActive(((fanActive<0?-1:fanActive)+1) % slots.length), 4000);
+});
+
+/* ══════════════════════════════════════════
+   SINGLE MODE
+══════════════════════════════════════════ */
+const singleStage  = document.getElementById('singleStage');
+const singleCard   = document.getElementById('singleCard');
+const singleWrap   = document.getElementById('singleWrap');
+const singleImg    = document.getElementById('singleImg');
+const singleHolo   = document.getElementById('singleHolo');
+const singleGlare  = document.getElementById('singleGlare');
+const counterCur   = document.getElementById('counterCur');
+document.getElementById('counterTotal').textContent = CARDS.length;
+
+let singleIdx  = 0;
+let isSpinning = false;
+
+function updateSingle(idx) {
+  singleIdx = idx;
+  singleImg.src = CARDS[idx].src;
+  singleImg.alt = CARDS[idx].label;
+  counterCur.textContent = idx+1;
+}
+
+function spinTo(nextIdx) {
+  if (isSpinning) return;
+  isSpinning = true;
+  singleCard.classList.add('spin-out');
+  singleCard.addEventListener('animationend', function onOut() {
+    singleCard.removeEventListener('animationend', onOut);
+    singleCard.classList.remove('spin-out');
+    updateSingle(nextIdx);
+    singleCard.classList.add('spin-in');
+    singleCard.addEventListener('animationend', function onIn() {
+      singleCard.removeEventListener('animationend', onIn);
+      singleCard.classList.remove('spin-in');
+      isSpinning = false;
+    }, { once:true });
+  }, { once:true });
+}
+
+function singleNext() { spinTo((singleIdx+1) % CARDS.length); }
+function singlePrev() { spinTo((singleIdx-1+CARDS.length) % CARDS.length); }
+
+singleWrap.addEventListener('click', singleNext);
+document.getElementById('singleNext').addEventListener('click', e => { e.stopPropagation(); singleNext(); });
+document.getElementById('singlePrev').addEventListener('click', e => { e.stopPropagation(); singlePrev(); });
+
+singleWrap.addEventListener('mousemove', e => {
+  if (isSpinning) return;
+  const r = singleWrap.getBoundingClientRect();
+  const cx = (e.clientX-r.left)/r.width;
+  const cy = (e.clientY-r.top)/r.height;
+  singleCard.style.transform = `rotateX(${(cy-.5)*-18}deg) rotateY(${(cx-.5)*18}deg)`;
+  const bx=(cx*100).toFixed(1)+'%', by=(cy*100).toFixed(1)+'%';
+  singleHolo.style.setProperty('--bx',bx); singleHolo.style.setProperty('--by',by);
+  singleGlare.style.setProperty('--gx',bx); singleGlare.style.setProperty('--gy',by);
+  singleHolo.style.opacity='1'; singleGlare.style.opacity='1';
+});
+singleWrap.addEventListener('mouseleave', () => {
+  singleCard.style.transform='';
+  singleHolo.style.opacity='0'; singleGlare.style.opacity='0';
+});
+
+/* ══════════════════════════════════════════
+   MODE SWITCH
+══════════════════════════════════════════ */
+const modeFanBtn    = document.getElementById('modeFanBtn');
+const modeSingleBtn = document.getElementById('modeSingleBtn');
+
+function enterFan() {
+  modeFanBtn.classList.add('active');
+  modeSingleBtn.classList.remove('active');
+  strip.style.display       = '';
+  singleStage.style.display = 'none';
+  navRow.style.display      = '';
+  clearInterval(autoTimer);
+  autoTimer = setInterval(() =>
+    fanSetActive(((fanActive<0?-1:fanActive)+1) % slots.length), 4000);
+}
+function enterSingle() {
+  modeSingleBtn.classList.add('active');
+  modeFanBtn.classList.remove('active');
+  clearInterval(autoTimer);
+  strip.style.display       = 'none';
+  singleStage.style.display = 'flex';
+  navRow.style.display      = 'none';
+  updateSingle(fanActive>=0 ? fanActive : 0);
+}
+
+modeFanBtn.addEventListener('click',    enterFan);
+modeSingleBtn.addEventListener('click', enterSingle);
+
+/* ══════════════════════════════════════════
+   GALLERY DRAW
+══════════════════════════════════════════ */
+const COOLDOWN_MS  = 60 * 60 * 1000; // 1 小時
+const LAST_DRAW_KEY = 'pkm_last_draw';
+const SPECIAL_FILTERS = new Set([
+  'Pokémon ex','Tera Pokémon ex','Special Art',
+  'Shiny Pokémon ex','Shiny Pokémon',
+]);
+
+/* 普卡：排除全特卡系列（*pt5 / ZSV），從剩餘系列前 60% 號段取一張 */
+function pickRegular(allSets) {
+  const pool = allSets.filter(s => !s.cardPrefix.includes('pt5') && !s.cardPrefix.includes('ZSV'));
+  const set   = pool[Math.floor(Math.random() * pool.length)];
+  const limit = Math.ceil(set.cardCount * 0.60);
+  const n     = Math.floor(Math.random() * limit) + 1;
+  const id    = `${set.cardPrefix}_EN_${n}`;
+  return { src: `${CDN_BASE}${set.slug}/en-us/${id}.png`, label: `${set.name} · ${String(n).padStart(3,'0')}`, isSpecial: false };
+}
+
+/* 特卡：只從有特殊 filter 的系列、後 25% 卡號取一張 */
+function pickSpecial(allSets) {
+  const pool = allSets.filter(s => s.filters.some(f => SPECIAL_FILTERS.has(f)));
+  const set  = pool[Math.floor(Math.random() * pool.length)];
+  const start = Math.ceil(set.cardCount * 0.75);
+  const n     = start + Math.floor(Math.random() * (set.cardCount - start));
+  const id    = `${set.cardPrefix}_EN_${n}`;
+  return { src: `${CDN_BASE}${set.slug}/en-us/${id}.png`, label: `${set.name} · ${String(n).padStart(3,'0')}`, isSpecial: true };
+}
+
+/* 回傳 5 張：4 普卡 + 1 特卡（最後一張） */
+function pickCards() {
+  const allSets = ALL_GALLERIES.flatMap(era => era.sets);
+  return [
+    pickRegular(allSets), pickRegular(allSets),
+    pickRegular(allSets), pickRegular(allSets),
+    pickSpecial(allSets),
+  ];
+}
+
+/* 刷新 intro / fan / single 全部顯示 */
+function applyCards(cards) {
+  CARDS = cards;
+
+  document.querySelectorAll('.ic-front img').forEach((img, i) => {
+    if (!CARDS[i]) return;
+    img.src = CARDS[i].src;
+    img.alt = CARDS[i].label;
+  });
+
+  const fanSlots  = document.querySelectorAll('#cardStrip .card-slot');
+  const fanImgs   = document.querySelectorAll('#cardStrip .card-face img');
+  const fanLabels = document.querySelectorAll('#cardStrip .card-label');
+  fanSlots.forEach((slot, i)  => slot.classList.toggle('special-card', !!CARDS[i]?.isSpecial));
+  fanImgs.forEach((img,  i)   => { img.src = CARDS[i].src; img.alt = CARDS[i].label; });
+  fanLabels.forEach((lbl, i)  => { lbl.textContent = CARDS[i].label; });
+
+  singleIdx = 0;
+  singleImg.src = CARDS[0].src;
+  singleImg.alt = CARDS[0].label;
+  counterCur.textContent = '1';
+  document.getElementById('counterTotal').textContent = CARDS.length;
+}
+
+/* ── 冷卻計時 ── */
+let _cdInterval = null;
+
+function remainingMs() {
+  const last = parseInt(localStorage.getItem(LAST_DRAW_KEY) || '0');
+  return Math.max(0, COOLDOWN_MS - (Date.now() - last));
+}
+
+function fmtTime(ms) {
+  const s = Math.ceil(ms / 1000);
+  return `${String(Math.floor(s/3600)).padStart(2,'0')}:`
+       + `${String(Math.floor(s%3600/60)).padStart(2,'0')}:`
+       + `${String(s%60).padStart(2,'0')}`;
+}
+
+function updateCooldownUI() {
+  const rem  = remainingMs();
+  const btn  = document.getElementById('drawBtn');
+  const disp = document.getElementById('cooldownDisplay');
+  if (rem <= 0) {
+    clearInterval(_cdInterval);
+    _cdInterval = null;
+    if (btn)  { btn.disabled = false; btn.textContent = '✦ Draw Again ✦'; }
+    if (disp) disp.textContent = '';
+  } else {
+    if (btn)  btn.disabled = true;
+    if (disp) disp.textContent = `Next draw in  ${fmtTime(rem)}`;
+  }
+}
+
+function startCooldown() {
+  localStorage.setItem(LAST_DRAW_KEY, Date.now().toString());
+  clearInterval(_cdInterval);
+  _cdInterval = setInterval(updateCooldownUI, 1000);
+  updateCooldownUI();
+}
+
+/* ── 抽卡特效 ── */
+function drawWithEffect() {
+  const btn = document.getElementById('drawBtn');
+  if (btn && btn.disabled) return;
+
+  // 金色閃光
+  const overlay = document.getElementById('goldOverlay');
+  overlay.classList.remove('burst');
+  void overlay.offsetWidth;
+  overlay.classList.add('burst');
+
+  // 抽牌並刷新
+  applyCards(pickCards());
+
+  // 每張依序亮出
+  document.querySelectorAll('#cardStrip .card-slot').forEach((slot, i) => {
+    slot.classList.remove('dealing');
+    void slot.offsetWidth;
+    setTimeout(() => {
+      slot.classList.add('dealing');
+      slot.addEventListener('animationend', () => slot.classList.remove('dealing'), { once: true });
+    }, i * 130);
+  });
+
+  // 啟動冷卻
+  startCooldown();
+}
+
+document.getElementById('drawBtn').addEventListener('click', drawWithEffect);
+
+/* 卡背圖注入（從 bg-data.js 取得） */
+document.querySelectorAll('.ic-back img').forEach(img => { img.src = CARD_BACK; });
+
+/* 開局自動抽牌（所有宣告跑完後） */
+applyCards(pickCards());
+// 若冷卻仍在計時中，恢復 UI 狀態
+if (remainingMs() > 0) {
+  const btn = document.getElementById('drawBtn');
+  if (btn) btn.textContent = '✦ Draw Again ✦';
+  _cdInterval = setInterval(updateCooldownUI, 1000);
+  updateCooldownUI();
+}
+</script>
+</body>
+</html>
