@@ -2746,3 +2746,123 @@
 2026-06-30 22:18:21 [INFO    ]   JSON  → pokemon_go_events.json
 2026-06-30 22:18:21 [INFO    ]   MD    → pokemon_go_events.md
 2026-06-30 22:18:21 [INFO    ] ✅ 掃描完成
+
+─────────────────────────────────────────────────────────────────
+  掃描開始：2026-07-01 22:18:08
+─────────────────────────────────────────────────────────────────
+2026-07-01 22:18:08 [INFO    ] Pokémon GO Events Scanner 啟動
+2026-07-01 22:18:08 [INFO    ] =================================================================
+2026-07-01 22:18:08 [INFO    ]   Pokémon GO Regional Events Scanner  |  2026-07-01
+2026-07-01 22:18:08 [INFO    ]   掃描 16 個地區  |  REGIONAL_THRESHOLD = 4
+2026-07-01 22:18:08 [INFO    ] =================================================================
+2026-07-01 22:18:08 [INFO    ] 【Phase 1】蒐集各地區新聞頁文章 slug
+2026-07-01 22:18:08 [INFO    ]   🇹🇼 台灣        →  https://pokemongo.com/zh_hant/news
+2026-07-01 22:18:08 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/zh_hant/news
+2026-07-01 22:18:11 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/zh_hant/news
+2026-07-01 22:18:15 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/zh_hant/news
+2026-07-01 22:18:15 [ERROR   ]     給予放棄 : https://pokemongo.com/zh_hant/news
+2026-07-01 22:18:17 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:18:17 [INFO    ]   🇯🇵 日本        →  https://pokemongo.com/ja/news
+2026-07-01 22:18:17 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/ja/news
+2026-07-01 22:18:19 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/ja/news
+2026-07-01 22:18:24 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/ja/news
+2026-07-01 22:18:24 [ERROR   ]     給予放棄 : https://pokemongo.com/ja/news
+2026-07-01 22:18:26 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:18:26 [INFO    ]   🇰🇷 韓國        →  https://pokemongo.com/ko/news
+2026-07-01 22:18:26 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/ko/news
+2026-07-01 22:18:28 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/ko/news
+2026-07-01 22:18:32 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/ko/news
+2026-07-01 22:18:32 [ERROR   ]     給予放棄 : https://pokemongo.com/ko/news
+2026-07-01 22:18:34 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:18:34 [INFO    ]   🇹🇭 泰國        →  https://pokemongo.com/th/news
+2026-07-01 22:18:35 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/th/news
+2026-07-01 22:18:37 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/th/news
+2026-07-01 22:18:41 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/th/news
+2026-07-01 22:18:41 [ERROR   ]     給予放棄 : https://pokemongo.com/th/news
+2026-07-01 22:18:43 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:18:43 [INFO    ]   🇮🇩 印尼        →  https://pokemongo.com/id/news
+2026-07-01 22:18:43 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/id/news
+2026-07-01 22:18:46 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/id/news
+2026-07-01 22:18:50 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/id/news
+2026-07-01 22:18:50 [ERROR   ]     給予放棄 : https://pokemongo.com/id/news
+2026-07-01 22:18:52 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:18:52 [INFO    ]   🇮🇳 印度        →  https://pokemongo.com/hi/news
+2026-07-01 22:18:52 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/hi/news
+2026-07-01 22:18:54 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/hi/news
+2026-07-01 22:18:58 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/hi/news
+2026-07-01 22:18:58 [ERROR   ]     給予放棄 : https://pokemongo.com/hi/news
+2026-07-01 22:19:00 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:19:00 [INFO    ]   🇧🇷 巴西        →  https://pokemongo.com/pt_br/news
+2026-07-01 22:19:01 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/pt_br/news
+2026-07-01 22:19:03 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/pt_br/news
+2026-07-01 22:19:07 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/pt_br/news
+2026-07-01 22:19:07 [ERROR   ]     給予放棄 : https://pokemongo.com/pt_br/news
+2026-07-01 22:19:09 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:19:09 [INFO    ]   🌎 拉丁美洲      →  https://pokemongo.com/es_mx/news
+2026-07-01 22:19:09 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/es_mx/news
+2026-07-01 22:19:12 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/es_mx/news
+2026-07-01 22:19:16 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/es_mx/news
+2026-07-01 22:19:16 [ERROR   ]     給予放棄 : https://pokemongo.com/es_mx/news
+2026-07-01 22:19:18 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:19:18 [INFO    ]   🇺🇸 英文        →  https://pokemongo.com/en/news
+2026-07-01 22:19:18 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/en/news
+2026-07-01 22:19:20 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/en/news
+2026-07-01 22:19:24 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/en/news
+2026-07-01 22:19:24 [ERROR   ]     給予放棄 : https://pokemongo.com/en/news
+2026-07-01 22:19:26 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:19:26 [INFO    ]   🇫🇷 法國        →  https://pokemongo.com/fr/news
+2026-07-01 22:19:27 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/fr/news
+2026-07-01 22:19:29 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/fr/news
+2026-07-01 22:19:33 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/fr/news
+2026-07-01 22:19:33 [ERROR   ]     給予放棄 : https://pokemongo.com/fr/news
+2026-07-01 22:19:35 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:19:35 [INFO    ]   🇩🇪 德國        →  https://pokemongo.com/de/news
+2026-07-01 22:19:35 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/de/news
+2026-07-01 22:19:37 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/de/news
+2026-07-01 22:19:42 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/de/news
+2026-07-01 22:19:42 [ERROR   ]     給予放棄 : https://pokemongo.com/de/news
+2026-07-01 22:19:44 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:19:44 [INFO    ]   🇮🇹 義大利       →  https://pokemongo.com/it/news
+2026-07-01 22:19:44 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/it/news
+2026-07-01 22:19:46 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/it/news
+2026-07-01 22:19:50 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/it/news
+2026-07-01 22:19:50 [ERROR   ]     給予放棄 : https://pokemongo.com/it/news
+2026-07-01 22:19:52 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:19:52 [INFO    ]   🇪🇸 西班牙       →  https://pokemongo.com/es/news
+2026-07-01 22:19:53 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/es/news
+2026-07-01 22:19:55 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/es/news
+2026-07-01 22:19:59 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/es/news
+2026-07-01 22:19:59 [ERROR   ]     給予放棄 : https://pokemongo.com/es/news
+2026-07-01 22:20:01 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:20:01 [INFO    ]   🇵🇱 波蘭        →  https://pokemongo.com/pl/news
+2026-07-01 22:20:01 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/pl/news
+2026-07-01 22:20:03 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/pl/news
+2026-07-01 22:20:08 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/pl/news
+2026-07-01 22:20:08 [ERROR   ]     給予放棄 : https://pokemongo.com/pl/news
+2026-07-01 22:20:10 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:20:10 [INFO    ]   🇷🇺 俄羅斯       →  https://pokemongo.com/ru/news
+2026-07-01 22:20:10 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/ru/news
+2026-07-01 22:20:12 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/ru/news
+2026-07-01 22:20:16 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/ru/news
+2026-07-01 22:20:16 [ERROR   ]     給予放棄 : https://pokemongo.com/ru/news
+2026-07-01 22:20:18 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:20:18 [INFO    ]   🇹🇷 土耳其       →  https://pokemongo.com/tr/news
+2026-07-01 22:20:18 [WARNING ]     HTTP 403 [1/3] : https://pokemongo.com/tr/news
+2026-07-01 22:20:21 [WARNING ]     HTTP 403 [2/3] : https://pokemongo.com/tr/news
+2026-07-01 22:20:25 [WARNING ]     HTTP 403 [3/3] : https://pokemongo.com/tr/news
+2026-07-01 22:20:25 [ERROR   ]     給予放棄 : https://pokemongo.com/tr/news
+2026-07-01 22:20:27 [WARNING ]     無法取得內容，跳過
+2026-07-01 22:20:27 [INFO    ] 
+  不重複 slug 總計：0
+2026-07-01 22:20:27 [INFO    ] 
+【Phase 2】篩選地區限定 slug（出現 < 4 個地區）
+2026-07-01 22:20:27 [INFO    ]   地區限定：0 篇  |  全球性：0 篇
+2026-07-01 22:20:27 [INFO    ] 
+【Phase 3】抓取地區限定文章，解析日期
+2026-07-01 22:20:27 [INFO    ] 
+  最終有效地區限定活動：0 筆
+2026-07-01 22:20:27 [INFO    ] 
+【輸出結果】
+2026-07-01 22:20:27 [INFO    ]   JSON  → pokemon_go_events.json
+2026-07-01 22:20:27 [INFO    ]   MD    → pokemon_go_events.md
+2026-07-01 22:20:27 [INFO    ] ✅ 掃描完成
