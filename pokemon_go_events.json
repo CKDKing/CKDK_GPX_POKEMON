@@ -1,6 +1,462 @@
 {
-  "scan_timestamp": "2026-07-01T22:20:27.286082",
-  "scan_date": "2026-07-01",
-  "total": 0,
-  "events": []
+  "scan_timestamp": "2026-07-02T22:12:29.450653",
+  "scan_date": "2026-07-02",
+  "total": 34,
+  "events": [
+    {
+      "region": "🇮🇹 義大利",
+      "region_code": "it",
+      "event_name": "I giganti della regione di Kanto ritornano durante il replay dell'evento \"Alla grandissima\"!",
+      "start_date": "2026-04-25",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/it/news/replay-go-bigger-2026",
+      "article_slug": "replay-go-bigger-2026",
+      "found_in_regions": [
+        "it",
+        "tr"
+      ]
+    },
+    {
+      "region": "🇮🇳 印度",
+      "region_code": "hi",
+      "event_name": "मेल्टन, ऑर्थवर्म और अन्य किरदारों के साथ दृढ़ संकल्प की वापसी के लिए तैयार हो जाइए!",
+      "start_date": "2026-04-28",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/hi/news/steeled-resolve-2026",
+      "article_slug": "steeled-resolve-2026",
+      "found_in_regions": [
+        "hi",
+        "it",
+        "tr"
+      ]
+    },
+    {
+      "region": "🇹🇷 土耳其",
+      "region_code": "tr",
+      "event_name": "मेल्टन, ऑर्थवर्म और अन्य किरदारों के साथ दृढ़ संकल्प की वापसी के लिए तैयार हो जाइए!",
+      "start_date": "2026-04-28",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/tr/news/steeled-resolve-2026",
+      "article_slug": "steeled-resolve-2026",
+      "found_in_regions": [
+        "hi",
+        "it",
+        "tr"
+      ]
+    },
+    {
+      "region": "🇧🇷 巴西",
+      "region_code": "pt_br",
+      "event_name": "Celebrem no espaço de Pokémon na gamescom latam 2026",
+      "start_date": "2026-05-03",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/pt_br/news/pokemon-go-at-gamescomlatam2026",
+      "article_slug": "pokemon-go-at-gamescomlatam2026",
+      "found_in_regions": [
+        "pt_br"
+      ]
+    },
+    {
+      "region": "🇹🇷 土耳其",
+      "region_code": "tr",
+      "event_name": "GO Bileti: Nisanda Entei ile macera kapıda!",
+      "start_date": "2026-05-12",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/tr/news/go-pass-april-2026",
+      "article_slug": "go-pass-april-2026",
+      "found_in_regions": [
+        "tr"
+      ]
+    },
+    {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "Celebrate with Pokémon GO at the Pokémon Fossil Museum in Chicago!",
+      "start_date": "2026-05-22",
+      "end_date": "2027-04-11",
+      "status": "active",
+      "url": "https://pokemongo.com/en/news/pgo-pokemon-fossil-musuem-chicago-2026",
+      "article_slug": "pgo-pokemon-fossil-musuem-chicago-2026",
+      "found_in_regions": [
+        "en"
+      ]
+    },
+    {
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
+      "event_name": "特別なデザインの「Pokémon GO ギフトカード」が発売決定！",
+      "start_date": "2026-05-29",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ja/news/pokemongogiftcard_gofest2026",
+      "article_slug": "pokemongogiftcard_gofest2026",
+      "found_in_regions": [
+        "ja"
+      ]
+    },
+    {
+      "region": "🇩🇪 德國",
+      "region_code": "de",
+      "event_name": "Construisez votre aventure au Festival Pokémon GO 2026 : Copenhague",
+      "start_date": "2026-06-14",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/de/news/gofest-2026-copenhagen-lego",
+      "article_slug": "gofest-2026-copenhagen-lego",
+      "found_in_regions": [
+        "de",
+        "es",
+        "fr"
+      ]
+    },
+    {
+      "region": "🇪🇸 西班牙",
+      "region_code": "es",
+      "event_name": "Construisez votre aventure au Festival Pokémon GO 2026 : Copenhague",
+      "start_date": "2026-06-14",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/es/news/gofest-2026-copenhagen-lego",
+      "article_slug": "gofest-2026-copenhagen-lego",
+      "found_in_regions": [
+        "de",
+        "es",
+        "fr"
+      ]
+    },
+    {
+      "region": "🇫🇷 法國",
+      "region_code": "fr",
+      "event_name": "Construisez votre aventure au Festival Pokémon GO 2026 : Copenhague",
+      "start_date": "2026-06-14",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/fr/news/gofest-2026-copenhagen-lego",
+      "article_slug": "gofest-2026-copenhagen-lego",
+      "found_in_regions": [
+        "de",
+        "es",
+        "fr"
+      ]
+    },
+    {
+      "region": "🇹🇼 台灣",
+      "region_code": "zh_hant",
+      "event_name": "台北捷運與你一起加入「Pokémon GO Fest 2026：全球」歡慶的行列！",
+      "start_date": "2026-06-15",
+      "end_date": "2026-07-11",
+      "status": "active",
+      "url": "https://pokemongo.com/zh_hant/news/gofesttw-2026zhongshan",
+      "article_slug": "gofesttw-2026zhongshan",
+      "found_in_regions": [
+        "zh_hant"
+      ]
+    },
+    {
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
+      "event_name": "「『Pokémon GO』パートナーリサーチ」を開催します！",
+      "start_date": "2026-06-19",
+      "end_date": "2026-09-30",
+      "status": "active",
+      "url": "https://pokemongo.com/ja/news/202606partnerresearch-jp",
+      "article_slug": "202606partnerresearch-jp",
+      "found_in_regions": [
+        "ja"
+      ]
+    },
+    {
+      "region": "🇧🇷 巴西",
+      "region_code": "pt_br",
+      "event_name": "Peguem um Tauros de Paldea da Espécie Aquática no Arraiá do Pokémon GO!",
+      "start_date": "2026-06-29",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/pt_br/news/festa-junina-2026",
+      "article_slug": "festa-junina-2026",
+      "found_in_regions": [
+        "pt_br"
+      ]
+    },
+    {
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
+      "event_name": "『Pokémon GO』10周年をお祝いしよう！",
+      "start_date": "2026-07-01",
+      "end_date": "2026-07-11",
+      "status": "active",
+      "url": "https://pokemongo.com/ja/news/assistant_pikachu",
+      "article_slug": "assistant_pikachu",
+      "found_in_regions": [
+        "ja"
+      ]
+    },
+    {
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
+      "event_name": "公式パートナーと「Pokémon GO Fest 2026：東京」をもっと楽しみましょう！",
+      "start_date": "2026-07-02",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ja/news/gofest2026tokyo_partner",
+      "article_slug": "gofest2026tokyo_partner",
+      "found_in_regions": [
+        "ja"
+      ]
+    },
+    {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "Super Mega Raid Update at Pokémon GO Fest 2026: Copenhagen Park Experience",
+      "start_date": "2026-07-02",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/en/news/gofest-copenhagen-super-mega-raid",
+      "article_slug": "gofest-copenhagen-super-mega-raid",
+      "found_in_regions": [
+        "en"
+      ]
+    },
+    {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "Super Mega Raid Update at Pokémon GO Fest 2026: Chicago Park Experience",
+      "start_date": "2026-07-02",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/en/news/gofest-chicago-super-mega-raid",
+      "article_slug": "gofest-chicago-super-mega-raid",
+      "found_in_regions": [
+        "en"
+      ]
+    },
+    {
+      "region": "🇵🇱 波蘭",
+      "region_code": "pl",
+      "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
+      "start_date": "2026-07-02",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
+      "article_slug": "community-celebration-warszawa",
+      "found_in_regions": [
+        "pl"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Welcome to Pokémon GO: Tales of Transformation",
+      "start_date": "2026-07-02",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
+      "article_slug": "welcome-to-tales-of-transformation",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇰🇷 韓國",
+      "region_code": "ko",
+      "event_name": "올여름 한강에서 만나요! \"Pokémon GO Fest 2026: 글로벌\" 기념 한국 현장 이벤트",
+      "start_date": "2026-07-11",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/ko/news/ko-gofest-global-on-site-event-2026",
+      "article_slug": "ko-gofest-global-on-site-event-2026",
+      "found_in_regions": [
+        "ko"
+      ]
+    },
+    {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "Get ready for Pokémon GO Fest 2026: Global Community Celebrations in North America, Europe, and Oceania!",
+      "start_date": "2026-07-11",
+      "end_date": "2026-07-12",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/en/news/community-celebrations-go-fest-2026-details-en",
+      "article_slug": "community-celebrations-go-fest-2026-details-en",
+      "found_in_regions": [
+        "en"
+      ]
+    },
+    {
+      "region": "🇫🇷 法國",
+      "region_code": "fr",
+      "event_name": "Célébrez le Festival Pokémon GO 2026 : Mondial à Bordeaux !",
+      "start_date": "2026-07-11",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/fr/news/community-celebration-bordeaux",
+      "article_slug": "community-celebration-bordeaux",
+      "found_in_regions": [
+        "fr"
+      ]
+    },
+    {
+      "region": "🇩🇪 德國",
+      "region_code": "de",
+      "event_name": "Feiert gemeinsam mit der Community das Pokémon GO Fest 2026: Global im XPERION Hamburg!",
+      "start_date": "2026-07-11",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/de/news/community-celebration-hamburg",
+      "article_slug": "community-celebration-hamburg",
+      "found_in_regions": [
+        "de"
+      ]
+    },
+    {
+      "region": "🇪🇸 西班牙",
+      "region_code": "es",
+      "event_name": "¡Celebra el Festival de Pokémon GO: Global con las comunidades de Barcelona!",
+      "start_date": "2026-07-11",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/es/news/community-celebration-barcelona",
+      "article_slug": "community-celebration-barcelona",
+      "found_in_regions": [
+        "es"
+      ]
+    },
+    {
+      "region": "🇧🇷 巴西",
+      "region_code": "pt_br",
+      "event_name": "Preparem-se para as Celebrações Comunitárias do Pokémon GO Fest 2026: Global na América Latina!",
+      "start_date": "2026-07-12",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/pt_br/news/community-celebrations-go-fest-2026-details-ptbr",
+      "article_slug": "community-celebrations-go-fest-2026-details-ptbr",
+      "found_in_regions": [
+        "pt_br"
+      ]
+    },
+    {
+      "region": "🌎 拉丁美洲",
+      "region_code": "es_mx",
+      "event_name": "¡Prepárense para las Celebraciones Comunitarias de Pokémon GO Fest 2026: Global en América Latina!",
+      "start_date": "2026-07-12",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/es_mx/news/community-celebrations-go-fest-2026-details-lat",
+      "article_slug": "community-celebrations-go-fest-2026-details-lat",
+      "found_in_regions": [
+        "es_mx"
+      ]
+    },
+    {
+      "region": "🇧🇷 巴西",
+      "region_code": "pt_br",
+      "event_name": "Celebrem o 10º aniversário de Pokémon GO à moda do futebol!",
+      "start_date": "2026-07-20",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/pt_br/news/suitup_the_10",
+      "article_slug": "suitup_the_10",
+      "found_in_regions": [
+        "pt_br"
+      ]
+    },
+    {
+      "region": "🌎 拉丁美洲",
+      "region_code": "es_mx",
+      "event_name": "¡Celebren el 10.º aniversario de Pokémon GO al estilo futbolero!",
+      "start_date": "2026-07-20",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/es_mx/news/suitup_the_10_la",
+      "article_slug": "suitup_the_10_la",
+      "found_in_regions": [
+        "es_mx"
+      ]
+    },
+    {
+      "region": "🇮🇹 義大利",
+      "region_code": "it",
+      "event_name": "मेल्टन, ऑर्थवर्म और अन्य किरदारों के साथ दृढ़ संकल्प की वापसी के लिए तैयार हो जाइए!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/it/news/steeled-resolve-2026",
+      "article_slug": "steeled-resolve-2026",
+      "found_in_regions": [
+        "hi",
+        "it",
+        "tr"
+      ]
+    },
+    {
+      "region": "🇧🇷 巴西",
+      "region_code": "pt_br",
+      "event_name": "Confiram o vencedor do sorteio brasileiro do #GOMemories!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/pt_br/news/gomemories_brazil_winner",
+      "article_slug": "gomemories_brazil_winner",
+      "found_in_regions": [
+        "pt_br"
+      ]
+    },
+    {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "Gameplay Update: Chicago Pokémon GO Fest",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/en/news/gofest-chicago-saturday-update",
+      "article_slug": "gofest-chicago-saturday-update",
+      "found_in_regions": [
+        "en"
+      ]
+    },
+    {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "Pokémon GO Fest 2026: Chicago Community Ambassador Meet-ups",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/en/news/go-fest-chicago-2026-community",
+      "article_slug": "go-fest-chicago-2026-community",
+      "found_in_regions": [
+        "en"
+      ]
+    },
+    {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "Pokémon GO Fest 2026 and 100 Thieves team up for an exclusive capsule collection in Chicago!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/en/news/100-thieves-mega-mewtwo-go-fest-2026",
+      "article_slug": "100-thieves-mega-mewtwo-go-fest-2026",
+      "found_in_regions": [
+        "en"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Pokémon GO Fest 2025",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/gofestmaxfinale",
+      "article_slug": "gofestmaxfinale",
+      "found_in_regions": [
+        "ru"
+      ]
+    }
+  ]
 }
