@@ -1,17 +1,17 @@
 {
-  "scan_timestamp": "2026-07-05T22:06:50.266022",
-  "scan_date": "2026-07-05",
-  "total": 34,
+  "scan_timestamp": "2026-07-06T22:18:26.190931",
+  "scan_date": "2026-07-06",
+  "total": 38,
   "events": [
     {
-      "region": "🇮🇹 義大利",
-      "region_code": "it",
-      "event_name": "I giganti della regione di Kanto ritornano durante il replay dell'evento \"Alla grandissima\"!",
-      "start_date": "2026-04-25",
+      "region": "🇹🇷 土耳其",
+      "region_code": "tr",
+      "event_name": "Preparati per il ritorno di Volontà d'acciaio con Meltan, Orthworm e molti altri!",
+      "start_date": "2026-04-28",
       "end_date": null,
       "status": "active",
-      "url": "https://pokemongo.com/it/news/replay-go-bigger-2026",
-      "article_slug": "replay-go-bigger-2026",
+      "url": "https://pokemongo.com/tr/news/steeled-resolve-2026",
+      "article_slug": "steeled-resolve-2026",
       "found_in_regions": [
         "it",
         "tr"
@@ -20,12 +20,12 @@
     {
       "region": "🇮🇳 印度",
       "region_code": "hi",
-      "event_name": "मेल्टन, ऑर्थवर्म और अन्य किरदारों के साथ दृढ़ संकल्प की वापसी के लिए तैयार हो जाइए!",
-      "start_date": "2026-04-28",
+      "event_name": "दृढ़ संकल्प: टेक ओवर के दौरान शैडो इंकार्नेशन फ़ॉर्म लैंडोरस और अन्य को बचाएं!",
+      "start_date": "2026-04-30",
       "end_date": null,
       "status": "active",
-      "url": "https://pokemongo.com/hi/news/steeled-resolve-2026",
-      "article_slug": "steeled-resolve-2026",
+      "url": "https://pokemongo.com/hi/news/steeled-resolve-taken-over-2026",
+      "article_slug": "steeled-resolve-taken-over-2026",
       "found_in_regions": [
         "hi",
         "it",
@@ -35,55 +35,16 @@
     {
       "region": "🇹🇷 土耳其",
       "region_code": "tr",
-      "event_name": "मेल्टन, ऑर्थवर्म और अन्य किरदारों के साथ दृढ़ संकल्प की वापसी के लिए तैयार हो जाइए!",
-      "start_date": "2026-04-28",
+      "event_name": "दृढ़ संकल्प: टेक ओवर के दौरान शैडो इंकार्नेशन फ़ॉर्म लैंडोरस और अन्य को बचाएं!",
+      "start_date": "2026-04-30",
       "end_date": null,
       "status": "active",
-      "url": "https://pokemongo.com/tr/news/steeled-resolve-2026",
-      "article_slug": "steeled-resolve-2026",
+      "url": "https://pokemongo.com/tr/news/steeled-resolve-taken-over-2026",
+      "article_slug": "steeled-resolve-taken-over-2026",
       "found_in_regions": [
         "hi",
         "it",
         "tr"
-      ]
-    },
-    {
-      "region": "🇧🇷 巴西",
-      "region_code": "pt_br",
-      "event_name": "Celebrem no espaço de Pokémon na gamescom latam 2026",
-      "start_date": "2026-05-03",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/pt_br/news/pokemon-go-at-gamescomlatam2026",
-      "article_slug": "pokemon-go-at-gamescomlatam2026",
-      "found_in_regions": [
-        "pt_br"
-      ]
-    },
-    {
-      "region": "🇹🇷 土耳其",
-      "region_code": "tr",
-      "event_name": "GO Bileti: Nisanda Entei ile macera kapıda!",
-      "start_date": "2026-05-12",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/tr/news/go-pass-april-2026",
-      "article_slug": "go-pass-april-2026",
-      "found_in_regions": [
-        "tr"
-      ]
-    },
-    {
-      "region": "🇺🇸 英文",
-      "region_code": "en",
-      "event_name": "Celebrate with Pokémon GO at the Pokémon Fossil Museum in Chicago!",
-      "start_date": "2026-05-22",
-      "end_date": "2027-04-11",
-      "status": "active",
-      "url": "https://pokemongo.com/en/news/pgo-pokemon-fossil-musuem-chicago-2026",
-      "article_slug": "pgo-pokemon-fossil-musuem-chicago-2026",
-      "found_in_regions": [
-        "en"
       ]
     },
     {
@@ -199,8 +160,68 @@
     {
       "region": "🇯🇵 日本",
       "region_code": "ja",
+      "event_name": "關於「Pokémon GO Fest 2026：東京」公園遊記「極致超級團體戰」的最新消息",
+      "start_date": "2026-07-06",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ja/news/gofest-tokyo-super-mega-raid",
+      "article_slug": "gofest-tokyo-super-mega-raid",
+      "found_in_regions": [
+        "ja",
+        "ko",
+        "zh_hant"
+      ]
+    },
+    {
+      "region": "🇹🇼 台灣",
+      "region_code": "zh_hant",
+      "event_name": "關於「Pokémon GO Fest 2026：東京」公園遊記「極致超級團體戰」的最新消息",
+      "start_date": "2026-07-06",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/zh_hant/news/gofest-tokyo-super-mega-raid",
+      "article_slug": "gofest-tokyo-super-mega-raid",
+      "found_in_regions": [
+        "ja",
+        "ko",
+        "zh_hant"
+      ]
+    },
+    {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "「Scopely Explore」のご紹介",
+      "start_date": "2026-07-06",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/en/news/scopely-explore-2026",
+      "article_slug": "scopely-explore-2026",
+      "found_in_regions": [
+        "en",
+        "ja",
+        "ko"
+      ]
+    },
+    {
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
+      "event_name": "「Scopely Explore」のご紹介",
+      "start_date": "2026-07-06",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ja/news/scopely-explore-2026",
+      "article_slug": "scopely-explore-2026",
+      "found_in_regions": [
+        "en",
+        "ja",
+        "ko"
+      ]
+    },
+    {
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
       "event_name": "公式パートナーと「Pokémon GO Fest 2026：東京」をもっと楽しみましょう！",
-      "start_date": "2026-07-05",
+      "start_date": "2026-07-06",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ja/news/gofest2026tokyo_partner",
@@ -213,7 +234,7 @@
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "Super Mega Raid Update at Pokémon GO Fest 2026: Copenhagen Park Experience",
-      "start_date": "2026-07-05",
+      "start_date": "2026-07-06",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/en/news/gofest-copenhagen-super-mega-raid",
@@ -226,7 +247,7 @@
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "Super Mega Raid Update at Pokémon GO Fest 2026: Chicago Park Experience",
-      "start_date": "2026-07-05",
+      "start_date": "2026-07-06",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/en/news/gofest-chicago-super-mega-raid",
@@ -239,7 +260,7 @@
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-07-05",
+      "start_date": "2026-07-06",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -252,7 +273,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-07-05",
+      "start_date": "2026-07-06",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -353,6 +374,19 @@
       ]
     },
     {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "Pokémon GO Fest 2026: Global final details!",
+      "start_date": "2026-07-12",
+      "end_date": "2026-08-24",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/en/news/go-fest-2026-global-final-details",
+      "article_slug": "go-fest-2026-global-final-details",
+      "found_in_regions": [
+        "en"
+      ]
+    },
+    {
       "region": "🇧🇷 巴西",
       "region_code": "pt_br",
       "event_name": "Celebrem o 10º aniversário de Pokémon GO à moda do futebol!",
@@ -379,14 +413,44 @@
       ]
     },
     {
-      "region": "🇮🇹 義大利",
-      "region_code": "it",
-      "event_name": "मेल्टन, ऑर्थवर्म और अन्य किरदारों के साथ दृढ़ संकल्प की वापसी के लिए तैयार हो जाइए!",
+      "region": "🇰🇷 韓國",
+      "region_code": "ko",
+      "event_name": "關於「Pokémon GO Fest 2026：東京」公園遊記「極致超級團體戰」的最新消息",
       "start_date": null,
       "end_date": null,
       "status": "unknown",
-      "url": "https://pokemongo.com/it/news/steeled-resolve-2026",
-      "article_slug": "steeled-resolve-2026",
+      "url": "https://pokemongo.com/ko/news/gofest-tokyo-super-mega-raid",
+      "article_slug": "gofest-tokyo-super-mega-raid",
+      "found_in_regions": [
+        "ja",
+        "ko",
+        "zh_hant"
+      ]
+    },
+    {
+      "region": "🇰🇷 韓國",
+      "region_code": "ko",
+      "event_name": "「Scopely Explore」のご紹介",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ko/news/scopely-explore-2026",
+      "article_slug": "scopely-explore-2026",
+      "found_in_regions": [
+        "en",
+        "ja",
+        "ko"
+      ]
+    },
+    {
+      "region": "🇮🇹 義大利",
+      "region_code": "it",
+      "event_name": "दृढ़ संकल्प: टेक ओवर के दौरान शैडो इंकार्नेशन फ़ॉर्म लैंडोरस और अन्य को बचाएं!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/it/news/steeled-resolve-taken-over-2026",
+      "article_slug": "steeled-resolve-taken-over-2026",
       "found_in_regions": [
         "hi",
         "it",
@@ -433,16 +497,17 @@
       ]
     },
     {
-      "region": "🇺🇸 英文",
-      "region_code": "en",
-      "event_name": "Pokémon GO Fest 2026 and 100 Thieves team up for an exclusive capsule collection in Chicago!",
+      "region": "🇮🇹 義大利",
+      "region_code": "it",
+      "event_name": "Preparati per il ritorno di Volontà d'acciaio con Meltan, Orthworm e molti altri!",
       "start_date": null,
       "end_date": null,
       "status": "unknown",
-      "url": "https://pokemongo.com/en/news/100-thieves-mega-mewtwo-go-fest-2026",
-      "article_slug": "100-thieves-mega-mewtwo-go-fest-2026",
+      "url": "https://pokemongo.com/it/news/steeled-resolve-2026",
+      "article_slug": "steeled-resolve-2026",
       "found_in_regions": [
-        "en"
+        "it",
+        "tr"
       ]
     },
     {
