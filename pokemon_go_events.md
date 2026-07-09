@@ -1,6 +1,6 @@
 # 🗺️ Pokémon GO 地區限定活動
 
-> 掃描時間：**2026-07-08 22:11**（台灣時間）
+> 掃描時間：**2026-07-09 22:27**（台灣時間）
 > 僅顯示地區限定活動，已結束的不列入
 > 全球性共同活動不列入
 
@@ -19,13 +19,13 @@
 | 🇯🇵 日本 | 「『Pokémon GO』パートナーリサーチ」を開催します！ | 2026-06-19 | 2026-09-30 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/202606partnerresearch-jp) |
 | 🇧🇷 巴西 | Peguem um Tauros de Paldea da Espécie Aquática no Arraiá do Pokém | 2026-06-29 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pt_br/news/festa-junina-2026) |
 | 🇯🇵 日本 | 『Pokémon GO』10周年をお祝いしよう！ | 2026-07-01 | 2026-07-11 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/assistant_pikachu) |
-| 🇯🇵 日本 | 關於「Pokémon GO Fest 2026：東京」公園遊記「極致超級團體戰」的最新消息 | 2026-07-08 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/gofest-tokyo-super-mega-raid) |
-| 🇹🇼 台灣 | 關於「Pokémon GO Fest 2026：東京」公園遊記「極致超級團體戰」的最新消息 | 2026-07-08 | — | ✅ 進行中 | [🔗](https://pokemongo.com/zh_hant/news/gofest-tokyo-super-mega-raid) |
-| 🇯🇵 日本 | 公式パートナーと「Pokémon GO Fest 2026：東京」をもっと楽しみましょう！ | 2026-07-08 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/gofest2026tokyo_partner) |
-| 🇺🇸 英文 | Super Mega Raid Update at Pokémon GO Fest 2026: Copenhagen Park E | 2026-07-08 | — | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/gofest-copenhagen-super-mega-raid) |
-| 🇺🇸 英文 | Super Mega Raid Update at Pokémon GO Fest 2026: Chicago Park Expe | 2026-07-08 | — | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/gofest-chicago-super-mega-raid) |
-| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-07-08 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
-| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-07-08 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
+| 🇯🇵 日本 | 關於「Pokémon GO Fest 2026：東京」公園遊記「極致超級團體戰」的最新消息 | 2026-07-09 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/gofest-tokyo-super-mega-raid) |
+| 🇹🇼 台灣 | 關於「Pokémon GO Fest 2026：東京」公園遊記「極致超級團體戰」的最新消息 | 2026-07-09 | — | ✅ 進行中 | [🔗](https://pokemongo.com/zh_hant/news/gofest-tokyo-super-mega-raid) |
+| 🇯🇵 日本 | 公式パートナーと「Pokémon GO Fest 2026：東京」をもっと楽しみましょう！ | 2026-07-09 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/gofest2026tokyo_partner) |
+| 🇺🇸 英文 | Super Mega Raid Update at Pokémon GO Fest 2026: Copenhagen Park E | 2026-07-09 | — | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/gofest-copenhagen-super-mega-raid) |
+| 🇺🇸 英文 | Super Mega Raid Update at Pokémon GO Fest 2026: Chicago Park Expe | 2026-07-09 | — | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/gofest-chicago-super-mega-raid) |
+| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-07-09 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
+| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-07-09 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
 | 🇰🇷 韓國 | 올여름 한강에서 만나요! "Pokémon GO Fest 2026: 글로벌" 기념 한국 현장 이벤트 | 2026-07-11 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ko/news/ko-gofest-global-on-site-event-2026) |
 | 🇺🇸 英文 | Get ready for Pokémon GO Fest 2026: Global Community Celebrations | 2026-07-11 | 2026-07-12 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/community-celebrations-go-fest-2026-details-en) |
 | 🇫🇷 法國 | Célébrez le Festival Pokémon GO 2026 : Mondial à Bordeaux ! | 2026-07-11 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/fr/news/community-celebration-bordeaux) |
