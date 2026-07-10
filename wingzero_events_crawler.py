@@ -15,13 +15,11 @@ from datetime import datetime, timezone
 
 from playwright.async_api import async_playwright
 
-TIMEOUT_MS  = 90_000   # generous: CF challenge can take ~10-30 s
+EVENT_TIMEOUT_MS = 90_000
+NEWS_TIMEOUT_MS  = 120_000  # longer: news page has many images
 
-# Cloudflare "hold on" title patterns
 CF_TITLES = ["請稍候", "Just a moment", "Checking your browser", "Please wait"]
 
-
-# ── helpers ──────────────────────────────────────────────────────────────────
 
 async def wait_for_cf(page, max_ms=35_000):
     """Block until the Cloudflare challenge title disappears."""
@@ -35,21 +33,17 @@ async def wait_for_cf(page, max_ms=35_000):
             timeout=max_ms,
             polling=1000,
         )
-        print("  CF challenge resolved")
-        await page.wait_for_timeout(1500)   # brief pause after redirect
+        await page.wait_for_timeout(1500)
+        return True
     except Exception:
-        title = await page.title()
-        print(f"WARNING: CF challenge not resolved (title: '{title}')", file=sys.stderr)
+        return False
 
-
-# ── individual crawlers ───────────────────────────────────────────────────────
 
 async def crawl_events(page):
-    """Fetch events page → save wingzero_events_real.html.  Returns True on success."""
     url = "https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events"
-    print(f"  events  → {url}")
+    print(f"[events] fetching {url}")
     try:
-        await page.goto(url, wait_until="networkidle", timeout=TIMEOUT_MS)
+        await page.goto(url, wait_until="networkidle", timeout=EVENT_TIMEOUT_MS)
     except Exception as e:
         print(f"ERROR: events page load failed — {e}", file=sys.stderr)
         return False
@@ -57,49 +51,57 @@ async def crawl_events(page):
     html = await page.content()
     markers = ["go-event-live-card", "go-event-upcoming-card"]
     if not any(m in html for m in markers):
-        print(f"ERROR: events markers not found in {len(html):,}-byte response", file=sys.stderr)
+        print(f"ERROR: events markers not found ({len(html):,} bytes)", file=sys.stderr)
         return False
 
     with open("wingzero_events_real.html", "w", encoding="utf-8", newline="\n") as f:
         f.write(html)
-    print(f"  events  ✓ {len(html):,} bytes → wingzero_events_real.html")
+    print(f"[events] ✓ {len(html):,} bytes saved")
     return True
 
 
 async def crawl_news(page):
-    """
-    Fetch news page → extract structured JSON → save wingzero_news.json.
-    Returns True on success (even partial results count).
-    Runs in the same browser session as crawl_events(), so the CF session
-    cookie from the events page should already be set.
-    """
     url = "https://pokemon.wingzero.tw/zh-TW/news"
-    print(f"  news    → {url}")
+    print(f"[news]   fetching {url}")
 
     try:
-        await page.goto(url, wait_until="domcontentloaded", timeout=TIMEOUT_MS)
+        # networkidle: wait until page + images fully loaded
+        # CF session cookie from events page should prevent new challenge
+        await page.goto(url, wait_until="networkidle", timeout=NEWS_TIMEOUT_MS)
     except Exception as e:
-        print(f"WARNING: news goto timed out, trying content grab — {e}", file=sys.stderr)
+        print(f"WARNING: news goto timed out, trying content grab anyway — {e}", file=sys.stderr)
 
-    # Handle Cloudflare challenge if it appeared
-    title = await page.title()
+    # Diagnostic: report what we actually loaded
+    title      = await page.title()
+    current_url = page.url
+    print(f"[news]   url={current_url}")
+    print(f"[news]   title={title!r}")
+
+    # Handle CF challenge if still active
     if any(cf in title for cf in CF_TITLES):
-        print(f"  CF challenge detected (title: '{title}'), waiting…")
-        await wait_for_cf(page)
+        print(f"[news]   CF challenge detected — waiting up to 35 s…")
+        resolved = await wait_for_cf(page)
+        title = await page.title()
+        print(f"[news]   after CF wait: resolved={resolved} title={title!r}")
 
-    # Wait for actual article links to appear in DOM (up to 30 s)
-    try:
-        await page.wait_for_selector("a[href*='/zh-TW/news/']", timeout=30_000)
-        print("  article links found in DOM")
-    except Exception:
-        print("WARNING: article links not found within 30 s", file=sys.stderr)
+    # Scroll to bottom to trigger lazy-loaded images / infinite scroll
+    await page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+    await page.wait_for_timeout(2000)
 
-    await page.wait_for_timeout(1500)   # let lazy images register src attributes
+    # Diagnostic: count relevant strings in raw HTML
+    html = await page.content()
+    n_news_links = html.count("/zh-TW/news/")
+    n_img_tags   = html.count("<img")
+    print(f"[news]   html={len(html):,} bytes | /zh-TW/news/ refs={n_news_links} | <img={n_img_tags}")
 
-    # Extract structured data directly from the live DOM
+    if n_news_links == 0:
+        print("WARNING: no news links found in page source — CF may still be blocking", file=sys.stderr)
+        return False
+
+    # Extract structured data from the live DOM
     items = await page.evaluate("""() => {
-        const BASE = 'https://pokemon.wingzero.tw';
-        const fixUrl = (u) => {
+        const BASE  = 'https://pokemon.wingzero.tw';
+        const fixUrl = u => {
             if (!u || u.startsWith('data:')) return '';
             if (u.startsWith('//')) return 'https:' + u;
             if (u.startsWith('/'))  return BASE + u;
@@ -109,11 +111,14 @@ async def crawl_news(page):
         const seen  = new Set();
         const items = [];
 
-        // Collect all anchors pointing to an individual news article
+        // All anchors pointing to an individual article
         const links = [...document.querySelectorAll('a[href]')].filter(a => {
             const h = a.getAttribute('href') || '';
-            return /\/zh-TW\/news\/[^?#\s]+/.test(h);
+            // match /zh-TW/news/<slug>  (not the listing page itself)
+            return /\\/zh-TW\\/news\\/[^?#\\s]+/.test(h);
         });
+
+        console.log('[eval] matched links:', links.length);
 
         for (const link of links) {
             const href     = link.getAttribute('href');
@@ -121,7 +126,7 @@ async def crawl_news(page):
             if (seen.has(fullLink)) continue;
             seen.add(fullLink);
 
-            // Image — check inside the anchor first, then its parent wrapper
+            // Image: inside the anchor or its direct parent wrapper
             const imgEl = link.querySelector('img')
                        || link.parentElement?.querySelector('img');
             const imgSrc = imgEl
@@ -129,13 +134,12 @@ async def crawl_news(page):
                 : '';
             const image = fixUrl(imgSrc);
 
-            // Title — prefer semantic heading / named class, else all text
+            // Title
             const titleEl = link.querySelector(
                 'h1, h2, h3, h4, [class*="title"], [class*="name"], p'
             );
             let title = titleEl ? titleEl.textContent.trim() : '';
             if (!title) {
-                // strip decorative child nodes, grab remaining text
                 const clone = link.cloneNode(true);
                 clone.querySelectorAll('img, svg, [class*="tag"], [class*="badge"], time')
                      .forEach(el => el.remove());
@@ -143,7 +147,7 @@ async def crawl_news(page):
             }
             title = title.slice(0, 120);
 
-            // Tag / category badge
+            // Tag
             const tagEl = link.querySelector(
                 '[class*="tag"], [class*="badge"], [class*="cat"], [class*="type"], [class*="label"]'
             );
@@ -163,22 +167,21 @@ async def crawl_news(page):
         return items.slice(0, 30);
     }""")
 
+    print(f"[news]   extracted {len(items)} items")
+
     if not items:
-        print("WARNING: no news items extracted", file=sys.stderr)
+        print("WARNING: page loaded but 0 news items extracted", file=sys.stderr)
         return False
 
     with open("wingzero_news.json", "w", encoding="utf-8", newline="\n") as f:
         json.dump(items, f, ensure_ascii=False, indent=2)
-
-    print(f"  news    ✓ {len(items)} items → wingzero_news.json")
+    print(f"[news]   ✓ {len(items)} items → wingzero_news.json")
     return True
 
 
-# ── main ─────────────────────────────────────────────────────────────────────
-
 async def main():
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    print(f"[{now_utc}] Starting WingZero crawler")
+    print(f"=== WingZero crawler started {now_utc} ===")
 
     async with async_playwright() as pw:
         browser = await pw.chromium.launch(headless=True)
@@ -193,10 +196,13 @@ async def main():
         )
         page = await ctx.new_page()
 
-        # Events first → establishes CF session cookie for the domain
+        # Pipe browser console.log to stdout for debugging
+        page.on("console", lambda msg: print(f"  [browser] {msg.text}") if msg.type == "log" else None)
+
+        # Events first — establishes CF session cookie for the domain
         events_ok = await crawl_events(page)
 
-        # News second → same session, CF cookie already present
+        # News second — same session, CF cookie already present
         news_ok = await crawl_news(page)
 
         await browser.close()
@@ -206,6 +212,8 @@ async def main():
     if not events_ok:
         print("FATAL: events crawl failed", file=sys.stderr)
         sys.exit(1)
+
+    print("=== Done ===")
 
 
 if __name__ == "__main__":
