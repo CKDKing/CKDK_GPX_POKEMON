@@ -1,107 +1,185 @@
 #!/usr/bin/env python3
 """
-Daily crawler: fetches Pokémon GO events + news pages from pokemon.wingzero.tw
-using Playwright (headless Chromium) to bypass bot protection.
+Daily crawler: fetches Pokémon GO events + news from pokemon.wingzero.tw
+using Playwright (headless Chromium) to bypass Cloudflare bot protection.
 
 GitHub Actions runs this at UTC 16:00 (= Taiwan 00:00) every day.
-Saves:
-  wingzero_events_real.html  — /zh-TW/data/pokemon-go-events
-  wingzero_news_real.html    — /zh-TW/news
+Outputs:
+  wingzero_events_real.html  — raw HTML for event Gantt parsing
+  wingzero_news.json         — structured [{title, image, link, tag, date}, ...]
 """
 import asyncio
+import json
 import sys
 from datetime import datetime, timezone
 
 from playwright.async_api import async_playwright
 
-TIMEOUT_MS = 60_000
+TIMEOUT_MS  = 90_000   # generous: CF challenge can take ~10-30 s
 
-PAGES = [
-    {
-        "url":        "https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events",
-        "wait_until": "networkidle",
-        "selector":   ".go-events-shell",
-        "markers":    ["go-event-live-card", "go-event-upcoming-card"],
-        "output":     "wingzero_events_real.html",
-        "required":   True,
-    },
-    {
-        "url":        "https://pokemon.wingzero.tw/zh-TW/news",
-        "wait_until": "domcontentloaded",   # news page has many images → networkidle never fires
-        # After DOMContentLoaded, wait until actual article links appear in the DOM.
-        # a[href*="/zh-TW/news/"] matches individual articles (not the listing nav link).
-        "content_selector": "a[href*='/zh-TW/news/']",
-        "content_timeout":  25_000,          # up to 25 s for JS to render articles
-        "wait_extra":       2000,            # small buffer after articles appear
-        "selector":         "body",          # just confirms page loaded
-        "markers":          ["wingzero"],
-        "output":           "wingzero_news_real.html",
-        "required":         False,           # log warning only on failure
-    },
-]
+# Cloudflare "hold on" title patterns
+CF_TITLES = ["請稍候", "Just a moment", "Checking your browser", "Please wait"]
 
 
-async def crawl_page(page, cfg):
-    now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-    print(f"[{now_utc}] Fetching {cfg['url']}")
+# ── helpers ──────────────────────────────────────────────────────────────────
 
-    # Navigate
+async def wait_for_cf(page, max_ms=35_000):
+    """Block until the Cloudflare challenge title disappears."""
     try:
-        await page.goto(
-            cfg["url"],
-            wait_until=cfg.get("wait_until", "networkidle"),
-            timeout=TIMEOUT_MS,
+        await page.wait_for_function(
+            """() => {
+                const t = document.title;
+                return !['請稍候','Just a moment','Checking your browser','Please wait']
+                       .some(s => t.includes(s));
+            }""",
+            timeout=max_ms,
+            polling=1000,
         )
-    except Exception as e:
-        if cfg.get("required", True):
-            print(f"ERROR: Page load failed — {e}", file=sys.stderr)
-            return False
-        print(f"WARNING: goto timed out, still attempting content grab — {e}", file=sys.stderr)
-
-    # Wait for initial page selector (e.g. body)
-    try:
-        await page.wait_for_selector(cfg["selector"], timeout=10_000)
+        print("  CF challenge resolved")
+        await page.wait_for_timeout(1500)   # brief pause after redirect
     except Exception:
-        pass
+        title = await page.title()
+        print(f"WARNING: CF challenge not resolved (title: '{title}')", file=sys.stderr)
 
-    # For news: wait until article links actually appear in the DOM
-    if "content_selector" in cfg:
-        try:
-            await page.wait_for_selector(
-                cfg["content_selector"],
-                timeout=cfg.get("content_timeout", 20_000),
-            )
-            print(f"  Article links detected in DOM")
-        except Exception:
-            print(f"WARNING: content selector '{cfg['content_selector']}' not found within timeout", file=sys.stderr)
 
-    extra = cfg.get("wait_extra", 0)
-    if extra:
-        await page.wait_for_timeout(extra)
+# ── individual crawlers ───────────────────────────────────────────────────────
 
-    html = await page.content()
-
-    if not any(m in html for m in cfg["markers"]):
-        print(
-            f"ERROR: None of {cfg['markers']} found in {len(html):,}-byte response",
-            file=sys.stderr,
-        )
+async def crawl_events(page):
+    """Fetch events page → save wingzero_events_real.html.  Returns True on success."""
+    url = "https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events"
+    print(f"  events  → {url}")
+    try:
+        await page.goto(url, wait_until="networkidle", timeout=TIMEOUT_MS)
+    except Exception as e:
+        print(f"ERROR: events page load failed — {e}", file=sys.stderr)
         return False
 
-    with open(cfg["output"], "w", encoding="utf-8", newline="\n") as f:
-        f.write(html)
+    html = await page.content()
+    markers = ["go-event-live-card", "go-event-upcoming-card"]
+    if not any(m in html for m in markers):
+        print(f"ERROR: events markers not found in {len(html):,}-byte response", file=sys.stderr)
+        return False
 
-    # Debug stats for news
-    if "content_selector" in cfg:
-        import re
-        art_count  = len(re.findall(r'/zh-TW/news/', html))
-        print(f"SUCCESS: {cfg['output']} — {len(html):,} bytes | news-links≈{art_count}")
-    else:
-        print(f"SUCCESS: {cfg['output']} — {len(html):,} bytes")
+    with open("wingzero_events_real.html", "w", encoding="utf-8", newline="\n") as f:
+        f.write(html)
+    print(f"  events  ✓ {len(html):,} bytes → wingzero_events_real.html")
     return True
 
 
+async def crawl_news(page):
+    """
+    Fetch news page → extract structured JSON → save wingzero_news.json.
+    Returns True on success (even partial results count).
+    Runs in the same browser session as crawl_events(), so the CF session
+    cookie from the events page should already be set.
+    """
+    url = "https://pokemon.wingzero.tw/zh-TW/news"
+    print(f"  news    → {url}")
+
+    try:
+        await page.goto(url, wait_until="domcontentloaded", timeout=TIMEOUT_MS)
+    except Exception as e:
+        print(f"WARNING: news goto timed out, trying content grab — {e}", file=sys.stderr)
+
+    # Handle Cloudflare challenge if it appeared
+    title = await page.title()
+    if any(cf in title for cf in CF_TITLES):
+        print(f"  CF challenge detected (title: '{title}'), waiting…")
+        await wait_for_cf(page)
+
+    # Wait for actual article links to appear in DOM (up to 30 s)
+    try:
+        await page.wait_for_selector("a[href*='/zh-TW/news/']", timeout=30_000)
+        print("  article links found in DOM")
+    except Exception:
+        print("WARNING: article links not found within 30 s", file=sys.stderr)
+
+    await page.wait_for_timeout(1500)   # let lazy images register src attributes
+
+    # Extract structured data directly from the live DOM
+    items = await page.evaluate("""() => {
+        const BASE = 'https://pokemon.wingzero.tw';
+        const fixUrl = (u) => {
+            if (!u || u.startsWith('data:')) return '';
+            if (u.startsWith('//')) return 'https:' + u;
+            if (u.startsWith('/'))  return BASE + u;
+            return u;
+        };
+
+        const seen  = new Set();
+        const items = [];
+
+        // Collect all anchors pointing to an individual news article
+        const links = [...document.querySelectorAll('a[href]')].filter(a => {
+            const h = a.getAttribute('href') || '';
+            return /\/zh-TW\/news\/[^?#\s]+/.test(h);
+        });
+
+        for (const link of links) {
+            const href     = link.getAttribute('href');
+            const fullLink = href.startsWith('http') ? href : BASE + href;
+            if (seen.has(fullLink)) continue;
+            seen.add(fullLink);
+
+            // Image — check inside the anchor first, then its parent wrapper
+            const imgEl = link.querySelector('img')
+                       || link.parentElement?.querySelector('img');
+            const imgSrc = imgEl
+                ? (imgEl.getAttribute('src') || imgEl.getAttribute('data-src') || '')
+                : '';
+            const image = fixUrl(imgSrc);
+
+            // Title — prefer semantic heading / named class, else all text
+            const titleEl = link.querySelector(
+                'h1, h2, h3, h4, [class*="title"], [class*="name"], p'
+            );
+            let title = titleEl ? titleEl.textContent.trim() : '';
+            if (!title) {
+                // strip decorative child nodes, grab remaining text
+                const clone = link.cloneNode(true);
+                clone.querySelectorAll('img, svg, [class*="tag"], [class*="badge"], time')
+                     .forEach(el => el.remove());
+                title = clone.textContent.trim().replace(/\\s+/g, ' ');
+            }
+            title = title.slice(0, 120);
+
+            // Tag / category badge
+            const tagEl = link.querySelector(
+                '[class*="tag"], [class*="badge"], [class*="cat"], [class*="type"], [class*="label"]'
+            );
+            const tag = tagEl ? tagEl.textContent.trim() : 'Pokémon GO';
+
+            // Date
+            const dateEl = link.querySelector('time, [class*="date"], [class*="time"]');
+            const date   = dateEl
+                ? (dateEl.getAttribute('datetime') || dateEl.textContent.trim())
+                : '';
+
+            if (title || image) {
+                items.push({ title, image, link: fullLink, tag, date });
+            }
+        }
+
+        return items.slice(0, 30);
+    }""")
+
+    if not items:
+        print("WARNING: no news items extracted", file=sys.stderr)
+        return False
+
+    with open("wingzero_news.json", "w", encoding="utf-8", newline="\n") as f:
+        json.dump(items, f, ensure_ascii=False, indent=2)
+
+    print(f"  news    ✓ {len(items)} items → wingzero_news.json")
+    return True
+
+
+# ── main ─────────────────────────────────────────────────────────────────────
+
 async def main():
+    now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    print(f"[{now_utc}] Starting WingZero crawler")
+
     async with async_playwright() as pw:
         browser = await pw.chromium.launch(headless=True)
         ctx = await browser.new_context(
@@ -115,18 +193,18 @@ async def main():
         )
         page = await ctx.new_page()
 
-        any_required_failed = False
-        for cfg in PAGES:
-            ok = await crawl_page(page, cfg)
-            if not ok:
-                if cfg.get("required", True):
-                    any_required_failed = True
-                else:
-                    print(f"WARNING: {cfg['output']} skipped (non-critical)", file=sys.stderr)
+        # Events first → establishes CF session cookie for the domain
+        events_ok = await crawl_events(page)
+
+        # News second → same session, CF cookie already present
+        news_ok = await crawl_news(page)
 
         await browser.close()
 
-    if any_required_failed:
+    if not news_ok:
+        print("WARNING: news crawl incomplete (non-critical)", file=sys.stderr)
+    if not events_ok:
+        print("FATAL: events crawl failed", file=sys.stderr)
         sys.exit(1)
 
 
