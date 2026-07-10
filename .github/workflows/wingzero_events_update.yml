@@ -22,7 +22,10 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests
+        run: |
+          pip install playwright
+          playwright install chromium
+          playwright install-deps chromium
 
       - name: Crawl WingZero events page
         run: python wingzero_events_crawler.py
