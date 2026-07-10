@@ -743,6 +743,36 @@
       0%,100%    { translate: 0 0; }
       50%        { translate: var(--dx, 5px) var(--dy, -7px); }
     }
+
+    /* ══════════════════════════════════════════
+       MOBILE PORTRAIT  (portrait phone ≤ 480 px)
+    ══════════════════════════════════════════ */
+    @media (max-width: 480px) {
+      :root {
+        --card-w: 78px;
+        --card-h: 109px;
+      }
+      body { overflow-x: hidden; }
+
+      .showcase { padding: 24px 12px; gap: 20px; }
+
+      /* Fan strip — scaled to fit ~375 px viewport */
+      .card-slot { margin: 0 -8px; }
+      .card-slot:nth-child(1) { transform: rotate(-10deg) translateY(10px); }
+      .card-slot:nth-child(2) { transform: rotate( -5deg) translateY( 5px); }
+      .card-slot:nth-child(3) { transform: rotate(  0deg) translateY( 0px); }
+      .card-slot:nth-child(4) { transform: rotate(  5deg) translateY( 5px); }
+      .card-slot:nth-child(5) { transform: rotate( 10deg) translateY(10px); }
+      .card-label { bottom: -18px; font-size: 0.6rem; }
+
+      /* Single mode */
+      .single-row  { gap: 14px; }
+      .single-wrap { width: 160px; height: 224px; }
+
+      /* Shared controls */
+      .arrow-btn { width: 36px; height: 36px; font-size: 1rem; }
+      .draw-btn  { padding: 11px 28px; font-size: 0.8rem; }
+    }
   </style>
 </head>
 <body>
@@ -952,7 +982,14 @@ const STACK_T = [
 ];
 const STACK_Z = [5, 4, 3, 2, 1];
 
-const FAN_T = [
+const _mob = window.innerWidth <= 480;
+const FAN_T = _mob ? [
+  'translateX(-85px) translateY(8px) rotate(-10deg)',
+  'translateX(-42px) translateY(3px) rotate(-5deg)',
+  'translateX(  0px) translateY(0px) rotate(0deg)',
+  'translateX(+42px) translateY(3px) rotate(+5deg)',
+  'translateX(+85px) translateY(8px) rotate(+10deg)',
+] : [
   'translateX(-240px) translateY(12px) rotate(-10deg)',
   'translateX(-120px) translateY( 4px) rotate( -5deg)',
   'translateX(   0px) translateY( 0px) rotate(  0deg)',
@@ -1125,8 +1162,8 @@ const slots   = document.querySelectorAll('.card-slot');
 const dots    = document.querySelectorAll('.dot');
 const navRow  = document.getElementById('navRow');
 const strip   = document.getElementById('cardStrip');
-const ROTS    = [-12,-6,0,6,12];
-const YS      = [14, 6, 0, 6, 14];
+const ROTS    = _mob ? [-10, -5, 0, 5, 10] : [-12, -6, 0, 6, 12];
+const YS      = _mob ? [10,   5, 0, 5, 10] : [14,   6, 0, 6, 14];
 let fanActive = -1;
 
 slots.forEach(slot => {
