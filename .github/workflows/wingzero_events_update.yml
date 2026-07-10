@@ -23,11 +23,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install playwright "playwright-stealth==1.0.6"
+          pip install playwright requests beautifulsoup4
           playwright install chromium
           playwright install-deps chromium
 
-      - name: Crawl WingZero events page
+      - name: Crawl events (wingzero.tw) and news (pokemongo.com)
         run: python wingzero_events_crawler.py
 
       - name: Commit and push if changed
@@ -35,10 +35,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add wingzero_events_real.html
-          git add wingzero_news.json 2>/dev/null || true
+          git add pgo_news.json 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "No changes detected — skipping commit"
           else
-            git commit -m "data: WingZero Events auto-update $(date -u '+%Y-%m-%d %H:%M') UTC"
+            git commit -m "data: PoGO data auto-update $(date -u '+%Y-%m-%d %H:%M') UTC"
             git push
           fi
