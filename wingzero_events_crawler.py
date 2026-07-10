@@ -92,7 +92,7 @@ def crawl_news():
     with open(NEWS_OUT, "w", encoding="utf-8", newline="\n") as f:
         json.dump(items[:30], f, ensure_ascii=False, indent=2)
 
-    print(f"[news]  ✓ {len(items)} items → {NEWS_OUT}")
+    print(f"[news]  ✓ {min(len(items),30)} items → {NEWS_OUT}")
     return True
 
 
@@ -122,7 +122,22 @@ async def crawl_events():
             await browser.close()
             return False
 
-        html = await page.content()
+        # Extract only the event card elements (not the full page with ads)
+        html = await page.evaluate("""() => {
+            const selectors = [
+                '.go-event-live-card',
+                '.go-event-upcoming-card',
+                '.go-event-ended-card',
+                '.go-event-upcoming-raid-card',
+                '.go-event-live-raid-card',
+                '.go-event-timeline'
+            ];
+            const parts = [];
+            selectors.forEach(sel => {
+                document.querySelectorAll(sel).forEach(el => parts.push(el.outerHTML));
+            });
+            return '<html><body>' + parts.join('\\n') + '</body></html>';
+        }""")
         await browser.close()
 
     markers = ["go-event-live-card", "go-event-upcoming-card"]
