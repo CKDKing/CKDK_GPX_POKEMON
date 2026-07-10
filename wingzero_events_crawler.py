@@ -14,6 +14,7 @@ import sys
 from datetime import datetime, timezone
 
 from playwright.async_api import async_playwright
+from playwright_stealth import stealth_async
 
 EVENT_TIMEOUT_MS = 90_000
 NEWS_TIMEOUT_MS  = 120_000  # longer: news page has many images
@@ -195,9 +196,7 @@ async def main():
             viewport={"width": 1280, "height": 900},
         )
         page = await ctx.new_page()
-
-        # Pipe browser console.log to stdout for debugging
-        page.on("console", lambda msg: print(f"  [browser] {msg.text}") if msg.type == "log" else None)
+        await stealth_async(page)   # patch headless fingerprints to bypass CF bot detection
 
         # Events first — establishes CF session cookie for the domain
         events_ok = await crawl_events(page)
