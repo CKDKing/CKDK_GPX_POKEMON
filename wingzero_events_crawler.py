@@ -16,16 +16,21 @@ from playwright.async_api import async_playwright
 
 PAGES = [
     {
-        "url":      "https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events",
-        "selector": ".go-events-shell",
-        "markers":  ["go-event-live-card", "go-event-upcoming-card"],
-        "output":   "wingzero_events_real.html",
+        "url":        "https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events",
+        "wait_until": "networkidle",
+        "selector":   ".go-events-shell",
+        "markers":    ["go-event-live-card", "go-event-upcoming-card"],
+        "output":     "wingzero_events_real.html",
+        "required":   True,   # job fails if this page fails
     },
     {
-        "url":      "https://pokemon.wingzero.tw/zh-TW/news",
-        "selector": "main, article, .page, #__nuxt",
-        "markers":  ["pokemon.wingzero.tw", "wingzero"],
-        "output":   "wingzero_news_real.html",
+        "url":        "https://pokemon.wingzero.tw/zh-TW/news",
+        "wait_until": "domcontentloaded",   # SPA keeps firing requests → never networkidle
+        "wait_extra": 6000,                  # extra ms after DOMContentLoaded for JS render
+        "selector":   "main, article, #__nuxt, body",
+        "markers":    ["wingzero"],
+        "output":     "wingzero_news_real.html",
+        "required":   False,  # log warning only; events still commit on news failure
     },
 ]
 
@@ -37,8 +42,15 @@ async def crawl_page(page, cfg):
     print(f"[{now_utc}] Fetching {cfg['url']}")
 
     try:
-        await page.goto(cfg["url"], wait_until="networkidle", timeout=TIMEOUT_MS)
-        await page.wait_for_selector(cfg["selector"], timeout=30_000)
+        await page.goto(
+            cfg["url"],
+            wait_until=cfg.get("wait_until", "networkidle"),
+            timeout=TIMEOUT_MS,
+        )
+        await page.wait_for_selector(cfg["selector"], timeout=20_000)
+        extra = cfg.get("wait_extra", 0)
+        if extra:
+            await page.wait_for_timeout(extra)
     except Exception as e:
         print(f"ERROR: Page load failed — {e}", file=sys.stderr)
         return False
@@ -74,14 +86,18 @@ async def main():
         )
         page = await ctx.new_page()
 
-        results = []
+        any_required_failed = False
         for cfg in PAGES:
             ok = await crawl_page(page, cfg)
-            results.append(ok)
+            if not ok:
+                if cfg.get("required", True):
+                    any_required_failed = True
+                else:
+                    print(f"WARNING: {cfg['output']} skipped (non-critical)", file=sys.stderr)
 
         await browser.close()
 
-    if not all(results):
+    if any_required_failed:
         sys.exit(1)
 
 
