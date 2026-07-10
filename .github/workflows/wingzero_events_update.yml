@@ -1,0 +1,40 @@
+name: WingZero Events Daily Update
+
+on:
+  schedule:
+    - cron: '0 16 * * *'   # UTC 16:00 = 台灣 00:00 (午夜)
+  workflow_dispatch:         # 允許手動觸發
+
+permissions:
+  contents: write
+
+jobs:
+  update-events:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Crawl WingZero events page
+        run: python wingzero_events_crawler.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add wingzero_events_real.html
+          if git diff --staged --quiet; then
+            echo "No changes detected — skipping commit"
+          else
+            git commit -m "data: WingZero Events auto-update $(date -u '+%Y-%m-%d %H:%M') UTC"
+            git push
+          fi
