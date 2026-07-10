@@ -14,6 +14,8 @@ from datetime import datetime, timezone
 
 from playwright.async_api import async_playwright
 
+TIMEOUT_MS = 60_000
+
 PAGES = [
     {
         "url":        "https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events",
@@ -21,46 +23,67 @@ PAGES = [
         "selector":   ".go-events-shell",
         "markers":    ["go-event-live-card", "go-event-upcoming-card"],
         "output":     "wingzero_events_real.html",
-        "required":   True,   # job fails if this page fails
+        "required":   True,
     },
     {
         "url":        "https://pokemon.wingzero.tw/zh-TW/news",
-        "wait_until": "domcontentloaded",   # SPA keeps firing requests → never networkidle
-        "wait_extra": 6000,                  # extra ms after DOMContentLoaded for JS render
-        "selector":   "main, article, #__nuxt, body",
-        "markers":    ["wingzero"],
-        "output":     "wingzero_news_real.html",
-        "required":   False,  # log warning only; events still commit on news failure
+        "wait_until": "domcontentloaded",   # news page has many images → networkidle never fires
+        # After DOMContentLoaded, wait until actual article links appear in the DOM.
+        # a[href*="/zh-TW/news/"] matches individual articles (not the listing nav link).
+        "content_selector": "a[href*='/zh-TW/news/']",
+        "content_timeout":  25_000,          # up to 25 s for JS to render articles
+        "wait_extra":       2000,            # small buffer after articles appear
+        "selector":         "body",          # just confirms page loaded
+        "markers":          ["wingzero"],
+        "output":           "wingzero_news_real.html",
+        "required":         False,           # log warning only on failure
     },
 ]
-
-TIMEOUT_MS = 60_000
 
 
 async def crawl_page(page, cfg):
     now_utc = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     print(f"[{now_utc}] Fetching {cfg['url']}")
 
+    # Navigate
     try:
         await page.goto(
             cfg["url"],
             wait_until=cfg.get("wait_until", "networkidle"),
             timeout=TIMEOUT_MS,
         )
-        await page.wait_for_selector(cfg["selector"], timeout=20_000)
-        extra = cfg.get("wait_extra", 0)
-        if extra:
-            await page.wait_for_timeout(extra)
     except Exception as e:
-        print(f"ERROR: Page load failed — {e}", file=sys.stderr)
-        return False
+        if cfg.get("required", True):
+            print(f"ERROR: Page load failed — {e}", file=sys.stderr)
+            return False
+        print(f"WARNING: goto timed out, still attempting content grab — {e}", file=sys.stderr)
+
+    # Wait for initial page selector (e.g. body)
+    try:
+        await page.wait_for_selector(cfg["selector"], timeout=10_000)
+    except Exception:
+        pass
+
+    # For news: wait until article links actually appear in the DOM
+    if "content_selector" in cfg:
+        try:
+            await page.wait_for_selector(
+                cfg["content_selector"],
+                timeout=cfg.get("content_timeout", 20_000),
+            )
+            print(f"  Article links detected in DOM")
+        except Exception:
+            print(f"WARNING: content selector '{cfg['content_selector']}' not found within timeout", file=sys.stderr)
+
+    extra = cfg.get("wait_extra", 0)
+    if extra:
+        await page.wait_for_timeout(extra)
 
     html = await page.content()
 
     if not any(m in html for m in cfg["markers"]):
         print(
-            f"ERROR: None of {cfg['markers']} found in "
-            f"{len(html):,}-byte response",
+            f"ERROR: None of {cfg['markers']} found in {len(html):,}-byte response",
             file=sys.stderr,
         )
         return False
@@ -68,7 +91,13 @@ async def crawl_page(page, cfg):
     with open(cfg["output"], "w", encoding="utf-8", newline="\n") as f:
         f.write(html)
 
-    print(f"SUCCESS: {cfg['output']} — {len(html):,} bytes")
+    # Debug stats for news
+    if "content_selector" in cfg:
+        import re
+        art_count  = len(re.findall(r'/zh-TW/news/', html))
+        print(f"SUCCESS: {cfg['output']} — {len(html):,} bytes | news-links≈{art_count}")
+    else:
+        print(f"SUCCESS: {cfg['output']} — {len(html):,} bytes")
     return True
 
 
