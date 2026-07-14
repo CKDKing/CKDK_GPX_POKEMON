@@ -1,32 +1,34 @@
 {
-  "scan_timestamp": "2026-07-13T22:01:46.974493",
-  "scan_date": "2026-07-13",
-  "total": 40,
+  "scan_timestamp": "2026-07-14T22:02:25.132297",
+  "scan_date": "2026-07-14",
+  "total": 38,
   "events": [
     {
-      "region": "🇹🇷 土耳其",
-      "region_code": "tr",
-      "event_name": "Mayıs 2026 Topluluk Günü: Lechonk",
-      "start_date": "2026-05-09",
+      "region": "🇮🇹 義大利",
+      "region_code": "it",
+      "event_name": "Community Day Classico di maggio 2026 dedicato a Deino",
+      "start_date": "2026-05-16",
       "end_date": null,
       "status": "active",
-      "url": "https://pokemongo.com/tr/news/communityday-may-2026-lechonk",
-      "article_slug": "communityday-may-2026-lechonk",
+      "url": "https://pokemongo.com/it/news/communitydayclassic-deino-may-2026",
+      "article_slug": "communitydayclassic-deino-may-2026",
       "found_in_regions": [
+        "it",
         "tr"
       ]
     },
     {
-      "region": "🇯🇵 日本",
-      "region_code": "ja",
-      "event_name": "特別なデザインの「Pokémon GO ギフトカード」が発売決定！",
-      "start_date": "2026-05-29",
+      "region": "🇹🇷 土耳其",
+      "region_code": "tr",
+      "event_name": "Community Day Classico di maggio 2026 dedicato a Deino",
+      "start_date": "2026-05-16",
       "end_date": null,
       "status": "active",
-      "url": "https://pokemongo.com/ja/news/pokemongogiftcard_gofest2026",
-      "article_slug": "pokemongogiftcard_gofest2026",
+      "url": "https://pokemongo.com/tr/news/communitydayclassic-deino-may-2026",
+      "article_slug": "communitydayclassic-deino-may-2026",
       "found_in_regions": [
-        "ja"
+        "it",
+        "tr"
       ]
     },
     {
@@ -88,47 +90,15 @@
       ]
     },
     {
-      "region": "🇮🇹 義大利",
-      "region_code": "it",
-      "event_name": "अगले सीज़न के कम्युनिटी डे के लिए तारीखें नोट कर लें!",
-      "start_date": "2026-06-20",
-      "end_date": "2026-08-22",
-      "status": "active",
-      "url": "https://pokemongo.com/it/news/save-the-date-s23",
-      "article_slug": "save-the-date-s23",
-      "found_in_regions": [
-        "hi",
-        "it",
-        "tr"
-      ]
-    },
-    {
       "region": "🇹🇷 土耳其",
       "region_code": "tr",
-      "event_name": "अगले सीज़न के कम्युनिटी डे के लिए तारीखें नोट कर लें!",
+      "event_name": "Gelecek Sezonun Topluluk Günü tarihlerini işaretleyin!",
       "start_date": "2026-06-20",
       "end_date": "2026-07-18",
       "status": "active",
       "url": "https://pokemongo.com/tr/news/save-the-date-s23",
       "article_slug": "save-the-date-s23",
       "found_in_regions": [
-        "hi",
-        "it",
-        "tr"
-      ]
-    },
-    {
-      "region": "🇮🇳 印度",
-      "region_code": "hi",
-      "event_name": "अगले सीज़न के कम्युनिटी डे के लिए तारीखें नोट कर लें!",
-      "start_date": "2026-06-27",
-      "end_date": "2026-08-22",
-      "status": "active",
-      "url": "https://pokemongo.com/hi/news/save-the-date-s23",
-      "article_slug": "save-the-date-s23",
-      "found_in_regions": [
-        "hi",
-        "it",
         "tr"
       ]
     },
@@ -240,7 +210,7 @@
       "region": "🇹🇼 台灣",
       "region_code": "zh_hant",
       "event_name": "關於「Pokémon GO Fest 2026：東京」公園遊記「極致超級團體戰」的最新消息",
-      "start_date": "2026-07-13",
+      "start_date": "2026-07-14",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/zh_hant/news/gofest-tokyo-super-mega-raid",
@@ -254,7 +224,7 @@
       "region": "🇯🇵 日本",
       "region_code": "ja",
       "event_name": "公式パートナーと「Pokémon GO Fest 2026：東京」をもっと楽しみましょう！",
-      "start_date": "2026-07-13",
+      "start_date": "2026-07-14",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ja/news/gofest2026tokyo_partner",
@@ -264,10 +234,25 @@
       ]
     },
     {
+      "region": "🇮🇳 印度",
+      "region_code": "hi",
+      "event_name": "GO पास: मई में प्रगति करने पर पोकेकॉइन कमाएँ!",
+      "start_date": "2026-07-14",
+      "end_date": "2026-07-15",
+      "status": "active",
+      "url": "https://pokemongo.com/hi/news/go-pass-may-2026",
+      "article_slug": "go-pass-may-2026",
+      "found_in_regions": [
+        "hi",
+        "it",
+        "tr"
+      ]
+    },
+    {
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "Super Mega Raid Update at Pokémon GO Fest 2026: Copenhagen Park Experience",
-      "start_date": "2026-07-13",
+      "start_date": "2026-07-14",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/en/news/gofest-copenhagen-super-mega-raid",
@@ -277,23 +262,10 @@
       ]
     },
     {
-      "region": "🇺🇸 英文",
-      "region_code": "en",
-      "event_name": "Super Mega Raid Update at Pokémon GO Fest 2026: Chicago Park Experience",
-      "start_date": "2026-07-13",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/en/news/gofest-chicago-super-mega-raid",
-      "article_slug": "gofest-chicago-super-mega-raid",
-      "found_in_regions": [
-        "en"
-      ]
-    },
-    {
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-07-13",
+      "start_date": "2026-07-14",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -306,7 +278,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-07-13",
+      "start_date": "2026-07-14",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -483,16 +455,33 @@
       ]
     },
     {
-      "region": "🇧🇷 巴西",
-      "region_code": "pt_br",
-      "event_name": "Confiram o vencedor do sorteio brasileiro do #GOMemories!",
+      "region": "🇮🇹 義大利",
+      "region_code": "it",
+      "event_name": "GO पास: मई में प्रगति करने पर पोकेकॉइन कमाएँ!",
       "start_date": null,
       "end_date": null,
       "status": "unknown",
-      "url": "https://pokemongo.com/pt_br/news/gomemories_brazil_winner",
-      "article_slug": "gomemories_brazil_winner",
+      "url": "https://pokemongo.com/it/news/go-pass-may-2026",
+      "article_slug": "go-pass-may-2026",
       "found_in_regions": [
-        "pt_br"
+        "hi",
+        "it",
+        "tr"
+      ]
+    },
+    {
+      "region": "🇹🇷 土耳其",
+      "region_code": "tr",
+      "event_name": "GO पास: मई में प्रगति करने पर पोकेकॉइन कमाएँ!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/tr/news/go-pass-may-2026",
+      "article_slug": "go-pass-may-2026",
+      "found_in_regions": [
+        "hi",
+        "it",
+        "tr"
       ]
     },
     {
@@ -519,20 +508,6 @@
       "article_slug": "gofest-chicago-saturday-update",
       "found_in_regions": [
         "en"
-      ]
-    },
-    {
-      "region": "🇮🇹 義大利",
-      "region_code": "it",
-      "event_name": "Allaccia le scarpe e preparati per una maratona primaverile!",
-      "start_date": null,
-      "end_date": null,
-      "status": "unknown",
-      "url": "https://pokemongo.com/it/news/spring-marathon-2026",
-      "article_slug": "spring-marathon-2026",
-      "found_in_regions": [
-        "it",
-        "tr"
       ]
     },
     {
