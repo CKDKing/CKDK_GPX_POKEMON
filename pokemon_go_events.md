@@ -1,6 +1,6 @@
 # 🗺️ Pokémon GO 地區限定活動
 
-> 掃描時間：**2026-07-18 21:55**（台灣時間）
+> 掃描時間：**2026-07-19 21:57**（台灣時間）
 > 僅顯示地區限定活動，已結束的不列入
 > 全球性共同活動不列入
 
@@ -16,10 +16,10 @@
 | 🇧🇷 巴西 | Preparem-se para as Celebrações Comunitárias do Pokémon GO Fest 2 | 2026-07-12 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pt_br/news/community-celebrations-go-fest-2026-details-ptbr) |
 | 🌎 拉丁美洲 | ¡Prepárense para las Celebraciones Comunitarias de Pokémon GO Fes | 2026-07-12 | — | ✅ 進行中 | [🔗](https://pokemongo.com/es_mx/news/community-celebrations-go-fest-2026-details-lat) |
 | 🇺🇸 英文 | Pokémon GO Fest 2026: Global final details! | 2026-07-12 | 2026-08-24 | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/go-fest-2026-global-final-details) |
-| 🇮🇹 義大利 | Mewtwo si megaevolve e arrivano altre entusiasmanti novità sul Fe | 2026-07-18 | — | ✅ 進行中 | [🔗](https://pokemongo.com/it/news/mega-mewtwo-gofest-2026) |
-| 🇹🇷 土耳其 | Mewtwo si megaevolve e arrivano altre entusiasmanti novità sul Fe | 2026-07-18 | — | ✅ 進行中 | [🔗](https://pokemongo.com/tr/news/mega-mewtwo-gofest-2026) |
-| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-07-18 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
-| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-07-18 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
+| 🇮🇹 義大利 | Mewtwo si megaevolve e arrivano altre entusiasmanti novità sul Fe | 2026-07-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/it/news/mega-mewtwo-gofest-2026) |
+| 🇹🇷 土耳其 | Mewtwo si megaevolve e arrivano altre entusiasmanti novità sul Fe | 2026-07-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/tr/news/mega-mewtwo-gofest-2026) |
+| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-07-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
+| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-07-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
 | 🇯🇵 日本 | 『Pokémon GO』にマクドナルドが期間限定で登場！ | 2026-07-20 | 2026-09-01 | 🔜 即將開始 | [🔗](https://pokemongo.com/ja/news/202607backtomcd) |
 | 🇯🇵 日本 | 「ポケモンベースボールフェスタ2026」連携イベントの詳細（東京ヤクルトスワローズ） | 2026-07-20 | 2026-07-22 | 🔜 即將開始 | [🔗](https://pokemongo.com/ja/news/swallows_game) |
 | 🇧🇷 巴西 | Celebrem o 10º aniversário de Pokémon GO à moda do futebol! | 2026-07-20 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/pt_br/news/suitup_the_10) |
