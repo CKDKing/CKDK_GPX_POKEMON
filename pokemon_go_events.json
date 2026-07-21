@@ -1,12 +1,12 @@
 {
-  "scan_timestamp": "2026-07-20T22:03:42.619374",
-  "scan_date": "2026-07-20",
+  "scan_timestamp": "2026-07-21T22:07:08.987519",
+  "scan_date": "2026-07-21",
   "total": 27,
   "events": [
     {
       "region": "🇹🇭 泰國",
       "region_code": "th",
-      "event_name": "預備，起！趕快加入距離最近的「Pokémon RUN 30」活動！",
+      "event_name": "เตรียมตัว พร้อม... ไป! เข้าร่วมอีเวนต์ Pokémon RUN 30 ที่จัดใกล้คุณ!",
       "start_date": "2026-03-04",
       "end_date": "2027-09-10",
       "status": "active",
@@ -14,8 +14,21 @@
       "article_slug": "pokemon-run-30-2026",
       "found_in_regions": [
         "id",
-        "th",
-        "zh_hant"
+        "th"
+      ]
+    },
+    {
+      "region": "🇮🇳 印度",
+      "region_code": "hi",
+      "event_name": "ब्लांच, स्पार्क और कैंडेला के साथ मिलकर गर्मियों के रोमांचक सफर पर निकलें!",
+      "start_date": "2026-06-02",
+      "end_date": "2026-07-21",
+      "status": "active",
+      "url": "https://pokemongo.com/hi/news/global-events-gofest2026-overlays",
+      "article_slug": "global-events-gofest2026-overlays",
+      "found_in_regions": [
+        "hi",
+        "tr"
       ]
     },
     {
@@ -191,7 +204,7 @@
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-07-20",
+      "start_date": "2026-07-21",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -204,26 +217,13 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-07-20",
+      "start_date": "2026-07-21",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
       "article_slug": "welcome-to-tales-of-transformation",
       "found_in_regions": [
         "ru"
-      ]
-    },
-    {
-      "region": "🇹🇷 土耳其",
-      "region_code": "tr",
-      "event_name": "Mewtwo Mega Evrimleri ve diğer heyecan verici GO Festivali güncellemeleri!",
-      "start_date": "2026-07-20",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/tr/news/mega-mewtwo-gofest-2026",
-      "article_slug": "mega-mewtwo-gofest-2026",
-      "found_in_regions": [
-        "tr"
       ]
     },
     {
@@ -282,6 +282,19 @@
       ]
     },
     {
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
+      "event_name": "「ポケモンＪリーグフェス」との連携イベントを実施します！",
+      "start_date": "2026-08-08",
+      "end_date": "2027-06-20",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/ja/news/jleague_details",
+      "article_slug": "jleague_details",
+      "found_in_regions": [
+        "ja"
+      ]
+    },
+    {
       "region": "🇹🇼 台灣",
       "region_code": "zh_hant",
       "event_name": "台北捷運邀請你與《Pokémon GO》一起邁向下一個10週年！",
@@ -297,7 +310,7 @@
     {
       "region": "🇮🇩 印尼",
       "region_code": "id",
-      "event_name": "預備，起！趕快加入距離最近的「Pokémon RUN 30」活動！",
+      "event_name": "เตรียมตัว พร้อม... ไป! เข้าร่วมอีเวนต์ Pokémon RUN 30 ที่จัดใกล้คุณ!",
       "start_date": "2026-11-21",
       "end_date": "2027-01-23",
       "status": "upcoming",
@@ -305,23 +318,7 @@
       "article_slug": "pokemon-run-30-2026",
       "found_in_regions": [
         "id",
-        "th",
-        "zh_hant"
-      ]
-    },
-    {
-      "region": "🇹🇼 台灣",
-      "region_code": "zh_hant",
-      "event_name": "預備，起！趕快加入距離最近的「Pokémon RUN 30」活動！",
-      "start_date": "2026-11-21",
-      "end_date": "2027-01-23",
-      "status": "upcoming",
-      "url": "https://pokemongo.com/zh_hant/news/pokemon-run-30-2026",
-      "article_slug": "pokemon-run-30-2026",
-      "found_in_regions": [
-        "id",
-        "th",
-        "zh_hant"
+        "th"
       ]
     },
     {
