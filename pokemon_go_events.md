@@ -1,13 +1,13 @@
 # 🗺️ Pokémon GO 地區限定活動
 
-> 掃描時間：**2026-07-22 22:07**（台灣時間）
+> 掃描時間：**2026-07-23 22:07**（台灣時間）
 > 僅顯示地區限定活動，已結束的不列入
 > 全球性共同活動不列入
 
 | 地區 | 活動名稱 | 起點 | 終點 | 狀態 | 網頁 |
 | ---- | -------- | :--: | :--: | :--: | :--: |
 | 🇹🇭 泰國 | เตรียมตัว พร้อม... ไป! เข้าร่วมอีเวนต์ Pokémon RUN 30 ที่จัดใกล้ค | 2026-03-04 | 2027-09-10 | ✅ 進行中 | [🔗](https://pokemongo.com/th/news/pokemon-run-30-2026) |
-| 🇮🇳 印度 | ब्लांच, स्पार्क और कैंडेला के साथ मिलकर गर्मियों के रोमांचक सफर प | 2026-06-02 | 2026-07-22 | ✅ 進行中 | [🔗](https://pokemongo.com/hi/news/global-events-gofest2026-overlays) |
+| 🇮🇳 印度 | ब्लांच, स्पार्क और कैंडेला के साथ मिलकर गर्मियों के रोमांचक सफर प | 2026-06-02 | 2026-07-23 | ✅ 進行中 | [🔗](https://pokemongo.com/hi/news/global-events-gofest2026-overlays) |
 | 🇯🇵 日本 | 「『Pokémon GO』パートナーリサーチ」を開催します！ | 2026-06-19 | 2026-09-30 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/202606partnerresearch-jp) |
 | 🇧🇷 巴西 | Peguem um Tauros de Paldea da Espécie Aquática no Arraiá do Pokém | 2026-06-29 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pt_br/news/festa-junina-2026) |
 | 🇰🇷 韓國 | 올여름 한강에서 만나요! "Pokémon GO Fest 2026: 글로벌" 기념 한국 현장 이벤트 | 2026-07-11 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ko/news/ko-gofest-global-on-site-event-2026) |
@@ -18,11 +18,10 @@
 | 🌎 拉丁美洲 | ¡Prepárense para las Celebraciones Comunitarias de Pokémon GO Fes | 2026-07-12 | — | ✅ 進行中 | [🔗](https://pokemongo.com/es_mx/news/community-celebrations-go-fest-2026-details-lat) |
 | 🇺🇸 英文 | Pokémon GO Fest 2026: Global final details! | 2026-07-12 | 2026-08-24 | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/go-fest-2026-global-final-details) |
 | 🇯🇵 日本 | 『Pokémon GO』にマクドナルドが期間限定で登場！ | 2026-07-20 | 2026-09-01 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/202607backtomcd) |
-| 🇯🇵 日本 | 「ポケモンベースボールフェスタ2026」連携イベントの詳細（東京ヤクルトスワローズ） | 2026-07-20 | 2026-07-22 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/swallows_game) |
 | 🇧🇷 巴西 | Celebrem o 10º aniversário de Pokémon GO à moda do futebol! | 2026-07-20 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pt_br/news/suitup_the_10) |
 | 🌎 拉丁美洲 | ¡Celebren el 10.º aniversario de Pokémon GO al estilo futbolero! | 2026-07-20 | — | ✅ 進行中 | [🔗](https://pokemongo.com/es_mx/news/suitup_the_10_la) |
-| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-07-22 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
-| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-07-22 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
+| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-07-23 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
+| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-07-23 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
 | 🇯🇵 日本 | 「ポケモンベースボールフェスタ2026」連携イベントの詳細（マイナビオールスターゲーム2026） | 2026-07-28 | 2026-07-29 | 🔜 即將開始 | [🔗](https://pokemongo.com/ja/news/allstar) |
 | 🇺🇸 英文 | 「ポケモンジェット 赤」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！ | 2026-07-28 | 2027-08-31 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/2026_ana_red) |
 | 🇯🇵 日本 | 「ポケモンジェット 赤」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！ | 2026-07-28 | 2027-08-31 | 🔜 即將開始 | [🔗](https://pokemongo.com/ja/news/2026_ana_red) |
