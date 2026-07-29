@@ -1,6 +1,6 @@
 # 🗺️ Pokémon GO 地區限定活動
 
-> 掃描時間：**2026-07-28 22:08**（台灣時間）
+> 掃描時間：**2026-07-29 22:04**（台灣時間）
 > 僅顯示地區限定活動，已結束的不列入
 > 全球性共同活動不列入
 
@@ -24,8 +24,8 @@
 | 🇯🇵 日本 | 「ポケモンベースボールフェスタ2026」連携イベントの詳細（マイナビオールスターゲーム2026） | 2026-07-28 | 2026-07-29 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/allstar) |
 | 🇺🇸 英文 | 「ポケモンジェット 赤」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！ | 2026-07-28 | 2027-08-31 | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/2026_ana_red) |
 | 🇯🇵 日本 | 「ポケモンジェット 赤」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！ | 2026-07-28 | 2027-08-31 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/2026_ana_red) |
-| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-07-28 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
-| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-07-28 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
+| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-07-29 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
+| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-07-29 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
 | 🇺🇸 英文 | Welcome to Pokémon GO Summer Quest | 2026-08-01 | 2027-06-01 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/summer-quest) |
 | 🇯🇵 日本 | 「ポケモンＪリーグフェス」との連携イベントを実施します！ | 2026-08-08 | 2027-06-20 | 🔜 即將開始 | [🔗](https://pokemongo.com/ja/news/jleague_details) |
 | 🇹🇼 台灣 | 台北捷運邀請你與《Pokémon GO》一起邁向下一個10週年！ | 2026-08-15 | 2026-09-05 | 🔜 即將開始 | [🔗](https://pokemongo.com/zh_hant/news/2026daanpark) |

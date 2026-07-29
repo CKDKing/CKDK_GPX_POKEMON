@@ -1,6 +1,6 @@
 {
-  "scan_timestamp": "2026-07-28T22:08:39.988482",
-  "scan_date": "2026-07-28",
+  "scan_timestamp": "2026-07-29T22:04:19.089721",
+  "scan_date": "2026-07-29",
   "total": 27,
   "events": [
     {
@@ -246,7 +246,7 @@
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-07-28",
+      "start_date": "2026-07-29",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -259,7 +259,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-07-28",
+      "start_date": "2026-07-29",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
