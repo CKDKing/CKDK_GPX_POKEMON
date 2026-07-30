@@ -1,7 +1,7 @@
 {
-  "scan_timestamp": "2026-07-29T22:04:19.089721",
-  "scan_date": "2026-07-29",
-  "total": 27,
+  "scan_timestamp": "2026-07-30T22:10:25.872306",
+  "scan_date": "2026-07-30",
+  "total": 28,
   "events": [
     {
       "region": "🇹🇭 泰國",
@@ -28,6 +28,22 @@
       "article_slug": "go-battle-league-forever-forward",
       "found_in_regions": [
         "hi",
+        "it",
+        "tr"
+      ]
+    },
+    {
+      "region": "🇮🇹 義大利",
+      "region_code": "it",
+      "event_name": "GO बैटल लीग: सदा आगे अपडेट",
+      "start_date": "2026-06-02",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/it/news/go-battle-league-forever-forward",
+      "article_slug": "go-battle-league-forever-forward",
+      "found_in_regions": [
+        "hi",
+        "it",
         "tr"
       ]
     },
@@ -42,6 +58,7 @@
       "article_slug": "go-battle-league-forever-forward",
       "found_in_regions": [
         "hi",
+        "it",
         "tr"
       ]
     },
@@ -202,19 +219,6 @@
       ]
     },
     {
-      "region": "🇯🇵 日本",
-      "region_code": "ja",
-      "event_name": "「ポケモンベースボールフェスタ2026」連携イベントの詳細（マイナビオールスターゲーム2026）",
-      "start_date": "2026-07-28",
-      "end_date": "2026-07-29",
-      "status": "active",
-      "url": "https://pokemongo.com/ja/news/allstar",
-      "article_slug": "allstar",
-      "found_in_regions": [
-        "ja"
-      ]
-    },
-    {
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "「ポケモンジェット 赤」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！",
@@ -243,10 +247,23 @@
       ]
     },
     {
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
+      "event_name": "「ポケモンＪリーグフェス」との連携イベントを実施します！",
+      "start_date": "2026-07-30",
+      "end_date": "2027-06-20",
+      "status": "active",
+      "url": "https://pokemongo.com/ja/news/jleague_details",
+      "article_slug": "jleague_details",
+      "found_in_regions": [
+        "ja"
+      ]
+    },
+    {
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-07-29",
+      "start_date": "2026-07-30",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -259,7 +276,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-07-29",
+      "start_date": "2026-07-30",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -283,19 +300,6 @@
       ]
     },
     {
-      "region": "🇯🇵 日本",
-      "region_code": "ja",
-      "event_name": "「ポケモンＪリーグフェス」との連携イベントを実施します！",
-      "start_date": "2026-08-08",
-      "end_date": "2027-06-20",
-      "status": "upcoming",
-      "url": "https://pokemongo.com/ja/news/jleague_details",
-      "article_slug": "jleague_details",
-      "found_in_regions": [
-        "ja"
-      ]
-    },
-    {
       "region": "🇹🇼 台灣",
       "region_code": "zh_hant",
       "event_name": "台北捷運邀請你與《Pokémon GO》一起邁向下一個10週年！",
@@ -306,6 +310,19 @@
       "article_slug": "2026daanpark",
       "found_in_regions": [
         "zh_hant"
+      ]
+    },
+    {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "Continue building the adventure with LEGO Stores and Pokémon GO!",
+      "start_date": "2026-09-30",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/en/news/lego-pokemon-go-2026",
+      "article_slug": "lego-pokemon-go-2026",
+      "found_in_regions": [
+        "en"
       ]
     },
     {
