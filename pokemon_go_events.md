@@ -1,6 +1,6 @@
 # 🗺️ Pokémon GO 地區限定活動
 
-> 掃描時間：**2026-08-03 22:13**（台灣時間）
+> 掃描時間：**2026-08-04 22:16**（台灣時間）
 > 僅顯示地區限定活動，已結束的不列入
 > 全球性共同活動不列入
 
@@ -27,8 +27,8 @@
 | 🇯🇵 日本 | 「ポケモンＪリーグフェス」との連携イベントを実施します！ | 2026-07-30 | 2027-06-20 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/jleague_details) |
 | 🇺🇸 英文 | Adventure awaits with the National Trust this summer! | 2026-07-31 | 2026-12-31 | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/nationaltrust-2026) |
 | 🇺🇸 英文 | Welcome to Pokémon GO Summer Quest | 2026-08-01 | 2027-06-01 | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/summer-quest) |
-| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-08-03 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
-| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-08-03 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
+| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-08-04 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
+| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-08-04 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
 | 🇯🇵 日本 | 「ポケモンベースボールフェスタ2026」連携イベントの詳細（北海道日本ハムファイターズ） | 2026-08-11 | 2026-08-13 | 🔜 即將開始 | [🔗](https://pokemongo.com/ja/news/fighters_game) |
 | 🇹🇼 台灣 | 台北捷運邀請你與《Pokémon GO》一起邁向下一個10週年！ | 2026-08-15 | 2026-09-05 | 🔜 即將開始 | [🔗](https://pokemongo.com/zh_hant/news/2026daanpark) |
 | 🇰🇷 韓國 | “Pokémon GO 2026 잠실 잉어킹 이벤트”와 함께 특별한 여름을 맞이하세요! | 2026-08-16 | 2026-09-20 | 🔜 即將開始 | [🔗](https://pokemongo.com/ko/news/jamsil-magikarp-2026) |
