@@ -1,67 +1,8 @@
 {
-  "scan_timestamp": "2026-08-04T22:16:18.907755",
-  "scan_date": "2026-08-04",
+  "scan_timestamp": "2026-08-05T22:15:58.396601",
+  "scan_date": "2026-08-05",
   "total": 29,
   "events": [
-    {
-      "region": "🇹🇭 泰國",
-      "region_code": "th",
-      "event_name": "เตรียมตัว พร้อม... ไป! เข้าร่วมอีเวนต์ Pokémon RUN 30 ที่จัดใกล้คุณ!",
-      "start_date": "2026-03-04",
-      "end_date": "2027-09-10",
-      "status": "active",
-      "url": "https://pokemongo.com/th/news/pokemon-run-30-2026",
-      "article_slug": "pokemon-run-30-2026",
-      "found_in_regions": [
-        "id",
-        "th"
-      ]
-    },
-    {
-      "region": "🇮🇳 印度",
-      "region_code": "hi",
-      "event_name": "GO बैटल लीग: सदा आगे अपडेट",
-      "start_date": "2026-06-02",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/hi/news/go-battle-league-forever-forward",
-      "article_slug": "go-battle-league-forever-forward",
-      "found_in_regions": [
-        "hi",
-        "it",
-        "tr"
-      ]
-    },
-    {
-      "region": "🇮🇹 義大利",
-      "region_code": "it",
-      "event_name": "GO बैटल लीग: सदा आगे अपडेट",
-      "start_date": "2026-06-02",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/it/news/go-battle-league-forever-forward",
-      "article_slug": "go-battle-league-forever-forward",
-      "found_in_regions": [
-        "hi",
-        "it",
-        "tr"
-      ]
-    },
-    {
-      "region": "🇹🇷 土耳其",
-      "region_code": "tr",
-      "event_name": "GO बैटल लीग: सदा आगे अपडेट",
-      "start_date": "2026-06-02",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/tr/news/go-battle-league-forever-forward",
-      "article_slug": "go-battle-league-forever-forward",
-      "found_in_regions": [
-        "hi",
-        "it",
-        "tr"
-      ]
-    },
     {
       "region": "🇯🇵 日本",
       "region_code": "ja",
@@ -73,6 +14,51 @@
       "article_slug": "202606partnerresearch-jp",
       "found_in_regions": [
         "ja"
+      ]
+    },
+    {
+      "region": "🇮🇳 印度",
+      "region_code": "hi",
+      "event_name": "फ़्रिजिबैक्स जून के कम्युनिटी डे में प्रदर्शित किया जाएगा, और अगस्त के कम्युनिटी डे के लिए वोटिंग फिर से शुरू हो गया है!",
+      "start_date": "2026-06-20",
+      "end_date": "2026-08-16",
+      "status": "active",
+      "url": "https://pokemongo.com/hi/news/communityday-june-2026-frigibax",
+      "article_slug": "communityday-june-2026-frigibax",
+      "found_in_regions": [
+        "hi",
+        "it",
+        "tr"
+      ]
+    },
+    {
+      "region": "🇮🇹 義大利",
+      "region_code": "it",
+      "event_name": "फ़्रिजिबैक्स जून के कम्युनिटी डे में प्रदर्शित किया जाएगा, और अगस्त के कम्युनिटी डे के लिए वोटिंग फिर से शुरू हो गया है!",
+      "start_date": "2026-06-20",
+      "end_date": "2026-08-16",
+      "status": "active",
+      "url": "https://pokemongo.com/it/news/communityday-june-2026-frigibax",
+      "article_slug": "communityday-june-2026-frigibax",
+      "found_in_regions": [
+        "hi",
+        "it",
+        "tr"
+      ]
+    },
+    {
+      "region": "🇹🇷 土耳其",
+      "region_code": "tr",
+      "event_name": "फ़्रिजिबैक्स जून के कम्युनिटी डे में प्रदर्शित किया जाएगा, और अगस्त के कम्युनिटी डे के लिए वोटिंग फिर से शुरू हो गया है!",
+      "start_date": "2026-06-20",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/tr/news/communityday-june-2026-frigibax",
+      "article_slug": "communityday-june-2026-frigibax",
+      "found_in_regions": [
+        "hi",
+        "it",
+        "tr"
       ]
     },
     {
@@ -219,6 +205,19 @@
       ]
     },
     {
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
+      "event_name": "令和8年 熊本地震に対する支援について",
+      "start_date": "2026-07-28",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ja/news/kumamoto2026",
+      "article_slug": "kumamoto2026",
+      "found_in_regions": [
+        "ja"
+      ]
+    },
+    {
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "「ポケモンジェット 赤」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！",
@@ -290,7 +289,7 @@
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-08-04",
+      "start_date": "2026-08-05",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -303,7 +302,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-08-04",
+      "start_date": "2026-08-05",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -354,15 +353,14 @@
     {
       "region": "🇮🇩 印尼",
       "region_code": "id",
-      "event_name": "เตรียมตัว พร้อม... ไป! เข้าร่วมอีเวนต์ Pokémon RUN 30 ที่จัดใกล้คุณ!",
+      "event_name": "Bersedia, siap, GO! Bergabunglah dalam event Pokémon RUN 30 di dekat Anda!",
       "start_date": "2026-11-21",
       "end_date": "2027-01-23",
       "status": "upcoming",
       "url": "https://pokemongo.com/id/news/pokemon-run-30-2026",
       "article_slug": "pokemon-run-30-2026",
       "found_in_regions": [
-        "id",
-        "th"
+        "id"
       ]
     },
     {
