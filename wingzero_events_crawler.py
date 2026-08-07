@@ -140,7 +140,14 @@ async def crawl_events():
         }""")
         await browser.close()
 
-    markers = ["go-event-live-card", "go-event-upcoming-card"]
+    markers = [
+        "go-event-live-card",
+        "go-event-upcoming-card",
+        "go-event-ended-card",
+        "go-event-upcoming-raid-card",
+        "go-event-live-raid-card",
+        "go-event-timeline",
+    ]
     if not any(m in html for m in markers):
         print(f"ERROR: events markers not found ({len(html):,} bytes)", file=sys.stderr)
         return False
