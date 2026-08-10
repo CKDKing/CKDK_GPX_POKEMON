@@ -1,66 +1,8 @@
 {
-  "scan_timestamp": "2026-08-09T21:36:13.152342",
-  "scan_date": "2026-08-09",
-  "total": 29,
+  "scan_timestamp": "2026-08-10T21:45:01.277382",
+  "scan_date": "2026-08-10",
+  "total": 28,
   "events": [
-    {
-      "region": "🇯🇵 日本",
-      "region_code": "ja",
-      "event_name": "「『Pokémon GO』パートナーリサーチ」を開催します！",
-      "start_date": "2026-06-19",
-      "end_date": "2026-09-30",
-      "status": "active",
-      "url": "https://pokemongo.com/ja/news/202606partnerresearch-jp",
-      "article_slug": "202606partnerresearch-jp",
-      "found_in_regions": [
-        "ja"
-      ]
-    },
-    {
-      "region": "🇮🇳 印度",
-      "region_code": "hi",
-      "event_name": "फ़्रिजिबैक्स जून के कम्युनिटी डे में प्रदर्शित किया जाएगा, और अगस्त के कम्युनिटी डे के लिए वोटिंग फिर से शुरू हो गया है!",
-      "start_date": "2026-06-20",
-      "end_date": "2026-08-16",
-      "status": "active",
-      "url": "https://pokemongo.com/hi/news/communityday-june-2026-frigibax",
-      "article_slug": "communityday-june-2026-frigibax",
-      "found_in_regions": [
-        "hi",
-        "it",
-        "tr"
-      ]
-    },
-    {
-      "region": "🇮🇹 義大利",
-      "region_code": "it",
-      "event_name": "फ़्रिजिबैक्स जून के कम्युनिटी डे में प्रदर्शित किया जाएगा, और अगस्त के कम्युनिटी डे के लिए वोटिंग फिर से शुरू हो गया है!",
-      "start_date": "2026-06-20",
-      "end_date": "2026-08-16",
-      "status": "active",
-      "url": "https://pokemongo.com/it/news/communityday-june-2026-frigibax",
-      "article_slug": "communityday-june-2026-frigibax",
-      "found_in_regions": [
-        "hi",
-        "it",
-        "tr"
-      ]
-    },
-    {
-      "region": "🇹🇷 土耳其",
-      "region_code": "tr",
-      "event_name": "फ़्रिजिबैक्स जून के कम्युनिटी डे में प्रदर्शित किया जाएगा, और अगस्त के कम्युनिटी डे के लिए वोटिंग फिर से शुरू हो गया है!",
-      "start_date": "2026-06-20",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/tr/news/communityday-june-2026-frigibax",
-      "article_slug": "communityday-june-2026-frigibax",
-      "found_in_regions": [
-        "hi",
-        "it",
-        "tr"
-      ]
-    },
     {
       "region": "🇧🇷 巴西",
       "region_code": "pt_br",
@@ -163,6 +105,51 @@
       "article_slug": "go-fest-2026-global-final-details",
       "found_in_regions": [
         "en"
+      ]
+    },
+    {
+      "region": "🇮🇳 印度",
+      "region_code": "hi",
+      "event_name": "समयबद्ध इन्क्यूबेटर GO पास: जून में वापस आ रहा है!",
+      "start_date": "2026-07-14",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/hi/news/go-pass-june-2026",
+      "article_slug": "go-pass-june-2026",
+      "found_in_regions": [
+        "hi",
+        "it",
+        "tr"
+      ]
+    },
+    {
+      "region": "🇮🇹 義大利",
+      "region_code": "it",
+      "event_name": "समयबद्ध इन्क्यूबेटर GO पास: जून में वापस आ रहा है!",
+      "start_date": "2026-07-14",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/it/news/go-pass-june-2026",
+      "article_slug": "go-pass-june-2026",
+      "found_in_regions": [
+        "hi",
+        "it",
+        "tr"
+      ]
+    },
+    {
+      "region": "🇹🇷 土耳其",
+      "region_code": "tr",
+      "event_name": "समयबद्ध इन्क्यूबेटर GO पास: जून में वापस आ रहा है!",
+      "start_date": "2026-07-14",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/tr/news/go-pass-june-2026",
+      "article_slug": "go-pass-june-2026",
+      "found_in_regions": [
+        "hi",
+        "it",
+        "tr"
       ]
     },
     {
@@ -289,7 +276,7 @@
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-08-09",
+      "start_date": "2026-08-10",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -302,7 +289,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-08-09",
+      "start_date": "2026-08-10",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -351,16 +338,16 @@
       ]
     },
     {
-      "region": "🇮🇩 印尼",
-      "region_code": "id",
-      "event_name": "Bersedia, siap, GO! Bergabunglah dalam event Pokémon RUN 30 di dekat Anda!",
-      "start_date": "2026-11-21",
-      "end_date": "2027-01-23",
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
+      "event_name": "「ポケモンベースボールフェスタ2026」連携イベントの詳細（中日ドラゴンズ）",
+      "start_date": "2026-08-21",
+      "end_date": "2026-08-23",
       "status": "upcoming",
-      "url": "https://pokemongo.com/id/news/pokemon-run-30-2026",
-      "article_slug": "pokemon-run-30-2026",
+      "url": "https://pokemongo.com/ja/news/dragonss_game",
+      "article_slug": "dragonss_game",
       "found_in_regions": [
-        "id"
+        "ja"
       ]
     },
     {
