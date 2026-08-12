@@ -19,7 +19,8 @@ import requests
 from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright
 
-EVENT_TIMEOUT_MS = 90_000
+EVENT_TIMEOUT_MS  = 120_000
+EVENT_MAX_RETRIES = 3
 
 
 # ── News: pokemongo.com (requests, no Playwright) ────────────────────────────
@@ -98,12 +99,22 @@ def crawl_news():
 
 # ── Events: wingzero.tw (Playwright) ─────────────────────────────────────────
 
-async def crawl_events():
-    url = "https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events"
-    print(f"[events] fetching {url}")
+CARD_SELECTORS = [
+    ".go-event-live-card",
+    ".go-event-upcoming-card",
+    ".go-event-ended-card",
+    ".go-event-upcoming-raid-card",
+    ".go-event-live-raid-card",
+    ".go-event-timeline",
+]
+CARD_SELECTOR_CSS = ", ".join(CARD_SELECTORS)
 
-    async with async_playwright() as pw:
-        browser = await pw.chromium.launch(headless=True)
+
+async def _try_crawl_events(pw) -> str | None:
+    """Single attempt; returns extracted HTML or None on failure."""
+    url = "https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events"
+    browser = await pw.chromium.launch(headless=True)
+    try:
         ctx = await browser.new_context(
             user_agent=(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -115,42 +126,54 @@ async def crawl_events():
         )
         page = await ctx.new_page()
 
+        # Use "load" (not "networkidle") — SSR/SPA pages often never reach networkidle
         try:
-            await page.goto(url, wait_until="networkidle", timeout=EVENT_TIMEOUT_MS)
+            await page.goto(url, wait_until="load", timeout=EVENT_TIMEOUT_MS)
         except Exception as e:
-            print(f"ERROR: events page load failed — {e}", file=sys.stderr)
-            await browser.close()
-            return False
+            print(f"  goto failed — {e}", file=sys.stderr)
+            return None
 
-        # Extract only the event card elements (not the full page with ads)
-        html = await page.evaluate("""() => {
-            const selectors = [
-                '.go-event-live-card',
-                '.go-event-upcoming-card',
-                '.go-event-ended-card',
-                '.go-event-upcoming-raid-card',
-                '.go-event-live-raid-card',
-                '.go-event-timeline'
-            ];
+        # Wait explicitly for at least one event card to appear
+        try:
+            await page.wait_for_selector(CARD_SELECTOR_CSS, timeout=60_000)
+        except Exception:
+            print("  wait_for_selector timed out", file=sys.stderr)
+            return None
+
+        html = await page.evaluate("""(selectors) => {
             const parts = [];
             selectors.forEach(sel => {
                 document.querySelectorAll(sel).forEach(el => parts.push(el.outerHTML));
             });
             return '<html><body>' + parts.join('\\n') + '</body></html>';
-        }""")
+        }""", CARD_SELECTORS)
+        return html
+    finally:
         await browser.close()
 
-    markers = [
-        "go-event-live-card",
-        "go-event-upcoming-card",
-        "go-event-ended-card",
-        "go-event-upcoming-raid-card",
-        "go-event-live-raid-card",
-        "go-event-timeline",
-    ]
-    if not any(m in html for m in markers):
-        print(f"ERROR: events markers not found ({len(html):,} bytes)", file=sys.stderr)
-        return False
+
+async def crawl_events():
+    url = "https://pokemon.wingzero.tw/zh-TW/data/pokemon-go-events"
+    print(f"[events] fetching {url}")
+
+    markers = [s.lstrip(".") for s in CARD_SELECTORS]
+
+    async with async_playwright() as pw:
+        for attempt in range(1, EVENT_MAX_RETRIES + 1):
+            if attempt > 1:
+                print(f"[events] retry {attempt}/{EVENT_MAX_RETRIES} …")
+            html = await _try_crawl_events(pw)
+            if html and any(m in html for m in markers):
+                break
+            if html:
+                print(
+                    f"ERROR: events markers not found ({len(html):,} bytes)",
+                    file=sys.stderr,
+                )
+            html = None
+        else:
+            print("ERROR: all retries exhausted", file=sys.stderr)
+            return False
 
     with open("wingzero_events_real.html", "w", encoding="utf-8", newline="\n") as f:
         f.write(html)

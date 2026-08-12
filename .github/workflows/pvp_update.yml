@@ -58,6 +58,7 @@ jobs:
             echo "— 資料內容無變化，跳過 commit。"
           else
             git commit -m "data: PVPData auto-update $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase origin main
             git push
           fi
 
