@@ -1,13 +1,12 @@
 # 🗺️ Pokémon GO 地區限定活動
 
-> 掃描時間：**2026-08-11 21:52**（台灣時間）
+> 掃描時間：**2026-08-12 21:49**（台灣時間）
 > 僅顯示地區限定活動，已結束的不列入
 > 全球性共同活動不列入
 
 | 地區 | 活動名稱 | 起點 | 終點 | 狀態 | 網頁 |
 | ---- | -------- | :--: | :--: | :--: | :--: |
 | 🇧🇷 巴西 | Peguem um Tauros de Paldea da Espécie Aquática no Arraiá do Pokém | 2026-06-29 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pt_br/news/festa-junina-2026) |
-| 🇰🇷 韓國 | 올여름 한강에서 만나요! "Pokémon GO Fest 2026: 글로벌" 기념 한국 현장 이벤트 | 2026-07-11 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ko/news/ko-gofest-global-on-site-event-2026) |
 | 🇫🇷 法國 | Célébrez le Festival Pokémon GO 2026 : Mondial à Bordeaux ! | 2026-07-11 | — | ✅ 進行中 | [🔗](https://pokemongo.com/fr/news/community-celebration-bordeaux) |
 | 🇩🇪 德國 | Feiert gemeinsam mit der Community das Pokémon GO Fest 2026: Glob | 2026-07-11 | — | ✅ 進行中 | [🔗](https://pokemongo.com/de/news/community-celebration-hamburg) |
 | 🇪🇸 西班牙 | ¡Celebra el Festival de Pokémon GO: Global con las comunidades de | 2026-07-11 | — | ✅ 進行中 | [🔗](https://pokemongo.com/es/news/community-celebration-barcelona) |
@@ -26,8 +25,8 @@
 | 🇺🇸 英文 | Adventure awaits with the National Trust this summer! | 2026-07-31 | 2026-12-31 | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/nationaltrust-2026) |
 | 🇺🇸 英文 | Welcome to Pokémon GO Summer Quest | 2026-08-01 | 2027-06-01 | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/summer-quest) |
 | 🇯🇵 日本 | 「ポケモンベースボールフェスタ2026」連携イベントの詳細（北海道日本ハムファイターズ） | 2026-08-11 | 2026-08-13 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/fighters_game) |
-| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-08-11 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
-| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-08-11 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
+| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-08-12 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
+| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-08-12 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
 | 🇹🇼 台灣 | 台北捷運邀請你與《Pokémon GO》一起邁向下一個10週年！ | 2026-08-15 | 2026-09-05 | 🔜 即將開始 | [🔗](https://pokemongo.com/zh_hant/news/2026daanpark) |
 | 🇰🇷 韓國 | “Pokémon GO 2026 잠실 잉어킹 이벤트”와 함께 특별한 여름을 맞이하세요! | 2026-08-16 | 2026-09-20 | 🔜 即將開始 | [🔗](https://pokemongo.com/ko/news/jamsil-magikarp-2026) |
 | 🇯🇵 日本 | 「ポケモンベースボールフェスタ2026」連携イベントの詳細（中日ドラゴンズ） | 2026-08-21 | 2026-08-23 | 🔜 即將開始 | [🔗](https://pokemongo.com/ja/news/dragonss_game) |
