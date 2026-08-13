@@ -1,7 +1,7 @@
 {
-  "scan_timestamp": "2026-08-12T21:49:04.770061",
-  "scan_date": "2026-08-12",
-  "total": 29,
+  "scan_timestamp": "2026-08-13T21:49:31.723832",
+  "scan_date": "2026-08-13",
+  "total": 26,
   "events": [
     {
       "region": "🇧🇷 巴西",
@@ -14,6 +14,20 @@
       "article_slug": "festa-junina-2026",
       "found_in_regions": [
         "pt_br"
+      ]
+    },
+    {
+      "region": "🇮🇹 義大利",
+      "region_code": "it",
+      "event_name": "Prendi il volo: l'arrivo di Squawkabilly ci porta dritti all'evento Taxi volante",
+      "start_date": "2026-06-29",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/it/news/flying-taxi-2026",
+      "article_slug": "flying-taxi-2026",
+      "found_in_regions": [
+        "it",
+        "tr"
       ]
     },
     {
@@ -92,34 +106,6 @@
       "article_slug": "go-fest-2026-global-final-details",
       "found_in_regions": [
         "en"
-      ]
-    },
-    {
-      "region": "🇮🇹 義大利",
-      "region_code": "it",
-      "event_name": "L'Incubatrice a tempo ritorna nel biglietto GO di giugno!",
-      "start_date": "2026-07-14",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/it/news/go-pass-june-2026",
-      "article_slug": "go-pass-june-2026",
-      "found_in_regions": [
-        "it",
-        "tr"
-      ]
-    },
-    {
-      "region": "🇹🇷 土耳其",
-      "region_code": "tr",
-      "event_name": "L'Incubatrice a tempo ritorna nel biglietto GO di giugno!",
-      "start_date": "2026-07-14",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/tr/news/go-pass-june-2026",
-      "article_slug": "go-pass-june-2026",
-      "found_in_regions": [
-        "it",
-        "tr"
       ]
     },
     {
@@ -259,7 +245,7 @@
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-08-12",
+      "start_date": "2026-08-13",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -272,7 +258,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-08-12",
+      "start_date": "2026-08-13",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -335,48 +321,16 @@
       ]
     },
     {
-      "region": "🇰🇷 韓國",
-      "region_code": "ko",
-      "event_name": "別忘了把活動日期記下來：寶可夢30週年活動「PokéXciting!」",
-      "start_date": null,
-      "end_date": null,
-      "status": "unknown",
-      "url": "https://pokemongo.com/ko/news/save-the-date-apac-30th-anniversary-2026",
-      "article_slug": "save-the-date-apac-30th-anniversary-2026",
-      "found_in_regions": [
-        "ko",
-        "th",
-        "zh_hant"
-      ]
-    },
-    {
       "region": "🇹🇭 泰國",
       "region_code": "th",
-      "event_name": "別忘了把活動日期記下來：寶可夢30週年活動「PokéXciting!」",
+      "event_name": "จดบันทึกวันที่ไว้ด้วย: ร่วมฉลองไปกับอีเวนต์ครบรอบ 30 ปีโปเกมอน — PokéXciting!",
       "start_date": null,
       "end_date": null,
       "status": "unknown",
       "url": "https://pokemongo.com/th/news/save-the-date-apac-30th-anniversary-2026",
       "article_slug": "save-the-date-apac-30th-anniversary-2026",
       "found_in_regions": [
-        "ko",
-        "th",
-        "zh_hant"
-      ]
-    },
-    {
-      "region": "🇹🇼 台灣",
-      "region_code": "zh_hant",
-      "event_name": "別忘了把活動日期記下來：寶可夢30週年活動「PokéXciting!」",
-      "start_date": null,
-      "end_date": null,
-      "status": "unknown",
-      "url": "https://pokemongo.com/zh_hant/news/save-the-date-apac-30th-anniversary-2026",
-      "article_slug": "save-the-date-apac-30th-anniversary-2026",
-      "found_in_regions": [
-        "ko",
-        "th",
-        "zh_hant"
+        "th"
       ]
     },
     {
