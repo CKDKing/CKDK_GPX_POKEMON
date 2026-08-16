@@ -1,6 +1,6 @@
 {
-  "scan_timestamp": "2026-08-15T21:24:31.132629",
-  "scan_date": "2026-08-15",
+  "scan_timestamp": "2026-08-16T21:23:22.279406",
+  "scan_date": "2026-08-16",
   "total": 26,
   "events": [
     {
@@ -242,10 +242,23 @@
       ]
     },
     {
+      "region": "🇰🇷 韓國",
+      "region_code": "ko",
+      "event_name": "“Pokémon GO 2026 잠실 잉어킹 이벤트”와 함께 특별한 여름을 맞이하세요!",
+      "start_date": "2026-08-16",
+      "end_date": "2026-09-20",
+      "status": "active",
+      "url": "https://pokemongo.com/ko/news/jamsil-magikarp-2026",
+      "article_slug": "jamsil-magikarp-2026",
+      "found_in_regions": [
+        "ko"
+      ]
+    },
+    {
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-08-15",
+      "start_date": "2026-08-16",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -258,7 +271,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-08-15",
+      "start_date": "2026-08-16",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -268,24 +281,11 @@
       ]
     },
     {
-      "region": "🇰🇷 韓國",
-      "region_code": "ko",
-      "event_name": "“Pokémon GO 2026 잠실 잉어킹 이벤트”와 함께 특별한 여름을 맞이하세요!",
-      "start_date": "2026-08-16",
-      "end_date": "2026-09-20",
-      "status": "upcoming",
-      "url": "https://pokemongo.com/ko/news/jamsil-magikarp-2026",
-      "article_slug": "jamsil-magikarp-2026",
-      "found_in_regions": [
-        "ko"
-      ]
-    },
-    {
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
-      "start_date": "2026-08-17",
-      "end_date": "2026-09-17",
+      "start_date": "2026-08-18",
+      "end_date": "2026-09-18",
       "status": "upcoming",
       "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
       "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
