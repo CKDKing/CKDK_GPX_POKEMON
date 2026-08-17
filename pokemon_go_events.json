@@ -1,8 +1,23 @@
 {
-  "scan_timestamp": "2026-08-16T21:23:22.279406",
-  "scan_date": "2026-08-16",
-  "total": 26,
+  "scan_timestamp": "2026-08-17T21:29:56.598752",
+  "scan_date": "2026-08-17",
+  "total": 29,
   "events": [
+    {
+      "region": "🇮🇹 義大利",
+      "region_code": "it",
+      "event_name": "उड़ती टैक्सी: टेक ओवर के दौरान शैडो रेशिरैम और अन्य को बचाएं !",
+      "start_date": "2026-06-29",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/it/news/flying-taxi-taken-over-2026",
+      "article_slug": "flying-taxi-taken-over-2026",
+      "found_in_regions": [
+        "hi",
+        "it",
+        "tr"
+      ]
+    },
     {
       "region": "🇧🇷 巴西",
       "region_code": "pt_br",
@@ -258,7 +273,7 @@
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-08-16",
+      "start_date": "2026-08-17",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -271,7 +286,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-08-16",
+      "start_date": "2026-08-17",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -284,8 +299,8 @@
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
-      "start_date": "2026-08-18",
-      "end_date": "2026-09-18",
+      "start_date": "2026-08-19",
+      "end_date": "2026-09-19",
       "status": "upcoming",
       "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
       "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
@@ -304,6 +319,34 @@
       "article_slug": "dragonss_game",
       "found_in_regions": [
         "ja"
+      ]
+    },
+    {
+      "region": "🌎 拉丁美洲",
+      "region_code": "es_mx",
+      "event_name": "Assistam às partidas de Pokémon GO no Campeonato Mundial Pokémon 2026, em português!",
+      "start_date": "2026-08-30",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/es_mx/news/2026-pokemon-go-world-championship-in-ptbr",
+      "article_slug": "2026-pokemon-go-world-championship-in-ptbr",
+      "found_in_regions": [
+        "es_mx",
+        "pt_br"
+      ]
+    },
+    {
+      "region": "🇧🇷 巴西",
+      "region_code": "pt_br",
+      "event_name": "Assistam às partidas de Pokémon GO no Campeonato Mundial Pokémon 2026, em português!",
+      "start_date": "2026-08-30",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/pt_br/news/2026-pokemon-go-world-championship-in-ptbr",
+      "article_slug": "2026-pokemon-go-world-championship-in-ptbr",
+      "found_in_regions": [
+        "es_mx",
+        "pt_br"
       ]
     },
     {
