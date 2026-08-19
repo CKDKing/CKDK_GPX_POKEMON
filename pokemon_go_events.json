@@ -1,6 +1,6 @@
 {
-  "scan_timestamp": "2026-08-18T21:28:21.216594",
-  "scan_date": "2026-08-18",
+  "scan_timestamp": "2026-08-19T21:28:52.664457",
+  "scan_date": "2026-08-19",
   "total": 30,
   "events": [
     {
@@ -273,7 +273,7 @@
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-08-18",
+      "start_date": "2026-08-19",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -286,26 +286,13 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-08-18",
+      "start_date": "2026-08-19",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
       "article_slug": "welcome-to-tales-of-transformation",
       "found_in_regions": [
         "ru"
-      ]
-    },
-    {
-      "region": "🇺🇸 英文",
-      "region_code": "en",
-      "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
-      "start_date": "2026-08-20",
-      "end_date": "2026-09-20",
-      "status": "upcoming",
-      "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
-      "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
-      "found_in_regions": [
-        "en"
       ]
     },
     {
@@ -319,6 +306,19 @@
       "article_slug": "dragonss_game",
       "found_in_regions": [
         "ja"
+      ]
+    },
+    {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
+      "start_date": "2026-08-21",
+      "end_date": "2026-09-21",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
+      "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
+      "found_in_regions": [
+        "en"
       ]
     },
     {
