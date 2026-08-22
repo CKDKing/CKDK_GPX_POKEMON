@@ -1,6 +1,6 @@
 # 🗺️ Pokémon GO 地區限定活動
 
-> 掃描時間：**2026-08-21 21:28**（台灣時間）
+> 掃描時間：**2026-08-22 21:25**（台灣時間）
 > 僅顯示地區限定活動，已結束的不列入
 > 全球性共同活動不列入
 
@@ -27,9 +27,9 @@
 | 🇹🇼 台灣 | 台北捷運邀請你與《Pokémon GO》一起邁向下一個10週年！ | 2026-08-15 | 2026-09-05 | ✅ 進行中 | [🔗](https://pokemongo.com/zh_hant/news/2026daanpark) |
 | 🇰🇷 韓國 | “Pokémon GO 2026 잠실 잉어킹 이벤트”와 함께 특별한 여름을 맞이하세요! | 2026-08-16 | 2026-09-20 | ✅ 進行中 | [🔗](https://pokemongo.com/ko/news/jamsil-magikarp-2026) |
 | 🇯🇵 日本 | 「ポケモンベースボールフェスタ2026」連携イベントの詳細（中日ドラゴンズ） | 2026-08-21 | 2026-08-23 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/dragonss_game) |
-| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-08-21 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
-| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-08-21 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
-| 🇺🇸 英文 | PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur! | 2026-08-23 | 2026-09-23 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026) |
+| 🇵🇱 波蘭 | Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powi | 2026-08-22 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/community-celebration-warszawa) |
+| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-08-22 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
+| 🇺🇸 英文 | PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur! | 2026-08-24 | 2026-09-24 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026) |
 | 🌎 拉丁美洲 | Assistam às partidas de Pokémon GO no Campeonato Mundial Pokémon  | 2026-08-30 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/es_mx/news/2026-pokemon-go-world-championship-in-ptbr) |
 | 🇧🇷 巴西 | Assistam às partidas de Pokémon GO no Campeonato Mundial Pokémon  | 2026-08-30 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/pt_br/news/2026-pokemon-go-world-championship-in-ptbr) |
 | 🇩🇪 德國 | Welcome to Pokémon GO Summer Quest | 2027-06-01 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/de/news/summer-quest) |
