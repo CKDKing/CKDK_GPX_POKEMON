@@ -40,5 +40,9 @@ jobs:
             echo "No changes detected — skipping commit"
           else
             git commit -m "data: PoGO data auto-update $(date -u '+%Y-%m-%d %H:%M') UTC"
-            git push
+            for i in 1 2 3 4 5; do
+              git pull --rebase origin main && git push && break
+              echo "⚠️ Push attempt $i failed, retrying in $((i * 10))s..."
+              sleep $((i * 10))
+            done
           fi

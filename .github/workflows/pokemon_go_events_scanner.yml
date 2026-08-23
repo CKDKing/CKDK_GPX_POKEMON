@@ -39,8 +39,16 @@ jobs:
           if ($LASTEXITCODE -ne 0) {
             $ts = (Get-Date -Format "yyyy-MM-dd HH:mm")
             git commit -m "🔄 PoGO Events Scan $ts (TW)"
-            git push
-            Write-Host "✅ 已推送更新"
+            $pushed = $false
+            for ($i = 1; $i -le 5; $i++) {
+              git pull --rebase origin main
+              git push
+              if ($LASTEXITCODE -eq 0) { $pushed = $true; break }
+              Write-Host "⚠️ Push attempt $i failed, retrying in $($i * 10)s..."
+              Start-Sleep -Seconds ($i * 10)
+            }
+            if ($pushed) { Write-Host "✅ 已推送更新" }
+            else { Write-Host "❌ Push failed after 5 attempts"; exit 1 }
           } else {
             Write-Host "ℹ️  無變更，略過 commit"
           }
