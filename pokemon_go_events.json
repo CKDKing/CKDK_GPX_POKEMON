@@ -1,7 +1,7 @@
 {
-  "scan_timestamp": "2026-08-23T21:25:47.375465",
-  "scan_date": "2026-08-23",
-  "total": 30,
+  "scan_timestamp": "2026-08-24T21:33:44.955832",
+  "scan_date": "2026-08-24",
+  "total": 32,
   "events": [
     {
       "region": "🇮🇹 義大利",
@@ -270,23 +270,10 @@
       ]
     },
     {
-      "region": "🇯🇵 日本",
-      "region_code": "ja",
-      "event_name": "「ポケモンベースボールフェスタ2026」連携イベントの詳細（中日ドラゴンズ）",
-      "start_date": "2026-08-21",
-      "end_date": "2026-08-23",
-      "status": "active",
-      "url": "https://pokemongo.com/ja/news/dragonss_game",
-      "article_slug": "dragonss_game",
-      "found_in_regions": [
-        "ja"
-      ]
-    },
-    {
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-08-23",
+      "start_date": "2026-08-24",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -299,7 +286,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-08-23",
+      "start_date": "2026-08-24",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -312,8 +299,8 @@
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
-      "start_date": "2026-08-25",
-      "end_date": "2026-09-25",
+      "start_date": "2026-08-26",
+      "end_date": "2026-09-26",
       "status": "upcoming",
       "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
       "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
@@ -347,6 +334,47 @@
       "found_in_regions": [
         "es_mx",
         "pt_br"
+      ]
+    },
+    {
+      "region": "🇰🇷 韓國",
+      "region_code": "ko",
+      "event_name": "모험의 시작! “Pokémon GO Fest 2026: 메가 피날레” 기념 한국 현장 이벤트",
+      "start_date": "2026-09-05",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/ko/news/mega-finale-korea-2026",
+      "article_slug": "mega-finale-korea-2026",
+      "found_in_regions": [
+        "ko"
+      ]
+    },
+    {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "「ポケモンジェット 緑」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！",
+      "start_date": "2026-09-18",
+      "end_date": "2027-08-31",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/en/news/2026_ana_green",
+      "article_slug": "2026_ana_green",
+      "found_in_regions": [
+        "en",
+        "ja"
+      ]
+    },
+    {
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
+      "event_name": "「ポケモンジェット 緑」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！",
+      "start_date": "2026-09-18",
+      "end_date": "2027-08-31",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/ja/news/2026_ana_green",
+      "article_slug": "2026_ana_green",
+      "found_in_regions": [
+        "en",
+        "ja"
       ]
     },
     {
