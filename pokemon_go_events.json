@@ -1,18 +1,19 @@
 {
-  "scan_timestamp": "2026-08-27T00:34:15.325515",
-  "scan_date": "2026-08-27",
-  "total": 36,
+  "scan_timestamp": "2026-08-28T05:11:54.630217",
+  "scan_date": "2026-08-28",
+  "total": 35,
   "events": [
     {
       "region": "🇮🇹 義大利",
       "region_code": "it",
-      "event_name": "Salva Reshiram Ombra e altri durante l'Assalto dell'evento \"Taxi volante\".",
-      "start_date": "2026-06-29",
+      "event_name": "पोकेमॉन गो की 10वीं वर्षगांठ पार्टी के दौरान एक साथ इसके एक दशक का जश्न मनाएं!",
+      "start_date": "2026-07-06",
       "end_date": null,
       "status": "active",
-      "url": "https://pokemongo.com/it/news/flying-taxi-taken-over-2026",
-      "article_slug": "flying-taxi-taken-over-2026",
+      "url": "https://pokemongo.com/it/news/10th-anniversary-party",
+      "article_slug": "10th-anniversary-party",
       "found_in_regions": [
+        "hi",
         "it",
         "tr"
       ]
@@ -137,29 +138,14 @@
     {
       "region": "🇺🇸 英文",
       "region_code": "en",
-      "event_name": "「ポケモンジェット 赤」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！",
+      "event_name": "Celebrate the launch of the Red Pokémon Jet: Take flight on a new adventure through the ANA and Pokémon GO partnership!",
       "start_date": "2026-07-28",
       "end_date": "2027-08-31",
       "status": "active",
       "url": "https://pokemongo.com/en/news/2026_ana_red",
       "article_slug": "2026_ana_red",
       "found_in_regions": [
-        "en",
-        "ja"
-      ]
-    },
-    {
-      "region": "🇯🇵 日本",
-      "region_code": "ja",
-      "event_name": "「ポケモンジェット 赤」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！",
-      "start_date": "2026-07-28",
-      "end_date": "2027-08-31",
-      "status": "active",
-      "url": "https://pokemongo.com/ja/news/2026_ana_red",
-      "article_slug": "2026_ana_red",
-      "found_in_regions": [
-        "en",
-        "ja"
+        "en"
       ]
     },
     {
@@ -231,14 +217,13 @@
     {
       "region": "🇮🇹 義大利",
       "region_code": "it",
-      "event_name": "नए सीमित समय वाली रिसर्च और दैनिक डिस्कवरी के अपडेट के साथ अपना पथ चुनें!",
-      "start_date": "2026-08-27",
+      "event_name": "Scegli la tua strada con la nuova ricerca a tempo e aggiornamenti delle scoperte giornaliere!",
+      "start_date": "2026-08-28",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/it/news/choose-your-path-forever-forward-2026",
       "article_slug": "choose-your-path-forever-forward-2026",
       "found_in_regions": [
-        "hi",
         "it",
         "tr"
       ]
@@ -247,7 +232,7 @@
       "region": "🇵🇱 波蘭",
       "region_code": "pl",
       "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-08-27",
+      "start_date": "2026-08-28",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
@@ -260,26 +245,13 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-08-27",
+      "start_date": "2026-08-28",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
       "article_slug": "welcome-to-tales-of-transformation",
       "found_in_regions": [
         "ru"
-      ]
-    },
-    {
-      "region": "🇺🇸 英文",
-      "region_code": "en",
-      "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
-      "start_date": "2026-08-29",
-      "end_date": "2026-09-29",
-      "status": "upcoming",
-      "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
-      "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
-      "found_in_regions": [
-        "en"
       ]
     },
     {
@@ -311,6 +283,19 @@
       ]
     },
     {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
+      "start_date": "2026-08-30",
+      "end_date": "2026-09-30",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
+      "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
+      "found_in_regions": [
+        "en"
+      ]
+    },
+    {
       "region": "🇰🇷 韓國",
       "region_code": "ko",
       "event_name": "모험의 시작! “Pokémon GO Fest 2026: 메가 피날레” 기념 한국 현장 이벤트",
@@ -321,6 +306,19 @@
       "article_slug": "mega-finale-korea-2026",
       "found_in_regions": [
         "ko"
+      ]
+    },
+    {
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
+      "event_name": "「伝説のポケモンと出会う レジェンドリサーチ in日本橋＆八重洲」で『Pokémon GO』を楽しもう！",
+      "start_date": "2026-09-09",
+      "end_date": "2026-11-29",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/ja/news/legend_research_jp",
+      "article_slug": "legend_research_jp",
+      "found_in_regions": [
+        "ja"
       ]
     },
     {
@@ -349,6 +347,19 @@
       "found_in_regions": [
         "en",
         "ja"
+      ]
+    },
+    {
+      "region": "🇰🇷 韓國",
+      "region_code": "ko",
+      "event_name": "“Pokémon GO”에서 “2026 피카츄의 가을 소풍\" 이벤트 및 “2026 피카츄의 한국 나들이\" 이벤트와 함께 특별한 가을을 맞이하세요!",
+      "start_date": "2026-09-18",
+      "end_date": "2026-10-11",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/ko/news/pikachu-autumn-picnic-korea-2026",
+      "article_slug": "pikachu-autumn-picnic-korea-2026",
+      "found_in_regions": [
+        "ko"
       ]
     },
     {
@@ -424,49 +435,6 @@
       ]
     },
     {
-      "region": "🇹🇭 泰國",
-      "region_code": "th",
-      "event_name": "จดบันทึกวันที่ไว้ด้วย: ร่วมฉลองไปกับอีเวนต์ครบรอบ 30 ปีโปเกมอน — PokéXciting!",
-      "start_date": null,
-      "end_date": null,
-      "status": "unknown",
-      "url": "https://pokemongo.com/th/news/save-the-date-apac-30th-anniversary-2026",
-      "article_slug": "save-the-date-apac-30th-anniversary-2026",
-      "found_in_regions": [
-        "th"
-      ]
-    },
-    {
-      "region": "🇮🇳 印度",
-      "region_code": "hi",
-      "event_name": "नए सीमित समय वाली रिसर्च और दैनिक डिस्कवरी के अपडेट के साथ अपना पथ चुनें!",
-      "start_date": null,
-      "end_date": null,
-      "status": "unknown",
-      "url": "https://pokemongo.com/hi/news/choose-your-path-forever-forward-2026",
-      "article_slug": "choose-your-path-forever-forward-2026",
-      "found_in_regions": [
-        "hi",
-        "it",
-        "tr"
-      ]
-    },
-    {
-      "region": "🇹🇷 土耳其",
-      "region_code": "tr",
-      "event_name": "नए सीमित समय वाली रिसर्च और दैनिक डिस्कवरी के अपडेट के साथ अपना पथ चुनें!",
-      "start_date": null,
-      "end_date": null,
-      "status": "unknown",
-      "url": "https://pokemongo.com/tr/news/choose-your-path-forever-forward-2026",
-      "article_slug": "choose-your-path-forever-forward-2026",
-      "found_in_regions": [
-        "hi",
-        "it",
-        "tr"
-      ]
-    },
-    {
       "region": "🇩🇪 德國",
       "region_code": "de",
       "event_name": "Pokémon GO auf der gamescom 2026!",
@@ -477,6 +445,20 @@
       "article_slug": "gamescom2026",
       "found_in_regions": [
         "de"
+      ]
+    },
+    {
+      "region": "🇹🇷 土耳其",
+      "region_code": "tr",
+      "event_name": "Scegli la tua strada con la nuova ricerca a tempo e aggiornamenti delle scoperte giornaliere!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/tr/news/choose-your-path-forever-forward-2026",
+      "article_slug": "choose-your-path-forever-forward-2026",
+      "found_in_regions": [
+        "it",
+        "tr"
       ]
     },
     {
