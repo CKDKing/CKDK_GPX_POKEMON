@@ -1,6 +1,6 @@
 {
-  "scan_timestamp": "2026-08-29T23:05:13.118408",
-  "scan_date": "2026-08-29",
+  "scan_timestamp": "2026-08-30T23:19:34.441048",
+  "scan_date": "2026-08-30",
   "total": 35,
   "events": [
     {
@@ -215,52 +215,12 @@
       ]
     },
     {
-      "region": "🇮🇹 義大利",
-      "region_code": "it",
-      "event_name": "Scegli la tua strada con la nuova ricerca a tempo e aggiornamenti delle scoperte giornaliere!",
-      "start_date": "2026-08-29",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/it/news/choose-your-path-forever-forward-2026",
-      "article_slug": "choose-your-path-forever-forward-2026",
-      "found_in_regions": [
-        "it",
-        "tr"
-      ]
-    },
-    {
-      "region": "🇵🇱 波蘭",
-      "region_code": "pl",
-      "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-08-29",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
-      "article_slug": "community-celebration-warszawa",
-      "found_in_regions": [
-        "pl"
-      ]
-    },
-    {
-      "region": "🇷🇺 俄羅斯",
-      "region_code": "ru",
-      "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-08-29",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
-      "article_slug": "welcome-to-tales-of-transformation",
-      "found_in_regions": [
-        "ru"
-      ]
-    },
-    {
       "region": "🌎 拉丁美洲",
       "region_code": "es_mx",
       "event_name": "Assistam às partidas de Pokémon GO no Campeonato Mundial Pokémon 2026, em português!",
       "start_date": "2026-08-30",
       "end_date": null,
-      "status": "upcoming",
+      "status": "active",
       "url": "https://pokemongo.com/es_mx/news/2026-pokemon-go-world-championship-in-ptbr",
       "article_slug": "2026-pokemon-go-world-championship-in-ptbr",
       "found_in_regions": [
@@ -274,7 +234,7 @@
       "event_name": "Assistam às partidas de Pokémon GO no Campeonato Mundial Pokémon 2026, em português!",
       "start_date": "2026-08-30",
       "end_date": null,
-      "status": "upcoming",
+      "status": "active",
       "url": "https://pokemongo.com/pt_br/news/2026-pokemon-go-world-championship-in-ptbr",
       "article_slug": "2026-pokemon-go-world-championship-in-ptbr",
       "found_in_regions": [
@@ -283,11 +243,51 @@
       ]
     },
     {
+      "region": "🇮🇹 義大利",
+      "region_code": "it",
+      "event_name": "Scegli la tua strada con la nuova ricerca a tempo e aggiornamenti delle scoperte giornaliere!",
+      "start_date": "2026-08-30",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/it/news/choose-your-path-forever-forward-2026",
+      "article_slug": "choose-your-path-forever-forward-2026",
+      "found_in_regions": [
+        "it",
+        "tr"
+      ]
+    },
+    {
+      "region": "🇵🇱 波蘭",
+      "region_code": "pl",
+      "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
+      "start_date": "2026-08-30",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
+      "article_slug": "community-celebration-warszawa",
+      "found_in_regions": [
+        "pl"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Welcome to Pokémon GO: Tales of Transformation",
+      "start_date": "2026-08-30",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
+      "article_slug": "welcome-to-tales-of-transformation",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
-      "start_date": "2026-08-31",
-      "end_date": "2026-09-30",
+      "start_date": "2026-09-01",
+      "end_date": "2026-10-01",
       "status": "upcoming",
       "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
       "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
