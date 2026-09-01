@@ -1,6 +1,6 @@
 # 🗺️ Pokémon GO 地區限定活動
 
-> 掃描時間：**2026-09-01 00:29**（台灣時間）
+> 掃描時間：**2026-09-01 23:10**（台灣時間）
 > 僅顯示地區限定活動，已結束的不列入
 > 全球性共同活動不列入
 
@@ -9,7 +9,6 @@
 | 🇯🇵 日本 | 『Pokémon GO』にマクドナルドが期間限定で登場！ | 2026-07-20 | 2026-09-01 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/202607backtomcd) |
 | 🇯🇵 日本 | 令和8年 熊本地震に対する支援について | 2026-07-28 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/kumamoto2026) |
 | 🇯🇵 日本 | 「ポケモンＪリーグフェス」との連携イベントを実施します！ | 2026-07-30 | 2027-06-20 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/jleague_details) |
-| 🇺🇸 英文 | Welcome to Pokémon GO Summer Quest | 2026-08-01 | 2027-06-01 | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/summer-quest) |
 | 🇹🇼 台灣 | 台北捷運邀請你與《Pokémon GO》一起邁向下一個10週年！ | 2026-08-15 | 2026-09-05 | ✅ 進行中 | [🔗](https://pokemongo.com/zh_hant/news/2026daanpark) |
 | 🇰🇷 韓國 | “Pokémon GO 2026 잠실 잉어킹 이벤트”와 함께 특별한 여름을 맞이하세요! | 2026-08-16 | 2026-09-20 | ✅ 進行中 | [🔗](https://pokemongo.com/ko/news/jamsil-magikarp-2026) |
 | 🌎 拉丁美洲 | Assistam às partidas de Pokémon GO no Campeonato Mundial Pokémon  | 2026-08-30 | — | ✅ 進行中 | [🔗](https://pokemongo.com/es_mx/news/2026-pokemon-go-world-championship-in-ptbr) |
@@ -18,7 +17,7 @@
 | 🇷🇺 俄羅斯 | Party Everywhere You GO with Party Play! | 2026-09-01 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/partyplay) |
 | 🇷🇺 俄羅斯 | Отпразднуйте Китайский Новый год 2022, приняв участие в праздничн | 2026-09-01 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/lunar-new-year-event-2022) |
 | 🇷🇺 俄羅斯 | Дневники разработчика: Сезон наследия | 2026-09-01 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage) |
-| 🇷🇺 俄羅斯 | Встречайте 2022 год с новогодним событием! | 2026-09-01 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/new-year-2022) |
+| 🇷🇺 俄羅斯 | Встречайте 2022 год с новогодним событием! | 2026-09-01 | 2026-09-02 | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/new-year-2022) |
 | 🇺🇸 英文 | PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur! | 2026-09-03 | 2026-10-03 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026) |
 | 🇷🇺 俄羅斯 | Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and N | 2026-09-04 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024) |
 | 🇷🇺 俄羅斯 | Тур Pokémon GO: Джото — специальный квест и многое другое! | 2026-09-04 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/pokemongotour-johto-research) |
@@ -29,7 +28,7 @@
 | 🇰🇷 韓國 | “Pokémon GO”에서 “2026 피카츄의 가을 소풍" 이벤트 및 “2026 피카츄의 한국 나들이" 이벤트와 함께 | 2026-09-18 | 2026-10-11 | 🔜 即將開始 | [🔗](https://pokemongo.com/ko/news/pikachu-autumn-picnic-korea-2026) |
 | 🇷🇺 俄羅斯 | Раскрыты высший теневой Лугиа и высший теневой Хо-Ох! | 2026-11-01 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/apex-reveal) |
 | 🇺🇸 英文 | Welcome to Pokémon GO: Twilight Trails | 2026-12-01 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/seasons--twilight-trails) |
-| 🇩🇪 德國 | Welcome to Pokémon GO Summer Quest | 2027-06-01 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/de/news/summer-quest) |
+| 🇩🇪 德國 | Willkommen zur Pokémon GO Summer Quest | 2027-06-01 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/de/news/summer-quest) |
 | 🇩🇪 德國 | Pokémon GO auf der gamescom 2026! | — | — | ❓ 日期未知 | [🔗](https://pokemongo.com/de/news/gamescom2026) |
 | 🇷🇺 俄羅斯 | Pokémon GO Fest 2025 | — | — | ❓ 日期未知 | [🔗](https://pokemongo.com/ru/news/gofestmaxfinale) |
 | 🇷🇺 俄羅斯 | Valiant Trainers are cordially invited to partake in grand global | — | — | ❓ 日期未知 | [🔗](https://pokemongo.com/ru/news/go-fest-2025-events-announcement) |

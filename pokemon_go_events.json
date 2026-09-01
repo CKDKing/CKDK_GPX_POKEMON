@@ -1,7 +1,7 @@
 {
-  "scan_timestamp": "2026-09-01T00:29:58.606686",
+  "scan_timestamp": "2026-09-01T23:10:28.884426",
   "scan_date": "2026-09-01",
-  "total": 47,
+  "total": 46,
   "events": [
     {
       "region": "🇯🇵 日本",
@@ -40,20 +40,6 @@
       "article_slug": "jleague_details",
       "found_in_regions": [
         "ja"
-      ]
-    },
-    {
-      "region": "🇺🇸 英文",
-      "region_code": "en",
-      "event_name": "Welcome to Pokémon GO Summer Quest",
-      "start_date": "2026-08-01",
-      "end_date": "2027-06-01",
-      "status": "active",
-      "url": "https://pokemongo.com/en/news/summer-quest",
-      "article_slug": "summer-quest",
-      "found_in_regions": [
-        "de",
-        "en"
       ]
     },
     {
@@ -167,7 +153,7 @@
       "region_code": "ru",
       "event_name": "Встречайте 2022 год с новогодним событием!",
       "start_date": "2026-09-01",
-      "end_date": null,
+      "end_date": "2026-09-02",
       "status": "active",
       "url": "https://pokemongo.com/ru/news/new-year-2022",
       "article_slug": "new-year-2022",
@@ -310,15 +296,14 @@
     {
       "region": "🇩🇪 德國",
       "region_code": "de",
-      "event_name": "Welcome to Pokémon GO Summer Quest",
+      "event_name": "Willkommen zur Pokémon GO Summer Quest",
       "start_date": "2027-06-01",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/de/news/summer-quest",
       "article_slug": "summer-quest",
       "found_in_regions": [
-        "de",
-        "en"
+        "de"
       ]
     },
     {
