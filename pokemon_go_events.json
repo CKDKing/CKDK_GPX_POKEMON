@@ -1,88 +1,8 @@
 {
-  "scan_timestamp": "2026-08-30T23:19:34.441048",
-  "scan_date": "2026-08-30",
-  "total": 35,
+  "scan_timestamp": "2026-09-01T00:29:58.606686",
+  "scan_date": "2026-09-01",
+  "total": 47,
   "events": [
-    {
-      "region": "🇮🇹 義大利",
-      "region_code": "it",
-      "event_name": "पोकेमॉन गो की 10वीं वर्षगांठ पार्टी के दौरान एक साथ इसके एक दशक का जश्न मनाएं!",
-      "start_date": "2026-07-06",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/it/news/10th-anniversary-party",
-      "article_slug": "10th-anniversary-party",
-      "found_in_regions": [
-        "hi",
-        "it",
-        "tr"
-      ]
-    },
-    {
-      "region": "🇫🇷 法國",
-      "region_code": "fr",
-      "event_name": "Célébrez le Festival Pokémon GO 2026 : Mondial à Bordeaux !",
-      "start_date": "2026-07-11",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/fr/news/community-celebration-bordeaux",
-      "article_slug": "community-celebration-bordeaux",
-      "found_in_regions": [
-        "fr"
-      ]
-    },
-    {
-      "region": "🇩🇪 德國",
-      "region_code": "de",
-      "event_name": "Feiert gemeinsam mit der Community das Pokémon GO Fest 2026: Global im XPERION Hamburg!",
-      "start_date": "2026-07-11",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/de/news/community-celebration-hamburg",
-      "article_slug": "community-celebration-hamburg",
-      "found_in_regions": [
-        "de"
-      ]
-    },
-    {
-      "region": "🇪🇸 西班牙",
-      "region_code": "es",
-      "event_name": "¡Celebra el Festival de Pokémon GO: Global con las comunidades de Barcelona!",
-      "start_date": "2026-07-11",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/es/news/community-celebration-barcelona",
-      "article_slug": "community-celebration-barcelona",
-      "found_in_regions": [
-        "es"
-      ]
-    },
-    {
-      "region": "🇧🇷 巴西",
-      "region_code": "pt_br",
-      "event_name": "Preparem-se para as Celebrações Comunitárias do Pokémon GO Fest 2026: Global na América Latina!",
-      "start_date": "2026-07-12",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/pt_br/news/community-celebrations-go-fest-2026-details-ptbr",
-      "article_slug": "community-celebrations-go-fest-2026-details-ptbr",
-      "found_in_regions": [
-        "pt_br"
-      ]
-    },
-    {
-      "region": "🌎 拉丁美洲",
-      "region_code": "es_mx",
-      "event_name": "¡Prepárense para las Celebraciones Comunitarias de Pokémon GO Fest 2026: Global en América Latina!",
-      "start_date": "2026-07-12",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/es_mx/news/community-celebrations-go-fest-2026-details-lat",
-      "article_slug": "community-celebrations-go-fest-2026-details-lat",
-      "found_in_regions": [
-        "es_mx"
-      ]
-    },
     {
       "region": "🇯🇵 日本",
       "region_code": "ja",
@@ -94,32 +14,6 @@
       "article_slug": "202607backtomcd",
       "found_in_regions": [
         "ja"
-      ]
-    },
-    {
-      "region": "🇧🇷 巴西",
-      "region_code": "pt_br",
-      "event_name": "Celebrem o 10º aniversário de Pokémon GO à moda do futebol!",
-      "start_date": "2026-07-20",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/pt_br/news/suitup_the_10",
-      "article_slug": "suitup_the_10",
-      "found_in_regions": [
-        "pt_br"
-      ]
-    },
-    {
-      "region": "🌎 拉丁美洲",
-      "region_code": "es_mx",
-      "event_name": "¡Celebren el 10.º aniversario de Pokémon GO al estilo futbolero!",
-      "start_date": "2026-07-20",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/es_mx/news/suitup_the_10_la",
-      "article_slug": "suitup_the_10_la",
-      "found_in_regions": [
-        "es_mx"
       ]
     },
     {
@@ -136,19 +30,6 @@
       ]
     },
     {
-      "region": "🇺🇸 英文",
-      "region_code": "en",
-      "event_name": "Celebrate the launch of the Red Pokémon Jet: Take flight on a new adventure through the ANA and Pokémon GO partnership!",
-      "start_date": "2026-07-28",
-      "end_date": "2027-08-31",
-      "status": "active",
-      "url": "https://pokemongo.com/en/news/2026_ana_red",
-      "article_slug": "2026_ana_red",
-      "found_in_regions": [
-        "en"
-      ]
-    },
-    {
       "region": "🇯🇵 日本",
       "region_code": "ja",
       "event_name": "「ポケモンＪリーグフェス」との連携イベントを実施します！",
@@ -159,19 +40,6 @@
       "article_slug": "jleague_details",
       "found_in_regions": [
         "ja"
-      ]
-    },
-    {
-      "region": "🇺🇸 英文",
-      "region_code": "en",
-      "event_name": "Adventure awaits with the National Trust this summer!",
-      "start_date": "2026-07-31",
-      "end_date": "2026-12-31",
-      "status": "active",
-      "url": "https://pokemongo.com/en/news/nationaltrust-2026",
-      "article_slug": "nationaltrust-2026",
-      "found_in_regions": [
-        "en"
       ]
     },
     {
@@ -243,37 +111,10 @@
       ]
     },
     {
-      "region": "🇮🇹 義大利",
-      "region_code": "it",
-      "event_name": "Scegli la tua strada con la nuova ricerca a tempo e aggiornamenti delle scoperte giornaliere!",
-      "start_date": "2026-08-30",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/it/news/choose-your-path-forever-forward-2026",
-      "article_slug": "choose-your-path-forever-forward-2026",
-      "found_in_regions": [
-        "it",
-        "tr"
-      ]
-    },
-    {
-      "region": "🇵🇱 波蘭",
-      "region_code": "pl",
-      "event_name": "Dołącz do obchodów Pokémon GO Fest 2026: Global w Elektrowni Powiśle",
-      "start_date": "2026-08-30",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/pl/news/community-celebration-warszawa",
-      "article_slug": "community-celebration-warszawa",
-      "found_in_regions": [
-        "pl"
-      ]
-    },
-    {
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-08-30",
+      "start_date": "2026-09-01",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -283,16 +124,94 @@
       ]
     },
     {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Party Everywhere You GO with Party Play!",
+      "start_date": "2026-09-01",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ru/news/partyplay",
+      "article_slug": "partyplay",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Отпразднуйте Китайский Новый год 2022, приняв участие в праздничном событии Pokémon GO",
+      "start_date": "2026-09-01",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ru/news/lunar-new-year-event-2022",
+      "article_slug": "lunar-new-year-event-2022",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Дневники разработчика: Сезон наследия",
+      "start_date": "2026-09-01",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage",
+      "article_slug": "devdiary-dec2021-seasonofheritage",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Встречайте 2022 год с новогодним событием!",
+      "start_date": "2026-09-01",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ru/news/new-year-2022",
+      "article_slug": "new-year-2022",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
-      "start_date": "2026-09-01",
-      "end_date": "2026-10-01",
+      "start_date": "2026-09-03",
+      "end_date": "2026-10-03",
       "status": "upcoming",
       "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
       "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
       "found_in_regions": [
         "en"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and New York City",
+      "start_date": "2026-09-04",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024",
+      "article_slug": "notable-trainer-meet-greet-go-fest-2024",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Тур Pokémon GO: Джото — специальный квест и многое другое!",
+      "start_date": "2026-09-04",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/ru/news/pokemongotour-johto-research",
+      "article_slug": "pokemongotour-johto-research",
+      "found_in_regions": [
+        "ru"
       ]
     },
     {
@@ -363,48 +282,16 @@
       ]
     },
     {
-      "region": "🇪🇸 西班牙",
-      "region_code": "es",
-      "event_name": "Continuez de créer et de vivre votre propre aventure avec Pokémon GO et les magasins LEGO Store",
-      "start_date": "2026-09-30",
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Раскрыты высший теневой Лугиа и высший теневой Хо-Ох!",
+      "start_date": "2026-11-01",
       "end_date": null,
       "status": "upcoming",
-      "url": "https://pokemongo.com/es/news/lego-pokemon-go-2026",
-      "article_slug": "lego-pokemon-go-2026",
+      "url": "https://pokemongo.com/ru/news/apex-reveal",
+      "article_slug": "apex-reveal",
       "found_in_regions": [
-        "es",
-        "fr",
-        "pl"
-      ]
-    },
-    {
-      "region": "🇫🇷 法國",
-      "region_code": "fr",
-      "event_name": "Continuez de créer et de vivre votre propre aventure avec Pokémon GO et les magasins LEGO Store",
-      "start_date": "2026-09-30",
-      "end_date": null,
-      "status": "upcoming",
-      "url": "https://pokemongo.com/fr/news/lego-pokemon-go-2026",
-      "article_slug": "lego-pokemon-go-2026",
-      "found_in_regions": [
-        "es",
-        "fr",
-        "pl"
-      ]
-    },
-    {
-      "region": "🇵🇱 波蘭",
-      "region_code": "pl",
-      "event_name": "Continuez de créer et de vivre votre propre aventure avec Pokémon GO et les magasins LEGO Store",
-      "start_date": "2026-09-30",
-      "end_date": null,
-      "status": "upcoming",
-      "url": "https://pokemongo.com/pl/news/lego-pokemon-go-2026",
-      "article_slug": "lego-pokemon-go-2026",
-      "found_in_regions": [
-        "es",
-        "fr",
-        "pl"
+        "ru"
       ]
     },
     {
@@ -448,20 +335,6 @@
       ]
     },
     {
-      "region": "🇹🇷 土耳其",
-      "region_code": "tr",
-      "event_name": "Scegli la tua strada con la nuova ricerca a tempo e aggiornamenti delle scoperte giornaliere!",
-      "start_date": null,
-      "end_date": null,
-      "status": "unknown",
-      "url": "https://pokemongo.com/tr/news/choose-your-path-forever-forward-2026",
-      "article_slug": "choose-your-path-forever-forward-2026",
-      "found_in_regions": [
-        "it",
-        "tr"
-      ]
-    },
-    {
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Pokémon GO Fest 2025",
@@ -470,6 +343,279 @@
       "status": "unknown",
       "url": "https://pokemongo.com/ru/news/gofestmaxfinale",
       "article_slug": "gofestmaxfinale",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Valiant Trainers are cordially invited to partake in grand global revels this summer at Pokémon GO Fest 2025!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/go-fest-2025-events-announcement",
+      "article_slug": "go-fest-2025-events-announcement",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Pokémon GO Fest 2024 details revealed: Ultra Unlock, habitat times, and more!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/go-fest-2024-ultra-unlock-challenges",
+      "article_slug": "go-fest-2024-ultra-unlock-challenges",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Join Pokémon GO Community Meetups for Pokémon GO Fest 2024: Global!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/go-fest-2024-community-meetups",
+      "article_slug": "go-fest-2024-community-meetups",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Get out of the stands and explore during the Stadium Sights event, featuring Pokémon from Pokémon GO Fest 2024: Sendai!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/go-fest-2024-stadium-sights",
+      "article_slug": "go-fest-2024-stadium-sights",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Pokémon GO Fest 2022: Finale event details revealed—Ultra Beasts, Sky Forme Shaymin, and much, much more!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/gofest2022-finale-event",
+      "article_slug": "gofest2022-finale-event",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Спасибо, что посетили Pokémon GO Fest: Берлин!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/gofest-2022-berlin-recap",
+      "article_slug": "gofest-2022-berlin-recap",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Международное событие в рамках сотрудничества «Воздушные приключения покемонов» пройдет в мае",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/flying-pikachu-2022",
+      "article_slug": "flying-pikachu-2022",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Боевая Лига GO: о следующем сезоне",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/go-battle-league-next-season-update",
+      "article_slug": "go-battle-league-next-season-update",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Запасайтесь предметами во время Подготовки к Туру GO: Покеболлы",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/pokeball-prep-go-tour-prep-event",
+      "article_slug": "pokeball-prep-go-tour-prep-event",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Запишите даты: Дни сообщества следующего сезона!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/cd-savethedate-mar-may",
+      "article_slug": "cd-savethedate-mar-may",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "День святого Валентина 2022 в Pokémon GO: появление Флабебе, тематические праздничные коллекционные испытания и многое другое!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/valentines-day-event-2022",
+      "article_slug": "valentines-day-event-2022",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Волторб из игры Pokémon Legends: Arceus, обнаруженный в регионе Гисуи, уже появился!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/hisuiregion",
+      "article_slug": "hisuiregion",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Живые мероприятия Тура Pokémon GO: насладитесь регионом Канто вживую на мероприятиях в Монтеррее и Гаосюне",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/pokemongotour-live-details",
+      "article_slug": "pokemongotour-live-details",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Новые предметы для аватара, вдохновленные <i>Pokémon Legends: Arceus</i>, появятся совсем скоро!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/legends-arceus-outfit",
+      "article_slug": "legends-arceus-outfit",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Что ждет нас в феврале: тур «Pokémon GO: Джото», прыгучий День сообщества, событие в честь Дня святого Валентина, дополнительные рейдовые пропуски и многое другое!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/february-2022-content-update",
+      "article_slug": "february-2022-content-update",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Февральский День сообщества 2022: прыгучая тусовка Хоппипа",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/communityday-feb22-hoppip",
+      "article_slug": "communityday-feb22-hoppip",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Откройте последний замок двери во время зажигательного события на электростанции, где дебютирует Хелиоптайл",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/season-of-heritage-power-plant-event",
+      "article_slug": "season-of-heritage-power-plant-event",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Готовьтесь сворачивать горы, участвуя в событии «Сила гор» в рамках Сезона наследия",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/season-of-heritage-mountains-of-power-event",
+      "article_slug": "season-of-heritage-mountains-of-power-event",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Классический День сообщества: возвращение к Бульбазавру",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/community-day-classic-bulbasaur-jan22",
+      "article_slug": "community-day-classic-bulbasaur-jan22",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Что ждет нас в январе: Новый год, Сила гор и многое другое!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/jan-2022-events",
+      "article_slug": "jan-2022-events",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Январский День сообщества 2022: весомый визит Сфила",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/ru/news/communityday-jan22",
+      "article_slug": "communityday-jan22",
       "found_in_regions": [
         "ru"
       ]
