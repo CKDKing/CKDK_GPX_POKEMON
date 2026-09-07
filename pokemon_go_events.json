@@ -1,7 +1,7 @@
 {
-  "scan_timestamp": "2026-09-06T22:49:19.275860",
-  "scan_date": "2026-09-06",
-  "total": 44,
+  "scan_timestamp": "2026-09-07T23:23:47.120217",
+  "scan_date": "2026-09-07",
+  "total": 46,
   "events": [
     {
       "region": "🇯🇵 日本",
@@ -87,7 +87,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-09-06",
+      "start_date": "2026-09-07",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -100,7 +100,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Party Everywhere You GO with Party Play!",
-      "start_date": "2026-09-06",
+      "start_date": "2026-09-07",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/partyplay",
@@ -113,7 +113,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Отпразднуйте Китайский Новый год 2022, приняв участие в праздничном событии Pokémon GO",
-      "start_date": "2026-09-06",
+      "start_date": "2026-09-07",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/lunar-new-year-event-2022",
@@ -126,7 +126,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Дневники разработчика: Сезон наследия",
-      "start_date": "2026-09-06",
+      "start_date": "2026-09-07",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage",
@@ -139,8 +139,8 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Встречайте 2022 год с новогодним событием!",
-      "start_date": "2026-09-06",
-      "end_date": null,
+      "start_date": "2026-09-07",
+      "end_date": "2026-09-08",
       "status": "active",
       "url": "https://pokemongo.com/ru/news/new-year-2022",
       "article_slug": "new-year-2022",
@@ -149,16 +149,16 @@
       ]
     },
     {
-      "region": "🇺🇸 英文",
-      "region_code": "en",
-      "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
+      "region": "🇰🇷 韓國",
+      "region_code": "ko",
+      "event_name": "주간 릴레이 시간제한 리서치가 찾아옵니다!",
       "start_date": "2026-09-08",
-      "end_date": "2026-10-08",
+      "end_date": "2026-10-06",
       "status": "upcoming",
-      "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
-      "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
+      "url": "https://pokemongo.com/ko/news/weekly-branching-tr-korea-2026",
+      "article_slug": "weekly-branching-tr-korea-2026",
       "found_in_regions": [
-        "en"
+        "ko"
       ]
     },
     {
@@ -175,10 +175,23 @@
       ]
     },
     {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
+      "start_date": "2026-09-09",
+      "end_date": "2026-10-09",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
+      "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
+      "found_in_regions": [
+        "en"
+      ]
+    },
+    {
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and New York City",
-      "start_date": "2026-09-09",
+      "start_date": "2026-09-10",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024",
@@ -191,7 +204,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Тур Pokémon GO: Джото — специальный квест и многое другое!",
-      "start_date": "2026-09-09",
+      "start_date": "2026-09-10",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/pokemongotour-johto-research",
@@ -242,10 +255,23 @@
       ]
     },
     {
+      "region": "🇪🇸 西班牙",
+      "region_code": "es",
+      "event_name": "Pokémon GO en la Comic-Con Málaga 2026: bonus exclusivos, horarios y dónde jugar",
+      "start_date": "2026-10-04",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/es/news/comic-con-malaga-2026",
+      "article_slug": "comic-con-malaga-2026",
+      "found_in_regions": [
+        "es"
+      ]
+    },
+    {
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Раскрыты высший теневой Лугиа и высший теневой Хо-Ох!",
-      "start_date": "2026-11-06",
+      "start_date": "2026-11-07",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/apex-reveal",
