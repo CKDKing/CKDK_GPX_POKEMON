@@ -262,9 +262,10 @@ def scrape_threads() -> None:
         browser = p.chromium.launch(headless=True)
         context = browser.new_context(user_agent=USER_AGENT, locale="zh-TW")
         page = context.new_page()
+        page.set_default_timeout(90000)
 
         print(f"導航至主頁: {TARGET_URL}")
-        page.goto(TARGET_URL)
+        page.goto(TARGET_URL, timeout=90000, wait_until="domcontentloaded")
         page.wait_for_timeout(5000)
 
         print("滾動頁面加載歷史貼文...")
@@ -298,7 +299,7 @@ def scrape_threads() -> None:
 
             print(f"\n[{idx+1}/{len(post_links)}] 解析: {post_url}")
             try:
-                page.goto(post_url)
+                page.goto(post_url, timeout=90000, wait_until="domcontentloaded")
                 page.wait_for_timeout(4000)
 
                 post_soup = BeautifulSoup(page.content(), "html.parser")
