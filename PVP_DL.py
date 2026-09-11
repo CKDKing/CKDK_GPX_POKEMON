@@ -190,17 +190,21 @@ def now_str() -> str:
 # ══════════════════════════════════════════════════════════════════════════════
 
 async def fetch_update_time() -> str | None:
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(headless=True)
-        page    = await browser.new_page()
-        try:
-            await page.goto(HOMEPAGE, wait_until="networkidle", timeout=30000)
-            await page.wait_for_timeout(2000)
-            body = await page.inner_text("body")
-        finally:
-            await browser.close()
-    m = _UPDATE_RE.search(body)
-    return m.group(1).strip() if m else None
+    try:
+        async with async_playwright() as p:
+            browser = await p.chromium.launch(headless=True)
+            page    = await browser.new_page()
+            try:
+                await page.goto(HOMEPAGE, wait_until="networkidle", timeout=90000)
+                await page.wait_for_timeout(2000)
+                body = await page.inner_text("body")
+            finally:
+                await browser.close()
+        m = _UPDATE_RE.search(body)
+        return m.group(1).strip() if m else None
+    except Exception as e:
+        print(f"  ✗ fetch_update_time 發生例外：{e}")
+        return None
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -323,7 +327,7 @@ async def download_and_process(date_str: str, visible: bool = False) -> bool:
         context = await browser.new_context(accept_downloads=True)
         page    = await context.new_page()
 
-        await page.goto(RANKINGS, wait_until="networkidle")
+        await page.goto(RANKINGS, wait_until="networkidle", timeout=90000)
         await page.wait_for_timeout(2000)
 
         options  = page.locator(".format-select option")
@@ -334,7 +338,7 @@ async def download_and_process(date_str: str, visible: bool = False) -> bool:
         for idx, fmt_text in enumerate(fmt_list):
             print(f"\n  [{idx+1}/{len(fmt_list)}] {fmt_text}")
             try:
-                await page.goto(RANKINGS, wait_until="networkidle")
+                await page.goto(RANKINGS, wait_until="networkidle", timeout=90000)
                 await page.wait_for_timeout(1500)
 
                 fmt_sel = page.locator(".format-select")
