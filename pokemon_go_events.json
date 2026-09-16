@@ -1,7 +1,7 @@
 {
-  "scan_timestamp": "2026-09-15T23:31:23.496539",
-  "scan_date": "2026-09-15",
-  "total": 51,
+  "scan_timestamp": "2026-09-16T23:38:58.944042",
+  "scan_date": "2026-09-16",
+  "total": 53,
   "events": [
     {
       "region": "🇯🇵 日本",
@@ -154,7 +154,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-09-15",
+      "start_date": "2026-09-16",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -167,7 +167,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Party Everywhere You GO with Party Play!",
-      "start_date": "2026-09-15",
+      "start_date": "2026-09-16",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/partyplay",
@@ -180,7 +180,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Дневники разработчика: Сезон наследия",
-      "start_date": "2026-09-15",
+      "start_date": "2026-09-16",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage",
@@ -193,7 +193,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Отпразднуйте Китайский Новый год 2022, приняв участие в праздничном событии Pokémon GO",
-      "start_date": "2026-09-16",
+      "start_date": "2026-09-17",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/lunar-new-year-event-2022",
@@ -206,26 +206,13 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Встречайте 2022 год с новогодним событием!",
-      "start_date": "2026-09-16",
+      "start_date": "2026-09-17",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/new-year-2022",
       "article_slug": "new-year-2022",
       "found_in_regions": [
         "ru"
-      ]
-    },
-    {
-      "region": "🇺🇸 英文",
-      "region_code": "en",
-      "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
-      "start_date": "2026-09-17",
-      "end_date": "2026-10-17",
-      "status": "upcoming",
-      "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
-      "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
-      "found_in_regions": [
-        "en"
       ]
     },
     {
@@ -270,10 +257,23 @@
       ]
     },
     {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
+      "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
+      "start_date": "2026-09-18",
+      "end_date": "2026-10-18",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
+      "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
+      "found_in_regions": [
+        "en"
+      ]
+    },
+    {
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and New York City",
-      "start_date": "2026-09-18",
+      "start_date": "2026-09-19",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024",
@@ -286,7 +286,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Тур Pokémon GO: Джото — специальный квест и многое другое!",
-      "start_date": "2026-09-18",
+      "start_date": "2026-09-19",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/pokemongotour-johto-research",
@@ -311,9 +311,35 @@
     {
       "region": "🇺🇸 英文",
       "region_code": "en",
+      "event_name": "Pokémon GO City Safari: Brisbane – Know Before You GO!",
+      "start_date": "2026-09-26",
+      "end_date": "2026-09-27",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/en/news/city-safari-brisbane-know-before-you-go",
+      "article_slug": "city-safari-brisbane-know-before-you-go",
+      "found_in_regions": [
+        "en"
+      ]
+    },
+    {
+      "region": "🇹🇼 台灣",
+      "region_code": "zh_hant",
+      "event_name": "歡慶寶可夢30週年！《Pokémon GO》遊戲內明信片於全台新光三越合作登場！",
+      "start_date": "2026-10-01",
+      "end_date": "2026-12-31",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/zh_hant/news/2026oct-skmtw",
+      "article_slug": "2026oct-skmtw",
+      "found_in_regions": [
+        "zh_hant"
+      ]
+    },
+    {
+      "region": "🇺🇸 英文",
+      "region_code": "en",
       "event_name": "Pola-Pola Alam Bebas menghadirkan Pikachu berkemeja Batik dengan Latar Belakang Spesial!",
       "start_date": "2026-10-02",
-      "end_date": "2026-10-07",
+      "end_date": "2026-10-10",
       "status": "upcoming",
       "url": "https://pokemongo.com/en/news/patterns-of-the-wild-2026",
       "article_slug": "patterns-of-the-wild-2026",
@@ -327,7 +353,7 @@
       "region_code": "id",
       "event_name": "Pola-Pola Alam Bebas menghadirkan Pikachu berkemeja Batik dengan Latar Belakang Spesial!",
       "start_date": "2026-10-02",
-      "end_date": "2026-10-07",
+      "end_date": "2026-10-10",
       "status": "upcoming",
       "url": "https://pokemongo.com/id/news/patterns-of-the-wild-2026",
       "article_slug": "patterns-of-the-wild-2026",
@@ -353,7 +379,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Раскрыты высший теневой Лугиа и высший теневой Хо-Ох!",
-      "start_date": "2026-11-15",
+      "start_date": "2026-11-16",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/apex-reveal",
