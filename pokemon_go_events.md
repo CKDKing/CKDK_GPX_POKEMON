@@ -1,11 +1,12 @@
 # 🗺️ Pokémon GO 地區限定活動
 
-> 掃描時間：**2026-09-18 23:10**（台灣時間）
+> 掃描時間：**2026-09-19 22:48**（台灣時間）
 > 僅顯示地區限定活動，已結束的不列入
 > 全球性共同活動不列入
 
 | 地區 | 活動名稱 | 起點 | 終點 | 狀態 | 網頁 |
 | ---- | -------- | :--: | :--: | :--: | :--: |
+| 🇵🇱 波蘭 | अल्ट्रा अनलॉक - 10वीं ऐनिवर्सरी संस्करण में ढेर सारे पहले साथी और | 2026-07-27 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/ultraunlock-10th-anniversary-edition) |
 | 🇯🇵 日本 | 令和8年 熊本地震に対する支援について | 2026-07-28 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/kumamoto2026) |
 | 🇰🇷 韓國 | “Pokémon GO 2026 잠실 잉어킹 이벤트”와 함께 특별한 여름을 맞이하세요! | 2026-08-16 | 2026-09-20 | ✅ 進行中 | [🔗](https://pokemongo.com/ko/news/jamsil-magikarp-2026) |
 | 🇮🇳 印度 | अगस्त 2026 कम्युनिटी डे: निकिट | 2026-08-16 | — | ✅ 進行中 | [🔗](https://pokemongo.com/hi/news/communityday-august-2026-nickit) |
@@ -20,21 +21,21 @@
 | 🇺🇸 英文 | 「ポケモンジェット 緑」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！ | 2026-09-18 | 2027-08-31 | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/2026_ana_green) |
 | 🇯🇵 日本 | 「ポケモンジェット 緑」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！ | 2026-09-18 | 2027-08-31 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/2026_ana_green) |
 | 🇰🇷 韓國 | “Pokémon GO”에서 “2026 피카츄의 가을 소풍" 이벤트 및 “2026 피카츄의 한국 나들이" 이벤트와 함께 | 2026-09-18 | 2026-10-11 | ✅ 進行中 | [🔗](https://pokemongo.com/ko/news/pikachu-autumn-picnic-korea-2026) |
-| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-09-18 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
-| 🇷🇺 俄羅斯 | Party Everywhere You GO with Party Play! | 2026-09-18 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/partyplay) |
-| 🇷🇺 俄羅斯 | Отпразднуйте Китайский Новый год 2022, приняв участие в праздничн | 2026-09-18 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/lunar-new-year-event-2022) |
-| 🇷🇺 俄羅斯 | Дневники разработчика: Сезон наследия | 2026-09-18 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage) |
-| 🇷🇺 俄羅斯 | Встречайте 2022 год с новогодним событием! | 2026-09-18 | 2026-09-19 | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/new-year-2022) |
-| 🇺🇸 英文 | PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur! | 2026-09-20 | 2026-10-20 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026) |
+| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-09-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
+| 🇷🇺 俄羅斯 | Party Everywhere You GO with Party Play! | 2026-09-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/partyplay) |
+| 🇷🇺 俄羅斯 | Отпразднуйте Китайский Новый год 2022, приняв участие в праздничн | 2026-09-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/lunar-new-year-event-2022) |
+| 🇷🇺 俄羅斯 | Дневники разработчика: Сезон наследия | 2026-09-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage) |
+| 🇷🇺 俄羅斯 | Встречайте 2022 год с новогодним событием! | 2026-09-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/new-year-2022) |
 | 🌎 拉丁美洲 | ¡Una celebración con Hawlucha se acerca a México! | 2026-09-21 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/es_mx/news/hawlucha-celebrando-septiembre-2026) |
-| 🇷🇺 俄羅斯 | Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and N | 2026-09-21 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024) |
-| 🇷🇺 俄羅斯 | Тур Pokémon GO: Джото — специальный квест и многое другое! | 2026-09-21 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/pokemongotour-johto-research) |
+| 🇺🇸 英文 | PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur! | 2026-09-21 | 2026-10-21 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026) |
+| 🇷🇺 俄羅斯 | Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and N | 2026-09-22 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024) |
+| 🇷🇺 俄羅斯 | Тур Pokémon GO: Джото — специальный квест и многое другое! | 2026-09-22 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/pokemongotour-johto-research) |
 | 🇺🇸 英文 | Pokémon GO City Safari: Brisbane – Know Before You GO! | 2026-09-26 | 2026-09-27 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/city-safari-brisbane-know-before-you-go) |
 | 🇹🇼 台灣 | 歡慶寶可夢30週年！《Pokémon GO》遊戲內明信片於全台新光三越合作登場！ | 2026-10-01 | 2026-12-31 | 🔜 即將開始 | [🔗](https://pokemongo.com/zh_hant/news/2026oct-skmtw) |
 | 🇺🇸 英文 | Pola-Pola Alam Bebas menghadirkan Pikachu berkemeja Batik dengan  | 2026-10-02 | 2026-10-10 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/patterns-of-the-wild-2026) |
 | 🇮🇩 印尼 | Pola-Pola Alam Bebas menghadirkan Pikachu berkemeja Batik dengan  | 2026-10-02 | 2026-10-10 | 🔜 即將開始 | [🔗](https://pokemongo.com/id/news/patterns-of-the-wild-2026) |
 | 🇪🇸 西班牙 | Pokémon GO en la Comic-Con Málaga 2026: bonus exclusivos, horario | 2026-10-04 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/es/news/comic-con-malaga-2026) |
-| 🇷🇺 俄羅斯 | Раскрыты высший теневой Лугиа и высший теневой Хо-Ох! | 2026-11-18 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/apex-reveal) |
+| 🇷🇺 俄羅斯 | Раскрыты высший теневой Лугиа и высший теневой Хо-Ох! | 2026-11-19 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/apex-reveal) |
 | 🇺🇸 英文 | Welcome to Pokémon GO: Twilight Trails | 2026-12-01 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/seasons--twilight-trails) |
 | 🇩🇪 德國 | Pokémon GO auf der gamescom 2026! | — | — | ❓ 日期未知 | [🔗](https://pokemongo.com/de/news/gamescom2026) |
 | 🇷🇺 俄羅斯 | Pokémon GO Fest 2025 | — | — | ❓ 日期未知 | [🔗](https://pokemongo.com/ru/news/gofestmaxfinale) |
