@@ -1,7 +1,7 @@
 {
-  "scan_timestamp": "2026-09-21T23:58:45.100573",
-  "scan_date": "2026-09-21",
-  "total": 55,
+  "scan_timestamp": "2026-09-22T23:36:17.730434",
+  "scan_date": "2026-09-22",
+  "total": 56,
   "events": [
     {
       "region": "🇰🇷 韓國",
@@ -19,16 +19,18 @@
       ]
     },
     {
-      "region": "🇯🇵 日本",
-      "region_code": "ja",
-      "event_name": "令和8年 熊本地震に対する支援について",
-      "start_date": "2026-07-28",
+      "region": "🇵🇱 波蘭",
+      "region_code": "pl",
+      "event_name": "अल्ट्रा अनलॉक: स्टारमी सुपर मेगा रेड दिवस में मेगा स्टारमी स्टार है!",
+      "start_date": "2026-08-22",
       "end_date": null,
       "status": "active",
-      "url": "https://pokemongo.com/ja/news/kumamoto2026",
-      "article_slug": "kumamoto2026",
+      "url": "https://pokemongo.com/pl/news/starmie-super-mega-raid-day-2026",
+      "article_slug": "starmie-super-mega-raid-day-2026",
       "found_in_regions": [
-        "ja"
+        "hi",
+        "pl",
+        "tr"
       ]
     },
     {
@@ -212,7 +214,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-09-21",
+      "start_date": "2026-09-22",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
@@ -225,7 +227,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Party Everywhere You GO with Party Play!",
-      "start_date": "2026-09-21",
+      "start_date": "2026-09-22",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/partyplay",
@@ -238,7 +240,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Дневники разработчика: Сезон наследия",
-      "start_date": "2026-09-21",
+      "start_date": "2026-09-22",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage",
@@ -251,7 +253,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Отпразднуйте Китайский Новый год 2022, приняв участие в праздничном событии Pokémon GO",
-      "start_date": "2026-09-22",
+      "start_date": "2026-09-23",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/lunar-new-year-event-2022",
@@ -264,7 +266,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Встречайте 2022 год с новогодним событием!",
-      "start_date": "2026-09-22",
+      "start_date": "2026-09-23",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/new-year-2022",
@@ -277,8 +279,8 @@
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "PokéXciting! Comes to KLCC Park — Get Ready, Kuala Lumpur!",
-      "start_date": "2026-09-23",
-      "end_date": "2026-10-23",
+      "start_date": "2026-09-24",
+      "end_date": "2026-10-24",
       "status": "upcoming",
       "url": "https://pokemongo.com/en/news/event-kuala-lumpur-30th-anniversary-2026",
       "article_slug": "event-kuala-lumpur-30th-anniversary-2026",
@@ -290,7 +292,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and New York City",
-      "start_date": "2026-09-24",
+      "start_date": "2026-09-25",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024",
@@ -303,7 +305,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Тур Pokémon GO: Джото — специальный квест и многое другое!",
-      "start_date": "2026-09-24",
+      "start_date": "2026-09-25",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/pokemongotour-johto-research",
@@ -406,10 +408,23 @@
       ]
     },
     {
+      "region": "🇰🇷 韓國",
+      "region_code": "ko",
+      "event_name": "“2026 한글날 이벤트”가 대한민국 전역에서 개최됩니다!",
+      "start_date": "2026-10-06",
+      "end_date": null,
+      "status": "upcoming",
+      "url": "https://pokemongo.com/ko/news/hangul-nal-2026",
+      "article_slug": "hangul-nal-2026",
+      "found_in_regions": [
+        "ko"
+      ]
+    },
+    {
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Раскрыты высший теневой Лугиа и высший теневой Хо-Ох!",
-      "start_date": "2026-11-21",
+      "start_date": "2026-11-22",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/apex-reveal",
