@@ -1,21 +1,22 @@
 # 🗺️ Pokémon GO 地區限定活動
 
-> 掃描時間：**2026-10-04 23:57**（台灣時間）
+> 掃描時間：**2026-10-06 01:46**（台灣時間）
 > 僅顯示地區限定活動，已結束的不列入
 > 全球性共同活動不列入
 
 | 地區 | 活動名稱 | 起點 | 終點 | 狀態 | 網頁 |
 | ---- | -------- | :--: | :--: | :--: | :--: |
-| 🇮🇳 印度 | फ़ायर एंड आइस हैच डे | 2026-08-08 | — | ✅ 進行中 | [🔗](https://pokemongo.com/hi/news/fire-and-ice-hatch-day-2026) |
-| 🇹🇷 土耳其 | फ़ायर एंड आइस हैच डे | 2026-08-08 | — | ✅ 進行中 | [🔗](https://pokemongo.com/tr/news/fire-and-ice-hatch-day-2026) |
 | 🌎 拉丁美洲 | Assistam às partidas de Pokémon GO no Campeonato Mundial Pokémon  | 2026-08-30 | — | ✅ 進行中 | [🔗](https://pokemongo.com/es_mx/news/2026-pokemon-go-world-championship-in-ptbr) |
 | 🇧🇷 巴西 | Assistam às partidas de Pokémon GO no Campeonato Mundial Pokémon  | 2026-08-30 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pt_br/news/2026-pokemon-go-world-championship-in-ptbr) |
 | 🇰🇷 韓國 | 모험의 시작! “Pokémon GO Fest 2026: 메가 피날레” 기념 한국 현장 이벤트 | 2026-09-05 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ko/news/mega-finale-korea-2026) |
+| 🇮🇳 印度 | आपके समर एडवेंचर का अंतिम दौर Pokémon GO फ़ेस्टिवल: मेगा फ़िनाले  | 2026-09-05 | — | ✅ 進行中 | [🔗](https://pokemongo.com/hi/news/gofest2026-finale-save-the-date) |
+| 🇵🇱 波蘭 | आपके समर एडवेंचर का अंतिम दौर Pokémon GO फ़ेस्टिवल: मेगा फ़िनाले  | 2026-09-05 | — | ✅ 進行中 | [🔗](https://pokemongo.com/pl/news/gofest2026-finale-save-the-date) |
+| 🇹🇷 土耳其 | आपके समर एडवेंचर का अंतिम दौर Pokémon GO फ़ेस्टिवल: मेगा फ़िनाले  | 2026-09-05 | — | ✅ 進行中 | [🔗](https://pokemongo.com/tr/news/gofest2026-finale-save-the-date) |
 | 🇰🇷 韓國 | 주간 릴레이 시간제한 리서치가 찾아옵니다! | 2026-09-08 | 2026-10-06 | ✅ 進行中 | [🔗](https://pokemongo.com/ko/news/weekly-branching-tr-korea-2026) |
 | 🇯🇵 日本 | 「伝説のポケモンと出会う レジェンドリサーチ in日本橋＆八重洲」で『Pokémon GO』を楽しもう！ | 2026-09-09 | 2026-11-29 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/legend_research_jp) |
 | 🇹🇼 台灣 | 「PokéXciting! in 台北」即將來到信義區！ | 2026-09-12 | 2029-09-11 | ✅ 進行中 | [🔗](https://pokemongo.com/zh_hant/news/event-taipei-30th-anniversary-2026) |
 | 🇹🇭 泰國 | PokéXciting! แสตมป์แรลลี GO ข้ามภูมิภาค—เตรียมพร้อมสำรวจภูมิภาคเอ | 2026-09-12 | — | ✅ 進行中 | [🔗](https://pokemongo.com/th/news/event-apac-stamp-rally-2026) |
-| 🇹🇷 土耳其 | Lucky Trinket powraca, a Latias wlatuje do przepustki GO Pass: Au | 2026-09-13 | — | ✅ 進行中 | [🔗](https://pokemongo.com/tr/news/go-pass-august-2026) |
+| 🇹🇷 土耳其 | GO Bileti: Ağustos ile Şanslı Süs Eşyası geri dönüyor ve Latias g | 2026-09-13 | — | ✅ 進行中 | [🔗](https://pokemongo.com/tr/news/go-pass-august-2026) |
 | 🇯🇵 日本 | 「『Pokémon GO』パートナーリサーチ」を開催します！ | 2026-09-15 | 2026-12-31 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/202609partnerresearch-jp) |
 | 🇯🇵 日本 | 「ポケモンジェット 緑」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！ | 2026-09-18 | 2027-08-31 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/2026_ana_green) |
 | 🇰🇷 韓國 | “Pokémon GO”에서 “2026 피카츄의 가을 소풍" 이벤트 및 “2026 피카츄의 한국 나들이" 이벤트와 함께 | 2026-09-18 | 2026-10-11 | ✅ 進行中 | [🔗](https://pokemongo.com/ko/news/pikachu-autumn-picnic-korea-2026) |
@@ -29,21 +30,22 @@
 | 🇺🇸 英文 | Pola-Pola Alam Bebas menghadirkan Pikachu berkemeja Batik dengan  | 2026-10-02 | 2026-10-10 | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/patterns-of-the-wild-2026) |
 | 🇮🇩 印尼 | Pola-Pola Alam Bebas menghadirkan Pikachu berkemeja Batik dengan  | 2026-10-02 | 2026-10-10 | ✅ 進行中 | [🔗](https://pokemongo.com/id/news/patterns-of-the-wild-2026) |
 | 🇪🇸 西班牙 | Pokémon GO en la Comic-Con Málaga 2026: bonus exclusivos, horario | 2026-10-04 | — | ✅ 進行中 | [🔗](https://pokemongo.com/es/news/comic-con-malaga-2026) |
-| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-10-04 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
-| 🇷🇺 俄羅斯 | Party Everywhere You GO with Party Play! | 2026-10-04 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/partyplay) |
-| 🇷🇺 俄羅斯 | Дневники разработчика: Сезон наследия | 2026-10-04 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage) |
-| 🇮🇳 印度 | พลังงานเมก้าระลอกสุดท้ายของฤดูร้อนกำลังจะมาถึง | 2026-10-05 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/hi/news/gofest2026-mega-finale-incoming) |
-| 🇮🇩 印尼 | พลังงานเมก้าระลอกสุดท้ายของฤดูร้อนกำลังจะมาถึง | 2026-10-05 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/id/news/gofest2026-mega-finale-incoming) |
-| 🇷🇺 俄羅斯 | Отпразднуйте Китайский Новый год 2022, приняв участие в праздничн | 2026-10-05 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/lunar-new-year-event-2022) |
-| 🇷🇺 俄羅斯 | Встречайте 2022 год с новогодним событием! | 2026-10-05 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/new-year-2022) |
-| 🇰🇷 韓國 | “2026 한글날 이벤트”가 대한민국 전역에서 개최됩니다! | 2026-10-06 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ko/news/hangul-nal-2026) |
-| 🇷🇺 俄羅斯 | Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and N | 2026-10-07 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024) |
-| 🇷🇺 俄羅斯 | Тур Pokémon GO: Джото — специальный квест и многое другое! | 2026-10-07 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/pokemongotour-johto-research) |
+| 🇰🇷 韓國 | “2026 한글날 이벤트”가 대한민국 전역에서 개최됩니다! | 2026-10-06 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ko/news/hangul-nal-2026) |
+| 🇷🇺 俄羅斯 | Welcome to Pokémon GO: Tales of Transformation | 2026-10-06 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/welcome-to-tales-of-transformation) |
+| 🇷🇺 俄羅斯 | Party Everywhere You GO with Party Play! | 2026-10-06 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/partyplay) |
+| 🇷🇺 俄羅斯 | Отпразднуйте Китайский Новый год 2022, приняв участие в праздничн | 2026-10-06 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/lunar-new-year-event-2022) |
+| 🇷🇺 俄羅斯 | Дневники разработчика: Сезон наследия | 2026-10-06 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage) |
+| 🇷🇺 俄羅斯 | Встречайте 2022 год с новогодним событием! | 2026-10-06 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/new-year-2022) |
+| 🇮🇳 印度 | พลังงานเมก้าระลอกสุดท้ายของฤดูร้อนกำลังจะมาถึง | 2026-10-07 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/hi/news/gofest2026-mega-finale-incoming) |
+| 🇮🇩 印尼 | พลังงานเมก้าระลอกสุดท้ายของฤดูร้อนกำลังจะมาถึง | 2026-10-07 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/id/news/gofest2026-mega-finale-incoming) |
+| 🇷🇺 俄羅斯 | Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and N | 2026-10-09 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024) |
+| 🇷🇺 俄羅斯 | Тур Pokémon GO: Джото — специальный квест и многое другое! | 2026-10-09 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/pokemongotour-johto-research) |
+| 🇯🇵 日本 | 全国のイオンモールで『ポケモン GO』のハロウィンイベントを楽しもう！ | 2026-10-19 | 2026-11-15 | 🔜 即將開始 | [🔗](https://pokemongo.com/ja/news/202610aeonmall-halloween) |
 | 🇺🇸 英文 | Pokémon GO City Safari: Boston Update | 2026-10-20 | 2028-10-23 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/city-safari-boston-rescheduled) |
 | 🇺🇸 英文 | Pokémon TCG 30th Celebration Event | 2026-10-20 | 2026-11-20 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/tcg-30th-celebration-event) |
 | 🇺🇸 英文 | Get codes for exclusive Timed Research during the Pokémon Night O | 2026-10-24 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/pokemon-night-out-twitch-drops2026) |
 | 🇺🇸 英文 | Celebrate the Festival of Lights with the return of Pikachu weari | 2026-11-08 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/festival-of-lights-2026) |
-| 🇷🇺 俄羅斯 | Раскрыты высший теневой Лугиа и высший теневой Хо-Ох! | 2026-12-04 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/apex-reveal) |
+| 🇷🇺 俄羅斯 | Раскрыты высший теневой Лугиа и высший теневой Хо-Ох! | 2026-12-06 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/apex-reveal) |
 | 🇹🇭 泰國 | พลังงานเมก้าระลอกสุดท้ายของฤดูร้อนกำลังจะมาถึง | — | — | ❓ 日期未知 | [🔗](https://pokemongo.com/th/news/gofest2026-mega-finale-incoming) |
 | 🇺🇸 英文 | Event Update: City Safari Boston | — | — | ❓ 日期未知 | [🔗](https://pokemongo.com/en/news/city-safari-boston-update) |
 | 🇩🇪 德國 | Pokémon GO auf der gamescom 2026! | — | — | ❓ 日期未知 | [🔗](https://pokemongo.com/de/news/gamescom2026) |
