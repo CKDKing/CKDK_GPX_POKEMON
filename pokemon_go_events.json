@@ -1,19 +1,20 @@
 {
-  "scan_timestamp": "2026-10-14T00:15:11.362573",
+  "scan_timestamp": "2026-10-14T23:48:45.633573",
   "scan_date": "2026-10-14",
-  "total": 54,
+  "total": 51,
   "events": [
     {
-      "region": "🌎 拉丁美洲",
-      "region_code": "es_mx",
-      "event_name": "¡Sigan el Campeonato Mundial Pokémon de 2026 en español!",
-      "start_date": "2026-08-30",
+      "region": "🇹🇷 土耳其",
+      "region_code": "tr",
+      "event_name": "सभी ट्रेनर एक खास म्यूटू के साथ Pokémon GO के 10 साल पूरे होने को सेलिब्रेट कर सकते हैं!",
+      "start_date": "2026-09-06",
       "end_date": null,
       "status": "active",
-      "url": "https://pokemongo.com/es_mx/news/2026-pokemon-go-world-championship-in-ptbr",
-      "article_slug": "2026-pokemon-go-world-championship-in-ptbr",
+      "url": "https://pokemongo.com/tr/news/10th-anniversary-celebration",
+      "article_slug": "10th-anniversary-celebration",
       "found_in_regions": [
-        "es_mx"
+        "hi",
+        "tr"
       ]
     },
     {
@@ -153,19 +154,6 @@
       ]
     },
     {
-      "region": "🇹🇷 土耳其",
-      "region_code": "tr",
-      "event_name": "Gelecek Sezonun Topluluk Günü tarihlerini işaretleyin!",
-      "start_date": "2026-10-03",
-      "end_date": "2026-11-28",
-      "status": "active",
-      "url": "https://pokemongo.com/tr/news/save-the-date-s24",
-      "article_slug": "save-the-date-s24",
-      "found_in_regions": [
-        "tr"
-      ]
-    },
-    {
       "region": "🇪🇸 西班牙",
       "region_code": "es",
       "event_name": "Pokémon GO en la Comic-Con Málaga 2026: bonus exclusivos, horarios y dónde jugar",
@@ -220,19 +208,6 @@
     {
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
-      "event_name": "Отпразднуйте Китайский Новый год 2022, приняв участие в праздничном событии Pokémon GO",
-      "start_date": "2026-10-14",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/ru/news/lunar-new-year-event-2022",
-      "article_slug": "lunar-new-year-event-2022",
-      "found_in_regions": [
-        "ru"
-      ]
-    },
-    {
-      "region": "🇷🇺 俄羅斯",
-      "region_code": "ru",
       "event_name": "Дневники разработчика: Сезон наследия",
       "start_date": "2026-10-14",
       "end_date": null,
@@ -246,27 +221,27 @@
     {
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
-      "event_name": "Встречайте 2022 год с новогодним событием!",
-      "start_date": "2026-10-14",
+      "event_name": "Отпразднуйте Китайский Новый год 2022, приняв участие в праздничном событии Pokémon GO",
+      "start_date": "2026-10-15",
       "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/ru/news/new-year-2022",
-      "article_slug": "new-year-2022",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/ru/news/lunar-new-year-event-2022",
+      "article_slug": "lunar-new-year-event-2022",
       "found_in_regions": [
         "ru"
       ]
     },
     {
-      "region": "🇮🇳 印度",
-      "region_code": "hi",
-      "event_name": "इन गर्मियों में मेगा एनर्जी की अंतिम प्रचंड लहर आने वाली है!",
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Встречайте 2022 год с новогодним событием!",
       "start_date": "2026-10-15",
       "end_date": null,
       "status": "upcoming",
-      "url": "https://pokemongo.com/hi/news/gofest2026-mega-finale-incoming",
-      "article_slug": "gofest2026-mega-finale-incoming",
+      "url": "https://pokemongo.com/ru/news/new-year-2022",
+      "article_slug": "new-year-2022",
       "found_in_regions": [
-        "hi"
+        "ru"
       ]
     },
     {
@@ -410,19 +385,6 @@
       "article_slug": "city-safari-boston-update",
       "found_in_regions": [
         "en"
-      ]
-    },
-    {
-      "region": "🇩🇪 德國",
-      "region_code": "de",
-      "event_name": "Pokémon GO auf der gamescom 2026!",
-      "start_date": null,
-      "end_date": null,
-      "status": "unknown",
-      "url": "https://pokemongo.com/de/news/gamescom2026",
-      "article_slug": "gamescom2026",
-      "found_in_regions": [
-        "de"
       ]
     },
     {
