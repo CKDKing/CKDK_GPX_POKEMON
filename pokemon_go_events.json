@@ -1,35 +1,8 @@
 {
-  "scan_timestamp": "2026-10-20T00:13:01.929352",
+  "scan_timestamp": "2026-10-20T23:44:14.119248",
   "scan_date": "2026-10-20",
   "total": 55,
   "events": [
-    {
-      "region": "🇹🇷 土耳其",
-      "region_code": "tr",
-      "event_name": "सभी ट्रेनर एक खास म्यूटू के साथ Pokémon GO के 10 साल पूरे होने को सेलिब्रेट कर सकते हैं!",
-      "start_date": "2026-09-06",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/tr/news/10th-anniversary-celebration",
-      "article_slug": "10th-anniversary-celebration",
-      "found_in_regions": [
-        "hi",
-        "tr"
-      ]
-    },
-    {
-      "region": "🇯🇵 日本",
-      "region_code": "ja",
-      "event_name": "「伝説のポケモンと出会う レジェンドリサーチ in日本橋＆八重洲」で『Pokémon GO』を楽しもう！",
-      "start_date": "2026-09-09",
-      "end_date": "2026-11-29",
-      "status": "active",
-      "url": "https://pokemongo.com/ja/news/legend_research_jp",
-      "article_slug": "legend_research_jp",
-      "found_in_regions": [
-        "ja"
-      ]
-    },
     {
       "region": "🇰🇷 韓國",
       "region_code": "ko",
@@ -223,6 +196,20 @@
       ]
     },
     {
+      "region": "🇮🇳 印度",
+      "region_code": "hi",
+      "event_name": "एक्सप्लोरर गैजेट का अनावरण!",
+      "start_date": "2026-10-20",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/hi/news/pgo-explorer-gadget-2026",
+      "article_slug": "pgo-explorer-gadget-2026",
+      "found_in_regions": [
+        "hi",
+        "tr"
+      ]
+    },
+    {
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "Pokémon GO City Safari: Boston Update",
@@ -277,19 +264,6 @@
     {
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
-      "event_name": "Отпразднуйте Китайский Новый год 2022, приняв участие в праздничном событии Pokémon GO",
-      "start_date": "2026-10-20",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/ru/news/lunar-new-year-event-2022",
-      "article_slug": "lunar-new-year-event-2022",
-      "found_in_regions": [
-        "ru"
-      ]
-    },
-    {
-      "region": "🇷🇺 俄羅斯",
-      "region_code": "ru",
       "event_name": "Дневники разработчика: Сезон наследия",
       "start_date": "2026-10-20",
       "end_date": null,
@@ -303,10 +277,23 @@
     {
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
-      "event_name": "Встречайте 2022 год с новогодним событием!",
-      "start_date": "2026-10-20",
+      "event_name": "Отпразднуйте Китайский Новый год 2022, приняв участие в праздничном событии Pokémon GO",
+      "start_date": "2026-10-21",
       "end_date": null,
-      "status": "active",
+      "status": "upcoming",
+      "url": "https://pokemongo.com/ru/news/lunar-new-year-event-2022",
+      "article_slug": "lunar-new-year-event-2022",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Встречайте 2022 год с новогодним событием!",
+      "start_date": "2026-10-21",
+      "end_date": null,
+      "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/new-year-2022",
       "article_slug": "new-year-2022",
       "found_in_regions": [
@@ -428,6 +415,20 @@
       "article_slug": "apex-reveal",
       "found_in_regions": [
         "ru"
+      ]
+    },
+    {
+      "region": "🇹🇷 土耳其",
+      "region_code": "tr",
+      "event_name": "एक्सप्लोरर गैजेट का अनावरण!",
+      "start_date": null,
+      "end_date": null,
+      "status": "unknown",
+      "url": "https://pokemongo.com/tr/news/pgo-explorer-gadget-2026",
+      "article_slug": "pgo-explorer-gadget-2026",
+      "found_in_regions": [
+        "hi",
+        "tr"
       ]
     },
     {
