@@ -704,8 +704,8 @@ function toggleCdPanel() {
 
 // ── Tile configs (same as existing project) ──────────────────────────────────
 const TILES = {
-    dark:             { url:'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',        opts:{ attribution:'&copy; CartoDB &copy; OSM' } },
-    light:            { url:'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',       opts:{ attribution:'&copy; CartoDB &copy; OSM' } },
+    dark:             { url:'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',  opts:{ maxNativeZoom:16, maxZoom:19, attribution:'&copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors' } },
+    light:            { url:'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', opts:{ maxNativeZoom:16, maxZoom:19, attribution:'&copy; Esri, HERE, Garmin, &copy; OpenStreetMap contributors' } },
     street:           { url:'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',                   opts:{ attribution:'&copy; OpenStreetMap contributors' } },
     google_road:      { url:'https://mt{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',                opts:{ subdomains:'0123', attribution:'&copy; Google Maps' } },
     google_satellite: { url:'https://mt{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',                opts:{ subdomains:'0123', attribution:'&copy; Google Maps' } },
