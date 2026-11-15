@@ -1,6 +1,6 @@
 {
-  "scan_timestamp": "2026-11-14T01:24:18.530743",
-  "scan_date": "2026-11-14",
+  "scan_timestamp": "2026-11-15T00:54:47.946493",
+  "scan_date": "2026-11-15",
   "total": 64,
   "events": [
     {
@@ -62,7 +62,7 @@
       "region_code": "pl",
       "event_name": "फसल का त्यौहार: टेक ओवर के दौरान शैडो ज़ेक्रोम को बचाएं!",
       "start_date": "2026-10-07",
-      "end_date": "2026-11-14",
+      "end_date": "2026-11-15",
       "status": "active",
       "url": "https://pokemongo.com/pl/news/harvest-festival-tgr-2026",
       "article_slug": "harvest-festival-tgr-2026",
@@ -232,20 +232,6 @@
       ]
     },
     {
-      "region": "🇯🇵 日本",
-      "region_code": "ja",
-      "event_name": "「Pokémon GO ワイルドエリア：グローバル」開催期間中の大阪・難波エリアにおけるゲームプレイについて",
-      "start_date": "2026-11-14",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/ja/news/gowildarea-global-2026-osaka-gameplay-update",
-      "article_slug": "gowildarea-global-2026-osaka-gameplay-update",
-      "found_in_regions": [
-        "en",
-        "ja"
-      ]
-    },
-    {
       "region": "🇰🇷 韓國",
       "region_code": "ko",
       "event_name": "올가을 수원에서 만나요! “Pokémon GO 와일드 에리어: 글로벌” 기념 한국 현장 이벤트",
@@ -287,68 +273,17 @@
       ]
     },
     {
-      "region": "🇷🇺 俄羅斯",
-      "region_code": "ru",
-      "event_name": "Welcome to Pokémon GO: Tales of Transformation",
-      "start_date": "2026-11-14",
+      "region": "🇯🇵 日本",
+      "region_code": "ja",
+      "event_name": "「Pokémon GO ワイルドエリア：グローバル」開催期間中の大阪・難波エリアにおけるゲームプレイについて",
+      "start_date": "2026-11-15",
       "end_date": null,
       "status": "active",
-      "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
-      "article_slug": "welcome-to-tales-of-transformation",
+      "url": "https://pokemongo.com/ja/news/gowildarea-global-2026-osaka-gameplay-update",
+      "article_slug": "gowildarea-global-2026-osaka-gameplay-update",
       "found_in_regions": [
-        "ru"
-      ]
-    },
-    {
-      "region": "🇷🇺 俄羅斯",
-      "region_code": "ru",
-      "event_name": "Party Everywhere You GO with Party Play!",
-      "start_date": "2026-11-14",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/ru/news/partyplay",
-      "article_slug": "partyplay",
-      "found_in_regions": [
-        "ru"
-      ]
-    },
-    {
-      "region": "🇷🇺 俄羅斯",
-      "region_code": "ru",
-      "event_name": "Отпразднуйте Китайский Новый год 2022, приняв участие в праздничном событии Pokémon GO",
-      "start_date": "2026-11-14",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/ru/news/lunar-new-year-event-2022",
-      "article_slug": "lunar-new-year-event-2022",
-      "found_in_regions": [
-        "ru"
-      ]
-    },
-    {
-      "region": "🇷🇺 俄羅斯",
-      "region_code": "ru",
-      "event_name": "Дневники разработчика: Сезон наследия",
-      "start_date": "2026-11-14",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage",
-      "article_slug": "devdiary-dec2021-seasonofheritage",
-      "found_in_regions": [
-        "ru"
-      ]
-    },
-    {
-      "region": "🇷🇺 俄羅斯",
-      "region_code": "ru",
-      "event_name": "Встречайте 2022 год с новогодним событием!",
-      "start_date": "2026-11-14",
-      "end_date": null,
-      "status": "active",
-      "url": "https://pokemongo.com/ru/news/new-year-2022",
-      "article_slug": "new-year-2022",
-      "found_in_regions": [
-        "ru"
+        "en",
+        "ja"
       ]
     },
     {
@@ -357,7 +292,7 @@
       "event_name": "Comemorem com Treinadores notáveis no Brasil durante a Área Selvagem do Pokémon GO 2026: Global!",
       "start_date": "2026-11-15",
       "end_date": null,
-      "status": "upcoming",
+      "status": "active",
       "url": "https://pokemongo.com/pt_br/news/gowa-global-2026-brazil",
       "article_slug": "gowa-global-2026-brazil",
       "found_in_regions": [
@@ -370,7 +305,7 @@
       "event_name": "Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: Global en Parque Aztlán",
       "start_date": "2026-11-15",
       "end_date": null,
-      "status": "upcoming",
+      "status": "active",
       "url": "https://pokemongo.com/es_mx/news/gowa-global-immersive-exp",
       "article_slug": "gowa-global-immersive-exp",
       "found_in_regions": [
@@ -383,11 +318,76 @@
       "event_name": "¡Únanse a las Comunidades de Santiago y Bogotá en las reuniones del Área Silvestre de Pokémon GO: Global!",
       "start_date": "2026-11-15",
       "end_date": null,
-      "status": "upcoming",
+      "status": "active",
       "url": "https://pokemongo.com/es_mx/news/gowa-global-latam-2026",
       "article_slug": "gowa-global-latam-2026",
       "found_in_regions": [
         "es_mx"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Welcome to Pokémon GO: Tales of Transformation",
+      "start_date": "2026-11-15",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ru/news/welcome-to-tales-of-transformation",
+      "article_slug": "welcome-to-tales-of-transformation",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Party Everywhere You GO with Party Play!",
+      "start_date": "2026-11-15",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ru/news/partyplay",
+      "article_slug": "partyplay",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Отпразднуйте Китайский Новый год 2022, приняв участие в праздничном событии Pokémon GO",
+      "start_date": "2026-11-15",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ru/news/lunar-new-year-event-2022",
+      "article_slug": "lunar-new-year-event-2022",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Дневники разработчика: Сезон наследия",
+      "start_date": "2026-11-15",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage",
+      "article_slug": "devdiary-dec2021-seasonofheritage",
+      "found_in_regions": [
+        "ru"
+      ]
+    },
+    {
+      "region": "🇷🇺 俄羅斯",
+      "region_code": "ru",
+      "event_name": "Встречайте 2022 год с новогодним событием!",
+      "start_date": "2026-11-15",
+      "end_date": null,
+      "status": "active",
+      "url": "https://pokemongo.com/ru/news/new-year-2022",
+      "article_slug": "new-year-2022",
+      "found_in_regions": [
+        "ru"
       ]
     },
     {
@@ -407,7 +407,7 @@
       "region": "🇺🇸 英文",
       "region_code": "en",
       "event_name": "PokéXciting! lands at Changi Airport and Jewel — get ready, Singapore!",
-      "start_date": "2026-11-16",
+      "start_date": "2026-11-17",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/en/news/event-singapore-30th-anniversary-2026",
@@ -420,7 +420,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and New York City",
-      "start_date": "2026-11-17",
+      "start_date": "2026-11-18",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024",
@@ -433,7 +433,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Тур Pokémon GO: Джото — специальный квест и многое другое!",
-      "start_date": "2026-11-17",
+      "start_date": "2026-11-18",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/pokemongotour-johto-research",
@@ -502,7 +502,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Раскрыты высший теневой Лугиа и высший теневой Хо-Ох!",
-      "start_date": "2027-01-14",
+      "start_date": "2027-01-15",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/apex-reveal",
