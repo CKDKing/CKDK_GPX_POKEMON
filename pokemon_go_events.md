@@ -1,6 +1,6 @@
 # 🗺️ Pokémon GO 地區限定活動
 
-> 掃描時間：**2026-11-19 02:24**（台灣時間）
+> 掃描時間：**2026-11-20 02:08**（台灣時間）
 > 僅顯示地區限定活動，已結束的不列入
 > 全球性共同活動不列入
 
@@ -11,7 +11,6 @@
 | 🇹🇼 台灣 | 《Pokémon GO》將在「寶可夢30週年商場探險」踏上探索商場的旅程！ | 2026-10-01 | 2027-03-28 | ✅ 進行中 | [🔗](https://pokemongo.com/zh_hant/news/apac-mall-exploration-2026) |
 | 🇹🇷 土耳其 | Ognista kula furii wtacza się do gry – Gigantamax Cinderace rusza | 2026-10-03 | — | ✅ 進行中 | [🔗](https://pokemongo.com/tr/news/gigantamax-cinderace-max-battle-day-2026) |
 | 🇰🇷 韓國 | “2026 한글날 이벤트”가 대한민국 전역에서 개최됩니다! | 2026-10-06 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ko/news/hangul-nal-2026) |
-| 🇺🇸 英文 | Pokémon GO City Safari: Boston Update | 2026-10-20 | 2028-10-23 | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/city-safari-boston-rescheduled) |
 | 🇺🇸 英文 | Get codes for exclusive Timed Research during the Pokémon Night O | 2026-10-24 | — | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/pokemon-night-out-twitch-drops2026) |
 | 🌎 拉丁美洲 | ¡Sigan el Campeonato Regional Pokémon de Puebla 2027 en español! | 2026-10-25 | — | ✅ 進行中 | [🔗](https://pokemongo.com/es_mx/news/2027-puebla-pokemon-regional-in-esla) |
 | 🇺🇸 英文 | Actualización sobre las actividades del viernes en Área Silvestre | 2026-11-06 | — | ✅ 進行中 | [🔗](https://pokemongo.com/en/news/gowildarea-mexicocity-friday-update) |
@@ -25,19 +24,21 @@
 | 🌎 拉丁美洲 | Vive una experiencia inmersiva durante Pokémon GO Área Silvestre: | 2026-11-15 | — | ✅ 進行中 | [🔗](https://pokemongo.com/es_mx/news/gowa-global-immersive-exp) |
 | 🌎 拉丁美洲 | ¡Únanse a las Comunidades de Santiago y Bogotá en las reuniones d | 2026-11-15 | — | ✅ 進行中 | [🔗](https://pokemongo.com/es_mx/news/gowa-global-latam-2026) |
 | 🇯🇵 日本 | 日本のApple Storeに新たなポケストップが登場します | 2026-11-16 | 2026-11-30 | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/apple_store_japan) |
-| 🇯🇵 日本 | 「Pokémon GO ワイルドエリア：グローバル」開催期間中の大阪・難波エリアにおけるゲームプレイについて | 2026-11-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/gowildarea-global-2026-osaka-gameplay-update) |
-| 🇷🇺 俄羅斯 | Party Everywhere You GO with Party Play! | 2026-11-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/partyplay) |
-| 🇷🇺 俄羅斯 | Отпразднуйте Китайский Новый год 2022, приняв участие в праздничн | 2026-11-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/lunar-new-year-event-2022) |
-| 🇷🇺 俄羅斯 | Дневники разработчика: Сезон наследия | 2026-11-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage) |
-| 🇷🇺 俄羅斯 | Встречайте 2022 год с новогодним событием! | 2026-11-19 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/new-year-2022) |
-| 🇺🇸 英文 | PokéXciting! lands at Changi Airport and Jewel — get ready, Singa | 2026-11-21 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/event-singapore-30th-anniversary-2026) |
+| 🇯🇵 日本 | 「Pokémon GO ワイルドエリア：グローバル」開催期間中の大阪・難波エリアにおけるゲームプレイについて | 2026-11-20 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ja/news/gowildarea-global-2026-osaka-gameplay-update) |
+| 🇷🇺 俄羅斯 | Party Everywhere You GO with Party Play! | 2026-11-20 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/partyplay) |
+| 🇷🇺 俄羅斯 | Отпразднуйте Китайский Новый год 2022, приняв участие в праздничн | 2026-11-20 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/lunar-new-year-event-2022) |
+| 🇷🇺 俄羅斯 | Дневники разработчика: Сезон наследия | 2026-11-20 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage) |
+| 🇷🇺 俄羅斯 | Встречайте 2022 год с новогодним событием! | 2026-11-20 | — | ✅ 進行中 | [🔗](https://pokemongo.com/ru/news/new-year-2022) |
 | 🌎 拉丁美洲 | Assistam às partidas de Pokémon GO no LAIC 2027, em português! | 2026-11-22 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/es_mx/news/pokemon-go-at-laic2027) |
 | 🇧🇷 巴西 | Assistam às partidas de Pokémon GO no LAIC 2027, em português! | 2026-11-22 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/pt_br/news/pokemon-go-at-laic2027) |
-| 🇷🇺 俄羅斯 | Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and N | 2026-11-22 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024) |
-| 🇷🇺 俄羅斯 | Тур Pokémon GO: Джото — специальный квест и многое другое! | 2026-11-22 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/pokemongotour-johto-research) |
+| 🇺🇸 英文 | PokéXciting! lands at Changi Airport and Jewel — get ready, Singa | 2026-11-22 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/event-singapore-30th-anniversary-2026) |
+| 🇷🇺 俄羅斯 | Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and N | 2026-11-23 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024) |
+| 🇷🇺 俄羅斯 | Тур Pokémon GO: Джото — специальный квест и многое другое! | 2026-11-23 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/pokemongotour-johto-research) |
 | 🇺🇸 英文 | เปิดตัว Pokémon Center BANGKOK! | 2026-12-10 | 2026-12-30 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/pokemon-center-bangkok-opens-2026) |
 | 🇹🇭 泰國 | เปิดตัว Pokémon Center BANGKOK! | 2026-12-10 | 2026-12-30 | 🔜 即將開始 | [🔗](https://pokemongo.com/th/news/pokemon-center-bangkok-opens-2026) |
-| 🇷🇺 俄羅斯 | Раскрыты высший теневой Лугиа и высший теневой Хо-Ох! | 2027-01-19 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/apex-reveal) |
+| 🇺🇸 英文 | 「ポケモンジェット 青」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！ | 2026-12-11 | 2027-08-31 | 🔜 即將開始 | [🔗](https://pokemongo.com/en/news/2026_ana_blue) |
+| 🇯🇵 日本 | 「ポケモンジェット 青」就航記念！ANAと『Pokémon GO』のパートナーシップで、新たな冒険へ飛び立とう！ | 2026-12-11 | 2027-08-31 | 🔜 即將開始 | [🔗](https://pokemongo.com/ja/news/2026_ana_blue) |
+| 🇷🇺 俄羅斯 | Раскрыты высший теневой Лугиа и высший теневой Хо-Ох! | 2027-01-20 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/ru/news/apex-reveal) |
 | 🇵🇱 波蘭 | Miejskie safari Pokémon GO w Europie: miejsca i aktywności | 2027-08-26 | — | 🔜 即將開始 | [🔗](https://pokemongo.com/pl/news/city-safaris-europe-2026) |
 | 🇺🇸 英文 | 「Pokémon GO ワイルドエリア：グローバル」開催期間中の大阪・難波エリアにおけるゲームプレイについて | — | — | ❓ 日期未知 | [🔗](https://pokemongo.com/en/news/gowildarea-global-2026-osaka-gameplay-update) |
 | 🇺🇸 英文 | Descubran más de la ciudad durante el Área Silvestre de Pokémon G | — | — | ❓ 日期未知 | [🔗](https://pokemongo.com/en/news/gowa_cdmx_additional_info) |
