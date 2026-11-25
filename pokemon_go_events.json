@@ -1,33 +1,19 @@
 {
-  "scan_timestamp": "2026-11-24T05:14:30.790378",
-  "scan_date": "2026-11-24",
-  "total": 56,
+  "scan_timestamp": "2026-11-25T04:03:01.477879",
+  "scan_date": "2026-11-25",
+  "total": 51,
   "events": [
     {
-      "region": "🇹🇭 泰國",
-      "region_code": "th",
-      "event_name": "Pokémon GO ร่วมสำรวจมอลล์ครบรอบ 30 ปีโปเกมอน!",
-      "start_date": "2026-10-01",
-      "end_date": "2027-03-28",
+      "region": "🇵🇱 波蘭",
+      "region_code": "pl",
+      "event_name": "Kyogre wzburza fale, a Lucky Trinket powraca w ramach przepustki GO Pass: październik!",
+      "start_date": "2026-09-08",
+      "end_date": null,
       "status": "active",
-      "url": "https://pokemongo.com/th/news/apac-mall-exploration-2026",
-      "article_slug": "apac-mall-exploration-2026",
+      "url": "https://pokemongo.com/pl/news/go-pass-october-2026",
+      "article_slug": "go-pass-october-2026",
       "found_in_regions": [
-        "th"
-      ]
-    },
-    {
-      "region": "🇪🇸 西班牙",
-      "region_code": "es",
-      "event_name": "Pokémon GO collabora con l'Agenzia spaziale europea",
-      "start_date": "2026-10-04",
-      "end_date": "2027-04-30",
-      "status": "active",
-      "url": "https://pokemongo.com/es/news/european-space-agency-event",
-      "article_slug": "european-space-agency-event",
-      "found_in_regions": [
-        "es",
-        "it"
+        "pl"
       ]
     },
     {
@@ -207,7 +193,7 @@
       "region": "🇯🇵 日本",
       "region_code": "ja",
       "event_name": "「Pokémon GO ワイルドエリア：グローバル」開催期間中の大阪・難波エリアにおけるゲームプレイについて",
-      "start_date": "2026-11-24",
+      "start_date": "2026-11-25",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ja/news/gowildarea-global-2026-osaka-gameplay-update",
@@ -221,7 +207,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Party Everywhere You GO with Party Play!",
-      "start_date": "2026-11-24",
+      "start_date": "2026-11-25",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/partyplay",
@@ -234,7 +220,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Отпразднуйте Китайский Новый год 2022, приняв участие в праздничном событии Pokémon GO",
-      "start_date": "2026-11-24",
+      "start_date": "2026-11-25",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/lunar-new-year-event-2022",
@@ -247,7 +233,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Дневники разработчика: Сезон наследия",
-      "start_date": "2026-11-24",
+      "start_date": "2026-11-25",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/devdiary-dec2021-seasonofheritage",
@@ -260,7 +246,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Встречайте 2022 год с новогодним событием!",
-      "start_date": "2026-11-24",
+      "start_date": "2026-11-25",
       "end_date": null,
       "status": "active",
       "url": "https://pokemongo.com/ru/news/new-year-2022",
@@ -270,23 +256,10 @@
       ]
     },
     {
-      "region": "🇺🇸 英文",
-      "region_code": "en",
-      "event_name": "PokéXciting! lands at Changi Airport and Jewel — get ready, Singapore!",
-      "start_date": "2026-11-26",
-      "end_date": null,
-      "status": "upcoming",
-      "url": "https://pokemongo.com/en/news/event-singapore-30th-anniversary-2026",
-      "article_slug": "event-singapore-30th-anniversary-2026",
-      "found_in_regions": [
-        "en"
-      ]
-    },
-    {
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Meet notable Trainers during Pokémon GO Fest 2024 in Madrid and New York City",
-      "start_date": "2026-11-27",
+      "start_date": "2026-11-28",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/notable-trainer-meet-greet-go-fest-2024",
@@ -299,7 +272,7 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Тур Pokémon GO: Джото — специальный квест и многое другое!",
-      "start_date": "2026-11-27",
+      "start_date": "2026-11-28",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/pokemongotour-johto-research",
@@ -368,26 +341,13 @@
       "region": "🇷🇺 俄羅斯",
       "region_code": "ru",
       "event_name": "Раскрыты высший теневой Лугиа и высший теневой Хо-Ох!",
-      "start_date": "2027-01-24",
+      "start_date": "2027-01-25",
       "end_date": null,
       "status": "upcoming",
       "url": "https://pokemongo.com/ru/news/apex-reveal",
       "article_slug": "apex-reveal",
       "found_in_regions": [
         "ru"
-      ]
-    },
-    {
-      "region": "🇵🇱 波蘭",
-      "region_code": "pl",
-      "event_name": "Miejskie safari Pokémon GO w Europie: miejsca i aktywności",
-      "start_date": "2027-08-26",
-      "end_date": null,
-      "status": "upcoming",
-      "url": "https://pokemongo.com/pl/news/city-safaris-europe-2026",
-      "article_slug": "city-safaris-europe-2026",
-      "found_in_regions": [
-        "pl"
       ]
     },
     {
@@ -416,34 +376,6 @@
       "found_in_regions": [
         "en",
         "es_mx"
-      ]
-    },
-    {
-      "region": "🇵🇱 波蘭",
-      "region_code": "pl",
-      "event_name": "Wyznaczcie własny szlak w sezonie Twilight Trails dzięki nowemu Timed Researchowi!",
-      "start_date": null,
-      "end_date": null,
-      "status": "unknown",
-      "url": "https://pokemongo.com/pl/news/choose-your-path-twilight-trails-2026",
-      "article_slug": "choose-your-path-twilight-trails-2026",
-      "found_in_regions": [
-        "pl",
-        "tr"
-      ]
-    },
-    {
-      "region": "🇹🇷 土耳其",
-      "region_code": "tr",
-      "event_name": "Wyznaczcie własny szlak w sezonie Twilight Trails dzięki nowemu Timed Researchowi!",
-      "start_date": null,
-      "end_date": null,
-      "status": "unknown",
-      "url": "https://pokemongo.com/tr/news/choose-your-path-twilight-trails-2026",
-      "article_slug": "choose-your-path-twilight-trails-2026",
-      "found_in_regions": [
-        "pl",
-        "tr"
       ]
     },
     {
